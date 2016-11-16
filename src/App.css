@@ -22,3 +22,16 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.product-tile {
+  min-height: 250px;
+}
+
+.product-tile .panel-body {
+  min-height: 200px;
+}
+
+.product-tile .product-tile-image {
+  min-height: 120px;
+  margin-bottom: 10px;
+}

@@ -2,8 +2,24 @@ import React, { Component } from 'react';
 
 import FilterBar from './filter-bar';
 import ProductList from './product-list';
+import Actions from '../actions';
 
 class HomePage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      productList: []
+    };
+  }
+
+  componentDidMount() {
+    let productList = Actions.fetchProducts();
+
+    this.setState({
+      productList: productList
+    });
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -12,12 +28,12 @@ class HomePage extends Component {
             <FilterBar />
           </div>
           <div className="col-md-9">
-            <ProductList />
+            <ProductList productList={ this.state.productList } />
           </div>
         </div>
       </div>
     );
   }
-}
+};
 
 export default HomePage;
