@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import CategoryFilter from './category-filter';
 import BrandFilter from './brand-filter';
+import PriceRangeFilter from './price-range-filter';
 
 class FilterBar extends Component {
   render() {
@@ -11,6 +12,8 @@ class FilterBar extends Component {
           <CategoryFilter />
 
           <BrandFilter />
+
+          <PriceRangeFilter />
         </div>
       </div>
     );

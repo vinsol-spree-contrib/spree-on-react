@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class BrandFilter extends Component {
   render() {
     return (
-      <div className="row category-filter-bar">
+      <div className="row brand-filter-bar">
         <div className="col-md-12">
           <h4>
             Shop By Brand
