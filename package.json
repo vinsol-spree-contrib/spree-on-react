@@ -52,7 +52,8 @@
     "bootstrap": "^3.3.7",
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "superagent": "^2.3.0"
   },
   "scripts": {
     "start": "node scripts/start.js",
