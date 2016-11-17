@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import Header from './header';
-import HomePage from './home-page';
+import HeaderConnector from '../containers/header-connector';
+import HomePageConnector from '../containers/home-page-connector';
 
 class App extends Component {
   render() {
@@ -10,10 +10,10 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="container-fluid">
-            <Header />
+            <HeaderConnector />
           </div>
         </nav>
-        <HomePage />
+        <HomePageConnector />
       </div>
     );
   }
