@@ -1,0 +1,6 @@
+const APP_ACTIONS = {
+  DISPLAY_LOADER: 'DISPLAY_LOADER',
+  HIDE_LOADER: 'HIDE_LOADER'
+};
+
+export default APP_ACTIONS;

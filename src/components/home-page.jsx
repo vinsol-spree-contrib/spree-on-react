@@ -13,7 +13,7 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    let productList = Actions.fetchProducts().then((response) => {
+    Actions.fetchProducts().then((response) => {
       this.setState({
         productList: JSON.parse(response.text).products
       });

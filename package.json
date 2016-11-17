@@ -1,5 +1,7 @@
 {
   "name": "spree-on-react",
+  "author": "Shubham Gupta",
+  "license": "ISC",
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
@@ -39,6 +41,7 @@
     "promise": "7.1.1",
     "react-dev-utils": "^0.3.0",
     "recursive-readdir": "2.1.0",
+    "redux-logger": "^2.7.4",
     "rimraf": "2.5.4",
     "strip-ansi": "3.0.1",
     "style-loader": "0.13.1",
@@ -53,6 +56,8 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.6",
     "react-dom": "^15.3.2",
+    "react-redux": "^4.4.6",
+    "redux": "^3.6.0",
     "superagent": "^2.3.0"
   },
   "scripts": {
