@@ -1,19 +1,19 @@
 var request = require('superagent');
 
-const ProductsAPI = {
+const TaxonomyAPI = {
   getList: () => {
     return request
-      .get('http://localhost:3001/api/v1/products')
+      .get('http://localhost:3001/api/v1/taxonomies')
       .set('Accept', 'application/json')
       .then(
         (response) => {
           return response;
         },
         (error) => {
-          return { products: [] };
+          return { taxonomies: [] };
         }
       );
   }
 }
 
-export default ProductsAPI;
+export default TaxonomyAPI;

@@ -18,6 +18,12 @@ const mapDispatchToProps = (dispatch) => {
 
         dispatch (Actions.addProducts(fetchedProducts));
       });
+
+      Actions.fetchTaxonomies().then((response) => {
+        let fetchedTaxonomies = JSON.parse(response.text).taxonomies;
+
+        dispatch (Actions.addTaxonomies(fetchedTaxonomies));
+      });
       // dispatch show loader
       // fetch products
       // dispatch hide loader

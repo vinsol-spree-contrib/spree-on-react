@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import FilterBar from '../components/filter-bar';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    taxonomies: state.taxonomies
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
