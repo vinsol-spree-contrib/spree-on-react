@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../App.css';
 
 import HeaderConnector from '../containers/header-connector';
 import HomePageConnector from '../containers/home-page-connector';
