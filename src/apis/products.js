@@ -2,9 +2,9 @@ var request = require('superagent');
 
 const ProductsAPI = {
   getList: () => {
-    var apiDomain = process.env.REACT_APP_API_DOMAIN
+    var apiBase = process.env.REACT_APP_API_BASE
     return request
-      .get(`http://${apiDomain}/api/v1/products`)
+      .get(`${apiBase}/products`)
       .set('Accept', 'application/json')
       .then(
         (response) => {
