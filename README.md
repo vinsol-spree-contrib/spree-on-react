@@ -5,6 +5,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 ## Table of Contents
 
+- [Initial Setup](#initial-setup)
 - [Updating to New Releases](#updating-to-new-releases)
 - [Sending Feedback](#sending-feedback)
 - [Folder Structure](#folder-structure)
@@ -51,6 +52,16 @@ You can find the most recent version of this guide [here](https://github.com/fac
   - [Surge](#surge)
 - [Something Missing?](#something-missing)
 
+## Initial Setup
+
+To setup the project, use the following steps
+
+* Clone the project locallly using the `git clone` command
+* Install and initiallize NPM using `npm install` and `npm init` commands
+* Add the following environment variables in a `.env` file in the app root directory.
+..*API_BASE - Base url for the exposed spree api you will be using
+* Run the script command `npm start` to start the development server
+* Run a spree project on the server as per the API_BASE added in the .env file.
 ## Updating to New Releases
 
 Create React App is divided into two packages:
