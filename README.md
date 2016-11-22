@@ -62,6 +62,7 @@ To setup the project, use the following steps
 ..*API_BASE - Base url for the exposed spree api you will be using
 * Run the script command `npm start` to start the development server
 * Run a spree project on the server as per the API_BASE added in the .env file.
+
 ## Updating to New Releases
 
 Create React App is divided into two packages:
