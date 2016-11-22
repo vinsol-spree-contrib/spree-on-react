@@ -1,14 +1,14 @@
 import React from 'react';
 import { Route } from 'react-router';
 
-import App from './components/app';
-import Product from './components/product';
+import HomePageConnector from './containers/home-page-connector';
+import ProductShow from './components/product/show';
 
 export default function configRoutes() {
   return (
     <Route>
-      <Route path='/' component={App} />
-      <Route path='/products/:productId' component={Product} />
+      <Route path='/' component={HomePageConnector} />
+      <Route path='/products/:productId' component={ProductShow} />
     </Route>
 
   );
