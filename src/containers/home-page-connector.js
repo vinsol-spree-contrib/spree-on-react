@@ -14,23 +14,23 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     triggerInitialSetup: () => {
-      // dispatch show loader
       dispatch (Actions.displayLoader());
 
-      // fetch products
-      Actions.fetchProducts().then((response) => {
+      const fetchProductsPromise = Actions.fetchProducts().then((response) => {
         let fetchedProducts = JSON.parse(response.text).products;
 
         dispatch (Actions.addProducts(fetchedProducts));
-        dispatch (Actions.hideLoader());
       });
 
-      Actions.fetchTaxonomies().then((response) => {
+      const fetchTaxonomiesPromise = Actions.fetchTaxonomies().then((response) => {
         let fetchedTaxonomies = JSON.parse(response.text).taxonomies;
 
         dispatch (Actions.addTaxonomies(fetchedTaxonomies));
       });
-      // dispatch hide loader
+
+      Promise.all([fetchProductsPromise, fetchTaxonomiesPromise]).then((response) => {
+        dispatch (Actions.hideLoader())
+      });
     }
   };
 };
