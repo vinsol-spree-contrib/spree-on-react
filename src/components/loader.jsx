@@ -3,7 +3,7 @@ import loaderImage from '../images/loader.svg';
 
 class Loader extends Component {
   render() {
-    var LoaderDiv = null;
+    let LoaderDiv = null;
     if(this.props.displayLoader){
         LoaderDiv = <div>
                       <img className='loader' src={loaderImage} alt='Loader'/>

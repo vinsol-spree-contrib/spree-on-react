@@ -4,13 +4,16 @@ import ProductImageLarge from './image-large';
 import ProductProperties from './properties';
 
 import ProductFinder from '../../services/product-finder';
+import Loader from '../loader';
 
 class ProductShow extends Component {
   constructor(props) {
     super(props);
+    this.handleImageLoad = this.handleImageLoad.bind(this)
     this.state = {
       currentProduct: {},
-      productId: ''
+      productId: '',
+      displayImageLoader: true
     }
   };
 
@@ -46,6 +49,12 @@ class ProductShow extends Component {
     }
   };
 
+  handleImageLoad(){
+    this.setState({
+      displayImageLoader: false
+    })
+  }
+
   render() {
     let productLargeImage = {};
 
@@ -54,10 +63,13 @@ class ProductShow extends Component {
 
     return (
       <div className="product-show row">
+        <Loader displayLoader={this.props.displayLoader} />
         <div className="col-md-4">
           <div className="row">
             <div className="col-md-12">
-              <ProductImageLarge productImage={ productLargeImage } />
+
+              <Loader displayLoader={this.state.displayImageLoader} />
+              <ProductImageLarge productImage={ productLargeImage } handleImageLoad={this.handleImageLoad} />
             </div>
           </div>
 

@@ -6,19 +6,21 @@ import ProductsAPI from '../../apis/products';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products
+    products: state.products,
+    displayLoader: state.displayLoader
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchProductFromAPI: (productId) => {
-      // Show loader
+      dispatch (Actions.displayLoader());
+
       ProductsAPI.getItem(productId).then((response) => {
         let fetchedProduct = JSON.parse(response.text);
         dispatch (Actions.addProduct(fetchedProduct));
+        dispatch (Actions.hideLoader())
       });
-      // Hide loader
     }
   };
 };

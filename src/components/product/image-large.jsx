@@ -5,7 +5,7 @@ class ProductImageLarge extends Component {
     return (
       <div className="product-show row">
         <div className="col-md-12">
-          <img className="product-large-image" alt={'productName'} src={ process.env.REACT_APP_API_HOST + this.props.productImage.product_url }>
+          <img className="product-large-image" alt={'productName'} src={ process.env.REACT_APP_API_HOST + this.props.productImage.product_url } onLoad={this.props.handleImageLoad}>
           </img>
         </div>
       </div>
