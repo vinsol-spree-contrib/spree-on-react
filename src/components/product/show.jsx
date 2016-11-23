@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import ProductImageLarge from './image-large';
+import ProductProperties from './properties';
 
 import ProductFinder from '../../services/product-finder';
 
@@ -46,12 +47,23 @@ class ProductShow extends Component {
   };
 
   render() {
+    let productLargeImage = {};
+
+    if (this.state.currentProduct.master)
+      productLargeImage = this.state.currentProduct.master.images[0];
+
     return (
       <div className="product-show row">
         <div className="col-md-4">
           <div className="row">
             <div className="col-md-12">
-              <ProductImageLarge product={this.state.currentProduct} />
+              <ProductImageLarge productImage={ productLargeImage } />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
             </div>
           </div>
         </div>
