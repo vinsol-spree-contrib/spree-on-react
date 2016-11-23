@@ -6,17 +6,23 @@ import HomePage from '../components/home-page';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products
+    products: state.products,
+    displayLoader: state.displayLoader
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     triggerInitialSetup: () => {
+      // dispatch show loader
+      dispatch (Actions.displayLoader());
+
+      // fetch products
       Actions.fetchProducts().then((response) => {
         let fetchedProducts = JSON.parse(response.text).products;
 
         dispatch (Actions.addProducts(fetchedProducts));
+        dispatch (Actions.hideLoader());
       });
 
       Actions.fetchTaxonomies().then((response) => {
@@ -24,8 +30,6 @@ const mapDispatchToProps = (dispatch) => {
 
         dispatch (Actions.addTaxonomies(fetchedTaxonomies));
       });
-      // dispatch show loader
-      // fetch products
       // dispatch hide loader
     }
   };
