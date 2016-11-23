@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 
 class ProductTile extends Component {
   render() {
-    let image = this.props.product.master.images[0];
+    let image = this.props.product.master.images[0] || {};
     let productName = this.props.product.name;
     let productShowURL = '/products/' + this.props.product.id;
 
