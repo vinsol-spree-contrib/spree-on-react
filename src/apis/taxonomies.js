@@ -2,8 +2,9 @@ var request = require('superagent');
 
 const TaxonomyAPI = {
   getList: () => {
+    let apiBase = process.env.REACT_APP_API_BASE;
     return request
-      .get('http://localhost:3001/api/v1/taxonomies')
+      .get(`${apiBase}/taxonomies`)
       .set('Accept', 'application/json')
       .then(
         (response) => {
