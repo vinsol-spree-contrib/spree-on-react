@@ -12,9 +12,11 @@ class Main extends Component {
             <HeaderConnector />
           </div>
         </nav>
-        <Router history={browserHistory}>
-          { configRoutes() }
-        </Router>
+        <div className="container-fluid">
+          <Router history={browserHistory}>
+            { configRoutes() }
+          </Router>
+        </div>
       </div>
     );
   }

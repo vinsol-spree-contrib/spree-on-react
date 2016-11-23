@@ -10,14 +10,12 @@ class HomePage extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div className="home-page row">
-          <div className="col-md-3">
-            <FilterBarConnector />
-          </div>
-          <div className="col-md-9">
-            <ProductList productList={ this.props.products } />
-          </div>
+      <div className="home-page row">
+        <div className="col-md-3">
+          <FilterBarConnector />
+        </div>
+        <div className="col-md-9">
+          <ProductList productList={ this.props.products } />
         </div>
       </div>
     );

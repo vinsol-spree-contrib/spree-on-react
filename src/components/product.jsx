@@ -5,7 +5,7 @@ class Product extends Component {
   render() {
     return (
       <div className="col-md-3 product-tile">
-        Product - { this.props.routeParams.productId}
+        Product - { this.props.routeParams.productId }
       </div>
     );
   }
