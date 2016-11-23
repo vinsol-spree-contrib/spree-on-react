@@ -18,7 +18,7 @@ const ProductsAPI = {
 
   getItem: (productId) => {
     return request
-      .get('http://localhost:3001/api/v1/products/' + productId)
+      .get(`${process.env.REACT_APP_API_BASE}/products/` + productId)
       .set('Accept', 'application/json')
       .then(
         (response) => {
