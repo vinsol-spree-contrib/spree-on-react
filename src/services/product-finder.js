@@ -3,7 +3,7 @@ const ProductFinder = {
     let product;
 
     product = products.find((product) => {
-      return (parseInt(product.id) === parseInt(productId));
+      return (parseInt(product.id, 10) === parseInt(productId, 10));
     });
 
     return product;
