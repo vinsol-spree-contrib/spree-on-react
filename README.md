@@ -57,7 +57,7 @@ You can find the most recent version of this guide [here](https://github.com/fac
 To setup the project, use the following steps
 
 * Clone the project using the command `git clone https://github.com/ShubhamGupta/spree-on-react.git`
-* Install and initiallize NPM using the commands `npm install` and `npm init`
+* Install NPM using the command `npm install`
 * Add the following environment variables in a `.env` file in the app root directory.
   * API_BASE - Base API url for the spree project exposing the API (http://localhost:3001/api/v1)
 * Run the spree project as per the API_BASE
