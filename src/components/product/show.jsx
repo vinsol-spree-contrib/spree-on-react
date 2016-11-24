@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import ProductImageLarge from './image-large';
+import ThumbnailList from './thumbnail-list';
 import ProductProperties from './properties';
 
 import ProductFinder from '../../services/product-finder';
@@ -56,10 +57,13 @@ class ProductShow extends Component {
   }
 
   render() {
+    let productImages = [];
     let productLargeImage = {};
 
-    if (this.state.currentProduct.master)
+    if (this.state.currentProduct.master){
       productLargeImage = this.state.currentProduct.master.images[0];
+      productImages = this.state.currentProduct.master.images;
+    }
 
     return (
       <div className="product-show row">
@@ -70,6 +74,12 @@ class ProductShow extends Component {
 
               <Loader displayLoader={this.state.displayImageLoader} />
               <ProductImageLarge productImage={ productLargeImage } handleImageLoad={this.handleImageLoad} />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-md-12">
+              <ThumbnailList images={ productImages } />
             </div>
           </div>
 
@@ -111,7 +121,7 @@ class ProductShow extends Component {
 
           <div className="row">
             <div className="col-md-12">
-              <div className="btn btn-success">
+              <div className="btn btn-success pull-right">
                 Add to cart
               </div>
             </div>
