@@ -16,6 +16,22 @@ const ProductsAPI = {
       );
   },
 
+  getSearchedList: (queryTerm) => {
+    let apiBase = process.env.REACT_APP_API_BASE;
+    return request
+      .get(`${apiBase}/products?q[name_cont]=${queryTerm}`)
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return { products: [] };
+        }
+      );
+  },
+
+
   getItem: (productId) => {
     return request
       .get(`${process.env.REACT_APP_API_BASE}/products/` + productId)
