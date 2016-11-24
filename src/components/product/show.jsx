@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 
-import ProductImageLarge from './image-large';
-import ThumbnailList from './thumbnail-list';
 import ProductProperties from './properties';
+import ImageViewer from './image-viewer';
 
 import ProductFinder from '../../services/product-finder';
 import Loader from '../loader';
@@ -10,11 +9,9 @@ import Loader from '../loader';
 class ProductShow extends Component {
   constructor(props) {
     super(props);
-    this.handleImageLoad = this.handleImageLoad.bind(this)
     this.state = {
       currentProduct: {},
-      productId: '',
-      displayImageLoader: true
+      productId: ''
     }
   };
 
@@ -50,39 +47,14 @@ class ProductShow extends Component {
     }
   };
 
-  handleImageLoad(){
-    this.setState({
-      displayImageLoader: false
-    })
-  }
 
   render() {
-    let productImages = [];
-    let productLargeImage = {};
-
-    if (this.state.currentProduct.master){
-      productLargeImage = this.state.currentProduct.master.images[0];
-      productImages = this.state.currentProduct.master.images;
-    }
-
     return (
       <div className="product-show row">
         <Loader displayLoader={this.props.displayLoader} />
         <div className="col-md-4">
-          <div className="row">
-            <div className="col-md-12">
 
-              <Loader displayLoader={this.state.displayImageLoader} />
-              <ProductImageLarge productImage={ productLargeImage } handleImageLoad={this.handleImageLoad} />
-            </div>
-          </div>
-
-          <div className="row">
-            <div className="col-md-12">
-              <ThumbnailList images={ productImages } />
-            </div>
-          </div>
-
+          <ImageViewer productMaster={ this.state.currentProduct.master }/>
           <div className="row">
             <div className="col-md-12">
               <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
