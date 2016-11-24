@@ -8,15 +8,19 @@ import ProductSearchBar from '../components/product-search-bar';
 
 const mapStateToProps = (state, ownProps) => {
   return {
+    searchTerm: state.searchTerm
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitForm: (queryTerm) => {
-      ProductsAPI.getSearchedList(queryTerm).then((response) => {
-        let fetchedProducts = JSON.parse(response.text).products;
-        dispatch(Actions.addProducts(fetchedProducts));
+    submitForm: (searchTerm) => {
+      ProductsAPI.getList(searchTerm).then((response) => {
+        if(response.statusCode === 200) {
+          let fetchedProducts = JSON.parse(response.text).products;
+          dispatch(Actions.addProducts(fetchedProducts));
+          dispatch(Actions.addSearchTerm(searchTerm));
+        }
       });
     }
   };
