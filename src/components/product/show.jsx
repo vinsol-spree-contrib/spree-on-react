@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
+import VariantsList from './variants-list';
 
 import ProductFinder from '../../services/product-finder';
 import Loader from '../loader';
@@ -9,12 +10,17 @@ import Loader from '../loader';
 class ProductShow extends Component {
   constructor(props) {
     super(props);
+    this.onChangeVariant = this.onChangeVariant.bind(this)
     this.state = {
       currentProduct: {},
       productId: '',
       currentVariant: null
     }
   };
+
+  onChangeVariant(variant){
+    this.setState({currentVariant: variant})
+  }
 
   componentDidMount() {
     let productId = this.props.routeParams.productId;
@@ -70,7 +76,7 @@ class ProductShow extends Component {
                           <div className="row">
                             <div className="col-md-12">
                               <h1>
-                                Product Title - { this.state.currentVariant && this.state.currentVariant.name }
+                                Product Title - { this.state.currentVariant.name }
                               </h1>
                             </div>
                           </div>
@@ -78,7 +84,7 @@ class ProductShow extends Component {
                           <div className="row">
                             <div className="col-md-12">
                               <div className="well">
-                                Product Description - { this.state.currentVariant && this.state.currentVariant.description }
+                                Product Description - { this.state.currentVariant.description }
                               </div>
                             </div>
                           </div>
@@ -91,8 +97,12 @@ class ProductShow extends Component {
 
                           <div className="row">
                             <div className="col-md-12">
-                              ${ this.state.currentVariant&& this.state.currentVariant.price }
+                              ${ this.state.currentVariant.price }
                             </div>
+                          </div>
+
+                          <div className="row">
+                            <VariantsList currentVariant={this.state.currentVariant} variantsList={this.state.currentProduct.variants} onChangeVariant={this.onChangeVariant}/>
                           </div>
 
                           <div className="row">
