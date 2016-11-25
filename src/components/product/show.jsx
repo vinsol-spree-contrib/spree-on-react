@@ -102,7 +102,9 @@ class ProductShow extends Component {
                           </div>
 
                           <div className="row">
-                            <VariantsList currentVariant={this.state.currentVariant} variantsList={this.state.currentProduct.variants} onChangeVariant={this.onChangeVariant}/>
+                            <VariantsList currentVariant={this.state.currentVariant}
+                                          variantsList={this.state.currentProduct.variants}
+                                          onChangeVariant={this.onChangeVariant}/>
                           </div>
 
                           <div className="row">

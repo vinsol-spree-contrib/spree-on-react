@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import Variant from './variant';
 
 class VariantsList extends Component {
+
   render() {
     let variantsList;
     variantsList = this.props.variantsList.map((variant, idx) => {
       return (
-        <Variant key={variant.id} variant={variant} onChangeVariant={this.props.onChangeVariant} />
+        <li className="variant row" key={variant.id}>
+          <input type="radio" name="variant_id"
+              id={"variant_id_" + variant.id}
+              value={variant.id}
+              data-price={"$" + variant.price}
+              onChange={()=>this.props.onChangeVariant(variant)} checked={this.props.currentVariant===variant}/>
+          {variant.options_text}
+          <b>{variant.in_stock ? '' : 'Out of Stock'}</b>
+        </li>
       )
     });
 
