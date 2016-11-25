@@ -12,6 +12,6 @@ export default {
   fetchTaxonomies: taxonomies.fetchTaxonomies,
   addTaxonomies: taxonomies.addTaxonomies,
   displayLoader: loader.displayLoader,
-  hideLoader: loader.hideLoader
+  hideLoader: loader.hideLoader,
   addSearchTerm: productsSearch.addSearchTerm
 };

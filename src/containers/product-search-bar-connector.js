@@ -15,11 +15,14 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (searchTerm) => {
+      dispatch (Actions.displayLoader());
+
       ProductsAPI.getList(searchTerm).then((response) => {
         if(response.statusCode === 200) {
           let fetchedProducts = JSON.parse(response.text).products;
           dispatch(Actions.addProducts(fetchedProducts));
           dispatch(Actions.addSearchTerm(searchTerm));
+          dispatch (Actions.hideLoader());
         }
       });
     }

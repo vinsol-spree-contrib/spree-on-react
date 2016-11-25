@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => {
       });
 
       Promise.all([fetchProductsPromise, fetchTaxonomiesPromise]).then((response) => {
-        dispatch (Actions.hideLoader())
+        dispatch (Actions.hideLoader());
       });
     }
   };
