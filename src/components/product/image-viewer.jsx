@@ -47,30 +47,31 @@ class ImageViewer extends Component {
   render(){
     let productImages = [];
     let previewImage = {};
+    let returnString = null;
+    if (this.props.productVariant){
+      productImages = this.props.productVariant.images;
+      previewImage = this.props.productVariant.images[this.state.previewImageNo];
+      returnString =  <div>
+                        <div className="row">
+                          <div className="col-md-12">
 
-    if (this.props.productMaster){
-      productImages = this.props.productMaster.images;
-      previewImage = this.props.productMaster.images[this.state.previewImageNo];
+                            <Loader displayLoader={this.state.displayImageLoader} />
+                            <ProductImagePreview productImage={ previewImage } handleImageLoad={this.handleImageLoad} />
+                          </div>
+                        </div>
+
+                        <div className="row">
+                          <div className="col-md-12">
+                            <ThumbnailList images={ productImages }
+                                           onClickThumbnail={ this.onClickThumbnail }
+                                           onMouseOverThumbnail={ this.onMouseOverThumbnail }
+                                           onMouseOutThumbnail={ this.onMouseOutThumbnail } />
+                          </div>
+                        </div>
+                      </div>
     }
     return(
-      <div>
-        <div className="row">
-          <div className="col-md-12">
-
-            <Loader displayLoader={this.state.displayImageLoader} />
-            <ProductImagePreview productImage={ previewImage } handleImageLoad={this.handleImageLoad} />
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="col-md-12">
-            <ThumbnailList images={ productImages }
-                           onClickThumbnail={ this.onClickThumbnail }
-                           onMouseOverThumbnail={ this.onMouseOverThumbnail }
-                           onMouseOutThumbnail={ this.onMouseOutThumbnail } />
-          </div>
-        </div>
-      </div>
+      returnString
     );
   }
 };
