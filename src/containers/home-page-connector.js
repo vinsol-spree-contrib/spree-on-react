@@ -6,27 +6,31 @@ import HomePage from '../components/home-page';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products
+    products: state.products,
+    displayLoader: state.displayLoader
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     triggerInitialSetup: () => {
-      Actions.fetchProducts().then((response) => {
+      dispatch (Actions.displayLoader());
+
+      const fetchProductsPromise = Actions.fetchProducts().then((response) => {
         let fetchedProducts = JSON.parse(response.text).products;
 
         dispatch (Actions.addProducts(fetchedProducts));
       });
 
-      Actions.fetchTaxonomies().then((response) => {
+      const fetchTaxonomiesPromise = Actions.fetchTaxonomies().then((response) => {
         let fetchedTaxonomies = JSON.parse(response.text).taxonomies;
 
         dispatch (Actions.addTaxonomies(fetchedTaxonomies));
       });
-      // dispatch show loader
-      // fetch products
-      // dispatch hide loader
+
+      Promise.all([fetchProductsPromise, fetchTaxonomiesPromise]).then((response) => {
+        dispatch (Actions.hideLoader())
+      });
     }
   };
 };

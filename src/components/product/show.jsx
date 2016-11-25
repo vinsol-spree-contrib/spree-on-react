@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 
-import ProductImageLarge from './image-large';
 import ProductProperties from './properties';
+import ImageViewer from './image-viewer';
 
 import ProductFinder from '../../services/product-finder';
+import Loader from '../loader';
 
 class ProductShow extends Component {
   constructor(props) {
@@ -46,21 +47,14 @@ class ProductShow extends Component {
     }
   };
 
+
   render() {
-    let productLargeImage = {};
-
-    if (this.state.currentProduct.master)
-      productLargeImage = this.state.currentProduct.master.images[0];
-
     return (
       <div className="product-show row">
+        <Loader displayLoader={this.props.displayLoader} />
         <div className="col-md-4">
-          <div className="row">
-            <div className="col-md-12">
-              <ProductImageLarge productImage={ productLargeImage } />
-            </div>
-          </div>
 
+          <ImageViewer productMaster={ this.state.currentProduct.master }/>
           <div className="row">
             <div className="col-md-12">
               <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
@@ -99,7 +93,7 @@ class ProductShow extends Component {
 
           <div className="row">
             <div className="col-md-12">
-              <div className="btn btn-success">
+              <div className="btn btn-success pull-right">
                 Add to cart
               </div>
             </div>

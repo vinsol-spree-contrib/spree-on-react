@@ -1,6 +1,7 @@
 import productList from './product-list';
 import products from './products';
 import taxonomies from './taxonomies';
+import loader from './loader';
 
 export default {
   fetchProducts: productList.fetchProducts,
@@ -8,5 +9,7 @@ export default {
   fetchProduct: products.fetchProduct,
   addProduct: products.addProduct,
   fetchTaxonomies: taxonomies.fetchTaxonomies,
-  addTaxonomies: taxonomies.addTaxonomies
+  addTaxonomies: taxonomies.addTaxonomies,
+  displayLoader: loader.displayLoader,
+  hideLoader: loader.hideLoader
 };
