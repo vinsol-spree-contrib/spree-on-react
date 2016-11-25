@@ -1,7 +1,5 @@
 import APP_ACTIONS from '../constants/app-actions';
 
-import TaxonomyAPI from '../apis/taxonomies';
-
 const Taxonomies = {
   addTaxonomies: (taxonomies) => {
     return {
