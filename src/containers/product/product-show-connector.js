@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       ProductsAPI.getItem(productId).then((response) => {
         let fetchedProduct = JSON.parse(response.text);
         dispatch (Actions.addProduct(fetchedProduct));
-        dispatch (Actions.hideLoader())
+        dispatch (Actions.hideLoader());
       });
     }
   };
