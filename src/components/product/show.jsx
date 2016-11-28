@@ -102,18 +102,19 @@ class ProductShow extends Component {
                           </div>
 
                           <div className="row">
-                            <VariantsList currentVariant={this.state.currentVariant}
-                                          variantsList={this.state.currentProduct.variants}
-                                          onChangeVariant={this.onChangeVariant}/>
-                          </div>
-
-                          <div className="row">
                             <div className="col-md-12">
                               <div className="btn btn-success pull-right">
                                 Add to cart
                               </div>
                             </div>
                           </div>
+
+                          <div className="row">
+                            <VariantsList currentVariant={this.state.currentVariant}
+                                          variantsList={this.state.currentProduct.variants}
+                                          onChangeVariant={this.onChangeVariant}/>
+                          </div>
+
                         </div>
                       </div>
     return (
