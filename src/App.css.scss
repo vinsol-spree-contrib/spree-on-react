@@ -1,0 +1,21 @@
+.product-tile {
+  min-height: 250px;
+}
+
+.product-tile .panel-body {
+  min-height: 200px;
+}
+
+.product-tile .product-tile-image {
+  min-height: 120px;
+  margin-bottom: 10px;
+}
+
+.loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+}
