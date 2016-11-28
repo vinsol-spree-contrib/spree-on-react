@@ -18,13 +18,18 @@ class VariantsList extends Component {
       )
     });
 
-    return (
-      <div id="product-variants" className="col-md-6">
+    let renderString = null;
+    if(this.props.variantsList.length > 0){
+      renderString = <div id="product-variants" className="col-md-6">
         <h3 className="product-section-title">Variants</h3>
         <ul className="list-group">
           {variantsList}
         </ul>
       </div>
+    }
+
+    return (
+      renderString
     );
   }
 };
