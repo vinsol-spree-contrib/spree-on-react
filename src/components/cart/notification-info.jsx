@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class CartNotificationInfo extends Component {
   render() {
@@ -12,14 +13,14 @@ class CartNotificationInfo extends Component {
       <div id="navbar">
         <ul className="nav navbar-nav navbar-right">
           <li>
-            <a>
+            <Link to="/cart">
               <span className="glyphicon glyphicon-shopping-cart">
               </span>
               &nbsp;
               Cart:
               &nbsp;
               { cartLabel }
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
