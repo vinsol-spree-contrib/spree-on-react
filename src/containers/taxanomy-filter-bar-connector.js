@@ -4,7 +4,7 @@ import Actions from '../actions';
 
 import ProductsAPI from '../apis/products';
 
-import TaxonomyFilterBar from '/Users/pratibha/Desktop/vinsol-projects/spree/vinsol-spree/spree-on-react/src/components/taxonomy-filter-bar.jsx';
+import TaxonomyFilterBar from '../components/taxonomy-filter-bar.jsx';
 import {push} from 'react-router-redux';
 
 const mapStateToProps = (state, ownProps) => {
