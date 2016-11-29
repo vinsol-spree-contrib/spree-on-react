@@ -6,9 +6,9 @@ class ProductTile extends Component {
     let image = this.props.product.master.images[0] || {};
     let productName = this.props.product.name;
     let productShowURL = '/products/' + this.props.product.id;
-
+    
     return (
-      <div className="col-md-3 product-tile">
+      <div className="col-md-6 product-tile">
         <div className="panel panel-default">
           <div className="panel-body text-center">
             <Link to={productShowURL}>

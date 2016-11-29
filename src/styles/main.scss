@@ -1,0 +1,18 @@
+@import 'core/colors.scss';
+@import 'core/mixins.scss';
+@import 'core/fonts.scss';
+@import 'core/icons.scss';
+@import 'core/typography.scss';
+@import 'core/modals.scss';
+
+@import 'components/global-header.scss';
+@import 'components/global-navigation.scss';
+@import 'components/global-footer.scss';
+
+@import 'pages/home.scss';
+
+
+body {
+  background: $bodyBg;
+  padding-top: 70px;
+}

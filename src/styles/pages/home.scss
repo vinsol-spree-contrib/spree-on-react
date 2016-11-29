@@ -1,0 +1,75 @@
+.home-page {
+  padding-top: 100vh;
+}
+
+.home-top-slider {
+  position: fixed;
+  top: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+
+  .carousel-inner {
+    height: 100%;
+  }
+
+  .item {
+    height: inherit;
+    width: inherit;
+    position: fixed;
+    @include transition(all, 1s);
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .banner-block {
+    display: flex;
+    align-items:center;
+    height: inherit;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+
+    .banner-title {
+      width: 100%;
+      text-align: center;
+      font-size: 20px;
+      color: #4eaf79;
+      @include text-shadow(0, -1px, 0, #fff);
+
+      h3 {
+        font-size: 10vw;
+      }
+    }
+  }
+}
+
+@-webkit-keyframes slideAnimation {
+  0% {
+    opacity:1;
+  }
+  45% {
+    opacity:1;
+  }
+  55% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+}
+@keyframes slideAnimation {
+  0% {
+    opacity:1;
+  }
+  45% {
+    opacity:1;
+  }
+  55% {
+    opacity:0;
+  }
+  100% {
+    opacity:0;
+  }
+}
