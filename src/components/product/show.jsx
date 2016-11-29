@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Button} from 'react-bootstrap';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
@@ -56,6 +57,9 @@ class ProductShow extends Component {
     }
   };
 
+  addProductToCart () {
+    this.props.addProductToCart(this.state.currentVariant.id, 1);
+  };
 
   render() {
     let renderString = null
@@ -103,9 +107,9 @@ class ProductShow extends Component {
 
                           <div className="row">
                             <div className="col-md-12">
-                              <div className="btn btn-success pull-right">
+                              <Button bsStyle="success" bsSize="large" active className="pull-right" onClick={this.addProductToCart.bind(this)}>
                                 Add to cart
-                              </div>
+                              </Button>
                             </div>
                           </div>
 

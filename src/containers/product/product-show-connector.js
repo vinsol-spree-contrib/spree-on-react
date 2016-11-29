@@ -21,6 +21,10 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.addProduct(fetchedProduct));
         dispatch (Actions.hideLoader());
       });
+    },
+
+    addProductToCart: (variantId, quantity = 1) => {
+      dispatch(Actions.addProductToCart(variantId, quantity));
     }
   };
 };
