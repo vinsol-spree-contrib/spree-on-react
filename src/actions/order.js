@@ -1,5 +1,6 @@
 import APP_ACTIONS from '../constants/app-actions';
 import OrdersAPI from '../apis/order';
+import localStorageAPI from '../services/local-storage-api';
 
 const order = {
   addProductToCart: (variantId, quantity = 1) => {
@@ -14,6 +15,7 @@ const order = {
                     type: APP_ACTIONS.CREATE_ORDER,
                     payload: response.body
                   });
+          localStorageAPI.save(getState());
         });
       }
       else {
