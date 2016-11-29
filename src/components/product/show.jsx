@@ -4,6 +4,7 @@ import {Button} from 'react-bootstrap';
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
 import VariantsList from './variants-list';
+import Layout from '../layout';
 
 import ProductFinder from '../../services/product-finder';
 import Loader from '../loader';
@@ -120,12 +121,14 @@ class ProductShow extends Component {
                           </div>
 
                         </div>
-                      </div>
+                      </div>;
     return (
-      <div className="product-show row">
-        <Loader displayLoader={this.props.displayLoader} />
-        {renderString}
-      </div>
+      <Layout>
+        <div className="product-show row">
+          <Loader displayLoader={this.props.displayLoader} />
+          {renderString}
+        </div>
+      </Layout>
     );
   };
 };
