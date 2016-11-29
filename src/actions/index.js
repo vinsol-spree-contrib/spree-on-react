@@ -9,6 +9,6 @@ export default {
   addTaxonomies: taxonomies.addTaxonomies,
   displayLoader: loader.displayLoader,
   hideLoader: loader.hideLoader,
-  addFlash: flash.addFlash,
+  setFlash: flash.setFlash,
   hideFlash: flash.hideFlash
 };

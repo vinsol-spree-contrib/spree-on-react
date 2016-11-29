@@ -3,14 +3,14 @@ import React, { Component } from 'react';
 class Flash extends Component {
 
   render() {
-    let FlashDiv = null;
+    let flashDiv = null;
     if(this.props.flash.visible){
-        FlashDiv = <div className={this.props.flash.type + ' pull-right'}>
+        flashDiv = <div className={`${this.props.flash.type} pull-right`}>
                       {this.props.flash.message}
-                    </div>
+                    </div>;
       }
     return (
-      <div className='flash'>{FlashDiv}</div>
+      <div className='flash'>{flashDiv}</div>
     );
   }
 }

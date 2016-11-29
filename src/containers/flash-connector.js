@@ -16,8 +16,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFlash(message, type){
-      dispatch(Actions.addFlash(message, type));
+    setFlash(message, type){
+      dispatch(Actions.setFlash(message, type));
     },
     hideFlash(){
       dispatch(Actions.hideFlash())

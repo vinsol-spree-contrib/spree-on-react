@@ -31,7 +31,7 @@ const mapDispatchToProps = (dispatch) => {
 
       Promise.all([fetchProductsPromise, fetchTaxonomiesPromise]).then((response) => {
         dispatch (Actions.hideLoader());
-        dispatch(Actions.addFlash('Products Successfully loaded!!', 'notice'));
+        dispatch(Actions.setFlash('Products Successfully loaded!!', 'notice'));
 
         setTimeout(function(){
           dispatch(Actions.hideFlash())

@@ -8,7 +8,7 @@ const initialState = {
 
 const flash = function(state = initialState, action) {
   switch (action.type) {
-    case APP_ACTIONS.ADD_FLASH:
+    case APP_ACTIONS.SET_FLASH:
       return action.payload;
     case APP_ACTIONS.HIDE_FLASH:
       return Object.assign( {}, {visible: false} );

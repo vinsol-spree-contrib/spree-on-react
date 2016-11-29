@@ -1,9 +1,9 @@
 import APP_ACTIONS from '../constants/app-actions';
 
 const flash = {
-  addFlash: (message, type) => {
+  setFlash: (message, type) => {
     return {
-      type: APP_ACTIONS.ADD_FLASH,
+      type: APP_ACTIONS.SET_FLASH,
       payload: {
         message,
         type,
