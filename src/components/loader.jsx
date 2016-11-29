@@ -3,14 +3,14 @@ import loaderImage from '../images/loader.svg';
 
 class Loader extends Component {
   render() {
-    let LoaderDiv = null;
+    let loaderDiv = null;
     if(this.props.displayLoader){
-        LoaderDiv = <div>
+        loaderDiv = <div>
                       <img className='loader' src={loaderImage} alt='Loader'/>
                     </div>
       }
     return (
-      LoaderDiv
+      loaderDiv
     );
   }
 }
