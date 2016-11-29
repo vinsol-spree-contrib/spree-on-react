@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import TaxonomyFilterBar from './taxonomy-filter-bar';
+import TaxonomyFilterBarConnector  from '../containers/taxanomy-filter-bar-connector.js';
 
 class FilterBar extends Component {
   render() {
     const taxonFilterMarkup = this.props.taxonomies.map((taxonomy, idx) => {
       return (
-        <TaxonomyFilterBar key={idx} taxonomy={taxonomy} />
+        <TaxonomyFilterBarConnector key={idx} taxonomy={taxonomy} />
       )
     });
 

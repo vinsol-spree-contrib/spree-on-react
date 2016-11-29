@@ -7,7 +7,7 @@ class TaxonomyFilterBar extends Component {
     let categoryName = this.props.taxonomy.name
     let taxonMarkup = this.props.taxonomy.root.taxons.map((taxon, idx) => {
       return (
-        <TaxonFilter key={ idx } taxon={ taxon } />
+        <TaxonFilter key={ idx } taxon={ taxon } onClickTaxon={this.props.onClickTaxon} />
       )
     });
 
@@ -21,7 +21,7 @@ class TaxonomyFilterBar extends Component {
           <div className="list-group">
             { taxonMarkup }
           </div>
-            
+
         </div>
       </div>
 

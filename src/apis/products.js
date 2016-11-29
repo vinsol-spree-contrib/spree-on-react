@@ -28,6 +28,21 @@ const ProductsAPI = {
           return { product: {} };
         }
       );
+  },
+
+  getCategorizedList: (taxon_id) => {
+    let apiBase = process.env.REACT_APP_API_BASE;
+    return request
+      .get(`${apiBase}/taxons/products?id=` + taxon_id)
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return { product: {} };
+        }
+      );
   }
 }
 

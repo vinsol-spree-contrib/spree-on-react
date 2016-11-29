@@ -16,12 +16,21 @@ const mapDispatchToProps = (dispatch) => {
   return {
     triggerInitialSetup: () => {
       dispatch (Actions.displayLoader());
+      let fetchProductsPromise = null;
+      let taxon_link = location.pathname.match(/^\/t(.+)/)
+      if(taxon_link){
+        fetchProductsPromise = ProductsAPI.getCategorizedList(7).then((response) => {
+          let fetchedProducts = JSON.parse(response.text).products;
 
-      const fetchProductsPromise = ProductsAPI.getList().then((response) => {
-        let fetchedProducts = JSON.parse(response.text).products;
+          dispatch (Actions.addProducts(fetchedProducts));
+        });
+      } else {
+        fetchProductsPromise = ProductsAPI.getList().then((response) => {
+          let fetchedProducts = JSON.parse(response.text).products;
 
-        dispatch (Actions.addProducts(fetchedProducts));
-      });
+          dispatch (Actions.addProducts(fetchedProducts));
+        });
+      }
 
       const fetchTaxonomiesPromise = TaxonomyAPI.getList().then((response) => {
         let fetchedTaxonomies = JSON.parse(response.text).taxonomies;
