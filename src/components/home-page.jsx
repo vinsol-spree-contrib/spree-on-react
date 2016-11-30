@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import FilterBarConnector from '../containers/filter-bar-connector';
+import FlashConnector from '../containers/flash-connector';
 import ProductList from './product-list';
 import Loader from './loader';
 import Layout from './layout';
@@ -14,6 +15,7 @@ class HomePage extends Component {
     return (
       <Layout>
         <div className="home-page row">
+          <FlashConnector />
           <Loader displayLoader={this.props.displayLoader} />
           <div className="col-md-3">
             <FilterBarConnector />

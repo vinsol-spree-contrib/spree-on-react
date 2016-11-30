@@ -2,6 +2,7 @@ import products from './products';
 import taxonomies from './taxonomies';
 import loader from './loader';
 import order from './order';
+import flash from './flash';
 
 export default {
   addProducts: products.addProducts,
@@ -9,5 +10,7 @@ export default {
   addTaxonomies: taxonomies.addTaxonomies,
   displayLoader: loader.displayLoader,
   hideLoader: loader.hideLoader,
-  addProductToCart: order.addProductToCart
+  addProductToCart: order.addProductToCart,
+  setFlash: flash.setFlash,
+  hideFlash: flash.hideFlash
 };

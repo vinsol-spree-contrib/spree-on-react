@@ -30,7 +30,12 @@ const mapDispatchToProps = (dispatch) => {
       });
 
       Promise.all([fetchProductsPromise, fetchTaxonomiesPromise]).then((response) => {
-        dispatch (Actions.hideLoader())
+        dispatch (Actions.hideLoader());
+        dispatch(Actions.setFlash('Products Successfully loaded!!', 'success'));
+
+        setTimeout(function(){
+          dispatch(Actions.hideFlash())
+        }, 5000)
       });
     }
   };
