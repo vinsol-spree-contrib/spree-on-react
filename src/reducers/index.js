@@ -7,8 +7,6 @@ import flash from './flash';
 
 const AppReducer = combineReducers({
   displayLoader,
-  products,
-  taxonomies,
   flash,
   productList,
   taxonomies
