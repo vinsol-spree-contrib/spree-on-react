@@ -25,6 +25,26 @@ const OrdersAPI = {
       );
   },
 
+  addLineItem: (params) => {
+    return request
+      .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items`)
+      .send({
+        line_item: {
+          variant_id: params.variantId,
+          quantity: params.quantity
+        }
+      })
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return {};
+        }
+      );
+  },
+
   update: (params) => {
 
   },

@@ -5,13 +5,24 @@ const initialState = {
 };
 
 const order = function(state = initialState, action) {
+  let newLineItems = Object.assign([], state.line_items);
+  let lineItemIndexToBeRemoved;
+
   switch (action.type) {
-    // When first item is added to cart
     case APP_ACTIONS.CREATE_ORDER:
       return action.payload;
-    // When more items added to cart
+
     case APP_ACTIONS.ADD_PRODUCT_TO_CART:
-      return {};
+      lineItemIndexToBeRemoved = state.line_items.findIndex((lineItem, idx) => {
+        return (lineItem.variant_id === action.payload.variant_id);
+      });
+
+      if (lineItemIndexToBeRemoved > -1)
+        newLineItems.splice(lineItemIndexToBeRemoved, 1);
+
+      newLineItems.push(action.payload);
+
+      return Object.assign({}, state, { line_items: newLineItems });
     // When an item is removed from cart or qty falls to zero
     case APP_ACTIONS.REMOVE_LINE_ITEM:
       return {};

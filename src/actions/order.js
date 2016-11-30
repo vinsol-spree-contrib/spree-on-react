@@ -19,11 +19,14 @@ const order = {
         });
       }
       else {
-        dispatch ({
-                  type: APP_ACTIONS.ADD_LINE_ITEM,
-                  variantId,
-                  quantity
-                });
+        let orderNumber = getState().order.number;
+
+        OrdersAPI.addLineItem({variantId, quantity, orderNumber}).then((response) => {
+          dispatch ({
+                    type: APP_ACTIONS.ADD_PRODUCT_TO_CART,
+                    payload: response.body
+                  });
+        });
       }
       
     }
