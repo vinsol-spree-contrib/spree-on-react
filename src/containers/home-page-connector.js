@@ -7,9 +7,9 @@ import HomePage from '../components/home-page';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products,
+    products: state.productList.products,
     displayLoader: state.displayLoader,
-    hasMoreProducts: state.hasMoreProducts
+    pageCount: state.productList.pages
   };
 };
 
@@ -19,9 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch (Actions.displayLoader());
 
       let fetchProductsPromise = ProductsAPI.getList().then((response) => {
-        let fetchedProducts = JSON.parse(response.text).products;
-        let TotalPageCount = JSON.parse(response.text).pages;
-
+        let fetchedProducts = JSON.parse(response.text);
         dispatch (Actions.addProducts(fetchedProducts));
       });
 
@@ -42,7 +40,7 @@ const mapDispatchToProps = (dispatch) => {
     },
     loadMore: (page_no) => {
       ProductsAPI.getList(page_no).then((response) => {
-        let fetchedProducts = JSON.parse(response.text).products;
+        let fetchedProducts = JSON.parse(response.text);
         dispatch(Actions.addProducts(fetchedProducts));
       });
     }

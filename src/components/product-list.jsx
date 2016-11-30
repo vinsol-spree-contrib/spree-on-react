@@ -15,11 +15,12 @@ class ProductList extends Component {
     this.setState({
       loadingMore: true
     })
+
     setTimeout(function () {
       this.props.loadMore(this.state.page_no + 1);
       this.setState({
         loadingMore: false,
-        hasMore: false,
+        hasMore: (this.props.pageCount > this.state.page_no + 1),
         page_no: (this.state.page_no + 1)
       });
     }.bind(this), 5000);

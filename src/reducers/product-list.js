@@ -1,16 +1,20 @@
 import APP_ACTIONS from '../constants/app-actions';
 
-const initialState = [];
+const initialState = {
+  products: []
+};
 
-const products = function(state = initialState, action) {
+const productList = function(state = initialState, action) {
   let newProductList;
   let productInList;
 
   switch (action.type) {
     case APP_ACTIONS.ADD_PRODUCTS:
-      return state.concat(action.payload);
+      return Object.assign( {}, action.payload,
+                             {products: [...state.products, ...action.payload.products]} )
+
     case APP_ACTIONS.ADD_PRODUCT:
-      productInList = state.find((product) => {
+      productInList = state.products.find((product) => {
         return (product.id === action.payload.id);
       });
 
@@ -29,4 +33,4 @@ const products = function(state = initialState, action) {
   }
 }
 
-export default products;
+export default productList;

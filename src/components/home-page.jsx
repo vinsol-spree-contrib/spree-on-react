@@ -21,7 +21,8 @@ class HomePage extends Component {
         </div>
         <div className="col-md-9">
             <ProductList productList={ this.props.products }
-                         loadMore={this.props.loadMore} />
+                         loadMore={this.props.loadMore}
+                         pageCount={this.props.pageCount} />
         </div>
       </div>
     );
