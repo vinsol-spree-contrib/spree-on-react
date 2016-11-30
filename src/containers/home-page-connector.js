@@ -8,7 +8,8 @@ import HomePage from '../components/home-page';
 const mapStateToProps = (state, ownProps) => {
   return {
     products: state.products,
-    displayLoader: state.displayLoader
+    displayLoader: state.displayLoader,
+    hasMoreProducts: state.hasMoreProducts
   };
 };
 
@@ -17,13 +18,14 @@ const mapDispatchToProps = (dispatch) => {
     triggerInitialSetup: () => {
       dispatch (Actions.displayLoader());
 
-      const fetchProductsPromise = ProductsAPI.getList().then((response) => {
+      let fetchProductsPromise = ProductsAPI.getList().then((response) => {
         let fetchedProducts = JSON.parse(response.text).products;
+        let TotalPageCount = JSON.parse(response.text).pages;
 
         dispatch (Actions.addProducts(fetchedProducts));
       });
 
-      const fetchTaxonomiesPromise = TaxonomyAPI.getList().then((response) => {
+      let fetchTaxonomiesPromise = TaxonomyAPI.getList().then((response) => {
         let fetchedTaxonomies = JSON.parse(response.text).taxonomies;
 
         dispatch (Actions.addTaxonomies(fetchedTaxonomies));
@@ -36,6 +38,12 @@ const mapDispatchToProps = (dispatch) => {
         setTimeout(function(){
           dispatch(Actions.hideFlash())
         }, 5000)
+      });
+    },
+    loadMore: (page_no) => {
+      ProductsAPI.getList(page_no).then((response) => {
+        let fetchedProducts = JSON.parse(response.text).products;
+        dispatch(Actions.addProducts(fetchedProducts));
       });
     }
   };

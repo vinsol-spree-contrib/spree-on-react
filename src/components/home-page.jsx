@@ -6,6 +6,7 @@ import ProductList from './product-list';
 import Loader from './loader';
 
 class HomePage extends Component {
+
   componentDidMount() {
     this.props.triggerInitialSetup();
   }
@@ -19,7 +20,8 @@ class HomePage extends Component {
           <FilterBarConnector />
         </div>
         <div className="col-md-9">
-          <ProductList productList={ this.props.products } />
+            <ProductList productList={ this.props.products }
+                         loadMore={this.props.loadMore} />
         </div>
       </div>
     );

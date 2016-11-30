@@ -8,7 +8,7 @@ const products = function(state = initialState, action) {
 
   switch (action.type) {
     case APP_ACTIONS.ADD_PRODUCTS:
-      return Object.assign( [], action.payload );
+      return state.concat(action.payload);
     case APP_ACTIONS.ADD_PRODUCT:
       productInList = state.find((product) => {
         return (product.id === action.payload.id);
