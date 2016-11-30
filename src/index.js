@@ -8,7 +8,7 @@ import Main from './components/main.jsx';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import './index.css';
-import './App.css';
+import './App.css.scss';
 
 ReactDOM.render(
   <Provider store={ spreeStore }>
