@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
 
         setTimeout(function(){
           dispatch(Actions.hideFlash())
-        }, 5000)
+        }, 5000);
       });
     }
   };
