@@ -1,5 +1,5 @@
 const PRODUCT = {
-  PER_PAGE: 8
+  PER_PAGE: 20
 };
 
 export default PRODUCT;

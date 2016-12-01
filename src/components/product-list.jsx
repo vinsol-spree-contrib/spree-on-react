@@ -7,8 +7,7 @@ class ProductList extends Component {
     super(props);
     this.state = {
       loadingMore: false,
-      page_no: 1,
-      hasMore: true
+      hasMore: undefined
     }
   }
   _loadMore(){
@@ -17,29 +16,31 @@ class ProductList extends Component {
     })
 
     setTimeout(function () {
-      this.props.loadMore(this.state.page_no + 1);
+      this.props.loadMore(this.props.currentPage + 1);
       this.setState({
         loadingMore: false,
-        hasMore: (this.props.pageCount > this.state.page_no + 1),
-        page_no: (this.state.page_no + 1)
+        hasMore: (this.props.pageCount > this.props.currentPage + 1)
       });
-    }.bind(this), 5000);
+    }.bind(this), 100);
   }
   render() {
-    let productList;
-    productList = this.props.productList.map((product, idx) => {
+    let productList = this.props.productList.map((product, idx) => {
       return (
         <ProductTile key={product.id} product={product} />
       )
     });
-
+    let infiniteScroller = null;
+    if(this.props.productList.length > 0){
+        infiniteScroller = <InfiniteScroll loadingMore={this.state.loadingMore}
+                        loadMore={this._loadMore.bind(this)}
+                        elementIsScrollable={ false }
+                        hasMore={this.state.hasMore === undefined ? (this.props.pageCount > this.props.currentPage) : this.state.hasMore}>
+          {productList}
+        </InfiniteScroll>;
+    }
     return (
       <div className="product-list row">
-        <InfiniteScroll loadingMore={this.state.loadingMore}
-                        loadMore={this._loadMore.bind(this)}
-                        hasMore={this.state.hasMore}>
-          {productList}
-        </InfiniteScroll>
+        {infiniteScroller}
       </div>
     );
   }

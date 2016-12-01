@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     products: state.productList.products,
     displayLoader: state.displayLoader,
-    pageCount: state.productList.pages
+    pageCount: state.productList.pages,
+    currentPage: state.productList.current_page
   };
 };
 

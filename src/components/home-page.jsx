@@ -22,7 +22,8 @@ class HomePage extends Component {
         <div className="col-md-9">
             <ProductList productList={ this.props.products }
                          loadMore={this.props.loadMore}
-                         pageCount={this.props.pageCount} />
+                         pageCount={this.props.pageCount}
+                         currentPage={this.props.currentPage} />
         </div>
       </div>
     );
