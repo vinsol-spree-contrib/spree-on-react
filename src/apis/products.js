@@ -30,10 +30,10 @@ const ProductsAPI = {
       );
   },
 
-  getCategorizedList: (taxon_id) => {
+  getCategorizedList: (taxonId) => {
     let apiBase = process.env.REACT_APP_API_BASE;
     return request
-      .get(`${apiBase}/taxons/products?id=` + taxon_id)
+      .get(`${apiBase}/taxons/products?id=` + taxonId)
       .set('Accept', 'application/json')
       .then(
         (response) => {

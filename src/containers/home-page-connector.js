@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import Actions from '../actions';
 import ProductsAPI from '../apis/products';
-import TaxonomyAPI from '../apis/taxonomies';
+import TaxonAPI from '../apis/taxons';
 import HomePage from '../components/home-page';
 
 const mapStateToProps = (state, ownProps) => {
@@ -16,13 +16,13 @@ const mapDispatchToProps = (dispatch) => {
   return {
     triggerInitialSetup: () => {
       dispatch (Actions.displayLoader());
-      let fetchedTaxonomies = null;
+      let fetchedTaxons = null;
       let taxon_id = null;
       let taxon_link = location.pathname.match(/^\/t\/(.+)/)
-      TaxonomyAPI.getList().then((response) => {
-        fetchedTaxonomies = JSON.parse(response.text).taxonomies;
-        dispatch (Actions.addTaxonomies(fetchedTaxonomies));
-        return fetchedTaxonomies
+      TaxonAPI.getList().then((response) => {
+        fetchedTaxons = JSON.parse(response.text).taxons;
+        dispatch (Actions.addTaxons(fetchedTaxons));
+        return fetchedTaxons
       }).then((response) => {
         if(taxon_link){
           taxon_id = () => {
