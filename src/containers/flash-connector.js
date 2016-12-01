@@ -16,10 +16,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setFlash(message, type){
+    setFlash: (message, type) => {
       dispatch(Actions.setFlash(message, type));
     },
-    hideFlash(){
+
+    hideFlash: () => {
       dispatch(Actions.hideFlash())
     }
   };

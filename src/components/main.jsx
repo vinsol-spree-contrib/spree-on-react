@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
-import { Router, browserHistory } from 'react-router'
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+
+import spreeStore from '../store';
 import configRoutes from '../routes';
 
 class Main extends Component {
   render() {
+    const history = syncHistoryWithStore(browserHistory, spreeStore);
+
     return (
-      <Router history={browserHistory}>
-        { configRoutes() }
-      </Router>
+      <Provider store={ spreeStore }>
+        <Router history={ history }>
+          { configRoutes() }
+        </Router>
+      </Provider>
     );
   }
 }

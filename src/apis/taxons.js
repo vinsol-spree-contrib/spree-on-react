@@ -1,20 +1,20 @@
 var request = require('superagent');
 
-const TaxonomyAPI = {
+const TaxonAPI = {
   getList: () => {
     let apiBase = process.env.REACT_APP_API_BASE;
     return request
-      .get(`${apiBase}/taxonomies`)
+      .get(`${apiBase}/taxons`)
       .set('Accept', 'application/json')
       .then(
         (response) => {
           return response;
         },
         (error) => {
-          return { taxonomies: [] };
+          return { taxons: [] };
         }
       );
   }
 }
 
-export default TaxonomyAPI;
+export default TaxonAPI;
