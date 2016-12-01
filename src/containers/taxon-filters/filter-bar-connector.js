@@ -23,6 +23,9 @@ const mapDispatchToProps = (dispatch) => {
           dispatch(push('/t/' + taxon_permalink))
           dispatch (Actions.hideLoader())
         }
+        else {
+          dispatch(Actions.showFlash('Sorry, unable to fetch products at this time. Please try again later.'));
+        }
       });
     }
   };

@@ -7,7 +7,7 @@ import Layout from './layout';
 
 class HomePage extends Component {
   componentDidMount() {
-    this.props.triggerInitialSetup();
+    this.props.triggerInitialSetup(this.props.router.location.pathname);
   }
 
   render() {

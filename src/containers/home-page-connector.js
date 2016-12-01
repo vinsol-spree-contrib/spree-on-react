@@ -14,44 +14,30 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    triggerInitialSetup: () => {
+    triggerInitialSetup: (pathname) => {
       dispatch (Actions.displayLoader());
-      let fetchedTaxons = null;
-      let taxon_id = null;
-      let taxon_link = location.pathname.match(/^\/t\/(.+)/)
-      TaxonAPI.getList().then((response) => {
-        fetchedTaxons = JSON.parse(response.text).taxons;
-        dispatch (Actions.addTaxons(fetchedTaxons));
-        return fetchedTaxons
-      }).then((response) => {
-        if(taxon_link){
-          taxon_id = () => {
-            for (var i = 0; i < response.length; i++) {
-              if(response[i].root.permalink === taxon_link[1]){
-                return response[i].root.id;
-              } else {
-                for (var j = 0; j < response[i].root.taxons.length; j++) {
-                  if(response[i].root.taxons[j].permalink === taxon_link[1]){
-                    return response[i].root.taxons[j].id;
-                  }
-                };
-              }
-            };
-          }
-          ProductsAPI.getCategorizedList(taxon_id()).then((response) => {
-            let fetchedProducts = JSON.parse(response.text).products;
 
-            dispatch (Actions.addProducts(fetchedProducts));
-            dispatch (Actions.hideLoader())
-          });
-        } else {
+      TaxonAPI.getList().then((response) => {
+        let fetchedTaxons = JSON.parse(response.text).taxons;
+        dispatch (Actions.addTaxons(fetchedTaxons));
+
+        if (pathname === '/') {
           ProductsAPI.getList().then((response) => {
             let fetchedProducts = JSON.parse(response.text).products;
 
             dispatch (Actions.addProducts(fetchedProducts));
-            dispatch (Actions.hideLoader())
+            dispatch (Actions.hideLoader());
           });
         }
+        else {
+          dispatch(Actions.fetchProductsByTaxon()).then((response) => {
+            let fetchedProducts = JSON.parse(response.text).products;
+
+            dispatch (Actions.addProducts(fetchedProducts));
+            dispatch (Actions.hideLoader());
+          });
+        }
+
       });
 
     }

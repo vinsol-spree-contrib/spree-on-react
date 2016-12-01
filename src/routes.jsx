@@ -10,8 +10,8 @@ export default function configRoutes() {
     <Route>
       <Route path='/' component={HomePageConnector} />
       <Route path='/products/:productId' component={ProductShowConnector} />
-      <Route path='/t/*' component={HomePageConnector} />
       <Route path='/cart' component={CartShowConnector} />
+      <Route path='/t/*' component={HomePageConnector} />
     </Route>
 
   );
