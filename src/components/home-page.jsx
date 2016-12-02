@@ -14,10 +14,10 @@ class HomePage extends Component {
     return (
       <div className="home-page row">
         <HomeSlider />
-        <Loader displayLoader={this.props.displayLoader} />
-        <div className="col-md-12">
-          <ProductList productList={ this.props.products } />
+        <div className={this.props.displayLoader ? "porduct-loader" : 'hide'}>
+          <Loader displayLoader={this.props.displayLoader} />
         </div>
+        <ProductList productList={ this.props.products } />
       </div>
     );
   }

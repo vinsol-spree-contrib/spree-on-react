@@ -11,9 +11,11 @@ class ProductList extends Component {
     });
 
     return (
-      <div className="product-list row">
-        {productList}
-      </div>
+      <article className="product-list-container row no-margin">
+        <div className="product-list container">
+          {productList}
+        </div>
+      </article>
     );
   }
 }

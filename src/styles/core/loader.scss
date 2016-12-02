@@ -1,0 +1,19 @@
+.porduct-loader {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  background: rgba(0,0,0,0.6);
+  z-index: 9999;
+  align-items:center;
+  @include flex();
+  top: 0;
+  text-align: center;
+   
+   .loading-block {   
+    flex-grow: 1;
+
+    img {
+      width: 50px;
+    }
+  }
+}

@@ -5,7 +5,7 @@ class Loader extends Component {
   render() {
     let LoaderDiv = null;
     if(this.props.displayLoader){
-        LoaderDiv = <div>
+        LoaderDiv = <div className="loading-block">
                       <img className='loader' src={loaderImage} alt='Loader'/>
                     </div>
       }
