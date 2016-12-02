@@ -1,25 +1,38 @@
 import React, { Component } from 'react';
 
-import FilterBarConnector from '../containers/filter-bar-connector';
+import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
 import ProductList from './product-list';
 import Loader from './loader';
+import Layout from './layout';
 
 class HomePage extends Component {
+
   componentDidMount() {
-    this.props.triggerInitialSetup();
+    this.props.triggerInitialSetup(this.props.router.location.pathname);
   }
 
   render() {
     return (
-      <div className="home-page row">
-        <Loader displayLoader={this.props.displayLoader} />
-        <div className="col-md-3">
-          <FilterBarConnector />
+      <Layout>
+        <div className="home-page row">
+          <div className="col-md-12">
+            <Loader displayLoader={ this.props.displayLoader } />
+            <div className="row">
+              <div className="col-md-12">
+                <FilterBarConnector />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-md-12">
+                <ProductList productList={ this.props.products }
+                             loadMore={this.props.loadMore}
+                             pageCount={this.props.pageCount}
+                             currentPage={this.props.currentPage} />
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="col-md-9">
-          <ProductList productList={ this.props.products } />
-        </div>
-      </div>
+      </Layout>
     );
   }
 };
