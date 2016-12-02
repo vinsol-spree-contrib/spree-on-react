@@ -32,7 +32,7 @@ const mapDispatchToProps = (dispatch) => {
           });
         }
         else {
-          dispatch(Actions.fetchProductsByTaxon()).then((response) => {
+          dispatch (Actions.fetchProductsByTaxon()).then((response) => {
             let fetchedProducts = JSON.parse(response.text);
 
             dispatch (Actions.addProducts(fetchedProducts));
@@ -45,7 +45,7 @@ const mapDispatchToProps = (dispatch) => {
 
     loadMore: (page_no) => {
       ProductsAPI.getList({page_no: page_no}).then((response) => {
-        dispatch(Actions.appendProducts(response.body));
+        dispatch (Actions.appendProducts(response.body));
       });
     }
   };

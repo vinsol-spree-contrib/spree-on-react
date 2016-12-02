@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
         if(response.statusCode === 200) {
           let fetchedProducts = JSON.parse(response.text);
-          dispatch(Actions.addProducts(fetchedProducts));
+          dispatch (Actions.addProducts(fetchedProducts));
           dispatch (Actions.hideLoader());
         }
       });

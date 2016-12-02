@@ -24,8 +24,8 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     addProductToCart: (variantId, quantity = 1) => {
-      dispatch(Actions.addProductToCart(variantId, quantity));
-      dispatch(Actions.showFlash('Product Successfully added to the cart!!'));
+      dispatch (Actions.addProductToCart(variantId, quantity));
+      dispatch (Actions.showFlash('Product Successfully added to the cart!!'));
     }
   };
 };
