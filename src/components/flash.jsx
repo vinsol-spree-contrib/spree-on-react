@@ -5,7 +5,7 @@ class Flash extends Component {
   render() {
     let flashDiv = null;
     if(this.props.flash.visible){
-        flashDiv = <div className={`${this.props.flash.type} pull-right`}>
+        flashDiv = <div className={`alert alert-${this.props.flash.type}`}>
                       {this.props.flash.message}
                     </div>;
       }

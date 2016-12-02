@@ -1,14 +1,19 @@
 import products from './products';
-import taxonomies from './taxonomies';
+import taxons from './taxons';
 import loader from './loader';
+import order from './order';
 import flash from './flash';
 
 export default {
   addProducts: products.addProducts,
+  appendProducts: products.appendProducts,
   addProduct: products.addProduct,
-  addTaxonomies: taxonomies.addTaxonomies,
+  fetchProductsByTaxon: products.fetchProductsByTaxon,
+  addTaxons: taxons.addTaxons,
   displayLoader: loader.displayLoader,
   hideLoader: loader.hideLoader,
+  addProductToCart: order.addProductToCart,
   setFlash: flash.setFlash,
+  showFlash: flash.showFlash,
   hideFlash: flash.hideFlash
 };

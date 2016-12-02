@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import spreeStore from './store';
 
-import { Provider } from 'react-redux';
-import Main from './components/main.jsx';
+import Main from './components/main';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -11,8 +9,6 @@ import './index.css';
 import './App.css.scss';
 
 ReactDOM.render(
-  <Provider store={ spreeStore }>
-    <Main />
-  </Provider>,
+  <Main />,
   document.getElementById('root')
 );
