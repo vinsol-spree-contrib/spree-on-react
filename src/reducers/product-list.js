@@ -33,9 +33,9 @@ const productList = function(state = initialState, action) {
         return state;
       }
       else {
-        newProductList = Object.assign( [], state );
+        newProductList = Object.assign( [], state.products );
         newProductList.push(action.payload);
-        return newProductList;
+        return Object.assign ( {}, state, { products: newProductList } );
       }
 
     default:
