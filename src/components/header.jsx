@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
 class Header extends Component {
   render() {
     return (
       <div className="navbar-header">
-        <a className="navbar-brand" href='/'>
+        <Link className="navbar-brand" to='/'>
           SpreeCommerce
-        </a>
+        </Link>
       </div>
     );
   }

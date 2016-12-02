@@ -6,7 +6,7 @@ import ProductsAPI from '../../apis/products';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.products,
+    products: state.productList.products,
     displayLoader: state.displayLoader
   };
 };
@@ -21,6 +21,11 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.addProduct(fetchedProduct));
         dispatch (Actions.hideLoader());
       });
+    },
+
+    addProductToCart: (variantId, quantity = 1) => {
+      dispatch(Actions.addProductToCart(variantId, quantity));
+      dispatch(Actions.showFlash('Product Successfully added to the cart!!'));
     }
   };
 };

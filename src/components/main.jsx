@@ -1,23 +1,21 @@
 import React, { Component } from 'react';
-import { Router, browserHistory } from 'react-router'
-import HeaderConnector from '../containers/header-connector';
+import { Provider } from 'react-redux';
+import { Router, browserHistory } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
+
+import spreeStore from '../store';
 import configRoutes from '../routes';
 
 class Main extends Component {
   render() {
+    const history = syncHistoryWithStore(browserHistory, spreeStore);
+
     return (
-      <div>
-        <nav className="navbar navbar-inverse navbar-fixed-top">
-          <div className="container-fluid">
-            <HeaderConnector />
-          </div>
-        </nav>
-        <div className="container-fluid">
-          <Router history={browserHistory}>
-            { configRoutes() }
-          </Router>
-        </div>
-      </div>
+      <Provider store={ spreeStore }>
+        <Router history={ history }>
+          { configRoutes() }
+        </Router>
+      </Provider>
     );
   }
 }
