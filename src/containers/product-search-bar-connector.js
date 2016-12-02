@@ -8,7 +8,6 @@ import ProductSearchBar from '../components/product-search-bar';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    searchTerm: state.searchTerm
   };
 };
 
@@ -21,7 +20,6 @@ const mapDispatchToProps = (dispatch) => {
         if(response.statusCode === 200) {
           let fetchedProducts = JSON.parse(response.text).products;
           dispatch(Actions.addProducts(fetchedProducts));
-          dispatch(Actions.addSearchTerm(searchTerm));
           dispatch (Actions.hideLoader());
         }
       });
