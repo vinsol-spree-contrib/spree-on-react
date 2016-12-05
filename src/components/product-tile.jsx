@@ -12,7 +12,9 @@ class ProductTile extends Component {
         <div className="thumbnail text-center row no-margin">
           <div className="col-sm-12 col-xs-12 thumb-img-block">
             <Link to={productShowURL}>
-              <img className="product-tile-image img-responsive" alt={productName} src={'http://localhost:3001' + image.small_url}>
+              <img className="product-tile-image img-responsive"
+                   alt={productName}
+                   src={`${ process.env.REACT_APP_API_HOST }${ image.small_url }`}>
               </img>
                 
             </Link>
@@ -24,13 +26,14 @@ class ProductTile extends Component {
             </aside>
           </div>
 
-          <div className="text-center col-sm-12 col-xs-12 product-text-info">
-            <div className="caption-info text-truncate" title={productName}>
-                  {productName}
+          <Link to={productShowURL}>
+            <div className="text-center col-sm-12 col-xs-12 product-text-info">
+              <div className="caption-info text-truncate" title={ productName} >
+                { productName }
+              </div>
+              ${ this.props.product.master.price }
             </div>
-            ${ this.props.product.master.price }
-          </div>
-
+          </Link>
 
         </div>
       </div>

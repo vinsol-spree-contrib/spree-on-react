@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
 import ProductList from './product-list';
 import HomeSlider from './home-slider';
-import Loader from './loader';
+import Loader from './shared/loader';
 import Layout from './layout';
 
 class HomePage extends Component {

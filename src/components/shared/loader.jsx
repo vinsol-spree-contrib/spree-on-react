@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import loaderImage from '../images/loader.svg';
+import loaderImage from '../../images/loader.svg';
 
 class Loader extends Component {
   render() {
