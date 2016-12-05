@@ -1,0 +1,47 @@
+@import 'core/colors.scss';
+@import 'core/mixins.scss';
+@import 'core/fonts.scss';
+@import 'core/icons.scss';
+@import 'core/typography.scss';
+@import 'core/modals.scss';
+@import 'core/loader.scss';
+
+@import 'components/global-header.scss';
+@import 'components/global-navigation.scss';
+@import 'components/global-footer.scss';
+@import 'components/product-tile.scss';
+
+
+@import 'pages/home.scss';
+
+
+body {
+  background: $bodyBg;
+  padding-top: 70px;
+}
+
+.row {
+  &.no-margin {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+a {
+  color: $link-color;
+  @include transition(all,0.5s);
+
+  &:hover {
+    color: $link-color;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

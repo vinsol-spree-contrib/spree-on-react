@@ -1,0 +1,21 @@
+.navbar-fixed-top {
+  background: $navBarBg;
+  border: none;
+  margin: 0;
+  @include box-shadow (3px,2px, 9px, rgba(0,0,0,0.2));
+
+  .navbar-brand {
+    width: 200px;
+    height: auto;
+  }
+  .navbar-nav {
+    .link-block {
+      .primary-link {
+        color: $navLinkColor;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}

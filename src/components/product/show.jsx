@@ -7,7 +7,7 @@ import VariantsList from './variants-list';
 import Layout from '../layout';
 
 import ProductFinder from '../../services/product-finder';
-import Loader from '../loader';
+import Loader from '../shared/loader';
 
 class ProductShow extends Component {
   constructor(props) {
@@ -122,6 +122,7 @@ class ProductShow extends Component {
 
                         </div>
                       </div>;
+
     return (
       <Layout>
         <div className="product-show row">
