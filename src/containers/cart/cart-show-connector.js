@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import CartShow from '../../components/cart/show';
+import Actions from '../../actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -9,7 +10,12 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    emptyCart: () => {
+      dispatch(Actions.emptyCart());
+      dispatch(Actions.showFlash('Your Cart is now empty!!'));
+    }
+  };
 };
 
 const CartShowConnector = connect(mapStateToProps, mapDispatchToProps)(CartShow);

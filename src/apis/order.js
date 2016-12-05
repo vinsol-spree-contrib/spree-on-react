@@ -4,7 +4,7 @@ const OrdersAPI = {
   create: (params) => {
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders`)
-      .send({ 
+      .send({
         order: {
           line_items: [
             {
@@ -50,6 +50,17 @@ const OrdersAPI = {
   },
 
   destroy: (params) => {
+    return request
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return {};
+        }
+      );
 
   }
 }

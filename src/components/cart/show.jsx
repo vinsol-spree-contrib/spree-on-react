@@ -68,7 +68,7 @@ class CartShow extends Component {
         );
       });
 
-      renderString = 
+      renderString =
         <div className="row">
           <div className="col-md-12">
             <Table striped bordered condensed hover>
@@ -86,6 +86,7 @@ class CartShow extends Component {
                 { lineItemList }
               </tbody>
             </Table>
+            <a onClick={this.props.emptyCart}>Empty Cart</a>
           </div>
         </div>;
     }

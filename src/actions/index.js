@@ -13,6 +13,7 @@ export default {
   displayLoader: loader.displayLoader,
   hideLoader: loader.hideLoader,
   addProductToCart: order.addProductToCart,
+  emptyCart: order.emptyCart,
   setFlash: flash.setFlash,
   showFlash: flash.showFlash,
   hideFlash: flash.hideFlash

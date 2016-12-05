@@ -31,7 +31,7 @@ const order = function(state = initialState, action) {
       return {};
     // When `emptyCart` is called
     case APP_ACTIONS.DESTROY_ORDER:
-      return {};
+      return initialState;
     default:
       return state;
   }

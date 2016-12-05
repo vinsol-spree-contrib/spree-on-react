@@ -28,7 +28,20 @@ const order = {
                   });
         });
       }
-      
+
+    }
+  },
+  emptyCart: () => {
+    return (dispatch, getState) => {
+      if (!(getState().order.id === undefined)) {
+        let orderNumber = getState().order.number;
+        OrdersAPI.destroy({orderNumber}).then((response) => {
+          dispatch ({
+                    type: APP_ACTIONS.DESTROY_ORDER
+                  });
+          localStorageAPI.clear();
+        });
+      }
     }
   }
 
