@@ -3,27 +3,16 @@ import { Link } from 'react-router';
 
 class CartNotificationInfo extends Component {
   render() {
-    let cartLabel = '(Empty)';
-
-    if (this.props.lineItems.length > 0) {
-      cartLabel = `${ this.props.lineItems.length } Item`;
-    }
+    let cartLabel = `${ this.props.lineItems.length }`;
 
     return (
-      <div id="navbar">
-        <ul className="nav navbar-nav navbar-right">
-          <li>
-            <Link to="/cart">
-              <span className="glyphicon glyphicon-shopping-cart">
-              </span>
-              &nbsp;
-              Cart:
-              &nbsp;
-              { cartLabel }
-            </Link>
-          </li>
-        </ul>
-      </div>
+      <Link to="/cart">
+        <dd className="icon-block cart-icon-block withbg">
+          <span className="badge">{ cartLabel }</span>
+          <span className="glyphicon glyphicon-shopping-cart"></span>
+        </dd>
+      </Link>
+
     );
   };
 };

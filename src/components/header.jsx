@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BrandHeader from './brand-header';
 import StoreNavigation from './store-navigation';
-import CartBlock from './cart-block';
+import CartNotificationInfoConnector from '../containers/cart/notification-info-connector';
 import SearchBlock from './search-block';
 
 class Header extends Component {
@@ -12,7 +12,7 @@ class Header extends Component {
                 <a className="primary-link"><span className="glyphicon glyphicon-user"></span>Login</a>
                 <a className="primary-link"><span className="glyphicon glyphicon-lock"></span>SignUp</a>
               </dd>
-              <CartBlock />
+              <CartNotificationInfoConnector />
               <SearchBlock />
            </dl>
   }
