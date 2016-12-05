@@ -20,8 +20,9 @@ const order = {
       }
       else {
         let orderNumber = getState().order.number;
+        let orderToken = getState().order.token;
 
-        OrdersAPI.addLineItem({variantId, quantity, orderNumber}).then((response) => {
+        OrdersAPI.addLineItem({variantId, quantity, orderNumber, orderToken}).then((response) => {
           dispatch ({
                     type: APP_ACTIONS.ADD_PRODUCT_TO_CART,
                     payload: response.body
@@ -35,7 +36,8 @@ const order = {
     return (dispatch, getState) => {
       if (!(getState().order.id === undefined)) {
         let orderNumber = getState().order.number;
-        OrdersAPI.destroy({orderNumber}).then((response) => {
+        let orderToken = getState().order.token;
+        OrdersAPI.destroy({orderNumber, orderToken}).then((response) => {
           dispatch ({
                     type: APP_ACTIONS.DESTROY_ORDER
                   });

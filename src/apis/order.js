@@ -27,7 +27,7 @@ const OrdersAPI = {
 
   addLineItem: (params) => {
     return request
-      .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items`)
+      .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items?order_token=${params.orderToken}`)
       .send({
         line_item: {
           variant_id: params.variantId,
@@ -51,7 +51,7 @@ const OrdersAPI = {
 
   destroy: (params) => {
     return request
-      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty?order_token=${params.orderToken}`)
       .set('Accept', 'application/json')
       .then(
         (response) => {
