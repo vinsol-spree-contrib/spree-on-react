@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Accordion, Panel } from "react-bootstrap";
 
+import Loader from "../shared/loader"
+
 class BaseCheckoutLayout extends Component {
 
   render() {
@@ -9,6 +11,7 @@ class BaseCheckoutLayout extends Component {
 
     return (
       <div className="row checkout-flow">
+        <Loader displayLoader={this.props.displayLoader} />
         <Accordion>
           { this.checkoutStepsMarkup }
         </Accordion>

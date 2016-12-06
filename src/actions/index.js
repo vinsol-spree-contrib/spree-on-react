@@ -3,6 +3,7 @@ import taxons from './taxons';
 import loader from './loader';
 import order from './order';
 import flash from './flash';
+import countries from './countries';
 
 export default {
   addProducts: products.addProducts,
@@ -15,5 +16,6 @@ export default {
   addProductToCart: order.addProductToCart,
   setFlash: flash.setFlash,
   showFlash: flash.showFlash,
-  hideFlash: flash.hideFlash
+  hideFlash: flash.hideFlash,
+  addCountries: countries.addCountries
 };

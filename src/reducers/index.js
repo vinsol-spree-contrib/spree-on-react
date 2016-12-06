@@ -7,6 +7,7 @@ import productList from './product-list';
 import taxons from './taxons';
 import order from './order';
 import flash from './flash';
+import countryList from './country-list';
 
 const AppReducer = combineReducers({
   displayLoader,
@@ -14,6 +15,7 @@ const AppReducer = combineReducers({
   taxons,
   order,
   flash,
+  countryList,
   routing: routerReducer,
   form: formReducer
 });

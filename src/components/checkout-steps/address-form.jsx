@@ -12,11 +12,17 @@ class AddressForm extends Component {
     this.props.handleAddressFormSubmit(formData, this.props.order);
   };
 
+  componentDidMount () {
+    if (this.props.countries.length === 0) {
+      this.props.fetchCountries();
+    }
+  };
+
   render() {
     const useBilling = this.props.useBilling;
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="address">
+        <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
             <AddressFields fieldNamePrefix="order[bill_address_attributes]" />
             <div>
