@@ -1,18 +1,33 @@
 import React, { Component } from 'react';
-import ProductSearchBarConnector from '../containers/product-search-bar-connector';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
+import BrandHeader from './brand-header';
+import StoreNavigation from './store-navigation';
+import CartNotificationInfoConnector from '../containers/cart/notification-info-connector';
+import SearchBlock from './search-block';
 
 class Header extends Component {
+
+  navIcons () {
+    return <dl className="nav-icons pull-right">
+              <dd className='icon-block user-link-block'>
+                <a className="primary-link"><span className="glyphicon glyphicon-user"></span>Login</a>
+                <a className="primary-link"><span className="glyphicon glyphicon-lock"></span>SignUp</a>
+              </dd>
+              <CartNotificationInfoConnector />
+              <SearchBlock />
+           </dl>
+  }
+
   render() {
+    var navicons = this.navIcons();
     return (
-      <div>
-        <div className="navbar-header">
-          <Link className="navbar-brand" to='/'>
-            SpreeCommerce
-          </Link>
+      <nav className="navbar navbar-inverse navbar-fixed-top">
+        <div className="container-fluid">
+          <BrandHeader />
+          {navicons}
+          <StoreNavigation />
         </div>
-        <ProductSearchBarConnector />
-      </div>
+      </nav>
     );
   }
 }

@@ -1,0 +1,54 @@
+.nav-icons {
+  margin: 15px 0 0;
+  .icon-block {
+    display: inline-block;
+    margin: 0 5px;
+    @include border-radius (50%);
+    text-align: center;
+    font-size: 14px;
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+
+    a {
+      color: inherit;
+      .glyphicon {
+        margin-right: 5px;
+      }
+    }
+
+    &.withbg {
+      background: $navIconBg;
+      height: 35px;
+      width: 35px;
+      line-height: 35px;
+      font-size: 12px;
+      
+    }
+
+
+    &.user-link-block {
+      .primary-link {
+        margin: 0 10px;
+        text-transform: uppercase;
+      }
+    }
+
+    &.cart-icon-block {
+      .badge {
+        background: $cartQtyBg;
+        border-radius: inherit;
+        color: $cartQtyColor;
+        font-size: 10px;
+        font-weight: normal;
+        height: 16px;
+        letter-spacing: -0.04em;
+        line-height: 16px;
+        padding: 0;
+        position: absolute;        
+        right: -4px;
+        width: 16px;
+      }
+    }
+  } 
+}

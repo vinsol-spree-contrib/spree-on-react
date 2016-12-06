@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import ProductImagePreview from './image-preview';
 import ThumbnailList from './thumbnail-list';
 
-import Loader from '../loader';
+import Loader from '../shared/loader';
 
 class ImageViewer extends Component {
   constructor(props) {
