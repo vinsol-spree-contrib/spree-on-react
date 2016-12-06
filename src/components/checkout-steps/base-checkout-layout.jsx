@@ -22,20 +22,20 @@ class BaseCheckoutLayout extends Component {
   };
 
   __generateAddressStepMarkup (currentStep) {
-    let innerHtml = currentStep == "address" ? this.props.children : "Address Details";
+    let innerHtml = currentStep === "address" ? this.props.children : "Address Details";
 
     this.checkoutStepsMarkup.push (
-      <Panel header="Address Details" eventKey="1">
+      <Panel header="Address Details" eventKey="1" key="address-step">
         { innerHtml }
       </Panel>
     );
   };
 
   __generateDeliveryStepMarkup (currentStep) {
-    let innerHtml = currentStep == "delivery" ? this.props.children : "Delivery Details";
+    let innerHtml = currentStep === "delivery" ? this.props.children : "Delivery Details";
 
     this.checkoutStepsMarkup.push (
-      <Panel header="Delivery Details" eventKey="2">
+      <Panel header="Delivery Details" eventKey="2" key="delivery-step">
         { innerHtml }
       </Panel>
     );
