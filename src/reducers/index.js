@@ -1,5 +1,6 @@
 import { combineReducers } from 'redux';
-import { routerReducer } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux';
+import { reducer as formReducer } from 'redux-form';
 
 import displayLoader from './display-loader';
 import productList from './product-list';
@@ -11,9 +12,10 @@ const AppReducer = combineReducers({
   displayLoader,
   productList,
   taxons,
-  routing: routerReducer,
   order,
-  flash
+  flash,
+  routing: routerReducer,
+  form: formReducer
 });
 
 export default AppReducer;
