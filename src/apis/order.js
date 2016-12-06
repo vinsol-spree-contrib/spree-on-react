@@ -45,8 +45,38 @@ const OrdersAPI = {
       );
   },
 
-  update: (params) => {
+  removeLineItem: (params) => {
+    return request
+      .delete(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}?order_token=${params.orderToken}`)
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return {};
+        }
+      );
+  },
 
+  update: (params) => {
+    return request
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}?order_token=${params.orderToken}`)
+      .send({
+        line_item: {
+          variant_id: params.variantId,
+          quantity: params.quantity
+        }
+      })
+      .set('Accept', 'application/json')
+      .then(
+        (response) => {
+          return response;
+        },
+        (error) => {
+          return {};
+        }
+      );
   },
 
   destroy: (params) => {

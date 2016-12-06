@@ -45,6 +45,36 @@ const order = {
         });
       }
     }
+  },
+
+  removeProductFromCart: (lineItemId) => {
+    return (dispatch, getState) => {
+      let orderNumber = getState().order.number;
+        let orderToken = getState().order.token;
+      OrdersAPI.removeLineItem({orderNumber, orderToken, lineItemId}).then((response) => {
+        dispatch ({
+
+                  type: APP_ACTIONS.REMOVE_LINE_ITEM,
+                  payload: lineItemId
+                });
+        localStorageAPI.save(getState());
+      });
+    }
+  },
+
+  changeProductQuantityFromCart: (variantId, quantity, lineItemId) => {
+    return (dispatch, getState) => {
+      let orderNumber = getState().order.number;
+        let orderToken = getState().order.token;
+      OrdersAPI.update({variantId, quantity, orderNumber, orderToken, lineItemId}).then((response) => {
+        dispatch ({
+
+                  type: APP_ACTIONS.UPDATE_LINE_ITEM,
+                  payload: response.body
+                });
+        localStorageAPI.save(getState());
+      });
+    }
   }
 
 };

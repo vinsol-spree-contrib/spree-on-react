@@ -16,5 +16,7 @@ export default {
   emptyCart: order.emptyCart,
   setFlash: flash.setFlash,
   showFlash: flash.showFlash,
-  hideFlash: flash.hideFlash
+  hideFlash: flash.hideFlash,
+  removeProductFromCart: order.removeProductFromCart,
+  changeProductQuantityFromCart: order.changeProductQuantityFromCart
 };
