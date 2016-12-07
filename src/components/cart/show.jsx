@@ -5,6 +5,24 @@ import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 class CartShow extends Component {
+
+  destroyLineItem(lineItemCount, lineItem) {
+    if (lineItemCount > 1) {
+      this.props.destroyLineItem(lineItem);
+    } else{
+      this.props.emptyCart(this.props.order);
+    };
+  };
+
+  emptyCart () {
+    this.props.emptyCart(this.props.order);
+  };
+
+  changeQuantity(event) {
+    event.preventDefault();
+    this.props.changeQuantity(event.target.line_item_id.value, event.target.quantity.value);
+  };
+
   render() {
     let lineItems = this.props.order.line_items;
     let renderString = 'Wanna pay for just nothing? We are intrigued.';
@@ -54,7 +72,12 @@ class CartShow extends Component {
             </td>
 
             <td>
-              { lineItem.quantity }
+              <form onSubmit={this.changeQuantity.bind(this)}>
+                <input type='hidden' value={lineItem.id} name='line_item_id' />
+                <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
+                <input type='text' defaultValue={ lineItem.quantity } name='quantity' />
+                <button type='submit'>Save</button>
+              </form>
             </td>
 
             <td>
@@ -62,13 +85,13 @@ class CartShow extends Component {
             </td>
 
             <td>
-              { lineItem.display_amount }
+              <a className='link' onClick={() => this.destroyLineItem(lineItems.length, lineItem)}> x </a>
             </td>
           </tr>
         );
       });
 
-      renderString = 
+      renderString =
         <div className="row">
           <div className="col-md-12">
             <Table striped bordered condensed hover>
@@ -86,6 +109,7 @@ class CartShow extends Component {
                 { lineItemList }
               </tbody>
             </Table>
+            <a className='link' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
           </div>
         </div>;
     }

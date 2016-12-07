@@ -16,7 +16,7 @@ class HomePage extends Component {
       <Layout>
         <div className="home-page row">
           <HomeSlider />
-          <div className={this.props.displayLoader ? "porduct-loader" : 'hide'}>
+          <div className={this.props.displayLoader ? "product-loader" : 'hide'}>
             <Loader displayLoader={this.props.displayLoader} />
           </div>
 

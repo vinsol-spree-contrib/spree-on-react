@@ -17,6 +17,12 @@ const localStorageAPI = {
     } catch (err) {
       return undefined;
     }
+  },
+
+  clear: () => {
+    try {
+      localStorage.clear();
+    } catch (err) { /* Silently ignore */}
   }
 };
 

@@ -25,13 +25,21 @@ const order = function(state = initialState, action) {
       return Object.assign({}, state, { line_items: newLineItems });
     // When an item is removed from cart or qty falls to zero
     case APP_ACTIONS.REMOVE_LINE_ITEM:
-      return {};
+      newLineItems = newLineItems.filter( (lineItem) => {
+        return lineItem.id !== action.payload;
+      });
+
+      return Object.assign ( {}, state, { line_items: newLineItems });
     // When qty is updated
     case APP_ACTIONS.UPDATE_LINE_ITEM:
-      return {};
+      let index = state.line_items.map((item)=> item.id).indexOf(action.payload.id)
+      var updatedLineItems = Object.assign ([], state.line_items)
+      updatedLineItems.splice(index, 1, action.payload);
+
+      return Object.assign ({}, state, { line_items: updatedLineItems });
     // When `emptyCart` is called
     case APP_ACTIONS.DESTROY_ORDER:
-      return {};
+      return initialState;
     default:
       return state;
   }

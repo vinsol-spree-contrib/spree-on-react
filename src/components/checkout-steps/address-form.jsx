@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { connect } from 'react-redux'
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
+import AddressFieldsConnector from "../../containers/checkout-steps/address-fields-connector";
 
 class AddressForm extends Component {
 
@@ -10,45 +12,30 @@ class AddressForm extends Component {
     this.props.handleAddressFormSubmit(formData, this.props.order);
   };
 
+  componentDidMount () {
+    if (this.props.countries.length === 0) {
+      this.props.fetchCountries();
+    }
+  };
+
   render() {
+    const useBilling = this.props.useBilling;
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="address">
+        <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+            <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
+                                    countries={ this.props.countries } />
             <div>
-              <label htmlFor="firstname">First Name</label>
-              <Field name="order[bill_address_attributes][firstname]" component="input" type="text" />
+              <label htmlFor="use_billing">Ship to billing address</label>
+              <Field name="order[use_billing]" component="input" type="checkbox" />
             </div>
 
-            <div>
-              <label htmlFor="lastname">Last Name</label>
-              <Field name="order[bill_address_attributes][lastname]" component="input" type="text" />
-            </div>
-
-            <div>
-              <label htmlFor="address1">Address Line 1</label>
-              <Field name="order[bill_address_attributes][address1]" component="input" type="text" />
-            </div>
-
-            <div>
-              <label htmlFor="address2">Address Line 2</label>
-              <Field name="order[bill_address_attributes][address2]" component="input" type="text" />
-            </div>
-
-            <div>
-              <label htmlFor="city">City</label>
-              <Field name="order[bill_address_attributes][city]" component="input" type="text" />
-            </div>
-
-            <div>
-              <label htmlFor="zipcode">Zip Code</label>
-              <Field name="order[bill_address_attributes][zipcode]" component="input" type="text" />
-            </div>
-
-            <div>
-              <label htmlFor="phone">Phone</label>
-              <Field name="order[bill_address_attributes][phone]" component="input" type="text" />
-            </div>
+            {
+              !useBilling &&
+              <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
+                                      countries={ this.props.countries } />
+            }
 
             <button type="submit">Submit</button>
           </form>
@@ -61,5 +48,15 @@ class AddressForm extends Component {
 AddressForm = reduxForm({
   form: 'addressForm'
 })(AddressForm);
+
+const selector = formValueSelector('addressForm');
+AddressForm = connect(
+  state => {
+    const useBilling = selector(state, 'order[use_billing]');
+    return {
+      useBilling
+    };
+  }
+)(AddressForm)
 
 export default AddressForm;
