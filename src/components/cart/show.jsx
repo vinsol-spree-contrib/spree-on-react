@@ -10,14 +10,19 @@ class CartShow extends Component {
     if (lineItemCount > 1) {
       this.props.destroyLineItem(lineItem);
     } else{
-      this.props.emptyCart();
+      this.props.emptyCart(this.props.order);
     };
-  }
+  };
+
+  emptyCart () {
+    this.props.emptyCart(this.props.order);
+  };
 
   changeQuantity(event) {
     event.preventDefault();
-    this.props.changeQuantity(event.target.line_item_id.value, event.target.line_item_variant_id.value, event.target.quantity.value)
-  }
+    this.props.changeQuantity(event.target.line_item_id.value, event.target.quantity.value);
+  };
+
   render() {
     let lineItems = this.props.order.line_items;
     let renderString = 'Wanna pay for just nothing? We are intrigued.';
@@ -104,7 +109,7 @@ class CartShow extends Component {
                 { lineItemList }
               </tbody>
             </Table>
-            <a className='link' onClick={this.props.emptyCart}>Empty Cart</a>
+            <a className='link' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
           </div>
         </div>;
     }

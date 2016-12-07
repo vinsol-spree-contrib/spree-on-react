@@ -32,18 +32,17 @@ const order = {
 
     }
   },
-  emptyCart: () => {
+
+  emptyCart: (order) => {
     return (dispatch, getState) => {
-      if (!(getState().order.id === undefined)) {
-        let orderNumber = getState().order.number;
-        let orderToken = getState().order.token;
-        OrdersAPI.destroy({orderNumber, orderToken}).then((response) => {
-          dispatch ({
-                    type: APP_ACTIONS.DESTROY_ORDER
-                  });
-          localStorageAPI.clear();
-        });
-      }
+      let orderNumber = order.number;
+      let orderToken = order.token;
+
+      return OrdersAPI.destroy({ orderNumber, orderToken }).then((response) => {
+        dispatch ({ type: APP_ACTIONS.DESTROY_ORDER });
+
+        localStorageAPI.clear();
+      });
     }
   },
 
@@ -62,11 +61,11 @@ const order = {
     }
   },
 
-  changeProductQuantityFromCart: (variantId, quantity, lineItemId) => {
+  changeProductQuantityFromCart: (quantity, lineItemId) => {
     return (dispatch, getState) => {
       let orderNumber = getState().order.number;
         let orderToken = getState().order.token;
-      OrdersAPI.update({variantId, quantity, orderNumber, orderToken, lineItemId}).then((response) => {
+      OrdersAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
         dispatch ({
 
                   type: APP_ACTIONS.UPDATE_LINE_ITEM,
