@@ -32,13 +32,9 @@ class FilterBar extends Component {
     });
 
     return (
-      <div className="row filter-bar">
-        <div className="col-md-12">
-          <Nav bsStyle="tabs">
-            { taxonFilterMarkup }
-          </Nav>
-        </div>
-      </div>
+      <ul className="nav navbar-nav">
+        { taxonFilterMarkup }
+      </ul>
     );
   }
 }

@@ -45,6 +45,20 @@
   transition: $all $time;
 }
 
+@mixin scale($val) {
+  -webkit-transform: scale($val);
+    -moz-transform: scale($val);
+      -o-transform: scale($val);
+          transform: scale($val);
+}
+
+@mixin translate3d($x, $y, $z) {
+  -webkit-transform: translate3d($x, $y, $z);
+    -moz-transform: translate3d($x, $y, $z);
+      -o-transform: translate3d($x, $y, $z);
+        transform: translate3d($x, $y, $z);
+}
+
 @mixin text-shadow($top, $left, $blur, $color) {
   -webkit-text-shadow: $top $left $blur $color;
   -moz-text-shadow: $top $left $blur $color;

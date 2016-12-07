@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BrandHeader from './brand-header';
-import StoreNavigation from './store-navigation';
+import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
 import CartNotificationInfoConnector from '../containers/cart/notification-info-connector';
 import SearchBlock from './search-block';
 
@@ -24,7 +24,9 @@ class Header extends Component {
         <div className="container-fluid">
           <BrandHeader />
           {navicons}
-          <StoreNavigation />
+          <div className="navbar-collapse collapse">
+            <FilterBarConnector />
+          </div>
         </div>
       </nav>        
     );

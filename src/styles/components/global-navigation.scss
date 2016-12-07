@@ -1,5 +1,5 @@
 .nav-icons {
-  margin: 15px 0 0;
+  margin: 8px 0 0;
   .icon-block {
     display: inline-block;
     margin: 0 5px;
@@ -7,13 +7,24 @@
     text-align: center;
     font-size: 14px;
     position: relative;
-    color: #fff;
+    color: #9d9d9d;
     cursor: pointer;
 
     a {
       color: inherit;
       .glyphicon {
         margin-right: 5px;
+      }
+      &.link-icon-elem {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        z-index: 1;
+      }
+
+      &:hover {
+        color: #fff;
       }
     }
 
@@ -23,14 +34,23 @@
       width: 35px;
       line-height: 35px;
       font-size: 12px;
-      
+      color: #fff;
+      @include transition(all,0.3s);
+
+      a {
+        opacity: 0.8;
+      }
+      &:hover {
+        a {
+          opacity: 1;
+        }
+      }
     }
 
 
     &.user-link-block {
       .primary-link {
         margin: 0 10px;
-        text-transform: uppercase;
       }
     }
 

@@ -23,7 +23,8 @@ class searchBlock extends Component {
   render() {
     return (
       <dd className="icon-block withbg">
-        <span className="glyphicon glyphicon-search" aria-hidden="true" onClick={this.open}></span>
+        <a className="link-icon-elem" onClick={this.open}></a>
+        <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
         <SearchModal showModal={this.state.showModal} close={this.close}/>
       </dd>
     );
