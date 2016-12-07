@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 import Taxon from './taxon';
 
 class FilterBar extends Component {
