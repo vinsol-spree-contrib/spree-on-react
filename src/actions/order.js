@@ -48,14 +48,13 @@ const order = {
 
   removeProductFromCart: (lineItemId) => {
     return (dispatch, getState) => {
-      let orderNumber = getState().order.number;
-        let orderToken = getState().order.token;
-      OrdersAPI.removeLineItem({orderNumber, orderToken, lineItemId}).then((response) => {
-        dispatch ({
+      let orderFromState = getState().order;
+      let orderNumber = orderFromState.number;
+      let orderToken = orderFromState.token;
 
-                  type: APP_ACTIONS.REMOVE_LINE_ITEM,
-                  payload: lineItemId
-                });
+      return OrdersAPI.removeLineItem({orderNumber, orderToken, lineItemId}).then((response) => {
+        dispatch ({ type: APP_ACTIONS.REMOVE_LINE_ITEM, payload: lineItemId });
+
         localStorageAPI.save(getState());
       });
     }
@@ -63,14 +62,13 @@ const order = {
 
   changeProductQuantityFromCart: (quantity, lineItemId) => {
     return (dispatch, getState) => {
-      let orderNumber = getState().order.number;
-        let orderToken = getState().order.token;
-      OrdersAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
-        dispatch ({
+      let orderFromState = getState().order;
+      let orderNumber = orderFromState.number;
+      let orderToken = orderFromState.token;
 
-                  type: APP_ACTIONS.UPDATE_LINE_ITEM,
-                  payload: response.body
-                });
+      return OrdersAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
+        dispatch ({ type: APP_ACTIONS.UPDATE_LINE_ITEM, payload: response.body });
+
         localStorageAPI.save(getState());
       });
     }

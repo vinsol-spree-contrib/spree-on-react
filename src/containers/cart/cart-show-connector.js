@@ -17,7 +17,7 @@ const mapDispatchToProps = (dispatch) => {
           dispatch(Actions.showFlash('Your Cart is now empty!!'));
         },
         (error) => {
-          dispatch(Actions.showFlash('Sorry! We were unable to empty your cart. Please try again later.'));
+          dispatch(Actions.showFlash('Sorry! We were unable to empty your cart. Please try again later.', 'danger'));
         });
       }
       else{
@@ -26,13 +26,25 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     destroyLineItem: (lineItem) => {
-      dispatch(Actions.removeProductFromCart(lineItem.id));
-      dispatch(Actions.showFlash('Your Cart is successfully updated!!'));
+      dispatch(Actions.removeProductFromCart(lineItem.id)).then(response => {
+        dispatch(Actions.showFlash('Line Item removed from the cart.'));
+      },
+      (error) => {
+        dispatch(Actions.showFlash('Unable to remove line item from cart!!', 'danger'));
+      });
     },
-    changeQuantity: (lineItemId, new_quantity) => {
-      if(new_quantity > 0){
-        dispatch(Actions.changeProductQuantityFromCart(new_quantity, lineItemId));
-        dispatch(Actions.showFlash('Your Product Quantity is successfully updated!!'));
+
+    changeQuantity: (lineItemId, quantity) => {
+      if (parseInt(quantity) > 0) {
+        dispatch(Actions.changeProductQuantityFromCart(quantity, lineItemId)).then((response) => {
+          dispatch(Actions.showFlash('Your Product Quantity is successfully updated!!'));
+        },
+        (error) => {
+          dispatch(Actions.showFlash('Unable to update the product quantity', 'danger'));
+        });
+      }
+      else {
+        dispatch(Actions.showFlash('Quantity must be numeric and greater than zero.', 'danger'));
       }
     }
 

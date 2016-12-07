@@ -50,35 +50,19 @@ const OrdersAPI = {
     return request
       .delete(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}`)
       .query({ order_token: params.orderToken })
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
+      .set('Accept', 'application/json');
   },
 
   update: (params) => {
     return request
       .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}`)
       .query({ order_token: params.orderToken })
+      .set('Accept', 'application/json')
       .send({
         line_item: {
           quantity: params.quantity
         }
-      })
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
+      });
   },
 
   destroy: (params) => {
