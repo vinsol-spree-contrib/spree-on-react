@@ -35,7 +35,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     changeQuantity: (lineItemId, quantity) => {
-      if (parseInt(quantity) > 0) {
+      if (parseInt(quantity, 10) > 0) {
         dispatch(Actions.changeProductQuantityFromCart(quantity, lineItemId)).then((response) => {
           dispatch(Actions.showFlash('Your Product Quantity is successfully updated!!'));
         },
