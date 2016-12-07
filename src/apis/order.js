@@ -4,6 +4,7 @@ const OrdersAPI = {
   create: (params) => {
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders`)
+      .set('Accept', 'application/json')
       .send({
         order: {
           line_items: [
@@ -13,37 +14,20 @@ const OrdersAPI = {
             }
           ]
         }
-      })
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
+      });
   },
 
   addLineItem: (params) => {
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items`)
       .query({ order_token: params.orderToken })
+      .set('Accept', 'application/json')
       .send({
         line_item: {
           variant_id: params.variantId,
           quantity: params.quantity
         }
-      })
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
+      });
   },
 
   removeLineItem: (params) => {

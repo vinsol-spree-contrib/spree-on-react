@@ -5,12 +5,9 @@ import localStorageAPI from '../services/local-storage-api';
 const order = {
   addProductToCart: (variantId, quantity = 1) => {
     return (dispatch, getState) => {
-      if (getState().order.id === undefined) {
-        // Set API Request.
-        // .then
-        // if success dispatch --> CREATE_ORDER and set success flash.
-        // else --> Set error flash
-        OrdersAPI.create({variantId, quantity}).then((response) => {
+      let order = getState().order;
+      if (order.id === undefined) {
+        return OrdersAPI.create({variantId, quantity}).then((response) => {
           dispatch ({
                     type: APP_ACTIONS.CREATE_ORDER,
                     payload: response.body
@@ -19,14 +16,15 @@ const order = {
         });
       }
       else {
-        let orderNumber = getState().order.number;
-        let orderToken = getState().order.token;
+        let orderNumber = order.number;
+        let orderToken = order.token;
 
-        OrdersAPI.addLineItem({variantId, quantity, orderNumber, orderToken}).then((response) => {
+        return OrdersAPI.addLineItem({ variantId, quantity, orderNumber, orderToken }).then((response) => {
           dispatch ({
                     type: APP_ACTIONS.ADD_PRODUCT_TO_CART,
                     payload: response.body
                   });
+          localStorageAPI.save(getState());
         });
       }
 
