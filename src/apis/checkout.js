@@ -6,8 +6,8 @@ const CheckoutAPI = {
 
     return request
       .put(`${process.env.REACT_APP_API_BASE}/checkouts/${orderNumber}/next`)
-      .send(params)
       .set('Accept', 'application/json')
+      .send(params)
       .then(
         (response) => {
           return response;

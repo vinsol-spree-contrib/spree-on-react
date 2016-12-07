@@ -4,7 +4,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
-import AddressFields from "./address-fields";
+import AddressFieldsConnector from "../../containers/checkout-steps/address-fields-connector";
 
 class AddressForm extends Component {
 
@@ -24,15 +24,17 @@ class AddressForm extends Component {
       <Layout>
         <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
-            <AddressFields fieldNamePrefix="order[bill_address_attributes]" />
+            <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
+                                    countries={ this.props.countries } />
             <div>
               <label htmlFor="use_billing">Ship to billing address</label>
-              <Field name="use_billing" component="input" type="checkbox" />
+              <Field name="order[use_billing]" component="input" type="checkbox" />
             </div>
 
             {
-              useBilling &&
-              <AddressFields fieldNamePrefix="order[ship_address_attributes]" />
+              !useBilling &&
+              <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
+                                      countries={ this.props.countries } />
             }
 
             <button type="submit">Submit</button>
@@ -47,10 +49,10 @@ AddressForm = reduxForm({
   form: 'addressForm'
 })(AddressForm);
 
-const selector = formValueSelector('addressForm') // <-- same as form name
+const selector = formValueSelector('addressForm');
 AddressForm = connect(
   state => {
-    const useBilling = selector(state, 'use_billing');
+    const useBilling = selector(state, 'order[use_billing]');
     return {
       useBilling
     };
