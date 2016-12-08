@@ -1,10 +1,13 @@
-$bodyBg: #f4f7f6;
-$baseFontColor: #5a5a5a;
+$bodyBg: #fff;
+$baseFontColor: #aaa;
+$baseFontColorDark: #333;
 $logoBaseBg: #783f6a;
 $link-color: #4eaf79;
-
+$big-heading-bg: #292929;
+$form-control-broder-color: rgba(105, 33, 87, 0.8); //#692157
+$form-control-broder-focus-color: rgba(105, 33, 87, 1);
 /*modal overlay color*/
-$overlayBg : rgba(120, 63, 106, 0.9);
+$overlayBg : rgba(120, 63, 106, 0.9); //#783f6a
 
 /*navigation variables*/
 $navBarBg: rgba(0,0,0,0.8);

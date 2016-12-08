@@ -16,10 +16,8 @@ class ThumbnailList extends Component {
     });
 
     return (
-      <div className="row">
-        <div className="col-md-12">
-          { imagesMarkup }
-        </div>
+      <div className="thumbnail-block-container">
+        { imagesMarkup }
       </div>
     );
   };

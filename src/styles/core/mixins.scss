@@ -59,6 +59,13 @@
         transform: translate3d($x, $y, $z);
 }
 
+@mixin translatePos($x, $y) {
+  -webkit-transform: translate($x, $y);
+    -moz-transform: translate($x, $y);
+      -o-transform: translate($x, $y);
+        transform: translate($x, $y);
+}
+
 @mixin text-shadow($top, $left, $blur, $color) {
   -webkit-text-shadow: $top $left $blur $color;
   -moz-text-shadow: $top $left $blur $color;

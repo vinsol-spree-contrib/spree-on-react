@@ -1,0 +1,30 @@
+.thumbnail-block-container {
+  display: inline-block;
+  padding: 15px 0 0 0;
+
+  .thumbnail {
+    @include box-shadow(0, 0, 0, 0);
+    @include transition(all,0.3s);
+    float: none;
+    display: inline-block;
+    width: 70px;
+    height: 70px;
+    padding: 10px;
+    margin: 0 5px 10px;
+
+    img {
+    }
+    &:hover {
+      @include scale(1.05);
+      border-color: $link-color;
+    }
+  }
+}
+
+.product-detail-tab {
+  padding: 10px 0 20px;
+}
+.product-desc {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

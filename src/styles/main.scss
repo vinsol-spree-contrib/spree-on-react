@@ -5,11 +5,13 @@
 @import 'core/typography.scss';
 @import 'core/modals.scss';
 @import 'core/loader.scss';
+@import 'core/animation.scss';
 
 @import 'components/global-header.scss';
 @import 'components/global-navigation.scss';
 @import 'components/global-footer.scss';
 @import 'components/product-tile.scss';
+@import 'components/product-details.scss';
 
 
 @import 'pages/home.scss';
@@ -37,6 +39,82 @@ a {
   }
 }
 
+.btn {
+  @include transition(all,0.3s);
+}
+.zoom {
+  @include transition(transform,0.5s);
+  @include scale(1);
+
+  &:hover {
+    @include scale(1.05);    
+  }
+
+  &.elem-block {
+    display: block;
+  }
+  &.inline-blocl {
+    display: inline-block;
+  }
+}
+.font-dark {
+  color: $baseFontColorDark;
+}
+.padding-top-none {
+  padding-top: 0 !important;
+}
+.padding-bottom-none {
+  padding-bottom: 0 !important;
+}
+.padding-left-none {
+  padding-left: 0 !important;
+}
+.padding-right-none {
+  padding-right: 0 !important;
+}
+
+.padding-none-horizontal {
+  @extend .padding-left-none;
+  @extend .padding-right-none;
+}
+
+.padding-none-vertical {
+  @extend .padding-top-none;
+  @extend .padding-bottom-none;
+}
+
+.padding-none {
+  @extend .padding-none-horizontal;
+  @extend .padding-none-vertical;
+}
+
+.margin-top-none {
+  margin-top: 0 !important;
+}
+.margin-bottom-none {
+  margin-bottom: 0 !important;
+}
+.margin-left-none {
+  margin-left: 0 !important;
+}
+.margin-right-none {
+  margin-right: 0 !important;
+}
+
+.margin-none-horizontal {
+  @extend .margin-left-none;
+  @extend .margin-right-none;
+}
+
+.margin-none-vertical {
+  @extend .margin-top-none;
+  @extend .margin-bottom-none;
+}
+
+.margin-none {
+  @extend .margin-none-horizontal;
+  @extend .margin-none-vertical;
+}
 .pointer {
   cursor: pointer;
 }
@@ -45,4 +123,39 @@ a {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.block-title {
+  font-size: 20px;
+  @extend .oswald;
+  @extend .font-dark;
+  padding: 10px 0;
+}
+.big-box-heading {
+  background: $big-heading-bg;
+  font-size: 50px;
+  padding: 50px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  @extend .oswald;
+}
+
+.form-control {
+  @include border-radius(0);
+  border: none;
+  border-bottom: solid 2px $form-control-broder-color;
+  height: 40px;
+  @include transition(border, 0.3s);
+  &:focus {
+    border-color: $form-control-broder-focus-color;
+  }
+}
+
+.img-responsive {
+  &.img-center {
+    margin: 0 auto;
+  }
 }

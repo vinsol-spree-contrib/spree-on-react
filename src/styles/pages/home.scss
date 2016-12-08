@@ -1,5 +1,6 @@
 .home-page {
-  padding-top: 100vh;
+  padding-top: calc(80vh);
+  margin-top: -80px;
 }
 
 .home-top-slider {
@@ -7,7 +8,7 @@
   top: 0;
   overflow: hidden;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
 
   .carousel-inner {
     height: 100%;
@@ -39,41 +40,11 @@
       @include text-shadow(0, -1px, 0, #fff);
 
       h3 {
-        font-size: 10vw;
+        font-size: 7vw;
       }
     }
   }
 }
-
-@-webkit-keyframes slideAnimation {
-  0% {
-    opacity:1;
-  }
-  45% {
-    opacity:1;
-  }
-  55% {
-    opacity:0;
-  }
-  100% {
-    opacity:0;
-  }
-}
-@keyframes slideAnimation {
-  0% {
-    opacity:1;
-  }
-  45% {
-    opacity:1;
-  }
-  55% {
-    opacity:0;
-  }
-  100% {
-    opacity:0;
-  }
-}
-
 
 .product-list-container {
   background: #eeeef2;

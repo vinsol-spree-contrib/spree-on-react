@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
+import {Tabs, Tab} from 'react-bootstrap';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
@@ -67,20 +68,14 @@ class ProductShow extends Component {
     if(this.state.currentVariant)
       renderString =  <div className="row">
 
-                        <div className="col-md-4">
-
+                        <div className="col-sm-6 col-xs-12">
                           <ImageViewer productVariant={ this.state.currentVariant }/>
-                          <div className="row">
-                            <div className="col-md-12">
-                              <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
-                            </div>
-                          </div>
                         </div>
 
-                        <div className="col-md-8">
+                        <div className="col-sm-6 col-xs-12">
                           <div className="row">
                             <div className="col-md-12">
-                              <h1>
+                              <h1 className="font-dark">
                                 Product Title - { this.state.currentVariant.name }
                               </h1>
                             </div>
@@ -88,27 +83,29 @@ class ProductShow extends Component {
 
                           <div className="row">
                             <div className="col-md-12">
-                              <div className="well">
-                                Product Description - { this.state.currentVariant.description }
-                              </div>
+                              <p className="h3 font-dark">${ this.state.currentVariant.price }</p>
+
+                              <Tabs defaultActiveKey={2} id="uncontrolled-tab-example" className="product-detail-tab">
+                                <Tab eventKey={1} title="Details">
+                                  <div className="product-desc">Product Description - { this.state.currentVariant.description }</div>
+                                </Tab>
+                                <Tab eventKey={2} title="Specifications">
+                                  <div className="product-desc">
+                                    <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
+                                  </div>
+                                </Tab>
+                              </Tabs>
+
+                              
+                              
                             </div>
                           </div>
 
+                          
+                          
                           <div className="row">
                             <div className="col-md-12">
-                              Price
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-12">
-                              ${ this.state.currentVariant.price }
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-12">
-                              <Button bsStyle="success" bsSize="large" active className="pull-right" onClick={this.addProductToCart.bind(this)}>
+                              <Button bsStyle="success" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
                                 Add to cart
                               </Button>
                             </div>
@@ -125,7 +122,7 @@ class ProductShow extends Component {
 
     return (
       <Layout>
-        <div className="product-show row">
+        <div className="product-show">
           <Loader displayLoader={this.props.displayLoader} />
           {renderString}
         </div>

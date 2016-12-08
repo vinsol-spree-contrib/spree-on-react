@@ -20,6 +20,13 @@ class HomePage extends Component {
             <Loader displayLoader={this.props.displayLoader} />
           </div>
 
+          <div className="big-box-heading">
+            Style Collection
+            <div className="icon-start">
+              <div className="icon-arrow-hint animated-arrow-1"></div>
+              <div className="icon-arrow-hint animated-arrow-2"></div>
+            </div>
+          </div>
           <ProductList productList={ this.props.products }
                        loadMore={this.props.loadMore}
                        pageCount={this.props.pageCount}
