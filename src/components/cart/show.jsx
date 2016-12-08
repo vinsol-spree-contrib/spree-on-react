@@ -75,7 +75,7 @@ class CartShow extends Component {
               <form onSubmit={this.changeQuantity.bind(this)}>
                 <input type='hidden' value={lineItem.id} name='line_item_id' />
                 <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
-                <input type='text' defaultValue={ lineItem.quantity } name='quantity' />
+                <input type='number' defaultValue={ lineItem.quantity } name='quantity' />
                 <button type='submit'>Save</button>
               </form>
             </td>
