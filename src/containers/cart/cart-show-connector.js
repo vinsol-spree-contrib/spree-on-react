@@ -46,6 +46,10 @@ const mapDispatchToProps = (dispatch) => {
       else {
         dispatch(Actions.showFlash('Quantity must be numeric and greater than zero.', 'danger'));
       }
+    },
+
+    doCheckout: (order) => {
+      dispatch (Actions.goToNextStep(order));
     }
 
   };

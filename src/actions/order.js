@@ -3,6 +3,13 @@ import OrdersAPI from '../apis/order';
 import localStorageAPI from '../services/local-storage-api';
 
 const order = {
+  /* This is called whenever:
+    1. Order is updated.
+    2. Moved to a different state in checkout flow. */
+  updateOrder: (recievedOrder) => {
+    return { type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder };
+  },
+
   addProductToCart: (variantId, quantity = 1) => {
     return (dispatch, getState) => {
       let order = getState().order;
@@ -13,6 +20,7 @@ const order = {
                     payload: response.body
                   });
           localStorageAPI.save(getState());
+          return response;
         });
       }
       else {
@@ -25,6 +33,7 @@ const order = {
                     payload: response.body
                   });
           localStorageAPI.save(getState());
+          return response;
         });
       }
 
@@ -40,6 +49,7 @@ const order = {
         dispatch ({ type: APP_ACTIONS.DESTROY_ORDER });
 
         localStorageAPI.clear();
+        return response;
       });
     }
   },
@@ -54,6 +64,7 @@ const order = {
         dispatch ({ type: APP_ACTIONS.REMOVE_LINE_ITEM, payload: lineItemId });
 
         localStorageAPI.save(getState());
+        return response;
       });
     }
   },
@@ -68,6 +79,7 @@ const order = {
         dispatch ({ type: APP_ACTIONS.UPDATE_LINE_ITEM, payload: response.body });
 
         localStorageAPI.save(getState());
+        return response
       });
     }
   }

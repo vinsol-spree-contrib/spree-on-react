@@ -4,6 +4,7 @@ import loader from './loader';
 import order from './order';
 import flash from './flash';
 import countries from './countries';
+import checkout from './checkout';
 
 export default {
   addProducts: products.addProducts,
@@ -20,5 +21,7 @@ export default {
   hideFlash: flash.hideFlash,
   removeProductFromCart: order.removeProductFromCart,
   changeProductQuantityFromCart: order.changeProductQuantityFromCart,
-  addCountries: countries.addCountries
+  updateOrder: order.updateOrder,
+  addCountries: countries.addCountries,
+  goToNextStep: checkout.goToNextStep
 };
