@@ -1,20 +1,19 @@
 var request = require('superagent');
 
 const OrdersAPI = {
-  create: (params) => {
+  getItem: (params) => {
+    return request
+      .get(`${process.env.REACT_APP_API_BASE}/orders/${ params.orderNumber }`)
+      .query({ order_token: params.orderToken })
+      .set('Accept', 'application/json')
+      .send();
+  },
+
+  create: () => {
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders`)
       .set('Accept', 'application/json')
-      .send({
-        order: {
-          line_items: [
-            {
-              variant_id: params.variantId,
-              quantity: params.quantity
-            }
-          ]
-        }
-      });
+      .send();
   },
 
   addLineItem: (params) => {

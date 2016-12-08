@@ -22,6 +22,8 @@ export default {
   removeProductFromCart: order.removeProductFromCart,
   changeProductQuantityFromCart: order.changeProductQuantityFromCart,
   updateOrder: order.updateOrder,
+  refreshOrder: order.refreshOrder,
+  addLineItem: order.addLineItem,
   addCountries: countries.addCountries,
   goToNextStep: checkout.goToNextStep
 };

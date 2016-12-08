@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
 
     destroyLineItem: (lineItem) => {
       dispatch(Actions.removeProductFromCart(lineItem.id)).then(response => {
+        dispatch(Actions.refreshOrder());
         dispatch(Actions.showFlash('Line Item removed from the cart.'));
       },
       (error) => {
@@ -37,6 +38,7 @@ const mapDispatchToProps = (dispatch) => {
     changeQuantity: (lineItemId, quantity) => {
       if (parseInt(quantity, 10) > 0) {
         dispatch(Actions.changeProductQuantityFromCart(quantity, lineItemId)).then((response) => {
+          dispatch(Actions.refreshOrder());
           dispatch(Actions.showFlash('Your Product Quantity is successfully updated!!'));
         },
         (error) => {
