@@ -8,7 +8,10 @@ const order = {
     1. Order is updated.
     2. Moved to a different state in checkout flow. */
   updateOrder: (recievedOrder) => {
-    return { type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder };
+    return (dispatch, getState) => {
+      dispatch({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
+      localStorageAPI.save(getState());
+    };
   },
 
   /* If processInBackground is true, we do not show loader and success message.
@@ -23,6 +26,7 @@ const order = {
 
       OrdersAPI.getItem({ orderNumber, orderToken }).then((response) => {
         dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: response.body });
+        localStorageAPI.save(getState());
 
         if (!processInBackground){
           Actions.showFlash('Retreived fresh data');

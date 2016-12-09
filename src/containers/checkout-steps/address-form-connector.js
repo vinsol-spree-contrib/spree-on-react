@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Actions from '../../actions';
 import AddressForm from '../../components/checkout-steps/address-form';
@@ -21,7 +22,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.hideLoader());
       },
       (error) => {
-        dispatch(Actions.showFlash(error.response.body.error));
+        dispatch(Actions.showFlash(error.response.body.error, "danger"));
         dispatch (Actions.hideLoader());
       });
       // send submit request
@@ -37,6 +38,11 @@ const mapDispatchToProps = (dispatch) => {
       (error) => {
         dispatch(Actions.showFlash('Unable to connect to server... Please try again later.'));
       })
+    },
+
+    handleOrderNotPresent: () => {
+      dispatch (push('/cart'));
+      dispatch(Actions.showFlash("Your cart is empty!", 'danger'));
     }
   };
 };

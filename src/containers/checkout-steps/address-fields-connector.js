@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import Actions from '../../actions';
-import AddressFields from '../../components/checkout-steps/address-fields';
+import AddressFields from '../../components/checkout-steps/address/address-fields';
 import StateAPI from '../../apis/state';
 
 const mapStateToProps = (state, ownProps) => {

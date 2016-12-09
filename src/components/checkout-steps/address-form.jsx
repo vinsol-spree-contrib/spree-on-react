@@ -8,6 +8,15 @@ import AddressFieldsConnector from "../../containers/checkout-steps/address-fiel
 
 class AddressForm extends Component {
 
+  /* Render this step only if order is present and in a valid checkout state. */
+  componentWillMount() {
+    let orderState = this.props.order.state;
+
+    if (orderState === undefined || this.props.order.checkout_steps.indexOf(orderState) === -1) {
+      this.props.handleOrderNotPresent();
+    }
+  };
+
   handleAddressFormSubmit (formData) {
     this.props.handleAddressFormSubmit(formData, this.props.order);
   };
