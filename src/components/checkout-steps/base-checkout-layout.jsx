@@ -8,11 +8,12 @@ class BaseCheckoutLayout extends Component {
   render() {
     this.checkoutStepsMarkup = [];
     this.__generateCheckoutStepsMarkup(this.props.currentStep);
+    let activePanelKey = this._activeKeyForState(this.props.currentStep);
 
     return (
       <div className="row checkout-flow">
         <Loader displayLoader={this.props.displayLoader} />
-        <Accordion>
+        <Accordion activeKey={ activePanelKey }>
           { this.checkoutStepsMarkup }
         </Accordion>
       </div>
@@ -28,7 +29,7 @@ class BaseCheckoutLayout extends Component {
     let innerHtml = currentStep === "address" ? this.props.children : "Address Details";
 
     this.checkoutStepsMarkup.push (
-      <Panel header="Address Details" eventKey="1" key="address-step">
+      <Panel header="Address Details" eventKey="1" key="address-step" bsStyle="danger">
         { innerHtml }
       </Panel>
     );
@@ -42,6 +43,22 @@ class BaseCheckoutLayout extends Component {
         { innerHtml }
       </Panel>
     );
+  };
+
+  /* Returns the eventKey for the currentStep to determine the panel to be
+      displayed in the accordion.
+      1. address
+      2. delivery
+  */
+  _activeKeyForState (currentStep) {
+    switch (currentStep) {
+      case "address":
+        return "1";
+      case "delivery":
+        return "2";
+      default:
+        return "1";
+    }
   };
 };
 
