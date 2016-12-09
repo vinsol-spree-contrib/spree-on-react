@@ -66,58 +66,78 @@ class ProductShow extends Component {
   render() {
     let renderString = null
     if(this.state.currentVariant)
-      renderString =  <div className="row">
+      renderString =  <div className="">
+                        <article className="row product-row">
+                          <div className="col-sm-6 col-xs-12 product-top-col">
+                            <ImageViewer productVariant={ this.state.currentVariant }/>
+                          </div>
 
-                        <div className="col-sm-6 col-xs-12">
-                          <ImageViewer productVariant={ this.state.currentVariant }/>
-                        </div>
+                          <div className="col-sm-6 col-xs-12 product-top-col text-center">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <h1 className="font-dark">
+                                  Product Title - { this.state.currentVariant.name }
+                                </h1>
+                                <div className="color-row">
+                                  <span className="badge pink"></span>
+                                  <span className="badge blue"></span>
+                                  <span className="badge green"></span>
+                                  <span className="badge pruple"></span>
+                                  <span className="badge black"></span>
+                                </div>
+                              </div>
+                            </div>
 
-                        <div className="col-sm-6 col-xs-12">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <h1 className="font-dark">
-                                Product Title - { this.state.currentVariant.name }
-                              </h1>
+                            <div className="row">
+                              <div className="col-md-12">
+                               <p className="h3 font-dark">${ this.state.currentVariant.price }</p>
+                                <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
+                                  <span className="cart-text">Add to cart</span>
+                                  <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
+                                </Button>
+                              </div>
+                            </div>
+                            
+                            <div className="row">
+                              <VariantsList currentVariant={this.state.currentVariant}
+                                            variantsList={this.state.currentProduct.variants}
+                                            onChangeVariant={this.onChangeVariant}/>
                             </div>
                           </div>
+                        </article>
 
-                          <div className="row">
-                            <div className="col-md-12">
-                              <p className="h3 font-dark">${ this.state.currentVariant.price }</p>
-
-                              <Tabs defaultActiveKey={2} id="uncontrolled-tab-example" className="product-detail-tab">
-                                <Tab eventKey={1} title="Details">
-                                  <div className="product-desc">Product Description - { this.state.currentVariant.description }</div>
-                                </Tab>
-                                <Tab eventKey={2} title="Specifications">
-                                  <div className="product-desc">
-                                    <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
-                                  </div>
-                                </Tab>
-                              </Tabs>
-
-                              
-                              
+                        <article className="row product-achievement-row">
+                          <div className="col-sm-6 col-xs-12 achievement-col">
+                            <div>
+                              <h3 className="font-dark">100% Satisfaction Guaranteed</h3>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
                             </div>
                           </div>
-
-                          
-                          
-                          <div className="row">
-                            <div className="col-md-12">
-                              <Button bsStyle="success" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
-                                Add to cart
-                              </Button>
-                            </div>
+                          <div className="col-sm-6 col-xs-12 achievement-col">
+                            <div>
+                              <h3 className="font-dark">Gold Recipient of the Mom’s Choice Awards</h3>
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                              </div>
                           </div>
 
-                          <div className="row">
-                            <VariantsList currentVariant={this.state.currentVariant}
-                                          variantsList={this.state.currentProduct.variants}
-                                          onChangeVariant={this.onChangeVariant}/>
-                          </div>
+                        </article>
 
-                        </div>
+                        <article className="row product-detail-section">
+                          <div className="container">
+                            <Tabs defaultActiveKey={2} id="uncontrolled-tab-example" className="product-detail-tab">
+                              <Tab eventKey={1} title="Details">
+                                <div className="product-desc">
+                                  <div className="block-title">Product Description</div>
+                                  { this.state.currentVariant.description }</div>
+                              </Tab>
+                              <Tab eventKey={2} title="Specifications">
+                                <div className="product-desc">
+                                  <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
+                                </div>
+                              </Tab>
+                            </Tabs>
+                          </div>
+                        </article>
                       </div>;
 
     return (

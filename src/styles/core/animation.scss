@@ -8,23 +8,23 @@
 }
 
 .icon-arrow-hint {
-  border: transparent 8px solid;
-  border-top-color: $baseFontColor;
+  color: $baseFontColor;
   display: block;
   opacity: 1;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  font-size: 16px;
 }
 
 .animated-arrow-1 {
-  -webkit-animation: animate-arrow-1 3s infinite ease-out;
-  animation: animate-arrow-1 3s infinite ease-out;
+  -webkit-animation: animate-arrow-1 4s infinite ease-out;
+  animation: animate-arrow-1 4s infinite ease-out;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
   opacity: 0;
 }
 
 .animated-arrow-2 {
-  -webkit-animation: animate-arrow-2 3s infinite ease-in;
-  animation: animate-arrow-2 3s infinite ease-in;
+  -webkit-animation: animate-arrow-2 4s infinite ease-in;
+  animation: animate-arrow-2 4s infinite ease-in;
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
   opacity: 0.7;
 }
@@ -40,7 +40,7 @@
   }
   100% {
     opacity: 1;
-    @include translatePos(0, 25px);
+    @include translatePos(0, 35px);
   }
 }
 
@@ -55,7 +55,7 @@
   }
   100% {
     opacity: 1;
-    @include translatePos(0, 25px);
+    @include translatePos(0, 35px);
   }
 }
 
@@ -70,7 +70,7 @@
   }
   100% {
     opacity: 0;
-    @include translatePos(0, 25px);
+    @include translatePos(0, 35px);
   }
 }
 
@@ -85,6 +85,6 @@
   }
   100% {
     opacity: 0;
-    @include translatePos(0, 25px);
+    @include translatePos(0, 35px);
   }
 }

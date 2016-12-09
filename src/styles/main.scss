@@ -3,6 +3,7 @@
 @import 'core/fonts.scss';
 @import 'core/icons.scss';
 @import 'core/typography.scss';
+@import 'core/badge.scss';
 @import 'core/modals.scss';
 @import 'core/loader.scss';
 @import 'core/animation.scss';
@@ -19,7 +20,7 @@
 
 body {
   background: $bodyBg;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 
 .row {
@@ -157,5 +158,82 @@ a {
 .img-responsive {
   &.img-center {
     margin: 0 auto;
+  }
+}
+
+.nav-tabs {
+  li {
+    &:focus {
+      outline: none;
+    }
+
+    a {
+      color: $baseFontColorDark;
+      &:focus {
+        outline: none;
+        @include box-shadow(0,0,0,0);   
+      }
+      font-weight: 600;
+    }
+
+    &.active {
+      a {
+        color: $link-color;
+
+        &:hover,
+        &:focus {
+          color: $link-color;
+        }
+      }
+    }
+  }
+}
+
+.btn {
+  &.cart-big-btn {
+    background: $logoBaseBg;
+    color: #fff;
+    text-shadow:none;
+    text-transform: uppercase;
+    font-size: 20px;
+    margin: 15px 0;
+    padding: 15px 30px;
+    position: relative;
+    @extend .oswald;
+    font-weight: 400;
+
+    * {
+      @include transition(all, 0.5s);
+    }
+    .cart-icon {
+      position: absolute;
+      top: 50%;
+      opacity: 0;
+      @include translatePos(200%,-50%);
+    }
+    .cart-text {
+      position: relative;
+      display: inline-block;
+    }
+
+    &:hover,
+    &:focus {
+      color: #fff;
+      background: $logoBaseBg;
+
+      .cart-icon {
+        opacity: 1;
+        @include translatePos(-20%,-50%);
+      }
+      .cart-text {
+        @include translatePos(-13%,0);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .sm-full-btn {
+    width: 100%;
   }
 }

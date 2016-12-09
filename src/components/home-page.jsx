@@ -23,8 +23,8 @@ class HomePage extends Component {
           <div className="big-box-heading">
             Style Collection
             <div className="icon-start">
-              <div className="icon-arrow-hint animated-arrow-1"></div>
-              <div className="icon-arrow-hint animated-arrow-2"></div>
+              <div className="icon-arrow-hint animated-arrow-1 glyphicon glyphicon-chevron-down"></div>
+              <div className="icon-arrow-hint animated-arrow-2 glyphicon glyphicon-chevron-down"></div>
             </div>
           </div>
           <ProductList productList={ this.props.products }

@@ -21,7 +21,7 @@ class ProductProperties extends Component {
     if (productProperties.length > 0) {
       renderString =  <div className="col-md-12">
                         <div className="block-title">Properties</div>
-                        <table className="table table-striped margin-bottom-none">
+                        <table className="table table-striped table-bordered margin-bottom-none">
                           <tbody>
                             { productProperties }
                           </tbody>
