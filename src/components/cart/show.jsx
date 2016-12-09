@@ -23,6 +23,10 @@ class CartShow extends Component {
     this.props.changeQuantity(event.target.line_item_id.value, event.target.quantity.value);
   };
 
+  doCheckout () {
+    this.props.doCheckout(this.props.order);
+  };
+
   render() {
     let lineItems = this.props.order.line_items;
     let renderString = 'Wanna pay for just nothing? We are intrigued.';
@@ -75,7 +79,7 @@ class CartShow extends Component {
               <form onSubmit={this.changeQuantity.bind(this)}>
                 <input type='hidden' value={lineItem.id} name='line_item_id' />
                 <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
-                <input type='text' defaultValue={ lineItem.quantity } name='quantity' />
+                <input type='number' defaultValue={ lineItem.quantity } name='quantity' />
                 <button type='submit'>Save</button>
               </form>
             </td>
@@ -109,7 +113,16 @@ class CartShow extends Component {
                 { lineItemList }
               </tbody>
             </Table>
-            <a className='link' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
+
+            <div className="row">
+              <div className="col-md-1 col-md-offset-9">
+                <a className='link' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
+              </div>
+
+              <div className="col-md-2">
+                <a className='btn btn-success' onClick={this.doCheckout.bind(this)}>Checkout</a>
+              </div>
+            </div>
           </div>
         </div>;
     }

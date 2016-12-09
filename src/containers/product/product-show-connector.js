@@ -24,8 +24,13 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     addProductToCart: (variantId, quantity = 1) => {
-      dispatch(Actions.addProductToCart(variantId, quantity));
-      dispatch(Actions.showFlash('Product Successfully added to the cart!!'));
+      dispatch(Actions.addProductToCart(variantId, quantity)).then((response) => {
+        dispatch(Actions.refreshOrder());
+        dispatch(Actions.showFlash('Product Successfully added to the cart!!'));
+      },
+      (error) => {
+        dispatch(Actions.showFlash('Failed to add product to cart. Please try again later!', 'danger'));
+      });
     }
   };
 };
