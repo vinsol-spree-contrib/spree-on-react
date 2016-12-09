@@ -14,7 +14,7 @@ class ProductTile extends Component {
             <Link to={productShowURL} className="product-link"></Link>
             <img className="product-tile-image img-responsive"
                  alt={productName}
-                 src={`${ process.env.REACT_APP_API_HOST }${ image.small_url }`}>
+                 src={`${ process.env.REACT_APP_API_HOST }${ image.large_url }`}>
             </img>
             
             <aside className="hover-info">

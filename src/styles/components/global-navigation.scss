@@ -35,18 +35,17 @@
       line-height: 35px;
       font-size: 12px;
       color: #fff;
-      @include transition(all,0.3s);
-
-      a {
-        opacity: 0.8;
+      
+      .glyphicon {
+        @include transition(all,0.3s);
       }
+
       &:hover {
-        a {
-          opacity: 1;
+        .glyphicon {
+          @include scale(1.2);
         }
       }
     }
-
 
     &.user-link-block {
       .primary-link {
