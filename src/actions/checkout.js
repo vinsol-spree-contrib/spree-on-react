@@ -32,23 +32,15 @@ const checkout = {
         dispatch (Actions.displayLoader());
 
         return OrdersAPI.update(order.number, order.token, formData).then((response) => {
-          CheckoutAPI.next(order.number, order.token, formData).then((response) =>{
-            dispatch(Actions.updateOrderInState(response.body));
-            dispatch (push(checkout._fetchNextRoute(order)));
-            dispatch (Actions.hideLoader());
-            dispatch(Actions.showFlash('Success!!'));
-          },
-          (error) => {
-            dispatch(Actions.showFlash(error.response.body.error, 'danger'));
-            dispatch (Actions.hideLoader());
-          });
+          dispatch(Actions.updateOrderInState(response.body));
+          dispatch (push(checkout._fetchNextRoute(order)));
+          dispatch (Actions.hideLoader());
+          dispatch(Actions.showFlash('Success!!'));
         },
-
         (error) => {
           dispatch(Actions.showFlash(error.response.body.error, 'danger'));
           dispatch (Actions.hideLoader());
         });
-
       }
     };
   },

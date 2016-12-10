@@ -6,6 +6,7 @@ import ProductShowConnector from './containers/product/product-show-connector';
 import CartShowConnector from './containers/cart/cart-show-connector';
 
 import AddressFormConnector from './containers/checkout-steps/address-form-connector';
+import DeliveryFormConnector from './containers/checkout-steps/delivery-form-connector';
 
 export default function configRoutes() {
   return (
@@ -14,6 +15,7 @@ export default function configRoutes() {
       <Route path='/products/:productId' component={ProductShowConnector} />
       <Route path='/cart' component={CartShowConnector} />
       <Route path='/checkout/address' component={AddressFormConnector} />
+      <Route path='/checkout/delivery' component={DeliveryFormConnector} />
       <Route path='/t/*' component={HomePageConnector} />
     </Route>
 

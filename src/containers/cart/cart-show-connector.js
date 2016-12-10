@@ -53,18 +53,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     doCheckout: (order) => {
-      // dispatch (Actions.goToNextStep(order));
-      dispatch (Actions.displayLoader());
-      OrdersAPI.update(order.number, order.token, {}).then((response) => {
-        dispatch(Actions.updateOrderInState(response.body));
-        dispatch (push('/checkout/address'));
-        dispatch (Actions.hideLoader());
-      },
-
-      (error) => {
-        dispatch(Actions.showFlash(error.response.body.error, 'danger'));
-        dispatch (Actions.hideLoader());
-      });
+      dispatch (Actions.goToNextStep(order));
     }
 
   };
