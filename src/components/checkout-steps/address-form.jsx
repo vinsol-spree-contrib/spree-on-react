@@ -46,6 +46,11 @@ class AddressForm extends Component {
                                       countries={ this.props.countries } />
             }
 
+            <div>
+              <label htmlFor="save_user_address">Remember this Address</label>
+              <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+            </div>
+
             <button type="submit">Submit</button>
           </form>
         </BaseCheckoutLayout>
