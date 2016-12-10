@@ -1,5 +1,6 @@
 import APP_ACTIONS from '../constants/app-actions';
 import OrdersAPI from '../apis/order';
+import LineItemAPI from '../apis/line-item';
 import localStorageAPI from '../services/local-storage-api';
 import Actions from './';
 
@@ -7,7 +8,7 @@ const order = {
   /* This is called whenever:
     1. Order is updated.
     2. Moved to a different state in checkout flow. */
-  updateOrder: (recievedOrder) => {
+  updateOrderInState: (recievedOrder) => {
     return (dispatch, getState) => {
       dispatch({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
       localStorageAPI.save(getState());
@@ -83,7 +84,7 @@ const order = {
       let orderNumber = orderFromState.number;
       let orderToken = orderFromState.token;
 
-      return OrdersAPI.removeLineItem({orderNumber, orderToken, lineItemId}).then((response) => {
+      return LineItemAPI.destroy({orderNumber, orderToken, lineItemId}).then((response) => {
         dispatch ({ type: APP_ACTIONS.REMOVE_LINE_ITEM, payload: lineItemId });
 
         localStorageAPI.save(getState());
@@ -98,7 +99,7 @@ const order = {
       let orderNumber = orderFromState.number;
       let orderToken = orderFromState.token;
 
-      return OrdersAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
+      return LineItemAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
         dispatch ({ type: APP_ACTIONS.UPDATE_LINE_ITEM, payload: response.body });
 
         localStorageAPI.save(getState());
@@ -110,7 +111,7 @@ const order = {
   addLineItem: (lineItemParams) => {
     return (dispatch, getState) => {
 
-      return OrdersAPI.addLineItem(lineItemParams).then((response) => {
+      return LineItemAPI.create(lineItemParams).then((response) => {
         dispatch ({ type: APP_ACTIONS.ADD_PRODUCT_TO_CART, payload: response.body });
         localStorageAPI.save(getState());
         return response;

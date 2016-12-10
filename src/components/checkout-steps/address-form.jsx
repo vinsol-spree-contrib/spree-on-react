@@ -33,6 +33,10 @@ class AddressForm extends Component {
       <Layout>
         <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+            <div>
+              <label htmlFor="order_email">Email</label>
+              <Field name="order[email]" component="input" type="text" id="order_email" />
+            </div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries } />
             <div>

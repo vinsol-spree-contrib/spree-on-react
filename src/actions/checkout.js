@@ -1,6 +1,7 @@
 import { push } from 'react-router-redux';
 
 import CheckoutAPI from '../apis/checkout';
+import OrdersAPI from '../apis/order';
 import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';
 import Actions from './';
@@ -30,16 +31,24 @@ const checkout = {
       else {
         dispatch (Actions.displayLoader());
 
-        CheckoutAPI.next(order.number, order.token, formData).then((response) =>{
-          dispatch(Actions.updateOrder(response.body));
-          dispatch (push(checkout._fetchNextRoute(order)));
-          dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash('Success!!'));
+        dispatch (OrdersAPI.update(order.number, order.token, formData).then((response) => {
+          CheckoutAPI.next(order.number, order.token, formData).then((response) =>{
+            dispatch(Actions.updateOrderInState(response.body));
+            dispatch (push(checkout._fetchNextRoute(order)));
+            dispatch (Actions.hideLoader());
+            dispatch(Actions.showFlash('Success!!'));
+          },
+          (error) => {
+            dispatch(Actions.showFlash(error.response.body.error, 'danger'));
+            dispatch (Actions.hideLoader());
+          });
         },
+
         (error) => {
           dispatch(Actions.showFlash(error.response.body.error, 'danger'));
           dispatch (Actions.hideLoader());
-        });
+        }));
+
       }
     };
   },
