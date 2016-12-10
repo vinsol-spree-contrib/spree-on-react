@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import CartShow from '../../components/cart/show';
 import Actions from '../../actions';
+import OrdersAPI from '../../apis/order';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -51,7 +53,18 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     doCheckout: (order) => {
-      dispatch (Actions.goToNextStep(order));
+      // dispatch (Actions.goToNextStep(order));
+      dispatch (Actions.displayLoader());
+      OrdersAPI.update(order.number, order.token, {}).then((response) => {
+        dispatch(Actions.updateOrderInState(response.body));
+        dispatch (push('/checkout/address'));
+        dispatch (Actions.hideLoader());
+      },
+
+      (error) => {
+        dispatch(Actions.showFlash(error.response.body.error, 'danger'));
+        dispatch (Actions.hideLoader());
+      });
     }
 
   };
