@@ -4,6 +4,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
+import Shipment from './delivery/shipment';
 
 class DeliveryForm extends Component {
 
@@ -21,13 +22,23 @@ class DeliveryForm extends Component {
   };
 
   render() {
+    let shipments = this.props.order.shipments;
+
+    let shipmentsMarkup = shipments.map((shipment, idx) => {
+      return (
+        <Shipment shipment={ shipment }
+                  key={ idx }
+                  shipmentIndex={ idx + 1 }
+                  fieldNamePrefix={`order[shipments_attributes][${ idx }]`} />
+      );
+    });
+
     return (
       <Layout>
         <BaseCheckoutLayout currentStep="delivery" displayLoader={ this.props.displayLoader }>
-          <form onSubmit={this.props.handleSubmit(this.handleDeliveryFormSubmit.bind(this))}>
+          <form onSubmit={ this.props.handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
             <div>
-              <label htmlFor="order_email">Email</label>
-              <Field name="order[email]" component="input" type="text" id="order_email" />
+              { shipmentsMarkup }
             </div>
 
             <button type="submit">Submit</button>
