@@ -262,3 +262,9 @@ a {
     width: 100%;
   }
 }
+
+@media(max-width: 520px) {
+  .visible-xxs {
+    display: block;
+  }
+}
