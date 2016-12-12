@@ -17,8 +17,6 @@ const CheckoutStepCalculator = {
       let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
       let indexOfOrderState = checkoutSteps.indexOf(orderState);
 
-      debugger
-
       return indexOfCurrentStep >= indexOfOrderState;
     }
   },
