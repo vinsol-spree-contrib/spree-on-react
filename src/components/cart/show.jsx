@@ -89,7 +89,7 @@ class CartShow extends Component {
             </td>
 
             <td>
-              <a className='link' onClick={() => this.destroyLineItem(lineItems.length, lineItem)}> x </a>
+              <a className='btn btn-danger btn-sm' onClick={() => this.destroyLineItem(lineItems.length, lineItem)}><span className="glyphicon glyphicon-trash"></span></a>
             </td>
           </tr>
         );
@@ -98,7 +98,7 @@ class CartShow extends Component {
       renderString =
         <div className="row">
           <div className="col-md-12">
-            <Table striped bordered condensed hover>
+            <Table striped hover className="cart-table">
               <thead>
                 <tr>
                   <th> Product </th>
@@ -120,7 +120,7 @@ class CartShow extends Component {
               </div>
 
               <div className="col-md-2">
-                <a className='btn btn-success' onClick={this.doCheckout.bind(this)}>Checkout</a>
+                <a className='btn btn-success btn-lg' onClick={this.doCheckout.bind(this)}>Checkout</a>
               </div>
             </div>
           </div>
@@ -129,9 +129,10 @@ class CartShow extends Component {
 
     return (
       <Layout>
-        <h1>
-          Shopping Cart
-        </h1>
+        <div className="big-box-heading secondary spacing">
+          Shopping Cart 
+          <small className="show">NEED HELP? Call xxxx-xxxx-xxxx <strong></strong></small>
+        </div>
         {renderString}
       </Layout>
     );

@@ -1,0 +1,17 @@
+.flash-message-container {
+  position: absolute;
+  left: 15px;
+  right: 15px;
+  top: 60px;
+  z-index: 9;
+  .flash {
+    @include transition(all,0.5s);
+    opacity: 1;
+    &:empty {
+      opacity: 0;
+    }
+  }
+  .alert {
+    margin-bottom: 0;
+  }
+}
