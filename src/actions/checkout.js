@@ -1,6 +1,6 @@
 import { push } from 'react-router-redux';
 
-import OrdersAPI from '../apis/order';
+import CheckoutAPI from '../apis/checkout';
 import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';
 import Actions from './';
@@ -30,7 +30,7 @@ const checkout = {
       else {
         dispatch (Actions.displayLoader());
 
-        return OrdersAPI.update(order.number, order.token, formData).then((response) => {
+        return CheckoutAPI.update(order.number, order.token, formData).then((response) => {
           dispatch(Actions.updateOrderInState(response.body));
           dispatch (push(checkout._fetchNextRoute(order)));
           dispatch (Actions.hideLoader());
