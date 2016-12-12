@@ -1,6 +1,5 @@
 import { push } from 'react-router-redux';
 
-import CheckoutAPI from '../apis/checkout';
 import OrdersAPI from '../apis/order';
 import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';

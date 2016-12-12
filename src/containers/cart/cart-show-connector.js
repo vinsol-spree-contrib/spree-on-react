@@ -1,9 +1,7 @@
 import { connect } from 'react-redux';
-import { push } from 'react-router-redux';
 
 import CartShow from '../../components/cart/show';
 import Actions from '../../actions';
-import OrdersAPI from '../../apis/order';
 
 const mapStateToProps = (state, ownProps) => {
   return {

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field } from 'redux-form';
 
 class Shipment extends Component {
 
@@ -20,7 +20,6 @@ class Shipment extends Component {
         </div>
       );
     });
-
 
     return (
       <div className="row">

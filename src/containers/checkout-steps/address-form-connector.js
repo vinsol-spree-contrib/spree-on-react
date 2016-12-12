@@ -3,7 +3,6 @@ import { push } from 'react-router-redux';
 
 import Actions from '../../actions';
 import AddressForm from '../../components/checkout-steps/address-form';
-import CheckoutAPI from '../../apis/checkout';
 import CountryAPI from '../../apis/country';
 
 const mapStateToProps = (state, ownProps) => {
