@@ -1,10 +1,23 @@
 var request = require('superagent');
+import CommonAPIMethods from './common-api-methods';
 
 const OrdersAPI = {
   getItem: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
     return request
       .get(`${process.env.REACT_APP_API_BASE}/orders/${ params.orderNumber }`)
-      .query({ order_token: params.orderToken })
+      .query(tokenParam)
+      .set('Accept', 'application/json')
+      .send();
+  },
+
+  mine: (apiToken) => {
+    let tokenParam = CommonAPIMethods.getTokenParams( { api_token: apiToken } );
+
+    return request
+      .get(`${process.env.REACT_APP_API_BASE}/orders/mine`)
+      .query(tokenParam)
       .set('Accept', 'application/json')
       .send();
   },
@@ -17,17 +30,20 @@ const OrdersAPI = {
   },
 
   destroy: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
     return request
       .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
-      .query({ order_token: params.orderToken })
+      .query(tokenParam)
       .set('Accept', 'application/json');
   },
 
   update: (orderNumber, orderToken, params = {}) => {
-    params.order_token = orderToken;
+    let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
 
     return request
       .put(`${process.env.REACT_APP_API_BASE}/checkouts/${orderNumber}`)
+      .query(tokenParam)
       .set('Accept', 'application/json')
       .send(params);
   }

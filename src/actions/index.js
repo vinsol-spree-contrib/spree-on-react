@@ -2,6 +2,7 @@ import products from './products';
 import taxons from './taxons';
 import loader from './loader';
 import order from './order';
+import orderList from './order-list';
 import flash from './flash';
 import countries from './countries';
 import checkout from './checkout';
@@ -10,6 +11,8 @@ export default {
   addProducts: products.addProducts,
   appendProducts: products.appendProducts,
   addProduct: products.addProduct,
+  addOrders: orderList.addOrders,
+  addOrder: orderList.addOrder,
   fetchProductsByTaxon: products.fetchProductsByTaxon,
   addTaxons: taxons.addTaxons,
   displayLoader: loader.displayLoader,

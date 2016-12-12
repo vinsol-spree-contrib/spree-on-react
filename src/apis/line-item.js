@@ -1,10 +1,13 @@
 var request = require('superagent');
+import CommonAPIMethods from './common-api-methods';
 
 const LineItemAPI = {
   create: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items`)
-      .query({ order_token: params.orderToken })
+      .query(tokenParam)
       .set('Accept', 'application/json')
       .send({
         line_item: {
@@ -15,16 +18,20 @@ const LineItemAPI = {
   },
 
   destroy: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
     return request
       .delete(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}`)
-      .query({ order_token: params.orderToken })
+      .query(tokenParam)
       .set('Accept', 'application/json');
   },
 
   update: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
     return request
       .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}`)
-      .query({ order_token: params.orderToken })
+      .query(tokenParam)
       .set('Accept', 'application/json')
       .send({
         line_item: {
