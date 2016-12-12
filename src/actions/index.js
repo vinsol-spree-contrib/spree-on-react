@@ -21,7 +21,7 @@ export default {
   hideFlash: flash.hideFlash,
   removeProductFromCart: order.removeProductFromCart,
   changeProductQuantityFromCart: order.changeProductQuantityFromCart,
-  updateOrder: order.updateOrder,
+  updateOrderInState: order.updateOrderInState,
   refreshOrder: order.refreshOrder,
   addLineItem: order.addLineItem,
   addCountries: countries.addCountries,

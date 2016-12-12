@@ -5,7 +5,7 @@ class CountryField extends Component{
   handleCountryChange(event) {
     this.props.handleCountryChange(event.currentTarget.value);
     // Trigger the redux-form onChange callback.
-    this.props.input.onChange();
+    this.props.input.onChange(event.currentTarget.value);
   };
 
   render() {

@@ -17,16 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleAddressFormSubmit: (formData, order) => {
-      dispatch (Actions.displayLoader());
-      CheckoutAPI.next(order.number, order.token, formData).then((response) =>{
-        dispatch (Actions.hideLoader());
-      },
-      (error) => {
-        dispatch(Actions.showFlash(error.response.body.error, "danger"));
-        dispatch (Actions.hideLoader());
-      });
-      // send submit request
-      // hideLoader
+      dispatch (Actions.goToNextStep(order, formData));
     },
     fetchCountries: () => {
       dispatch (Actions.displayLoader());

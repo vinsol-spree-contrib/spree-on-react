@@ -33,6 +33,10 @@ class AddressForm extends Component {
       <Layout>
         <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+            <div>
+              <label htmlFor="order_email">Email</label>
+              <Field name="order[email]" component="input" type="text" id="order_email" />
+            </div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries } />
             <div>
@@ -45,6 +49,11 @@ class AddressForm extends Component {
               <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
                                       countries={ this.props.countries } />
             }
+
+            <div>
+              <label htmlFor="save_user_address">Remember this Address</label>
+              <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+            </div>
 
             <button type="submit">Submit</button>
           </form>
