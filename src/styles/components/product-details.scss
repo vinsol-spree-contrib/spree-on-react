@@ -42,10 +42,17 @@
     margin: 5px 8px;
     display: inline-block;
     @include border-radius(50%);
-    @include transition(all, 0.3s);
+    @include transition(transform, 0.5s);
     @include box-shadow(0,0,3px, rgba(0,0,0,0.5));
-    &:hover {
-      @include scale(1.2);
+    position: relative;
+    cursor: pointer;
+    &:hover:not(.active) {
+      @include scale(1.4);
+      z-index: 1;
+    }
+    &.active {
+      border: solid 2px #fff;
+      cursor: not-allowed;
     }
   }
 }

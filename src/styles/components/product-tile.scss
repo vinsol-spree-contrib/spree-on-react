@@ -62,7 +62,7 @@
     }
     
     .product-tile-image {
-      @include transition(all,5s);
+      @include transition(all,20s);
       @include scale(1);
     }
   }

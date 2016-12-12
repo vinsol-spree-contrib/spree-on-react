@@ -4,6 +4,8 @@
 @import 'core/icons.scss';
 @import 'core/typography.scss';
 @import 'core/badge.scss';
+@import 'core/btn.scss';
+@import 'core/flash-message.scss';
 @import 'core/modals.scss';
 @import 'core/loader.scss';
 @import 'core/animation.scss';
@@ -16,6 +18,7 @@
 
 
 @import 'pages/home.scss';
+@import 'pages/cart-page.scss';
 
 
 body {
@@ -42,6 +45,11 @@ a {
 
 .btn {
   @include transition(all,0.3s);
+
+  &:focus {
+    outline: none !important;
+    @include box-shadow(0,0,0,0 !important) ;
+  }
 }
 .zoom {
   @include transition(transform,0.5s);
@@ -58,7 +66,10 @@ a {
     display: inline-block;
   }
 }
-.font-dark {
+.font-dark,
+.dark-font,
+.dark-color,
+.color-dark {
   color: $baseFontColorDark;
 }
 .padding-top-none {
@@ -142,6 +153,20 @@ a {
   position: relative;
   z-index: 1;
   @extend .oswald;
+
+  &.secondary {
+    background: $big-heading-secondry-bg;
+    padding: 20px 10px;
+    font-size:30px;
+    font-weight: 400;
+  }
+  &.spacing {
+    margin: 20px 0;
+  }
+  small {
+    font-size: 35%;
+    letter-spacing: 1px;
+  }
 }
 
 .form-control {
@@ -235,5 +260,11 @@ a {
 @media (max-width: 767px) {
   .sm-full-btn {
     width: 100%;
+  }
+}
+
+@media(max-width: 520px) {
+  .visible-xxs {
+    display: block;
   }
 }
