@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import CartShow from '../../components/cart/show';
 import Actions from '../../actions';
+import APP_ACTIONS from '../../constants/app-actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,6 +12,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setCurrentCheckoutStep: () => {
+      dispatch({
+        type: APP_ACTIONS.SET_CURRENT_CHECKOUT_STEP,
+        payload: 'cart'
+      });
+    },
+
     emptyCart: (order) => {
       if (order.id) {
         dispatch(Actions.emptyCart(order)).then((response) => {

@@ -16,6 +16,10 @@ class DeliveryForm extends Component {
     // }
   };
 
+  componentDidMount() {
+    this.props.setCurrentCheckoutStep();
+  };
+
   handleDeliveryFormSubmit (formData) {
     this.props.handleDeliveryFormSubmit(formData, this.props.order);
   };

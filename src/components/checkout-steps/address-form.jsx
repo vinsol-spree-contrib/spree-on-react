@@ -22,6 +22,7 @@ class AddressForm extends Component {
   };
 
   componentDidMount () {
+    this.props.setCurrentCheckoutStep();
     if (this.props.countries.length === 0) {
       this.props.fetchCountries();
     }

@@ -1,6 +1,8 @@
 import { push } from 'react-router-redux';
 
+import OrdersAPI from '../apis/order';
 import CheckoutAPI from '../apis/checkout';
+import CheckoutStepCalculator from '../services/checkout-step-calculator';
 import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';
 import Actions from './';
@@ -23,30 +25,42 @@ const checkout = {
       // Edge Cases:
       // Return if order is already complete.
 
-      if (order.state === 'complete') {
+      let orderState = order.state;
+      let checkoutSteps = order.checkout_steps;
+
+      if (CheckoutStepCalculator.isLastStep(checkoutSteps, orderState)) {
         dispatch(Actions.showFlash('Your order has already been placed. Thanks!'));
         dispatch(push('/'));
       }
       else {
         dispatch (Actions.displayLoader());
+        let currentStep = getState().currentCheckoutStep;
+        let apiPromise;
 
-        return CheckoutAPI.update(order.number, order.token, formData).then((response) => {
+        if (CheckoutStepCalculator.isPristineStep(checkoutSteps, currentStep, orderState)) {
+          apiPromise = CheckoutAPI.update(order.number, order.token, formData);
+        }
+        else {
+          apiPromise = OrdersAPI.update(order.number, order.token, formData);
+        }
+
+        return apiPromise.then((response) => {
           dispatch(Actions.updateOrderInState(response.body));
-          dispatch (push(checkout._fetchNextRoute(order)));
+          dispatch (push(checkout._fetchNextRoute(order, currentStep)));
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash('Success!!'));
+          dispatch(Actions.showFlash(`Successfully saved ${currentStep} form.`));
         },
         (error) => {
-          dispatch(Actions.showFlash(error.response.body.error, 'danger'));
           dispatch (Actions.hideLoader());
+          dispatch(Actions.showFlash(error.response.body.error, 'danger'));
         });
       }
     };
   },
 
-  _fetchNextRoute: (order) => {
+  _fetchNextRoute: (order, currentStep) => {
     try {
-      return checkout._nextCheckoutStepRoute(order);
+      return checkout._nextCheckoutStepRoute(order, currentStep);
     } catch (err) {
       if (err instanceof InvalidCheckoutStepException) {
         return '/cart';
@@ -59,8 +73,7 @@ const checkout = {
     }
   },
 
-  _nextCheckoutStepRoute: (order) => {
-    let currentStep = order.state;
+  _nextCheckoutStepRoute: (order, currentStep) => {
     let currentStepIndex = order.checkout_steps.indexOf(currentStep.trim());
 
     /* If currentStep is a valid step and not the last step.

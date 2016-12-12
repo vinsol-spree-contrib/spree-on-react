@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import Actions from '../../actions';
+import APP_ACTIONS from '../../constants/app-actions';
 import DeliveryForm from '../../components/checkout-steps/delivery-form';
 
 const mapStateToProps = (state, ownProps) => {
@@ -12,6 +13,13 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    setCurrentCheckoutStep: () => {
+      dispatch({
+        type: APP_ACTIONS.SET_CURRENT_CHECKOUT_STEP,
+        payload: 'delivery'
+      });
+    },
+
     handleDeliveryFormSubmit: (formData, order) => {
       dispatch (Actions.goToNextStep(order, formData));
     }

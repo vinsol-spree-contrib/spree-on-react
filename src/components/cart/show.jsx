@@ -6,6 +6,10 @@ import { Link } from 'react-router';
 
 class CartShow extends Component {
 
+  componentDidMount() {
+    this.props.setCurrentCheckoutStep();
+  };
+
   destroyLineItem(lineItemCount, lineItem) {
     if (lineItemCount > 1) {
       this.props.destroyLineItem(lineItem);
@@ -135,7 +139,7 @@ class CartShow extends Component {
         {renderString}
       </Layout>
     );
-  }
-}
+  };
+};
 
 export default CartShow;

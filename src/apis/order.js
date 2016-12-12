@@ -36,6 +36,16 @@ const OrdersAPI = {
       .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
       .query(tokenParam)
       .set('Accept', 'application/json');
+  },
+
+  update: (orderNumber, orderToken, params = {}) => {
+    let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
+
+    return request
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${orderNumber}`)
+      .query(tokenParam)
+      .set('Accept', 'application/json')
+      .send(params);
   }
 }
 
