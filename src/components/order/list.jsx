@@ -27,16 +27,13 @@ class OrderList extends Component {
     return (
       <Layout>
         <Loader displayLoader={ this.state.displayLoader } />
-        <div className="order-list-page row">
-          <div className="col-md-8 col-md-offset-2">
-            <h1>
-              Your Orders
-            </h1>
-
-            <div className="row order-list">
-              <div className="col-md-12">
-                { orderListMarkup }
-              </div>
+        <div className="order-list-page">
+          <div className="big-box-heading secondary spacing">
+            Your Orders
+          </div>
+          <div className="row">
+            <div className="order-list container dark-color">
+              { orderListMarkup }
             </div>
           </div>
         </div>

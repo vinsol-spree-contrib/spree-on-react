@@ -19,6 +19,7 @@
 
 @import 'pages/home.scss';
 @import 'pages/cart-page.scss';
+@import 'pages/user-order.scss';
 
 
 body {
@@ -148,7 +149,6 @@ a {
   padding: 50px 10px;
   text-align: center;
   text-transform: uppercase;
-  letter-spacing: 5px;
   font-weight: 600;
   position: relative;
   z-index: 1;
@@ -168,7 +168,22 @@ a {
     letter-spacing: 1px;
   }
 }
-
+.alert-complete {
+  background: $link-color;
+  color: #fff;
+}
+.alert-pending {
+  background: yellow;
+  color: #fff;
+}
+.alert-canceled {
+  background: red;
+  color: #fff;
+}
+.alert-complete {
+  background: $link-color;
+  color: #fff;
+}
 .form-control {
   @include border-radius(0);
   border: none;
