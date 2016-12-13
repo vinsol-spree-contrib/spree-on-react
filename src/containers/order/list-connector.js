@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     loadOrders: () => {
       dispatch (Actions.displayLoader());
 
-      return OrdersAPI.mine('9c54101b71a35da0d694f1ad02230eadd12227abbea90ce1').then((response) => {
+      return OrdersAPI.mine('b184fdf5f6e46da5cdfd5af9b14968537c5cd87f9ede2dc6').then((response) => {
         let fetchedOrders = response.body;
 
         dispatch (Actions.addOrders(fetchedOrders));

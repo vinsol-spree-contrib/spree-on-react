@@ -6,26 +6,21 @@ class ProductProperties extends Component {
 
     let productProperties = this.props.properties.map((property, idx) => {
       return (
-        <tr key={ "product-property-" + idx }>
-          <td>
+        <div className="row" key={ "product-property-" + idx }>
+          <div className="col-md-3">
             <strong>{property.property_name}</strong>
-          </td>
+          </div>
 
-          <td>
+          <div className="col-md-9">
             { property.value }
-          </td>
-        </tr>
+          </div>
+        </div>
       );
     });
 
     if (productProperties.length > 0) {
       renderString =  <div className="col-md-12">
-                        <div className="block-title">Properties</div>
-                        <table className="table table-striped table-bordered margin-bottom-none">
-                          <tbody>
-                            { productProperties }
-                          </tbody>
-                        </table>
+                        { productProperties }
                       </div>;
     }
 

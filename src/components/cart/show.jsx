@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Layout from '../layout';
-
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
+
+import Layout from '../layout';
 
 class CartShow extends Component {
 
@@ -103,8 +103,12 @@ class CartShow extends Component {
             </Table>
 
             <div className="text-right cart-empty-update-row">
-              <a className='link btn btn-empty' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
-              <a className='btn btn-success btn-lg' onClick={this.doCheckout.bind(this)}>Checkout</a>
+              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
+              <Link className='link btn btn-primary btn-lg' to="/">
+                <span className="glyphicon glyphicon-chevron-left" />
+                &nbsp;Continue Shopping
+              </Link>
+              <a className='btn btn-success btn-lg' onClick={this.doCheckout.bind(this)}>Place Order</a>
             </div>
           </div>
         </div>;

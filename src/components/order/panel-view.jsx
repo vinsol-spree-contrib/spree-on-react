@@ -12,7 +12,7 @@ class OrderPanelView extends Component {
                   shipment={ shipment }
                   address={ thisOrder.ship_address }
                   orderLineItems={ thisOrder.line_items }
-                  order = { this.props.order }/>
+                  order={ this.props.order }/>
       );
     });
 
@@ -37,7 +37,7 @@ class OrderPanelView extends Component {
           <label className="label label-normal">{ thisOrder.shipments.length } Package(s)</label>
           <label className="label label-normal">Order Total: { thisOrder.display_total }</label>
           <span className="pull-right">
-            <label className= { 'label alert-' + thisOrder.state }>Status: { thisOrder.state }</label>
+            <label className={ 'label alert-' + thisOrder.state }>Status: { thisOrder.state }</label>
           </span>
         </div>
       </div>
