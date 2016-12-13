@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import CartShow from '../../components/cart/show';
 import Actions from '../../actions';
@@ -59,7 +60,12 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     doCheckout: (order) => {
-      dispatch (Actions.goToNextStep(order));
+      if (order.state === 'cart') {
+        dispatch (Actions.goToNextStep(order));
+      }
+      else {
+        dispatch (push('/checkout/address'));
+      }
     }
 
   };

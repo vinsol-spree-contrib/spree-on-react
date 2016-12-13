@@ -73,7 +73,34 @@ AddressForm = connect(
   state => {
     const useBilling = selector(state, 'order[use_billing]');
     return {
-      useBilling
+      useBilling,
+      initialValues: {
+        order: {
+          email: state.order.email,
+          bill_address_attributes: {
+            address1: state.order.bill_address.address1,
+            address2: state.order.bill_address.address2,
+            firstname: state.order.bill_address.firstname,
+            lastname: state.order.bill_address.lastname,
+            city: state.order.bill_address.city,
+            country_id: state.order.bill_address.country_id,
+            state_id: state.order.bill_address.state_id,
+            zipcode: state.order.bill_address.zipcode,
+            phone: state.order.bill_address.phone
+          },
+          ship_address_attributes: {
+            address1: state.order.ship_address.address1,
+            address2: state.order.ship_address.address2,
+            firstname: state.order.ship_address.firstname,
+            lastname: state.order.ship_address.lastname,
+            city: state.order.ship_address.city,
+            country_id: state.order.ship_address.country_id,
+            state_id: state.order.ship_address.state_id,
+            zipcode: state.order.ship_address.zipcode,
+            phone: state.order.ship_address.phone,
+          }
+        }
+      }
     };
   }
 )(AddressForm)

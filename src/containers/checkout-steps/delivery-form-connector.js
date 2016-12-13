@@ -6,8 +6,7 @@ import DeliveryForm from '../../components/checkout-steps/delivery-form';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    order: state.order,
-    displayLoader: state.displayLoader
+    order: state.order
   };
 };
 
