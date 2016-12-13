@@ -9,47 +9,31 @@ class Shipment extends Component {
 
     return (
       <div className="shipment-view row">
-        <div className="col-md-12">
-          <div className="row shipment-header">
-            <div className="col-md-10">
-              <h3>
-                { this._shipmentStateMarkup() }
-              </h3>
-            </div>
-
-            <div className="col-md-2">
-              <label>Ref: &nbsp;</label>
-              { thisShipment.number }
+        <div className="col-md-8">
+          <div className="shipment-header">
+            <div className="shipment-heading">
+              <strong>{ this._shipmentStateMarkup() }</strong>
+              <p className="label-block-row">
+                <label className="label label-normal">Shipping Method: { thisShipment.selected_shipping_rate.name }</label>
+                <label className="label label-normal">Shipping Charges: { thisShipment.selected_shipping_rate.display_cost }</label>
+                <label className="label label-default">Ref: { thisShipment.number }</label>
+              </p>
             </div>
           </div>
 
-          <div className="row shipment-content">
-            <div className="col-md-8">
-              <div className="shipment-details">
-                <div className="row">
-                  <div className="col-md-12">
-                    <label>Shipping Method: &nbsp;</label>
-                    { thisShipment.selected_shipping_rate.name }
-                  </div>
-                </div>
+          <div className="shipment-line-items">
+            { this._shipmentLineItemsMarkup() }
+          </div>
+        </div>
+      
+        <div className="col-md-4">
+          <label>Shipping Address: &nbsp;</label>
+          <Address address={ this.props.address } />
+        </div>
 
-                <div className="row">
-                  <div className="col-md-12">
-                    <label>Shipping Charges: &nbsp;</label>
-                    { thisShipment.selected_shipping_rate.display_cost }
-                  </div>
-                </div>
-              </div>
-
-              <div className="shipment-line-items">
-                { this._shipmentLineItemsMarkup() }
-              </div>
-            </div>
-
-            <div className="col-md-4">
-              <label>Shipping Address: &nbsp;</label>
-              <Address address={ this.props.address } />
-            </div>
+        <div className="col-md-12 text-right order-total-row">
+          <div className="heading">
+            <small>Order Total:</small> { this.props.order.display_total }
           </div>
         </div>
       </div>
