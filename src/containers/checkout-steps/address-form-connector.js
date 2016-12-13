@@ -24,8 +24,9 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     handleAddressFormSubmit: (formData, order) => {
-      dispatch (Actions.goToNextStep(order, formData));
+      return dispatch (Actions.goToNextStep(order, formData));
     },
+
     fetchCountries: () => {
       dispatch (Actions.displayLoader());
 

@@ -44,7 +44,7 @@ const checkout = {
           apiPromise = OrdersAPI.update(order.number, order.token, formData);
         }
 
-        return apiPromise.then((response) => {
+        apiPromise.then((response) => {
           dispatch(Actions.updateOrderInState(response.body));
           dispatch (push(checkout._fetchNextRoute(order, currentStep)));
           dispatch (Actions.hideLoader());
@@ -54,6 +54,8 @@ const checkout = {
           dispatch (Actions.hideLoader());
           dispatch(Actions.showFlash(error.response.body.error, 'danger'));
         });
+
+        return apiPromise;
       }
     };
   },
