@@ -32,8 +32,19 @@ class CartShow extends Component {
   };
 
   render() {
-    let lineItems = this.props.order.line_items;
-    let renderString = 'Wanna pay for just nothing? We are intrigued.';
+    let lineItems = [];
+    if (this.props.order.state !== 'complete') {
+      lineItems = this.props.order.line_items;
+    }
+
+    let renderString = <div className="well">
+                          <p className="h4">Your cart is empty. Add some items to proceed.</p>
+                          <br/>
+                          <Link className='link btn btn-primary btn-lg' to="/">
+                            <span className="glyphicon glyphicon-chevron-left" />
+                            &nbsp;Continue Shopping
+                          </Link>
+                        </div>;
 
     if (lineItems.length > 0) {
       let lineItemList = lineItems.map((lineItem, idx) => {

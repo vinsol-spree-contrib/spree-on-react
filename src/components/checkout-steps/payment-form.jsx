@@ -3,8 +3,18 @@ import { reduxForm, Field } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
 class PaymentForm extends Component {
+
+  /* Render this step only if order is present and in a valid checkout state. */
+  componentWillMount() {
+    let order = this.props.order;
+
+    if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'payment', order.state)){
+      this.props.handleCheckoutStepNotEditable();
+    }
+  };
 
   componentDidMount() {
     this.props.setCurrentCheckoutStep();
