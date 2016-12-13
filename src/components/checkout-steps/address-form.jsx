@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import AddressFieldsConnector from "../../containers/checkout-steps/address-fields-connector";
+import FormField from './shared/form-field';
 
 class AddressForm extends Component {
 
@@ -18,7 +19,11 @@ class AddressForm extends Component {
   };
 
   handleAddressFormSubmit (formData) {
-    this.props.handleAddressFormSubmit(formData, this.props.order);
+    return this.props.handleAddressFormSubmit(formData, this.props.order).then((response) => {
+    },
+    (error) => {
+      throw new SubmissionError({order: error.response.body.errors});
+    });
   };
 
   componentDidMount () {
@@ -30,13 +35,15 @@ class AddressForm extends Component {
 
   render() {
     const useBilling = this.props.useBilling;
+    const { error, handleSubmit, pristine, reset, submitting } = this.props;
+
     return (
       <Layout>
         <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
-          <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+          <form onSubmit={handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+
             <div>
-              <label htmlFor="order_email">Email</label>
-              <Field name="order[email]" component="input" type="text" id="order_email" />
+              <Field name="order[email]" type="text" component={FormField.inputFieldMarkup} label="Email"/>
             </div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries } />
@@ -53,7 +60,7 @@ class AddressForm extends Component {
 
             <div>
               <label htmlFor="save_user_address">Remember this Address</label>
-              <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+              <Field name="save_user_address" component={FormField.inputFieldMarkup} type="checkbox" id="save_user_address" />
             </div>
 
             <button type="submit">Submit</button>
@@ -62,6 +69,10 @@ class AddressForm extends Component {
       </Layout>
     );
   };
+
+  // def shipping_eq_billing_address?
+  //     (bill_address.empty? && ship_address.empty?) || bill_address.same_as?(ship_address)
+  //   end
 };
 
 AddressForm = reduxForm({
