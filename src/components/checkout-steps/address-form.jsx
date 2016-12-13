@@ -72,32 +72,34 @@ const selector = formValueSelector('addressForm');
 AddressForm = connect(
   state => {
     const useBilling = selector(state, 'order[use_billing]');
+    const billAddress = state.order.bill_address || {};
+    const shipAddress = state.order.ship_address || {};
     return {
       useBilling,
       initialValues: {
         order: {
           email: state.order.email,
           bill_address_attributes: {
-            address1: state.order.bill_address.address1,
-            address2: state.order.bill_address.address2,
-            firstname: state.order.bill_address.firstname,
-            lastname: state.order.bill_address.lastname,
-            city: state.order.bill_address.city,
-            country_id: state.order.bill_address.country_id,
-            state_id: state.order.bill_address.state_id,
-            zipcode: state.order.bill_address.zipcode,
-            phone: state.order.bill_address.phone
+            address1: billAddress.address1,
+            address2: billAddress.address2,
+            firstname: billAddress.firstname,
+            lastname: billAddress.lastname,
+            city: billAddress.city,
+            country_id: billAddress.country_id,
+            state_id: billAddress.state_id,
+            zipcode: billAddress.zipcode,
+            phone: billAddress.phone
           },
           ship_address_attributes: {
-            address1: state.order.ship_address.address1,
-            address2: state.order.ship_address.address2,
-            firstname: state.order.ship_address.firstname,
-            lastname: state.order.ship_address.lastname,
-            city: state.order.ship_address.city,
-            country_id: state.order.ship_address.country_id,
-            state_id: state.order.ship_address.state_id,
-            zipcode: state.order.ship_address.zipcode,
-            phone: state.order.ship_address.phone,
+            address1: shipAddress.address1,
+            address2: shipAddress.address2,
+            firstname: shipAddress.firstname,
+            lastname: shipAddress.lastname,
+            city: shipAddress.city,
+            country_id: shipAddress.country_id,
+            state_id: shipAddress.state_id,
+            zipcode: shipAddress.zipcode,
+            phone: shipAddress.phone,
           }
         }
       }
