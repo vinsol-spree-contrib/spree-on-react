@@ -32,7 +32,9 @@ class PaymentForm extends Component {
     });
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="delivery" displayLoader={ this.props.displayLoader }>
+        <BaseCheckoutLayout currentStep="payment"
+                            displayLoader={ this.props.displayLoader }
+                            checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ this.props.handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             { paymentMethodMarkup }
             <button type="submit">Submit</button>

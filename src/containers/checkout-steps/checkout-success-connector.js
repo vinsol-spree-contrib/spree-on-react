@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import CheckoutSuccessForm from '../../components/checkout-steps/checkout-success-form';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    order: state.order
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

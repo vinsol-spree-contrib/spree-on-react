@@ -12,7 +12,9 @@ class CheckoutSuccessForm extends Component {
   render() {
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="delivery" displayLoader={ this.props.displayLoader }>
+        <BaseCheckoutLayout currentStep="complete"
+                            displayLoader={ this.props.displayLoader }
+                            checkoutSteps={ this.props.order.checkout_steps || [] } >
           <div className="row">
             <div className="col-md-12">
               Your Order has been placed successfully.

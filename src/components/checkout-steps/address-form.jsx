@@ -32,7 +32,9 @@ class AddressForm extends Component {
     const useBilling = this.props.useBilling;
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="address" displayLoader={ this.props.displayLoader }>
+        <BaseCheckoutLayout currentStep="address"
+                            displayLoader={ this.props.displayLoader }
+                            checkoutSteps={ this.props.order.checkout_steps || [] } >
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
             <div>
               <label htmlFor="order_email">Email</label>

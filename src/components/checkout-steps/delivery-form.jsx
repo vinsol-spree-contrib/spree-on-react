@@ -38,7 +38,9 @@ class DeliveryForm extends Component {
 
     return (
       <Layout>
-        <BaseCheckoutLayout currentStep="delivery" displayLoader={ this.props.displayLoader }>
+        <BaseCheckoutLayout currentStep="delivery"
+                            displayLoader={ this.props.displayLoader }
+                            checkoutSteps={ this.props.order.checkout_steps || [] } >
           <form onSubmit={ this.props.handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
             <div>
               { shipmentsMarkup }
