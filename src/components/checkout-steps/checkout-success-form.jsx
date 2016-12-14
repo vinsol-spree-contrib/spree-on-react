@@ -8,7 +8,11 @@ class CheckoutSuccessForm extends Component {
 
   /* Render this step only if order is present and in a valid checkout state. */
   componentWillMount() {
-    if (this.props.order.state !== 'complete'){
+    if (this.props.order.state === 'complete') {
+      let dupeOrder = Object.assign(this.props.order);
+      this.props.saveOrderAsPlaced(dupeOrder);
+    }
+    else {
       this.props.handleCheckoutStepNotEditable();
     }
   };
@@ -22,14 +26,14 @@ class CheckoutSuccessForm extends Component {
       <Layout>
         <BaseCheckoutLayout currentStep="complete"
                             displayLoader={ this.props.displayLoader }
-                            checkoutSteps={ this.props.order.checkout_steps || [] } >
+                            checkoutSteps={ this.props.placedOrder.checkout_steps || [] } >
           <div className="row">
             <div className="col-md-12">
               <strong className="text text-success">
                 Your Order has been placed successfully!
                 <br/><br/>
               </strong>
-              <OrderPanelView order={ this.props.order } />
+              <OrderPanelView order={ this.props.placedOrder } />
             </div>
           </div>
         </BaseCheckoutLayout>

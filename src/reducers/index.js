@@ -10,6 +10,7 @@ import orderList from './order-list';
 import flash from './flash';
 import countryList from './country-list';
 import currentCheckoutStep from './current-checkout-step';
+import placedOrder from './placed-order';
 
 const AppReducer = combineReducers({
   displayLoader,
@@ -20,6 +21,7 @@ const AppReducer = combineReducers({
   flash,
   countryList,
   currentCheckoutStep,
+  placedOrder,
   routing: routerReducer,
   form: formReducer
 });

@@ -6,7 +6,10 @@ import Actions from './';
 
 const order = {
   clearOrder: () => {
-    return ( { type: APP_ACTIONS.DESTROY_ORDER } );
+    return (dispatch, getState) => {
+      dispatch( { type: APP_ACTIONS.DESTROY_ORDER } );
+      localStorageAPI.save(getState());
+    };
   },
   /* This is called whenever:
     1. Order is updated.

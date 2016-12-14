@@ -6,12 +6,17 @@ import CheckoutSuccessForm from '../../components/checkout-steps/checkout-succes
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    order: state.order
+    order: state.order,
+    placedOrder: state.placedOrder
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    saveOrderAsPlaced: (order) => {
+      dispatch(Actions.addPlacedOrder(order));
+    },
+
     handleCheckoutStepNotEditable: () => {
       dispatch (push('/'));
     },
