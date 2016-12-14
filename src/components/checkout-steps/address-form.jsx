@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import AddressFieldsConnector from "../../containers/checkout-steps/address-fields-connector";
 import CheckoutStepCalculator from '../../services/checkout-step-calculator';
+import FormField from './shared/form-field';
 
 class AddressForm extends Component {
 
@@ -19,7 +20,11 @@ class AddressForm extends Component {
   };
 
   handleAddressFormSubmit (formData) {
-    this.props.handleAddressFormSubmit(formData, this.props.order);
+    return this.props.handleAddressFormSubmit(formData, this.props.order).then((response) => {
+    },
+    (error) => {
+      throw new SubmissionError({order: error.response.body.errors});
+    });
   };
 
   componentDidMount () {
@@ -31,18 +36,21 @@ class AddressForm extends Component {
 
   render() {
     const useBilling = this.props.useBilling;
+    const { error, handleSubmit, pristine, reset, submitting } = this.props;
+
     return (
       <Layout>
         <BaseCheckoutLayout currentStep="address"
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
-          <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
+          <form onSubmit={ handleSubmit(this.handleAddressFormSubmit.bind(this)) }>
 
             <div className="form-heading-title">General Info</div>
             <div className="form-group">
               <label htmlFor="order_email" className="col-sm-2 control-label">Email</label>
               <div className="col-sm-10">
-                <Field name="order[email]" component="input" type="text" id="order_email" className="form-control"/>
+                <Field name="order[email]" className="form-control" type="text" label="Email" component={FormField.inputFieldMarkup} />
+                <Field name="order[email]" component="input" type="text" id="order_email" />
               </div>
             </div>
 
@@ -87,6 +95,10 @@ class AddressForm extends Component {
       </Layout>
     );
   };
+
+  // def shipping_eq_billing_address?
+  //     (bill_address.empty? && ship_address.empty?) || bill_address.same_as?(ship_address)
+  //   end
 };
 
 AddressForm = reduxForm({
