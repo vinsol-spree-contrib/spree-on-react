@@ -4,8 +4,8 @@ class searchModal extends Component {
 
   render() {
     return (
-      <div className={ "search-modal " + (this.props.showModal ? 'show-modal' : ' ') }>
-        <span className="glyphicon glyphicon-remove btn-close" onClick={this.props.close}></span>
+      <div className={ "global-modal search-modal " + (this.props.showModal ? 'show-modal' : ' ') }>
+        <span className="btn-close" onClick={this.props.close}></span>
         <div className="container-fluid">
           <input type="text" className="form-control"/>
         </div>
