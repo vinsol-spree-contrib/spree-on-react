@@ -4,7 +4,7 @@
     }
 }
 
-.order-list {
+.order-list, .order-panel-view {
   .label-block-row {
     margin-left: -10px;
     [class*="label-"],
@@ -16,7 +16,7 @@
     margin-left: 10px;
     display: inline-block;
     font-size: 12px;
-     &.label-normal {
+    &.label-normal {
       border: solid 1px #dedede;
       background: #f2f2f2;
       color: inherit;

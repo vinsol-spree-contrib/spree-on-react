@@ -25,8 +25,9 @@ const CheckoutStepCalculator = {
     let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
     let indexOfOrderState = checkoutSteps.indexOf(orderState);
 
-    return ( currentStep === orderState ||
-             indexOfOrderState >= indexOfCurrentStep );
+    return !CheckoutStepCalculator.isLastStep(checkoutSteps, orderState) &&
+            ( currentStep === orderState ||
+            indexOfOrderState >= indexOfCurrentStep );
   },
 
   isLastStep: (checkoutSteps, currentStep) => {

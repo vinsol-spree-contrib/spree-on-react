@@ -5,14 +5,15 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import AddressFieldsConnector from "../../containers/checkout-steps/address-fields-connector";
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
 class AddressForm extends Component {
 
   /* Render this step only if order is present and in a valid checkout state. */
   componentWillMount() {
-    let orderState = this.props.order.state;
+    let order = this.props.order;
 
-    if (orderState === undefined || this.props.order.checkout_steps.indexOf(orderState) === -1) {
+    if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'address', order.state)){
       this.props.handleOrderNotPresent();
     }
   };
@@ -101,7 +102,9 @@ AddressForm = connect(
     return {
       useBilling,
       initialValues: {
+        save_user_address: true,
         order: {
+          use_billing: true,
           email: state.order.email,
           bill_address_attributes: {
             address1: billAddress.address1,

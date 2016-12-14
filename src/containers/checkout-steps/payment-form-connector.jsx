@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
@@ -22,6 +23,10 @@ const mapDispatchToProps = (dispatch) => {
     handlePaymentFormSubmit: (formData, order) => {
       formData.order.payments_attributes['0']['amount'] = order.total;
       dispatch (Actions.goToNextStep(order, formData));
+    },
+
+    handleCheckoutStepNotEditable: () => {
+      dispatch ( push('/'));
     }
   };
 };

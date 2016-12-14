@@ -4,16 +4,17 @@ import { reduxForm } from 'redux-form';
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import Shipment from './delivery/shipment';
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
 class DeliveryForm extends Component {
 
   /* Render this step only if order is present and in a valid checkout state. */
   componentWillMount() {
-    // let orderState = this.props.order.state;
+    let order = this.props.order;
 
-    // if (orderState === undefined || this.props.order.checkout_steps.indexOf(orderState) === -1) {
-    //   this.props.handleOrderNotPresent();
-    // }
+    if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'delivery', order.state)){
+      this.props.handleCheckoutStepNotEditable();
+    }
   };
 
   componentDidMount() {
