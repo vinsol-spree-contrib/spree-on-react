@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Field } from 'redux-form';
 
 import CountryField from './country-field';
+import FormField from '../shared/form-field';
 
 class AddressFields extends Component {
 
@@ -44,35 +45,35 @@ class AddressFields extends Component {
         <div className="form-group">
           <label htmlFor="firstname" className="col-sm-2 control-label">First Name</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[firstname]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[firstname]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="lastname" className="col-sm-2 control-label">Last Name</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[lastname]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[lastname]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="address1" className="col-sm-2 control-label">Address Line 1</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[address1]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[address1]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="address2" className="col-sm-2 control-label">Address Line 2</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[address2]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[address2]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="city" className="col-sm-2 control-label">City</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[city]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[city]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
@@ -102,14 +103,14 @@ class AddressFields extends Component {
         <div className="form-group">
           <label htmlFor="zipcode" className="col-sm-2 control-label">Zip Code</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[zipcode]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[zipcode]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
 
         <div className="form-group">
           <label htmlFor="phone" className="col-sm-2 control-label">Phone</label>
           <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[phone]" } component="input" type="text" />
+            <Field className="form-control" name={this.props.fieldNamePrefix + "[phone]" } component={FormField.inputFieldMarkup} type="text" />
           </div>
         </div>
       </div>

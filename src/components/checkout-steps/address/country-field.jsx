@@ -19,7 +19,8 @@ class CountryField extends Component{
 
     return (
       <select name={ this.props.fieldNamePrefix + "[country_id]" }
-              onChange={ this.handleCountryChange.bind(this) }>
+              onChange={ this.handleCountryChange.bind(this) }
+              className="form-control">
         { countryOptionsMarkup }
       </select>
     );

@@ -23,7 +23,8 @@ class AddressForm extends Component {
     return this.props.handleAddressFormSubmit(formData, this.props.order).then((response) => {
     },
     (error) => {
-      throw new SubmissionError({order: error.response.body.errors});
+      let sanitizedErrors = this._sanitizedErrorMessages(error.response.body.errors);
+      throw new SubmissionError({ order: sanitizedErrors });
     });
   };
 
@@ -36,7 +37,8 @@ class AddressForm extends Component {
 
   render() {
     const useBilling = this.props.useBilling;
-    const { error, handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit } = this.props;
+    // const { error, handleSubmit, pristine, reset, submitting } = this.props;
 
     return (
       <Layout>
@@ -49,8 +51,7 @@ class AddressForm extends Component {
             <div className="form-group">
               <label htmlFor="order_email" className="col-sm-2 control-label">Email</label>
               <div className="col-sm-10">
-                <Field name="order[email]" className="form-control" type="text" label="Email" component={FormField.inputFieldMarkup} />
-                <Field name="order[email]" component="input" type="text" id="order_email" />
+                <Field name="order[email]" type="text" label="Email" component={FormField.inputFieldMarkup} />
               </div>
             </div>
 
@@ -60,7 +61,7 @@ class AddressForm extends Component {
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
                 <label className="checkbox inline">
-                  <Field name="order[use_billing]" component="input" type="checkbox" />
+                  <Field name="order[use_billing]" component={FormField.inputFieldMarkup} type="checkbox" />
                   Ship to billing address
                 </label>
               </div>
@@ -79,7 +80,7 @@ class AddressForm extends Component {
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
                 <label className="checkbox inline">
-                  <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+                  <Field name="save_user_address" component={FormField.inputFieldMarkup} type="checkbox" id="save_user_address" />
                   Remember this Address
                 </label>
               </div>
@@ -95,6 +96,16 @@ class AddressForm extends Component {
       </Layout>
     );
   };
+
+  _sanitizedErrorMessages (errors) {
+    var unflatten = require('flat').unflatten;
+
+    let unflattenedErrors = unflatten(errors);
+    unflattenedErrors.bill_address_attributes = unflattenedErrors.bill_address;
+    unflattenedErrors.ship_address_attributes = unflattenedErrors.ship_address;
+
+    return unflattenedErrors;
+  }
 
   // def shipping_eq_billing_address?
   //     (bill_address.empty? && ship_address.empty?) || bill_address.same_as?(ship_address)
