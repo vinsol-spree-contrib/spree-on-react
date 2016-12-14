@@ -48,24 +48,22 @@ class AddressForm extends Component {
           <form onSubmit={ handleSubmit(this.handleAddressFormSubmit.bind(this)) }>
 
             <div className="form-heading-title">General Info</div>
-            <div className="form-group">
-              <label htmlFor="order_email" className="col-sm-2 control-label">Email</label>
-              <div className="col-sm-10">
-                <Field name="order[email]" type="text" label="Email" component={FormField.inputFieldMarkup} />
-              </div>
-            </div>
+
+            <Field className="form-control"
+                name="order[email]"
+                component={FormField.inputFieldMarkup}
+                label="Email"
+                type="text" />
 
             <div className="form-heading-title">Billing Info</div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries } />
-            <div className="form-group">
-              <div className="col-sm-10 col-sm-offset-2">
-                <label className="checkbox inline">
-                  <Field name="order[use_billing]" component={FormField.inputFieldMarkup} type="checkbox" />
-                  Ship to billing address
-                </label>
-              </div>
-            </div>
+
+            <Field className="form-control"
+                name="order[use_billing]"
+                component={FormField.inputFieldMarkup}
+                label="Ship to billing address"
+                type="checkbox" />
 
 
             {
@@ -77,18 +75,15 @@ class AddressForm extends Component {
               </AddressFieldsConnector>
             }
 
-            <div className="form-group">
-              <div className="col-sm-10 col-sm-offset-2">
-                <label className="checkbox inline">
-                  <Field name="save_user_address" component={FormField.inputFieldMarkup} type="checkbox" id="save_user_address" />
-                  Remember this Address
-                </label>
-              </div>
-            </div>
+            <Field className="form-control"
+                name="order[save_user_address]"
+                component={FormField.inputFieldMarkup}
+                label="Remember this Address"
+                type="checkbox" />
 
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
-                <button type="submit" className="btn btn-success btn-lg">Save address and proceed</button>
+                <button type="submit" className="btn btn-success btn-lg">Save Address</button>
               </div>
             </div>
           </form>

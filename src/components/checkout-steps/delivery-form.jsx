@@ -33,6 +33,7 @@ class DeliveryForm extends Component {
         <Shipment shipment={ shipment }
                   key={ idx }
                   shipmentIndex={ idx + 1 }
+                  orderLineItems={ this.props.order.line_items }
                   fieldNamePrefix={`order[shipments_attributes][${ idx }]`} />
       );
     });
