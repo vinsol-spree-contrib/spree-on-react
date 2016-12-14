@@ -24,10 +24,11 @@
 
 body {
   background: $bodyBg;
-  padding-top: 50px;
+  padding-top: $body-top-space;
 }
 
-.row {
+.row,
+.form-group {
   &.no-margin {
     margin-left: 0;
     margin-right: 0;
@@ -168,6 +169,9 @@ a {
     letter-spacing: 1px;
   }
 }
+.alert {
+  padding: 10px 15px;
+}
 .alert-complete {
   background: $link-color;
   color: #fff;
@@ -186,12 +190,16 @@ a {
 }
 .form-control {
   @include border-radius(0);
-  border: none;
-  border-bottom: solid 2px $form-control-broder-color;
   height: 40px;
   @include transition(border, 0.3s);
   &:focus {
     border-color: $form-control-broder-focus-color;
+  }
+
+  &.color {
+    border: none;
+    border-bottom: solid 2px $form-control-broder-color;
+    @include box-shadow(0,0,0,0);
   }
 }
 
@@ -270,6 +278,22 @@ a {
       }
     }
   }
+}
+
+.checkbox,
+.radio {
+  &.inline {
+    padding-left: 20px;
+  }
+}
+
+.form-heading-title {
+  font-size: 18px;
+  font-weight: 700;
+  border-bottom: 1px solid $form-heading-title-border;
+  text-align: left;
+  margin: 0 0 20px;
+  padding: 15px 0 10px;
 }
 
 @media (max-width: 767px) {

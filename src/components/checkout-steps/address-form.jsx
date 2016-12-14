@@ -36,29 +36,51 @@ class AddressForm extends Component {
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
           <form onSubmit={this.props.handleSubmit(this.handleAddressFormSubmit.bind(this))}>
-            <div>
-              <label htmlFor="order_email">Email</label>
-              <Field name="order[email]" component="input" type="text" id="order_email" />
+
+            <div className="form-heading-title">General Info</div>
+            <div className="form-group">
+              <label htmlFor="order_email" className="col-sm-2 control-label">Email</label>
+              <div className="col-sm-10">
+                <Field name="order[email]" component="input" type="text" id="order_email" className="form-control"/>
+              </div>
             </div>
+
+            <div className="form-heading-title">Billing Info</div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries } />
-            <div>
-              <label htmlFor="use_billing">Ship to billing address</label>
-              <Field name="order[use_billing]" component="input" type="checkbox" />
+            <div className="form-group">
+              <div className="col-sm-10 col-sm-offset-2">
+                <label className="checkbox inline">
+                  <Field name="order[use_billing]" component="input" type="checkbox" />
+                  Ship to billing address
+                </label>
+              </div>
             </div>
+
 
             {
               !useBilling &&
+
               <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
-                                      countries={ this.props.countries } />
+                                      countries={ this.props.countries } >
+                <div className="form-heading-title">Shipping Info</div>
+              </AddressFieldsConnector>
             }
 
-            <div>
-              <label htmlFor="save_user_address">Remember this Address</label>
-              <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+            <div className="form-group">
+              <div className="col-sm-10 col-sm-offset-2">
+                <label className="checkbox inline">
+                  <Field name="save_user_address" component="input" type="checkbox" id="save_user_address" />
+                  Remember this Address
+                </label>
+              </div>
             </div>
 
-            <button type="submit">Submit</button>
+            <div className="form-group">
+              <div className="col-sm-10 col-sm-offset-2">
+                <button type="submit" className="btn btn-success">Submit</button>
+              </div>
+            </div>
           </form>
         </BaseCheckoutLayout>
       </Layout>

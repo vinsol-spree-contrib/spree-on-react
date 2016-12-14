@@ -46,7 +46,7 @@ class DeliveryForm extends Component {
               { shipmentsMarkup }
             </div>
 
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-success">Submit</button>
           </form>
         </BaseCheckoutLayout>
       </Layout>

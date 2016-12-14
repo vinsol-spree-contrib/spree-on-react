@@ -11,11 +11,13 @@ class BaseCheckoutLayout extends Component {
     let activePanelKey = this.props.currentStep;
 
     return (
-      <div className="row checkout-flow">
+      <div className="row checkout-flow dark-color">
         <Loader displayLoader={ this.props.displayLoader } />
-        <Accordion activeKey={ activePanelKey }>
-          { this.checkoutStepsMarkup }
-        </Accordion>
+        <div className="container">
+          <Accordion activeKey={ activePanelKey } className="form-horizontal">
+            { this.checkoutStepsMarkup }
+          </Accordion>
+        </div>
       </div>
     );
   };

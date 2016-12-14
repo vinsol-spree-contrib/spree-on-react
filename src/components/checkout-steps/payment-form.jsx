@@ -37,7 +37,7 @@ class PaymentForm extends Component {
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ this.props.handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             { paymentMethodMarkup }
-            <button type="submit">Submit</button>
+            <button type="submit" className="btn btn-success">Submit</button>
           </form>
         </BaseCheckoutLayout>
       </Layout>
