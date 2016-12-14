@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
 import ProductList from './product-list';
 import HomeSlider from './home-slider';
 import Loader from './shared/loader';
@@ -17,24 +16,19 @@ class HomePage extends Component {
       <Layout>
         <div className="home-page row">
           <HomeSlider />
-          <div className={this.props.displayLoader ? "porduct-loader" : 'hide'}>
-            <Loader displayLoader={this.props.displayLoader} />
-          </div>
+          <Loader displayLoader={this.props.displayLoader} />
 
-          <div className="row">
-            <div className="col-md-12">
-              <FilterBarConnector />
+          <div className="big-box-heading">
+            Style Collection
+            <div className="icon-start">
+              <div className="icon-arrow-hint animated-arrow-1 glyphicon glyphicon-chevron-down"></div>
+              <div className="icon-arrow-hint animated-arrow-2 glyphicon glyphicon-chevron-down"></div>
             </div>
           </div>
-
-          <div className="row">
-            <div className="col-md-12">
-              <ProductList productList={ this.props.products }
-                           loadMore={this.props.loadMore}
-                           pageCount={this.props.pageCount}
-                           currentPage={this.props.currentPage} />
-            </div>
-          </div>
+          <ProductList productList={ this.props.products }
+                       loadMore={this.props.loadMore}
+                       pageCount={this.props.pageCount}
+                       currentPage={this.props.currentPage} />
         </div>
       </Layout>
     );

@@ -11,7 +11,7 @@ const flash = function(state = initialState, action) {
     case APP_ACTIONS.SET_FLASH:
       return action.payload;
     case APP_ACTIONS.HIDE_FLASH:
-      return Object.assign( {}, {visible: false} );
+      return initialState;
     default:
       return state;
   }

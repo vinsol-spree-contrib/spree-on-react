@@ -1,13 +1,50 @@
 import React, { Component } from 'react';
-import Layout from '../layout';
-
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+import Layout from '../layout';
+
 class CartShow extends Component {
+
+  componentDidMount() {
+    this.props.setCurrentCheckoutStep();
+  };
+
+  destroyLineItem(lineItemCount, lineItem) {
+    if (lineItemCount > 1) {
+      this.props.destroyLineItem(lineItem);
+    } else{
+      this.props.emptyCart(this.props.order);
+    };
+  };
+
+  emptyCart () {
+    this.props.emptyCart(this.props.order);
+  };
+
+  changeQuantity(event) {
+    event.preventDefault();
+    this.props.changeQuantity(event.target.line_item_id.value, event.target.quantity.value);
+  };
+
+  doCheckout () {
+    this.props.doCheckout(this.props.order);
+  };
+
   render() {
-    let lineItems = this.props.order.line_items;
-    let renderString = 'Wanna pay for just nothing? We are intrigued.';
+    let lineItems = [];
+    if (this.props.order.state !== 'complete') {
+      lineItems = this.props.order.line_items;
+    }
+
+    let renderString = <div className="well">
+                          <p className="h4">Your cart is empty. Add some items to proceed.</p>
+                          <br/>
+                          <Link className='link btn btn-primary btn-lg' to="/">
+                            <span className="glyphicon glyphicon-chevron-left" />
+                            &nbsp;Continue Shopping
+                          </Link>
+                        </div>;
 
     if (lineItems.length > 0) {
       let lineItemList = lineItems.map((lineItem, idx) => {
@@ -17,35 +54,18 @@ class CartShow extends Component {
         return (
           <tr className="line-item" key={`line-item-${idx}`}>
             <td>
-              <div className="row">
-                <div className="col-md-2">
-                  <Link to={`/products/${ productId }`}>
-                    <img  className="product-image"
-                          alt={'productName'}
-                          src={ process.env.REACT_APP_API_HOST + variantImage }>
-                    </img>
-                  </Link>
-                </div>
+              <div className="cart-img-block">
+                <Link to={`/products/${ productId }`}>
+                  <img  className="product-image img-responsive"
+                        alt={'productName'}
+                        src={ process.env.REACT_APP_API_HOST + variantImage }>
+                  </img>
+                </Link>
+              </div>
 
-                <div className="col-md-10">
-                  <div className="row">
-                    <div className="col-md-12">
-                      <Link to={`/products/${ productId }`}>
-                        <h4>
-                          { lineItem.variant.name }
-                        </h4>
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="row">
-                    <div className="col-md-12">
-                      <p>
-                        { lineItem.variant.description }
-                      </p>
-                    </div>
-                  </div>
-                </div>
+              <div className="cart-img-des hidden-xs">
+                <p><Link to={`/products/${ productId }`}>{ lineItem.variant.name }</Link></p>
+                <p className="">{ lineItem.variant.description }</p>
               </div>
             </td>
 
@@ -53,32 +73,38 @@ class CartShow extends Component {
               { lineItem.single_display_amount }
             </td>
 
-            <td>
-              { lineItem.quantity }
+            <td className="qty-update-block">
+              <form onSubmit={this.changeQuantity.bind(this)}>
+                <input type='hidden' value={lineItem.id} name='line_item_id' />
+                <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
+                <input type='number' defaultValue={ lineItem.quantity } name='quantity' className="qty-number"/>
+                <span className="visible-xxs"></span>
+                <button type='submit' className="btn btn-success">Save</button>
+              </form>
             </td>
 
-            <td>
+            <td className="text-right">
               { lineItem.display_amount }
             </td>
 
-            <td>
-              { lineItem.display_amount }
+            <td className="text-right">
+              <a className='btn btn-danger btn-sm' onClick={() => this.destroyLineItem(lineItems.length, lineItem)}><span className="glyphicon glyphicon-trash"></span></a>
             </td>
           </tr>
         );
       });
 
-      renderString = 
+      renderString =
         <div className="row">
           <div className="col-md-12">
-            <Table striped bordered condensed hover>
+            <Table striped hover className="cart-table">
               <thead>
                 <tr>
                   <th> Product </th>
                   <th> Price </th>
-                  <th> Quantity </th>
-                  <th> Total </th>
-                  <th> Actions </th>
+                  <th> Qty </th>
+                  <th className="text-right"> Total </th>
+                  <th className="text-right"> Actions </th>
                 </tr>
               </thead>
 
@@ -86,19 +112,29 @@ class CartShow extends Component {
                 { lineItemList }
               </tbody>
             </Table>
+
+            <div className="text-right cart-empty-update-row">
+              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
+              <Link className='link btn btn-primary btn-lg' to="/">
+                <span className="glyphicon glyphicon-chevron-left" />
+                &nbsp;Continue Shopping
+              </Link>
+              <a className='btn btn-success btn-lg' onClick={this.doCheckout.bind(this)}>Place Order</a>
+            </div>
           </div>
         </div>;
     }
 
     return (
       <Layout>
-        <h1>
-          Shopping Cart
-        </h1>
+        <div className="big-box-heading secondary spacing">
+          Shopping Cart 
+          <small className="show">NEED HELP? Call xxxx-xxxx-xxxx <strong></strong></small>
+        </div>
         {renderString}
       </Layout>
     );
-  }
-}
+  };
+};
 
 export default CartShow;

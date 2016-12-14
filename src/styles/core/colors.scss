@@ -1,15 +1,27 @@
-$bodyBg: #f6f6f6;
-$baseFontColor: #5a5a5a;
+$bodyBg: #fff;
+$baseFontColor: #aaa;
+$baseFontColorDark: #5a5a5a;
 $logoBaseBg: #783f6a;
 $link-color: #4eaf79;
+$big-heading-bg: #292929;
+$big-heading-secondry-bg: #f5f5f5;
+$form-control-broder-color: rgba(105, 33, 87, 0.8); //#692157
+$form-control-broder-focus-color: rgba(105, 33, 87, 1);
+$achievement-row-color: #f5f5f5;
 
 /*modal overlay color*/
-$overlayBg : rgba(120, 63, 106, 0.9);
+$overlayBg : rgba(120, 63, 106, 0.9); //#783f6a
 
 /*navigation variables*/
-$navBarBg: rgba(255,255,255,0.1);
+$navBarBg: rgba(0,0,0,0.8);
 $navLinkColor : #fff;
 $navIconBg: #783f6a;
 $cartQtyBg: #fff;
 $cartQtyColor: #000;
 
+/*product box*/
+$productInfoBg: #E6EAEA;
+
+$form-heading-title-border: $baseFontColor;
+
+$body-top-space: 100px;

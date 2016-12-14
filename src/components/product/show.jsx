@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Button} from 'react-bootstrap';
+// import {Tabs, Tab} from 'react-bootstrap';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
@@ -65,67 +66,73 @@ class ProductShow extends Component {
   render() {
     let renderString = null
     if(this.state.currentVariant)
-      renderString =  <div className="row">
-
-                        <div className="col-md-4">
-
-                          <ImageViewer productVariant={ this.state.currentVariant }/>
-                          <div className="row">
-                            <div className="col-md-12">
-                              <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="col-md-8">
-                          <div className="row">
-                            <div className="col-md-12">
-                              <h1>
-                                Product Title - { this.state.currentVariant.name }
-                              </h1>
-                            </div>
-                          </div>
-
-                          <div className="row">
-                            <div className="col-md-12">
-                              <div className="well">
-                                Product Description - { this.state.currentVariant.description }
+      renderString =  <div className="">
+                        <article className="row product-row">
+                          <div className="col-sm-6 col-xs-12 product-top-col">
+                            <ImageViewer productVariant={ this.state.currentVariant }/>
+                            <div className="row">
+                              <div className="col-md-8 col-md-offset-4">
+                                <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
+                                  <span className="cart-text">Add to cart</span>
+                                  <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
+                                </Button>
                               </div>
                             </div>
                           </div>
 
-                          <div className="row">
-                            <div className="col-md-12">
-                              Price
+                          <div className="col-sm-6 col-xs-12 product-top-col text-left">
+                            <div className="row">
+                              <div className="col-md-12">
+                                <h1 className="font-dark">
+                                  { this.state.currentVariant.name }
+                                </h1>
+                              </div>
+                            </div>
+
+                            <div className="row">
+                              <div className="col-md-12">
+                                <p className="h3 font-dark">${ this.state.currentVariant.price }</p>
+                              </div>
+                            </div>
+
+                            <div className="row">
+                              <div className="col-md-12">
+                                <p className="h3 font-dark">Description</p>
+                                <p className="pull-left">{ this.state.currentVariant.description }</p>
+                              </div>
+                            </div>
+                            
+                            <div className="row">
+                              <VariantsList currentVariant={this.state.currentVariant}
+                                            variantsList={this.state.currentProduct.variants}
+                                            onChangeVariant={this.onChangeVariant}/>
                             </div>
                           </div>
+                        </article>
 
-                          <div className="row">
-                            <div className="col-md-12">
-                              ${ this.state.currentVariant.price }
+                        <article className="row product-achievement-row">
+                          <div className="col-sm-6 col-xs-12 achievement-col">
+                            <div>
+                              <h3 className="font-dark">Product Details</h3>
+                              { this.state.currentVariant.description }
                             </div>
                           </div>
-
-                          <div className="row">
+                          <div className="col-sm-6 col-xs-12 achievement-col">
                             <div className="col-md-12">
-                              <Button bsStyle="success" bsSize="large" active className="pull-right" onClick={this.addProductToCart.bind(this)}>
-                                Add to cart
-                              </Button>
-                            </div>
+                              <h3 className="font-dark">Properties</h3>
+                              <div className="product-desc">
+                                <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
+                              </div>
+                              </div>
                           </div>
 
-                          <div className="row">
-                            <VariantsList currentVariant={this.state.currentVariant}
-                                          variantsList={this.state.currentProduct.variants}
-                                          onChangeVariant={this.onChangeVariant}/>
-                          </div>
+                        </article>
 
-                        </div>
                       </div>;
 
     return (
       <Layout>
-        <div className="product-show row">
+        <div className="product-show">
           <Loader displayLoader={this.props.displayLoader} />
           {renderString}
         </div>

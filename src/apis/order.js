@@ -1,56 +1,51 @@
 var request = require('superagent');
+import CommonAPIMethods from './common-api-methods';
 
 const OrdersAPI = {
-  create: (params) => {
+  getItem: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
+
+    return request
+      .get(`${process.env.REACT_APP_API_BASE}/orders/${ params.orderNumber }`)
+      .query(tokenParam)
+      .set('Accept', 'application/json')
+      .send();
+  },
+
+  mine: (apiToken) => {
+    let tokenParam = CommonAPIMethods.getTokenParams( { api_token: apiToken } );
+
+    return request
+      .get(`${process.env.REACT_APP_API_BASE}/orders/mine`)
+      .query(tokenParam)
+      .set('Accept', 'application/json')
+      .send();
+  },
+
+  create: () => {
     return request
       .post(`${process.env.REACT_APP_API_BASE}/orders`)
-      .send({ 
-        order: {
-          line_items: [
-            {
-              variant_id: params.variantId,
-              quantity: params.quantity
-            }
-          ]
-        }
-      })
       .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
-  },
-
-  addLineItem: (params) => {
-    return request
-      .post(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items`)
-      .send({
-        line_item: {
-          variant_id: params.variantId,
-          quantity: params.quantity
-        }
-      })
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return {};
-        }
-      );
-  },
-
-  update: (params) => {
-
+      .send();
   },
 
   destroy: (params) => {
+    let tokenParam = CommonAPIMethods.getTokenParams(params);
 
+    return request
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
+      .query(tokenParam)
+      .set('Accept', 'application/json');
+  },
+
+  update: (orderNumber, orderToken, params = {}) => {
+    let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
+
+    return request
+      .put(`${process.env.REACT_APP_API_BASE}/orders/${orderNumber}`)
+      .query(tokenParam)
+      .set('Accept', 'application/json')
+      .send(params);
   }
 }
 
