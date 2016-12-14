@@ -13,6 +13,10 @@ class CheckoutSuccessForm extends Component {
     }
   };
 
+  componentDidMount () {
+    this.props.clearOrder();
+  };
+
   render() {
     return (
       <Layout>

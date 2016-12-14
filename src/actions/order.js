@@ -5,6 +5,9 @@ import localStorageAPI from '../services/local-storage-api';
 import Actions from './';
 
 const order = {
+  clearOrder: () => {
+    return ( { type: APP_ACTIONS.DESTROY_ORDER } );
+  },
   /* This is called whenever:
     1. Order is updated.
     2. Moved to a different state in checkout flow. */

@@ -88,7 +88,7 @@ class AddressForm extends Component {
 
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
-                <button type="submit" className="btn btn-success">Submit</button>
+                <button type="submit" className="btn btn-success btn-lg">Save address and proceed</button>
               </div>
             </div>
           </form>
