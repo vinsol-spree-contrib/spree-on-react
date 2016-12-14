@@ -6,6 +6,10 @@ import SearchBlock from './search-block';
 
 class Header extends Component {
 
+  componentDidUpdate(nextProps, nextState) {
+    this.props.fetchTaxons(this.props.taxons);
+  };
+
   navIcons () {
     return <dl className="nav-icons pull-right">
               <dd className='icon-block user-link-block'>
@@ -15,7 +19,7 @@ class Header extends Component {
               <CartNotificationInfoConnector />
               <SearchBlock />
            </dl>
-  }
+  };
 
   render() {
     var navicons = this.navIcons();
@@ -30,7 +34,7 @@ class Header extends Component {
         </div>
       </nav>        
     );
-  }
-}
+  };
+};
 
 export default Header;

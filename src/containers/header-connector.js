@@ -1,13 +1,29 @@
 import { connect } from 'react-redux';
 
 import Header from '../components/header';
+import Actions from '../actions';
+import TaxonAPI from '../apis/taxons';
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  return {
+    taxons: state.taxons
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    fetchTaxons: (taxons) => {
+      if (taxons.length === 0) {
+        dispatch (Actions.displayLoader());
+
+        TaxonAPI.getList().then((response) => {
+          let fetchedTaxons = JSON.parse(response.text).taxons;
+          dispatch (Actions.addTaxons(fetchedTaxons));
+          dispatch (Actions.hideLoader());
+        });
+      }
+    }
+  };
 };
 
 const HeaderConnector = connect(mapStateToProps, mapDispatchToProps)(Header);
