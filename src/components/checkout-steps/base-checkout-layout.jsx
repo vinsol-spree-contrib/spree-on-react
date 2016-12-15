@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import { Accordion, Panel } from "react-bootstrap";
+import { Link } from 'react-router';
 
 import Loader from "../shared/loader"
+import APP_ROUTES from '../../constants/app-routes';
 
 class BaseCheckoutLayout extends Component {
 
   render() {
     this.checkoutStepsMarkup = [];
     this.__generateCheckoutStepsMarkup(this.props.currentStep);
-    let activePanelKey = this.props.currentStep;
 
     return (
       <div className="row checkout-flow dark-color">
         <Loader displayLoader={ this.props.displayLoader } />
         <div className="container">
-          <Accordion activeKey={ activePanelKey } className="form-horizontal">
+          <div className="panel-group form-horizontal">
             { this.checkoutStepsMarkup }
-          </Accordion>
+          </div>
         </div>
       </div>
     );
@@ -30,13 +30,37 @@ class BaseCheckoutLayout extends Component {
   };
 
   __generateMarkupForStep (currentStep, thisStep, title) {
-    let innerHtml = currentStep === thisStep.trim() ? this.props.children : title;
+    thisStep = thisStep.trim();
+
+
+    const innerHtml = this.__generateMarkupForStepBody(currentStep, thisStep, title);
+    const formattedTitle = <Link to={ APP_ROUTES.checkout[`${ thisStep.trim() }PageRoute`] }>
+                             { title }
+                           </Link>;
 
     this.checkoutStepsMarkup.push (
-      <Panel header={ title } eventKey={ thisStep } key={`${ thisStep }-step`}>
-        { innerHtml }
-      </Panel>
+        <div className="panel panel-default" key={`${ thisStep }-step`}>
+          <div className="panel-heading">
+            <h4 className="panel-title">
+              { formattedTitle }
+            </h4>
+          </div>
+          { innerHtml }
+        </div>
     );
+  };
+
+  __generateMarkupForStepBody (currentStep, thisStep, title) {
+    if ( currentStep === thisStep ) {
+      return (
+        <div className="panel-body">
+          { this.props.children }
+        </div>
+      );
+    }
+    else {
+      return null;
+    }
   };
 
 };
