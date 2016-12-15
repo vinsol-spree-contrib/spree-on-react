@@ -7,6 +7,8 @@ import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';
 import Actions from './';
 
+import APP_ROUTES from '../constants/app-routes';
+
 const checkout = {
   goToNextStep: (order, formData = {}) => {
     return (dispatch, getState) => {
@@ -30,7 +32,7 @@ const checkout = {
 
       if (CheckoutStepCalculator.isLastStep(checkoutSteps, orderState)) {
         dispatch(Actions.showFlash('Your order has already been placed. Thanks!'));
-        dispatch(push('/'));
+        dispatch(push(APP_ROUTES.homePageRoute));
       }
       else {
         dispatch (Actions.displayLoader());
@@ -66,11 +68,11 @@ const checkout = {
       return checkout._nextCheckoutStepRoute(order, currentStep);
     } catch (err) {
       if (err instanceof InvalidCheckoutStepException) {
-        return '/cart';
+        return APP_ROUTES.cartPageRoute;
       }
       else {
         if (err instanceof InvalidOrderTransitionException) {
-          return '/';
+          return APP_ROUTES.homePageRoute;
         }
       }
     }
@@ -83,7 +85,9 @@ const checkout = {
        Last step is 'complete' which means order is placed. */
     if (currentStepIndex > -1 || currentStep === 'cart') {
       if (currentStepIndex < (order.checkout_steps.length - 1)) {
-        return `/checkout/${order.checkout_steps[currentStepIndex + 1]}`;
+        const nextStep = order.checkout_steps[currentStepIndex + 1];
+
+        return APP_ROUTES.checkout[`${ nextStep }PageRoute`];
       }
       else {
         throw new InvalidOrderTransitionException();

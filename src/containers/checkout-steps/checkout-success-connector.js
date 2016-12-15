@@ -5,6 +5,8 @@ import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
 import CheckoutSuccessForm from '../../components/checkout-steps/checkout-success-form';
 
+import APP_ROUTES from '../../constants/app-routes';
+
 const mapStateToProps = (state, ownProps) => {
   return {
     order: state.order,
@@ -26,7 +28,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     handleCheckoutStepNotEditable: () => {
-      dispatch (push('/'));
+      dispatch (push(APP_ROUTES.homePageRoute));
     },
 
     clearOrder: () => {

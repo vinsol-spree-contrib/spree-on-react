@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 
 import Layout from '../layout';
 
+import APP_ROUTES from '../../constants/app-routes';
+
 class CartShow extends Component {
 
   componentDidMount() {
@@ -40,7 +42,7 @@ class CartShow extends Component {
     let renderString = <div className="well">
                           <p className="h4">Your cart is empty. Add some items to proceed.</p>
                           <br/>
-                          <Link className='link btn btn-primary btn-lg' to="/">
+                          <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
                             <span className="glyphicon glyphicon-chevron-left" />
                             &nbsp;Continue Shopping
                           </Link>
@@ -115,7 +117,7 @@ class CartShow extends Component {
 
             <div className="text-right cart-empty-update-row">
               <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
-              <Link className='link btn btn-primary btn-lg' to="/">
+              <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
                 <span className="glyphicon glyphicon-chevron-left" />
                 &nbsp;Continue Shopping
               </Link>

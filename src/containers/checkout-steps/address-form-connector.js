@@ -6,6 +6,8 @@ import APP_ACTIONS from '../../constants/app-actions';
 import AddressForm from '../../components/checkout-steps/address-form';
 import CountryAPI from '../../apis/country';
 
+import APP_ROUTES from '../../constants/app-routes';
+
 const mapStateToProps = (state, ownProps) => {
   return {
     order: state.order,
@@ -40,7 +42,7 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     handleOrderNotPresent: () => {
-      dispatch (push('/cart'));
+      dispatch (push(APP_ROUTES.cartPageRoute));
       dispatch(Actions.showFlash("Your cart is empty!", 'danger'));
     }
   };
