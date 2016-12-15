@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import NavLinks from './navigation-link'
-import ProductSearchBarConnector from '../containers/product-search-bar-connector';
+import SearchModalConnector from '../containers/search-modal-connector';
 
 class StoreNavigation extends Component {
   render () {
@@ -8,7 +8,7 @@ class StoreNavigation extends Component {
       <div className="navbar-collapse collapse">
         <ul className="nav navbar-nav">
           <NavLinks/>
-          <ProductSearchBarConnector />
+          <SearchModalConnector />
         </ul>
       </div>
     )

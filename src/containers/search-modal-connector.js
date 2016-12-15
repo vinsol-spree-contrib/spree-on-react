@@ -4,7 +4,7 @@ import Actions from '../actions';
 
 import ProductsAPI from '../apis/products';
 
-import ProductSearchBar from '../components/product-search-bar';
+import SearchModal from '../components/search-modal';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -15,7 +15,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (searchTerm) => {
       dispatch (Actions.displayLoader());
-
       ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
         if(response.statusCode === 200) {
           let fetchedProducts = JSON.parse(response.text);
@@ -27,6 +26,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const ProductSearchBarConnector = connect(mapStateToProps, mapDispatchToProps)(ProductSearchBar);
+const SearchModalConnector = connect(mapStateToProps, mapDispatchToProps)(SearchModal);
 
-export default ProductSearchBarConnector;
+export default SearchModalConnector;
