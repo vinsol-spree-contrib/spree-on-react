@@ -5,6 +5,8 @@ import ProductsAPI from '../apis/products';
 import TaxonAPI from '../apis/taxons';
 import HomePage from '../components/home-page';
 
+import UrlParser from '../services/url-parser';
+
 const mapStateToProps = (state, ownProps) => {
   return {
     products: state.productList.products,
@@ -24,14 +26,14 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.addTaxons(fetchedTaxons));
 
         if (pathname === '/') {
-          ProductsAPI.getList().then((response) => {
+          let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
+          ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
             let fetchedProducts = JSON.parse(response.text);
 
             dispatch (Actions.addProducts(fetchedProducts));
             dispatch (Actions.hideLoader());
           });
-        }
-        else {
+        } else {
           dispatch (Actions.fetchProductsByTaxon()).then((response) => {
             let fetchedProducts = JSON.parse(response.text);
 
@@ -44,7 +46,8 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     loadMore: (page_no) => {
-      ProductsAPI.getList({page_no: page_no}).then((response) => {
+      let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
+      ProductsAPI.getList({page_no: page_no, searchTerm: searchTerm}).then((response) => {
         dispatch (Actions.appendProducts(response.body));
       });
     }
