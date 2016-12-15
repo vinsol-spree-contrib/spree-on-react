@@ -14,7 +14,7 @@ class PaymentForm extends Component {
     let order = this.props.order;
 
     if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'payment', order.state)){
-      this.props.handleCheckoutStepNotEditable();
+      this.props.handleCheckoutStepNotEditable(order);
     }
   };
 

@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
 import CheckoutSuccessForm from '../../components/checkout-steps/checkout-success-form';
-
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 import APP_ROUTES from '../../constants/app-routes';
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,8 +27,10 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
 
-    handleCheckoutStepNotEditable: () => {
-      dispatch (push(APP_ROUTES.homePageRoute));
+    handleCheckoutStepNotEditable: (order) => {
+      const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'complete');
+
+      dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
     },
 
     clearOrder: () => {

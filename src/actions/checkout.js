@@ -84,8 +84,8 @@ const checkout = {
     /* If currentStep is a valid step and not the last step.
        Last step is 'complete' which means order is placed. */
     if (currentStepIndex > -1 || currentStep === 'cart') {
-      if (currentStepIndex < (order.checkout_steps.length - 1)) {
-        const nextStep = order.checkout_steps[currentStepIndex + 1];
+      if (!CheckoutStepCalculator.isLastStep(order.checkout_steps, currentStep)) {
+        const nextStep = CheckoutStepCalculator.next(order.checkout_steps, currentStep);
 
         return APP_ROUTES.checkout[`${ nextStep }PageRoute`];
       }

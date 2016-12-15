@@ -13,12 +13,14 @@ class CheckoutSuccessForm extends Component {
       this.props.saveOrderAsPlaced(dupeOrder);
     }
     else {
-      this.props.handleCheckoutStepNotEditable();
+      this.props.handleCheckoutStepNotEditable(this.props.order);
     }
   };
 
   componentDidMount () {
-    this.props.clearOrder();
+    if (this.props.order.state === 'complete') {
+      this.props.clearOrder();
+    }
   };
 
   render() {

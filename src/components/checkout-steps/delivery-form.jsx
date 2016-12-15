@@ -13,7 +13,7 @@ class DeliveryForm extends Component {
     let order = this.props.order;
 
     if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'delivery', order.state)){
-      this.props.handleCheckoutStepNotEditable();
+      this.props.handleCheckoutStepNotEditable(order);
     }
   };
 
