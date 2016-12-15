@@ -25,17 +25,23 @@ class ConfirmationForm extends Component {
   };
 
   render() {
+    const { handleSubmit, valid, submitting } = this.props;
+
     return (
       <Layout>
         <BaseCheckoutLayout currentStep="confirm"
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
-          <form onSubmit={ this.props.handleSubmit(this.handleFormSubmit.bind(this)) }>
+          <form onSubmit={ handleSubmit(this.handleFormSubmit.bind(this)) }>
             <div>
               Please Just confirm
             </div>
 
-            <button type="submit" className="btn btn-success btn-lg">Confirm your order</button>
+            <button type="submit"
+                    disabled={ !valid || submitting }
+                    className="btn btn-success btn-lg">
+                      Confirm your order
+            </button>
           </form>
         </BaseCheckoutLayout>
       </Layout>

@@ -27,6 +27,7 @@ class DeliveryForm extends Component {
 
   render() {
     let shipments = this.props.order.shipments;
+    const { handleSubmit, valid, submitting } = this.props;
 
     let shipmentsMarkup = shipments.map((shipment, idx) => {
       return (
@@ -43,12 +44,16 @@ class DeliveryForm extends Component {
         <BaseCheckoutLayout currentStep="delivery"
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
-          <form onSubmit={ this.props.handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
+          <form onSubmit={ handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
             <div>
               { shipmentsMarkup }
             </div>
 
-            <button type="submit" className="btn btn-success btn-lg">Save Delivery Details</button>
+            <button type="submit"
+                    className="btn btn-success btn-lg"
+                    disabled={ !valid || submitting }>
+                      Save Delivery Details
+            </button>
           </form>
         </BaseCheckoutLayout>
       </Layout>

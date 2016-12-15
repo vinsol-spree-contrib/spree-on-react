@@ -27,7 +27,7 @@ class PaymentForm extends Component {
   };
 
   render() {
-    let { order } = this.props;
+    const { handleSubmit, valid, submitting, order } = this.props;
     let paymentMethods = order.payment_methods || [];
     let paymentMethodMarkup = paymentMethods.map((paymentMethod, idx) => {
       return (
@@ -54,7 +54,11 @@ class PaymentForm extends Component {
             { this.props.useCard==2 &&
               <CardFields />
             }
-            <button type="submit" className="btn btn-success">Save Payment Details</button>
+            <button type="submit"
+                    className="btn btn-success"
+                    disabled={ !valid || submitting } >
+                      Save Payment Details
+            </button>
           </form>
         </BaseCheckoutLayout>
       </Layout>

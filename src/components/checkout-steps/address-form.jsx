@@ -37,8 +37,7 @@ class AddressForm extends Component {
 
   render() {
     const useBilling = this.props.useBilling;
-    const { handleSubmit } = this.props;
-    // const { error, handleSubmit, pristine, reset, submitting } = this.props;
+    const { handleSubmit, valid, submitting } = this.props;
 
     return (
       <Layout>
@@ -83,7 +82,11 @@ class AddressForm extends Component {
 
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
-                <button type="submit" className="btn btn-success btn-lg">Save Address</button>
+                <button type="submit"
+                        disabled={ !valid || submitting }
+                        className="btn btn-success btn-lg">
+                          Save Address
+                </button>
               </div>
             </div>
           </form>
