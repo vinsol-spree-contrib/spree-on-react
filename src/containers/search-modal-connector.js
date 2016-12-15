@@ -15,6 +15,12 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (searchTerm) => {
+      dispatch (Actions.showLoader());
+      ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
+        let fetchedProducts = JSON.parse(response.text);
+        dispatch (Actions.addProducts(fetchedProducts));
+        dispatch (Actions.hideLoader());
+      });
       dispatch(push({pathname: '/', query: { searchTerm: searchTerm }}));
     }
   };
