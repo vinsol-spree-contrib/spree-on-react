@@ -46,7 +46,8 @@ const checkout = {
 
         apiPromise.then((response) => {
           dispatch(Actions.updateOrderInState(response.body));
-          dispatch (push(checkout._fetchNextRoute(order, currentStep)));
+          let newOrder = getState().order;
+          dispatch (push(checkout._fetchNextRoute(newOrder, currentStep)));
           dispatch (Actions.hideLoader());
           dispatch(Actions.showFlash(`Successfully saved ${currentStep} form.`));
         },

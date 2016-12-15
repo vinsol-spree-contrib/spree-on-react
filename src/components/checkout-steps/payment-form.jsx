@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
+import { connect } from 'react-redux';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import CheckoutStepCalculator from '../../services/checkout-step-calculator';
+import CardFields from './payment/card-fields';
 
 class PaymentForm extends Component {
 
@@ -49,6 +51,9 @@ class PaymentForm extends Component {
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ this.props.handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             { paymentMethodMarkup }
+            { this.props.useCard==2 &&
+              <CardFields />
+            }
             <button type="submit" className="btn btn-success">Save Payment Details</button>
           </form>
         </BaseCheckoutLayout>
@@ -60,5 +65,15 @@ class PaymentForm extends Component {
 PaymentForm = reduxForm({
   form: 'paymentForm'
 })(PaymentForm);
+
+const selector = formValueSelector('paymentForm');
+PaymentForm = connect(
+  state => {
+    const useCard = selector(state, 'order[payments_attributes][0][payment_method_id]');
+    return {
+      useCard
+    };
+  }
+)(PaymentForm)
 
 export default PaymentForm;
