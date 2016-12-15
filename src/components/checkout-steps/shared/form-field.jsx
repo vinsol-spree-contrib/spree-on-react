@@ -18,7 +18,7 @@ const FormField = {
                   placeholder={ label }
                   type={ type }
                   id={ input.name } />
-          { touched && error && <span>{ error }</span> }
+          { touched && error && <span className="help-block">{ error }</span> }
         </div>
       </div>
     );
