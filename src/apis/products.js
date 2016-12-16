@@ -21,7 +21,6 @@ const ProductsAPI = {
       );
   },
 
-
   getItem: (productId) => {
     return request
       .get(`${process.env.REACT_APP_API_BASE}/products/` + productId)

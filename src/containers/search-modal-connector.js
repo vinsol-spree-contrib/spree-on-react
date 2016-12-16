@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     submitForm: (searchTerm) => {
-      dispatch (Actions.showLoader());
+      dispatch (Actions.displayLoader());
       ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
         let fetchedProducts = JSON.parse(response.text);
         dispatch (Actions.addProducts(fetchedProducts));
