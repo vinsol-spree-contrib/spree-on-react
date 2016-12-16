@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentCheckoutStep: () => {
-      dispatch({
+      dispatch ({
         type: APP_ACTIONS.SET_CURRENT_CHECKOUT_STEP,
         payload: 'address'
       });
@@ -35,13 +35,13 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.hideLoader());
       },
       (error) => {
-        dispatch(Actions.showFlash('Unable to connect to server... Please try again later.'));
+        dispatch (Actions.showFlash('Unable to connect to server... Please try again later.'));
       })
     },
 
     handleOrderNotPresent: () => {
       dispatch (push('/cart'));
-      dispatch(Actions.showFlash("Your cart is empty!", 'danger'));
+      dispatch (Actions.showFlash("Your cart is empty!", 'danger'));
     }
   };
 };

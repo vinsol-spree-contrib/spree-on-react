@@ -10,7 +10,7 @@ const order = {
     2. Moved to a different state in checkout flow. */
   updateOrderInState: (recievedOrder) => {
     return (dispatch, getState) => {
-      dispatch({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
+      dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
       localStorageAPI.save(getState());
     };
   },
@@ -51,14 +51,14 @@ const order = {
           dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: order });
           localStorageAPI.save(getState());
 
-          return dispatch(Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
+          return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
         });
       }
       else {
         let orderNumber = order.number;
         let orderToken = order.token;
 
-        return dispatch(Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
+        return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
       }
 
     }

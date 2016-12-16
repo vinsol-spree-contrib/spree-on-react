@@ -29,8 +29,8 @@ const checkout = {
       let checkoutSteps = order.checkout_steps;
 
       if (CheckoutStepCalculator.isLastStep(checkoutSteps, orderState)) {
-        dispatch(Actions.showFlash('Your order has already been placed. Thanks!'));
-        dispatch(push('/'));
+        dispatch (Actions.showFlash('Your order has already been placed. Thanks!'));
+        dispatch (push('/'));
       }
       else {
         dispatch (Actions.displayLoader());
@@ -45,14 +45,14 @@ const checkout = {
         }
 
         apiPromise.then((response) => {
-          dispatch(Actions.updateOrderInState(response.body));
+          dispatch (Actions.updateOrderInState(response.body));
           dispatch (push(checkout._fetchNextRoute(order, currentStep)));
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(`Successfully saved ${currentStep} form.`));
+          dispatch (Actions.showFlash(`Successfully saved ${currentStep} form.`));
         },
         (error) => {
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(error.response.body.error, 'danger'));
+          dispatch (Actions.showFlash(error.response.body.error, 'danger'));
         });
 
         return apiPromise;

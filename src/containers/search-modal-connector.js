@@ -21,7 +21,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.addProducts(fetchedProducts));
         dispatch (Actions.hideLoader());
       });
-      dispatch(push({pathname: '/', query: { searchTerm: searchTerm }}));
+      dispatch (push({pathname: '/', query: { searchTerm: searchTerm }}));
     }
   };
 };
