@@ -4,12 +4,8 @@ import Taxon from './taxon';
 
 class FilterBar extends Component {
   taxonMarkup (taxon) {
-    let childTaxons = this.props.taxons.filter((childTaxon) => {
-      return childTaxon.parent_id == taxon.id;
-    });
-
-    if (childTaxons.length > 0) {
-      let thisTaxonInnerMarkup = childTaxons.map((innerTaxon) => {
+    if (taxon.taxons.length > 0) {
+      let thisTaxonInnerMarkup = taxon.taxons.map((innerTaxon) => {
         return (this.taxonMarkup(innerTaxon));
       });
 

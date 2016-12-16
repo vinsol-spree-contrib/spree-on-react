@@ -1,4 +1,5 @@
 import PRODUCT from '../constants/product';
+import SpreeAPIProductAdapter from './ams-adapters/spree-api-product-adapter';
 
 var request = require('superagent');
 
@@ -10,10 +11,12 @@ const ProductsAPI = {
       .set('Accept', 'application/json')
       .then(
         (response) => {
+          if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+            let processedResponse = SpreeAPIProductAdapter.processList(response.body);
+            response.body = processedResponse;
+          }
+
           return response;
-        },
-        (error) => {
-          return { products: [] };
         }
       );
   },
@@ -24,10 +27,12 @@ const ProductsAPI = {
       .set('Accept', 'application/json')
       .then(
         (response) => {
+          if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+            let processedResponse = SpreeAPIProductAdapter.processItem(response.body);
+            response.body = processedResponse;
+          }
+
           return response;
-        },
-        (error) => {
-          return { product: {} };
         }
       );
   },
