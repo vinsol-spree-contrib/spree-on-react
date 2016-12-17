@@ -17,8 +17,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.displayLoader());
 
         TaxonAPI.getList().then((response) => {
-          let fetchedTaxons = JSON.parse(response.text).taxons;
-          dispatch (Actions.addTaxons(fetchedTaxons));
+          dispatch (Actions.addTaxons(response.body));
           dispatch (Actions.hideLoader());
         });
       }

@@ -1,7 +1,7 @@
 const SpreeAPITaxonAdapter = {
   processList: (taxonsListAMS) => {
     let parentTaxons = taxonsListAMS.taxons.filter((taxon) => {
-      return taxon.parent_id == null;
+      return taxon.parent_id === null;
     });
 
     parentTaxons.forEach((taxon) => {
@@ -20,7 +20,7 @@ const SpreeAPITaxonAdapter = {
   */
   _process: (taxon, taxonsListAMS) => {
     let childTaxons = taxonsListAMS.taxons.filter((_taxon) => {
-      return _taxon.parent_id == taxon.id;
+      return _taxon.parent_id === taxon.id;
     });
 
     taxon.taxons = childTaxons;
