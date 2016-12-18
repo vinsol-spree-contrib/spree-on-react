@@ -28,15 +28,15 @@ const LineItemAPI = {
 
   update: (params) => {
     let tokenParam = CommonAPIMethods.getTokenParams(params);
-
-    return request
-      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/line_items/${params.lineItemId}`)
-      .query(tokenParam)
+      return request
+      .put(`${process.env.REACT_APP_API_BASE}/line_items/${params.lineItemId}`)
       .set('Accept', 'application/json')
       .send({
         line_item: {
           quantity: params.quantity
-        }
+        },
+        order_number: params.orderNumber,
+        token: 'c0c2bd503bd58bf0398db31f55e46b082aa6e5c2244853d9'
       });
   }
 };
