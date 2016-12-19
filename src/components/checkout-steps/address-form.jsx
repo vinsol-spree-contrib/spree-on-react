@@ -126,7 +126,7 @@ AddressForm = connect(
         save_user_address: true,
         order: {
           use_billing: true,
-          email: state.order.email,
+          email: state.order.email || state.user.email,
           bill_address_attributes: {
             address1: billAddress.address1,
             address2: billAddress.address2,
