@@ -3,9 +3,7 @@ import BrandHeader from './brand-header';
 import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
 import CartNotificationInfoConnector from '../containers/cart/notification-info-connector';
 import SearchBlock from './search-block';
-import UserForm  from './user-form';
-import UserLoginForm  from './user-login';
-import UserSignupForm  from './user-signup';
+import UserLoginConnector  from '../containers/user-login-connector';
 
 class Header extends Component {
 
@@ -15,67 +13,41 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      showModal: false,
-      defaultForm: true
-    }
-    this.open = this.open.bind(this)
-    this.close = this.close.bind(this)
-    this.toggle = this.toggle.bind(this)
-    this.openLogin = this.openLogin.bind(this)
-    this.openSignup = this.openSignup.bind(this)
-  }
 
-  open() {
-    this.setState({showModal: true});
+    this.state = { showModal: false };
+
+    this.openModal = this.openModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
   };
 
-  close() {
-    this.setState({showModal: false});
+  openModal() {
+    this.setState({ showModal: true });
   };
 
-  toggle() {
-    this.setState({defaultForm: !this.state.defaultForm});
+  closeModal() {
+    this.setState({ showModal: false });
   };
-
-  openLogin() {
-    this.setState({
-      defaultForm: true,
-      showModal: true
-    });
-  };
-
-  openSignup() {
-    this.setState({
-      defaultForm: false,
-      showModal: true
-    });
-  }
 
   navIcons () {
     return <dl className="nav-icons pull-right">
               <dd className='icon-block user-link-block'>
-                <a className="primary-link" onClick={this.openLogin}><span className="glyphicon glyphicon-user"></span>Login</a>
-                <a className="primary-link" onClick={this.openSignup}><span className="glyphicon glyphicon-lock"></span>SignUp</a>
+                <a className="primary-link" onClick={ this.openModal }><span className="glyphicon glyphicon-user"></span>Login</a>
               </dd>
               <CartNotificationInfoConnector />
-              
+
               <SearchBlock />
 
-              <UserForm close={this.close} showModal={this.state.showModal}>
-                { this.state.defaultForm ? <UserLoginForm defaultForm={this.state.defaultForm} toggle={this.toggle} /> : <UserSignupForm defaultForm={this.state.defaultForm} toggle={this.toggle} /> }
-              </UserForm>
+              <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
 
-           </dl>
+           </dl>;
   };
 
   render() {
-    var navicons = this.navIcons();
     return (
       <nav className="navbar navbar-inverse navbar-fixed-top">
         <div className="container-fluid">
           <BrandHeader />
-          {navicons}
+          { this.navIcons() }
           <div className="navbar-collapse collapse">
             <FilterBarConnector />
           </div>
