@@ -4,7 +4,7 @@ import SpreeAPITaxonAdapter from './ams-adapters/spree-api-taxon-adapter';
 const TaxonAPI = {
   getList: () => {
     return request
-      .get(`${ process.env.REACT_APP_API_BASE }/taxons`)
+      .get(`${ process.env.REACT_APP_AMS_API_BASE }/taxons`)
       .set('Accept', 'application/json')
       .then((response) => {
         if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
