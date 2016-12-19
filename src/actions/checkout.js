@@ -37,13 +37,14 @@ const checkout = {
       else {
         dispatch (Actions.displayLoader());
         let currentStep = getState().currentCheckoutStep;
+        let apiToken = getState().user.token || order.guest_token;
         let apiPromise;
 
         if (CheckoutStepCalculator.isPristineStep(checkoutSteps, currentStep, orderState)) {
-          apiPromise = CheckoutAPI.update(order.number, order.token, formData);
+          apiPromise = CheckoutAPI.update(order.number, apiToken, formData);
         }
         else {
-          apiPromise = OrdersAPI.update(order.number, order.token, formData);
+          apiPromise = OrdersAPI.update(order.number, apiToken, formData);
         }
 
         apiPromise.then((response) => {
