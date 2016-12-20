@@ -35,7 +35,7 @@ class OrderPanelView extends Component {
         <div className="label-block-row">
           <label className="label label-default">Ref: { thisOrder.number }</label> 
           <label className="label label-normal">{ thisOrder.shipments.length } Package(s)</label>
-          <label className="label label-normal">Order Total: { thisOrder.display_total }</label>
+          <label className="label label-normal">Order Total: ${ thisOrder.total }</label>
           <span className="pull-right">
             <label className={ 'label alert-' + thisOrder.state }>Status: { thisOrder.state }</label>
           </span>

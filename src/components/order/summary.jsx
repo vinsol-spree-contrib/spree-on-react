@@ -10,7 +10,7 @@ class OrderSummary extends Component {
     let orderPropertiesMapper = this.getOrderPropertiesMapper();
     return orderPropertiesMapper.map((property, idx) => {
       return (
-        <tr>
+        <tr key={`order-prop-${ idx }`}>
           <td>
             <label>
               { property[0] }
@@ -39,7 +39,7 @@ class OrderSummary extends Component {
       );
     };
     orderPropertiesMapper.push(
-      ['Order Total:', thisOrder.display_total]
+      ['Order Total: $', thisOrder.total]
     );
     return orderPropertiesMapper;
   }
