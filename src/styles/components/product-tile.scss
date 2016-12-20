@@ -12,13 +12,26 @@
     background: transparent;
     border: none;
     
-    
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
     &:hover{
-      color: $link-color;
+      a {
+        color: $link-color;
+      }
 
       .hover-info {
-        top: 70%;
         opacity: 1;
+        @include translatePos(-50%, -30px);
+      }
+
+      .product-tile-image {
+        @include scale(1.2);
+      }
+
+      .product-text-info {
+        border-color: $link-color;
       }
     }
   }
@@ -27,48 +40,67 @@
     padding: 10px 0;
   }
 
-
-  a {
-    text-decoration: none;
-  }
   
   .thumb-img-block {
     position: relative;
-    background: #fff;
+    background: #fcfcfc;
     padding: 20px;
-    margin-bottom: 10px;
     @include flex();
     align-items:center;
     justify-content:center;
     min-height: 300px;
+    overflow: hidden;
 
+    .product-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      cursor: pointer;
+      z-index: 1;
+    }
     
+    .product-tile-image {
+      @include transition(all,20s);
+      @include scale(1);
+    }
   }
   .product-text-info {
-    font-size: 18px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 400;
+    background: $productInfoBg;
+    padding: 15px;
+    border-bottom: dotted 1px $productInfoBg;
+    @include transition(border,0.5s);
 
     .caption-info {
       text-transform: uppercase;
-      font-weight: 600;
+      font-weight: 400;
+      margin-bottom: 5px;
+      font-size: 18px;
     }
   }
   .hover-info {
-    top: 0;
-    bottom: inherit;
+    bottom: 0;
     @include transition(all,0.5s);
     position: absolute;
-    left: 0;
     opacity: 0;
     font-size: 15px;
+    left: 50%;
+    transform: translate(-50%,0);
+    z-index: 2;
 
-    a {
+    .info-elem {
       width: 30px;
       height: 30px;
       display: inline-block;
       margin: 5px;
+      cursor: pointer;
       @include border-radius(50%);
-      background: #f7f7f7;
+      @include transition(all,0.5s);
+      color: $link-color;
+      background: #E6EAEA;
       text-align: center;
       line-height: 33px;
 

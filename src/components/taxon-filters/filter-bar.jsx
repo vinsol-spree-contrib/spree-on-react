@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, NavDropdown } from 'react-bootstrap';
+import { NavDropdown } from 'react-bootstrap';
 import Taxon from './taxon';
 
 class FilterBar extends Component {
@@ -32,15 +32,11 @@ class FilterBar extends Component {
     });
 
     return (
-      <div className="row filter-bar">
-        <div className="col-md-12">
-          <Nav bsStyle="tabs">
-            { taxonFilterMarkup }
-          </Nav>
-        </div>
-      </div>
+      <ul className="nav navbar-nav">
+        { taxonFilterMarkup }
+      </ul>
     );
   }
-}
+};
 
 export default FilterBar;

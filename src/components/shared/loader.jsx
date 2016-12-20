@@ -5,11 +5,14 @@ class Loader extends Component {
   render() {
     let loaderDiv = null;
 
-    if(this.props.displayLoader){
-        loaderDiv = <div className="loading-block">
-                      <img className='loader' src={loaderImage} alt='Loader'/>
+    if (this.props.displayLoader) {
+      loaderDiv = <div className="product-loader">
+                    <div className="loading-block">
+                      <img className='loader' src={ loaderImage } alt='Loader'/>
                     </div>
-      }
+                  </div>;
+    }
+
     return (
       loaderDiv
     );
@@ -17,4 +20,3 @@ class Loader extends Component {
 }
 
 export default Loader;
-

@@ -14,7 +14,7 @@ let spreeStoreVariable;
 const dataFromLocalStorage = localStorageAPI.load();
 
 if (dataFromLocalStorage) {
-  spreeStoreVariable = createStore(AppReducer, dataFromLocalStorage, applyMiddleware(thunk, routerMiddleware(browserHistory), logger));
+  spreeStoreVariable = createStore(AppReducer, {order: dataFromLocalStorage.order, user: dataFromLocalStorage.user}, applyMiddleware(thunk, routerMiddleware(browserHistory), logger));
 }
 else {
   spreeStoreVariable = createStore(AppReducer, applyMiddleware(thunk, routerMiddleware(browserHistory), logger));

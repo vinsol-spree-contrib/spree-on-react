@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 
+import URLSanitizer from '../../services/url-sanitizer';
+
 class ProductImageThumb extends Component {
+
   render() {
+    let imageUrl = URLSanitizer.makeAbsolute(this.props.imageUrl);
+
     return (
-      <div className="col-md-2">
-        <img className="product-preview-image" alt={'productName'} src={ process.env.REACT_APP_API_HOST + this.props.imageUrl }
+      <div className="col-sm-4 col-xs-4 thumbnail">
+        <img className="product-preview-image img-responsive img-center" alt={'productName'} src={ imageUrl }
              onMouseOver={()=> this.props.onMouseOverThumbnail(this.props.imageNo)}
              onMouseOut={this.props.onMouseOutThumbnail}
              onClick={()=> this.props.onClickThumbnail(this.props.imageNo)}>

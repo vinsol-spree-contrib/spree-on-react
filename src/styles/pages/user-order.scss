@@ -1,0 +1,69 @@
+.order-panel-view {
+  + .order-panel-view {
+      margin-top: 30px;
+    }
+}
+
+.order-list, .order-panel-view {
+  .label-block-row {
+    margin-left: -10px;
+    [class*="label-"],
+    [class*="alert-"] {
+      color: #fff;
+    }
+  }
+  .label {
+    margin-left: 10px;
+    display: inline-block;
+    font-size: 12px;
+    &.label-normal {
+      border: solid 1px #dedede;
+      background: #f2f2f2;
+      color: inherit;
+      font-weight: 500;
+    }
+  }
+}
+
+.shipment-heading {
+  font-size: 18px;
+  font-weight: bold;
+  .label {
+    vertical-align: middle;
+  }
+}
+
+.shipment-view {
+  + .shipment-view {
+    border-top: solid 1px #dedede;
+    padding-top: 15px;
+    margin-top: 10px;
+  }
+  &:nth-child(even) {
+  }
+}
+
+.address-view {
+  p {
+    margin-bottom: 5px;
+  }
+}
+
+.shipment-line-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.order-total-row {
+  .heading {
+    border-top: solid 1px #dedede;
+    font-size: 20px;
+    padding-top: 10px;
+    font-weight: 600;
+    padding-bottom: 10px;
+
+    small {
+      font-size: 60%;
+    }
+  }
+}
