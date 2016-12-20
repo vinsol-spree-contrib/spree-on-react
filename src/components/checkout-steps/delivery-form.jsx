@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { reduxForm, formValueSelector } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -64,5 +65,25 @@ class DeliveryForm extends Component {
 DeliveryForm = reduxForm({
   form: 'deliveryForm'
 })(DeliveryForm);
+
+const selector = formValueSelector('deliveryForm');
+DeliveryForm = connect(
+  state => {
+    const shipments = state.order.shipments || [];
+    const shipments_attributes = {};
+
+    shipments.forEach((shipment, idx) => {
+      shipments_attributes[idx] = { selected_shipping_rate_id: `${shipment.selected_shipping_rate.id}` }
+    });
+
+    return {
+      initialValues: {
+        order: {
+          shipments_attributes
+        }
+      }
+    };
+  }
+)(DeliveryForm)
 
 export default DeliveryForm;
