@@ -42,40 +42,35 @@ class AddressFields extends Component {
     return (
       <div>
         { this.props.children }
-        <div className="form-group">
-          <label htmlFor="firstname" className="col-sm-2 control-label">First Name</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[firstname]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[firstname]" }
+                component={FormField.inputFieldMarkup}
+                label="First Name"
+                type="text" />
 
-        <div className="form-group">
-          <label htmlFor="lastname" className="col-sm-2 control-label">Last Name</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[lastname]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[lastname]" }
+                component={FormField.inputFieldMarkup}
+                label="Last Name"
+                type="text" />
 
-        <div className="form-group">
-          <label htmlFor="address1" className="col-sm-2 control-label">Address Line 1</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[address1]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[address1]" }
+                component={FormField.inputFieldMarkup}
+                label="Address Line 1"
+                type="text" />
 
-        <div className="form-group">
-          <label htmlFor="address2" className="col-sm-2 control-label">Address Line 2</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[address2]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[address2]" }
+                component={FormField.inputFieldMarkup}
+                label="Address Line 2"
+                type="text" />
 
-        <div className="form-group">
-          <label htmlFor="city" className="col-sm-2 control-label">City</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[city]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[city]" }
+                component={FormField.inputFieldMarkup}
+                label="City"
+                type="text" />
 
         <div className="form-group">
           <label htmlFor="country" className="col-sm-2 control-label">Country</label>
@@ -84,7 +79,8 @@ class AddressFields extends Component {
                   fieldNamePrefix={ this.props.fieldNamePrefix }
                   countries={ this.props.countries }
                   component={ CountryField }
-                  handleCountryChange={ this.handleCountryChange.bind(this) }/>
+                  handleCountryChange={ this.handleCountryChange.bind(this) }
+                  selectedCountryId={ this.props.selectedCountryId }/>
           </div>
         </div>
 
@@ -100,19 +96,18 @@ class AddressFields extends Component {
           </div>
         }
 
-        <div className="form-group">
-          <label htmlFor="zipcode" className="col-sm-2 control-label">Zip Code</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[zipcode]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[zipcode]" }
+                component={FormField.inputFieldMarkup}
+                label="Zipcode"
+                type="text" />
 
-        <div className="form-group">
-          <label htmlFor="phone" className="col-sm-2 control-label">Phone</label>
-          <div className="col-sm-10">
-            <Field className="form-control" name={this.props.fieldNamePrefix + "[phone]" } component={FormField.inputFieldMarkup} type="text" />
-          </div>
-        </div>
+        <Field className="form-control"
+                name={this.props.fieldNamePrefix + "[phone]" }
+                component={FormField.inputFieldMarkup}
+                label="Phone"
+                type="text" />
+
       </div>
     );
   };

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { reduxForm, formValueSelector } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -13,7 +14,7 @@ class DeliveryForm extends Component {
     let order = this.props.order;
 
     if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'delivery', order.state)){
-      this.props.handleCheckoutStepNotEditable();
+      this.props.handleCheckoutStepNotEditable(order);
     }
   };
 
@@ -27,12 +28,14 @@ class DeliveryForm extends Component {
 
   render() {
     let shipments = this.props.order.shipments;
+    const { handleSubmit, valid, submitting } = this.props;
 
     let shipmentsMarkup = shipments.map((shipment, idx) => {
       return (
         <Shipment shipment={ shipment }
                   key={ idx }
                   shipmentIndex={ idx + 1 }
+                  orderLineItems={ this.props.order.line_items }
                   fieldNamePrefix={`order[shipments_attributes][${ idx }]`} />
       );
     });
@@ -42,12 +45,16 @@ class DeliveryForm extends Component {
         <BaseCheckoutLayout currentStep="delivery"
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
-          <form onSubmit={ this.props.handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
+          <form onSubmit={ handleSubmit(this.handleDeliveryFormSubmit.bind(this)) }>
             <div>
               { shipmentsMarkup }
             </div>
 
-            <button type="submit" className="btn btn-success">Submit</button>
+            <button type="submit"
+                    className="btn btn-success btn-lg"
+                    disabled={ !valid || submitting }>
+                      Save Delivery Details
+            </button>
           </form>
         </BaseCheckoutLayout>
       </Layout>
@@ -58,5 +65,25 @@ class DeliveryForm extends Component {
 DeliveryForm = reduxForm({
   form: 'deliveryForm'
 })(DeliveryForm);
+
+const selector = formValueSelector('deliveryForm');
+DeliveryForm = connect(
+  state => {
+    const shipments = state.order.shipments || [];
+    const shipments_attributes = {};
+
+    shipments.forEach((shipment, idx) => {
+      shipments_attributes[idx] = { selected_shipping_rate_id: `${shipment.selected_shipping_rate.id}` }
+    });
+
+    return {
+      initialValues: {
+        order: {
+          shipments_attributes
+        }
+      }
+    };
+  }
+)(DeliveryForm)
 
 export default DeliveryForm;

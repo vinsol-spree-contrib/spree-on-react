@@ -4,6 +4,8 @@ import { push } from 'react-router-redux';
 import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
 import PaymentForm from '../../components/checkout-steps/payment-form';
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
+import APP_ROUTES from '../../constants/app-routes';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -25,8 +27,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch (Actions.goToNextStep(order, formData));
     },
 
-    handleCheckoutStepNotEditable: () => {
-      dispatch (push('/'));
+    handleCheckoutStepNotEditable: (order) => {
+      const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'payment');
+
+      dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
     }
   };
 };

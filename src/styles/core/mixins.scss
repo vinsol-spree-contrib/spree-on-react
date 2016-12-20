@@ -52,6 +52,12 @@
           transform: scale($val);
 }
 
+@mixin rotate($val) {
+ -webkit-transform: rotate($val);
+    -moz-transform: rotate($val);
+      -o-transform: rotate($val);
+          transform: rotate($val); 
+}
 @mixin translate3d($x, $y, $z) {
   -webkit-transform: translate3d($x, $y, $z);
     -moz-transform: translate3d($x, $y, $z);
@@ -105,7 +111,11 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
 }
-
+@mixin flex-align-item ($align) {
+  -webkit-align-items: $align;
+      -ms-align-items: $align;
+          align-items: $align;
+}
 @mixin flex-align-content ($align) {
   -webkit-align-content: $align;
       -ms-align-content: $align;

@@ -9,6 +9,16 @@ const CheckoutStepCalculator = {
     }
   },
 
+  previous: (checkoutSteps, currentStep) => {
+    if (CheckoutStepCalculator.isFirstStep(checkoutSteps, currentStep)) {
+      return 'cart';
+    }
+    else {
+      let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
+      return checkoutSteps[indexOfCurrentStep - 1];
+    }
+  },
+
   isPristineStep: (checkoutSteps, currentStep, orderState) => {
     if (CheckoutStepCalculator.isLastStep(checkoutSteps, currentStep)) {
       return true;
@@ -34,7 +44,18 @@ const CheckoutStepCalculator = {
     let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
 
     return (indexOfCurrentStep === (checkoutSteps.length - 1));
+  },
+
+  isFirstStep: (checkoutSteps, currentStep) => {
+    let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
+
+    return (indexOfCurrentStep === 0);
+  },
+
+  isValidStep: (checkoutSteps, currentStep) => {
+    return (checkoutSteps.indexOf(currentStep) !== -1);
   }
+
 }
 
 export default CheckoutStepCalculator;

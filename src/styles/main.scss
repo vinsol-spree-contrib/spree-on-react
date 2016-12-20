@@ -52,6 +52,12 @@ a {
     outline: none !important;
     @include box-shadow(0,0,0,0 !important) ;
   }
+
+  &.btn-blank {
+    background: none;
+    color: inherit;
+    text-shadow:none;
+  }
 }
 .zoom {
   @include transition(transform,0.5s);
@@ -294,6 +300,16 @@ a {
   text-align: left;
   margin: 0 0 20px;
   padding: 15px 0 10px;
+
+  &.center-heading {
+    text-align: center;
+  }
+  &.no-border{
+    border: none;
+  }
+  &.big {
+    font-size: 30px;
+  }
 }
 
 @media (max-width: 767px) {

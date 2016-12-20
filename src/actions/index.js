@@ -6,6 +6,8 @@ import orderList from './order-list';
 import flash from './flash';
 import countries from './countries';
 import checkout from './checkout';
+import placedOrder from './placed-order';
+import user from './user';
 
 export default {
   addProducts: products.addProducts,
@@ -19,6 +21,7 @@ export default {
   hideLoader: loader.hideLoader,
   addProductToCart: order.addProductToCart,
   emptyCart: order.emptyCart,
+  clearOrder: order.clearOrder,
   setFlash: flash.setFlash,
   showFlash: flash.showFlash,
   hideFlash: flash.hideFlash,
@@ -28,5 +31,8 @@ export default {
   refreshOrder: order.refreshOrder,
   addLineItem: order.addLineItem,
   addCountries: countries.addCountries,
-  goToNextStep: checkout.goToNextStep
+  goToNextStep: checkout.goToNextStep,
+  addPlacedOrder: placedOrder.addPlacedOrder,
+  login: user.login,
+  logout: user.logout
 };

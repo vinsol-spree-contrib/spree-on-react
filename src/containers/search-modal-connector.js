@@ -7,8 +7,11 @@ import ProductsAPI from '../apis/products';
 
 import SearchModal from '../components/search-modal';
 
+import UrlParser from '../services/url-parser';
+
 const mapStateToProps = (state, ownProps) => {
   return {
+    searchTerm: UrlParser.getQueryVariable('searchTerm')
   };
 };
 
@@ -17,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
     submitForm: (searchTerm) => {
       dispatch (Actions.displayLoader());
       ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
-        let fetchedProducts = JSON.parse(response.text);
+        let fetchedProducts = response.body;
         dispatch (Actions.addProducts(fetchedProducts));
         dispatch (Actions.hideLoader());
       });

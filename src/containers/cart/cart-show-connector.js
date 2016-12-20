@@ -5,6 +5,8 @@ import CartShow from '../../components/cart/show';
 import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
 
+import APP_ROUTES from '../../constants/app-routes';
+
 const mapStateToProps = (state, ownProps) => {
   return {
     order: state.order
@@ -64,7 +66,7 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.goToNextStep(order));
       }
       else {
-        dispatch (push('/checkout/address'));
+        dispatch (push(APP_ROUTES.checkout.addressPageRoute));
       }
     }
 

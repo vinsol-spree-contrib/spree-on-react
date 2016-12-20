@@ -5,6 +5,12 @@ import localStorageAPI from '../services/local-storage-api';
 import Actions from './';
 
 const order = {
+  clearOrder: () => {
+    return (dispatch, getState) => {
+      dispatch( { type: APP_ACTIONS.DESTROY_ORDER } );
+      localStorageAPI.save(getState());
+    };
+  },
   /* This is called whenever:
     1. Order is updated.
     2. Moved to a different state in checkout flow. */
@@ -23,9 +29,9 @@ const order = {
     return (dispatch, getState) => {
       let staleOrder = getState().order;
       let orderNumber = staleOrder.number;
-      let orderToken = staleOrder.token;
+      let apiToken = getState().user.token || staleOrder.guest_token;
 
-      OrdersAPI.getItem({ orderNumber, orderToken }).then((response) => {
+      OrdersAPI.getItem({ orderNumber, apiToken }).then((response) => {
         dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: response.body });
         localStorageAPI.save(getState());
 
@@ -42,23 +48,23 @@ const order = {
   addProductToCart: (variantId, quantity = 1) => {
     return (dispatch, getState) => {
       let order = getState().order;
+      let apiToken = getState().user.token || order.guest_token;
+
       if (order.id === undefined) {
-        return OrdersAPI.create({variantId, quantity}).then((response) => {
+        return OrdersAPI.create(apiToken).then((response) => {
           let order = response.body;
           let orderNumber = order.number;
-          let orderToken = order.token;
-
+          apiToken = apiToken || order.guest_token;
           dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: order });
           localStorageAPI.save(getState());
 
-          return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
+          return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, apiToken }));
         });
       }
       else {
         let orderNumber = order.number;
-        let orderToken = order.token;
 
-        return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, orderToken }));
+        return dispatch (Actions.addLineItem({ variantId, quantity, orderNumber, apiToken }));
       }
 
     }
@@ -67,12 +73,12 @@ const order = {
   emptyCart: (order) => {
     return (dispatch, getState) => {
       let orderNumber = order.number;
-      let orderToken = order.token;
+      let apiToken = getState().user.token || order.guest_token;
 
-      return OrdersAPI.destroy({ orderNumber, orderToken }).then((response) => {
+      return OrdersAPI.destroy({ orderNumber, apiToken }).then((response) => {
         dispatch ({ type: APP_ACTIONS.DESTROY_ORDER });
 
-        localStorageAPI.clear();
+        localStorageAPI.save(getState());
         return response;
       });
     }
@@ -82,9 +88,9 @@ const order = {
     return (dispatch, getState) => {
       let orderFromState = getState().order;
       let orderNumber = orderFromState.number;
-      let orderToken = orderFromState.token;
+      let apiToken = getState().user.token || orderFromState.guest_token;
 
-      return LineItemAPI.destroy({orderNumber, orderToken, lineItemId}).then((response) => {
+      return LineItemAPI.destroy({ orderNumber, apiToken, lineItemId }).then((response) => {
         dispatch ({ type: APP_ACTIONS.REMOVE_LINE_ITEM, payload: lineItemId });
 
         localStorageAPI.save(getState());
@@ -97,9 +103,9 @@ const order = {
     return (dispatch, getState) => {
       let orderFromState = getState().order;
       let orderNumber = orderFromState.number;
-      let orderToken = orderFromState.token;
+      let apiToken = getState().user.token || orderFromState.guest_token;
 
-      return LineItemAPI.update({ quantity, orderNumber, orderToken, lineItemId }).then((response) => {
+      return LineItemAPI.update({ quantity, orderNumber, apiToken, lineItemId }).then((response) => {
         dispatch ({ type: APP_ACTIONS.UPDATE_LINE_ITEM, payload: response.body });
 
         localStorageAPI.save(getState());

@@ -22,26 +22,32 @@ const mapDispatchToProps = (dispatch) => {
       dispatch (Actions.displayLoader());
 
       TaxonAPI.getList().then((response) => {
-        let fetchedTaxons = JSON.parse(response.text).taxons;
+        let fetchedTaxons = response.body.taxons;
         dispatch (Actions.addTaxons(fetchedTaxons));
 
         if (pathname === '/') {
           let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
           ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
-            let fetchedProducts = JSON.parse(response.text);
+            let fetchedProducts = response.body;
 
             dispatch (Actions.addProducts(fetchedProducts));
             dispatch (Actions.hideLoader());
           });
+            // let fetchedProducts = JSON.parse(response.text);
         } else {
-          dispatch (Actions.fetchProductsByTaxon()).then((response) => {
-            let fetchedProducts = JSON.parse(response.text);
+          dispatch(Actions.fetchProductsByTaxon()).then((response) => {
+            let fetchedProducts = response.body;
 
             dispatch (Actions.addProducts(fetchedProducts));
             dispatch (Actions.hideLoader());
           });
         }
 
+      },
+
+      (error) => {
+        dispatch (Actions.hideLoader());
+        dispatch (Actions.showFlash('Unable to connect to server. Please try again later.', 'danger'));
       });
     },
 

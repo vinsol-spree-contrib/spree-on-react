@@ -11,12 +11,12 @@ const CheckoutAPI = {
       .send(params);
   },
 
-  update: (orderNumber, orderToken, params = {}) => {
-    let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
+  update: (orderNumber, apiToken, params = {}) => {
+    // let tokenParam = CommonAPIMethods.getTokenParams({ token: apiToken });
 
     return request
       .put(`${process.env.REACT_APP_API_BASE}/checkouts/${orderNumber}`)
-      .query(tokenParam)
+      .query({ token: apiToken })
       .set('Accept', 'application/json')
       .send(params);
   }

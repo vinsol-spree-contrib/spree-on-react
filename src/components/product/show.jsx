@@ -7,7 +7,7 @@ import ImageViewer from './image-viewer';
 import VariantsList from './variants-list';
 import Layout from '../layout';
 
-import ProductFinder from '../../services/product-finder';
+import ProductModel from '../../services/product-model';
 import Loader from '../shared/loader';
 
 class ProductShow extends Component {
@@ -27,7 +27,7 @@ class ProductShow extends Component {
 
   componentDidMount() {
     let productId = this.props.routeParams.productId;
-    let product = ProductFinder.find(productId, this.props.products);
+    let product = ProductModel.find(productId, this.props.products);
 
     /* Set productId in internal state */
     this.setState({
@@ -47,7 +47,7 @@ class ProductShow extends Component {
 
   componentWillReceiveProps(nextProps) {
     let productId = this.state.productId;
-    let product = ProductFinder.find(productId, nextProps.products);
+    let product = ProductModel.find(productId, nextProps.products);
 
     if (product) {
       this.setState({

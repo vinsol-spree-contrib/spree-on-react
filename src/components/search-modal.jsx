@@ -4,8 +4,8 @@ class searchModal extends Component {
 
   constructor(props) {
     super(props);
-    this.onChange = this.onChange.bind(this)
-    this.submitForm = this.submitForm.bind(this)
+    this.onChange = this.onChange.bind(this);
+    this.submitForm = this.submitForm.bind(this);
   }
 
   onChange(event) {
@@ -19,14 +19,11 @@ class searchModal extends Component {
 
   render() {
     return (
-      <div className={ "search-modal " + (this.props.showModal ? 'show-modal' : ' ') }>
-        <span className="glyphicon glyphicon-remove btn-close" onClick={this.props.close}></span>
+      <dd className='icon-block'>
         <form onSubmit={this.submitForm}>
-          <div className="container-fluid">
-            <input type="text" className="form-control" onChange={this.onChange} placeholder="Search"/>
-          </div>
+          <input type="text" className="form-control" onChange={this.onChange} placeholder="Search" defaultValue={this.props.searchTerm}/>
         </form>
-      </div>
+      </dd>
     );
   }
 }
