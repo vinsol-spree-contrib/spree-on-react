@@ -25,7 +25,7 @@ class Shipment extends Component {
             { this._shipmentLineItemsMarkup() }
           </div>
         </div>
-      
+
         <div className="col-md-4">
           <label>Shipping Address: &nbsp;</label>
           <Address address={ this.props.address } />
