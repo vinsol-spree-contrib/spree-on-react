@@ -17,7 +17,7 @@ const OrdersAPI = {
 
     return request
       .get(`${process.env.REACT_APP_API_BASE}/orders/mine`)
-      .query({ token: apiToken })
+      .query({ token: apiToken, 'q[state_cont]': 'complete' })
       .set('Accept', 'application/json')
       .send();
   },
