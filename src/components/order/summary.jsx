@@ -1,9 +1,3 @@
-// Total Cost
-// Tax 1
-// Tax 2
-// Shipping charges
-// Order Total
-
 import React, { Component } from 'react';
 import { Panel, Table } from 'react-bootstrap';
 
@@ -59,7 +53,6 @@ class OrderSummary extends Component {
               {this.mapPropertiesToTable()}
             </tbody>
           </Table>
-          Some more panel content here.
         </Panel>
       </div>
     );

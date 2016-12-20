@@ -51,7 +51,7 @@ class PaymentForm extends Component {
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             { paymentMethodMarkup }
-            { this.props.useCard==="1" &&
+            { this.props.useCard==="2" &&
               <CardFields />
             }
             <button type="submit"
