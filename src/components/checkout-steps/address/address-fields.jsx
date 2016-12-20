@@ -79,7 +79,8 @@ class AddressFields extends Component {
                   fieldNamePrefix={ this.props.fieldNamePrefix }
                   countries={ this.props.countries }
                   component={ CountryField }
-                  handleCountryChange={ this.handleCountryChange.bind(this) }/>
+                  handleCountryChange={ this.handleCountryChange.bind(this) }
+                  selectedCountryId={ this.props.selectedCountryId }/>
           </div>
         </div>
 
