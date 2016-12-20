@@ -7,6 +7,7 @@
 import React, { Component } from 'react';
 import { Panel, Table } from 'react-bootstrap';
 
+// TODO: Should use CheckoutStepCalculator instead of this.
 import CHECKOUTSTEPS from '../../constants/checkout-steps';
 
 class OrderSummary extends Component {
