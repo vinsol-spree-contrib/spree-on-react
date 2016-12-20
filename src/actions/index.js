@@ -7,6 +7,7 @@ import flash from './flash';
 import countries from './countries';
 import checkout from './checkout';
 import placedOrder from './placed-order';
+import user from './user';
 
 export default {
   addProducts: products.addProducts,
@@ -31,5 +32,7 @@ export default {
   addLineItem: order.addLineItem,
   addCountries: countries.addCountries,
   goToNextStep: checkout.goToNextStep,
-  addPlacedOrder: placedOrder.addPlacedOrder
+  addPlacedOrder: placedOrder.addPlacedOrder,
+  login: user.login,
+  logout: user.logout
 };

@@ -56,7 +56,8 @@ class AddressForm extends Component {
 
             <div className="form-heading-title">Billing Info</div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
-                                    countries={ this.props.countries } />
+                                    countries={ this.props.countries }
+                                    selectedCountryId={ this.props.billCountryId } />
 
             <Field className="form-control"
                 name="order[use_billing]"
@@ -69,7 +70,8 @@ class AddressForm extends Component {
               !useBilling &&
 
               <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
-                                      countries={ this.props.countries } >
+                                      countries={ this.props.countries }
+                                      selectedCountryId={ this.props.shipCountryId } >
                 <div className="form-heading-title">Shipping Info</div>
               </AddressFieldsConnector>
             }
@@ -118,15 +120,19 @@ const selector = formValueSelector('addressForm');
 AddressForm = connect(
   state => {
     const useBilling = selector(state, 'order[use_billing]');
+    const shipCountryId = selector(state, 'order[ship_address_attributes][country_id]')
+    const billCountryId = selector(state, 'order[bill_address_attributes][country_id]')
     const billAddress = state.order.bill_address || {};
     const shipAddress = state.order.ship_address || {};
     return {
       useBilling,
+      shipCountryId,
+      billCountryId,
       initialValues: {
         save_user_address: true,
         order: {
           use_billing: true,
-          email: state.order.email,
+          email: state.order.email || state.user.email,
           bill_address_attributes: {
             address1: billAddress.address1,
             address2: billAddress.address2,

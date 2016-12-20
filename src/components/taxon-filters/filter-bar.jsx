@@ -37,6 +37,6 @@ class FilterBar extends Component {
       </ul>
     );
   }
-}
+};
 
 export default FilterBar;

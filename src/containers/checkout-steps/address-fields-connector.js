@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
         return response.body;
       },
       (error) => {
-        dispatch(Actions.showFlash(error.response.body.error));
+        dispatch (Actions.showFlash(error.response.body.error));
         dispatch (Actions.hideLoader());
         return { states: [] };
       });

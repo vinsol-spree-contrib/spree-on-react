@@ -1,20 +1,20 @@
 var request = require('superagent');
+import SpreeAPITaxonAdapter from './ams-adapters/spree-api-taxon-adapter';
 
 const TaxonAPI = {
   getList: () => {
-    let apiBase = process.env.REACT_APP_API_BASE;
     return request
-      .get(`${apiBase}/taxons`)
+      .get(`${ process.env.REACT_APP_AMS_API_BASE }/taxons`)
       .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          return response;
-        },
-        (error) => {
-          return { taxons: [] };
+      .then((response) => {
+        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+          let processedResponse = SpreeAPITaxonAdapter.processList(response.body);
+          response.body = processedResponse;
         }
-      );
+
+        return response;
+      });
   }
-}
+};
 
 export default TaxonAPI;

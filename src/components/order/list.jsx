@@ -14,9 +14,14 @@ class OrderList extends Component {
   };
 
   componentDidMount() {
-    this.props.loadOrders().then((response) => {
-      this.setState({ displayLoader: false });
-    });
+    if (this.props.user.id) {
+      this.props.loadOrders(this.props.user.token).then((response) => {
+        this.setState({ displayLoader: false });
+      });
+    }
+    else {
+      this.props.handleUserNotLoggedIn();
+    }
   };
 
   render() {

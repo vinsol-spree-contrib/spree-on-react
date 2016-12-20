@@ -37,13 +37,14 @@ const checkout = {
       else {
         dispatch (Actions.displayLoader());
         let currentStep = getState().currentCheckoutStep;
+        let apiToken = getState().user.token || order.guest_token;
         let apiPromise;
 
         if (CheckoutStepCalculator.isPristineStep(checkoutSteps, currentStep, orderState)) {
-          apiPromise = CheckoutAPI.update(order.number, order.token, formData);
+          apiPromise = CheckoutAPI.update(order.number, apiToken, formData);
         }
         else {
-          apiPromise = OrdersAPI.update(order.number, order.token, formData);
+          apiPromise = OrdersAPI.update(order.number, apiToken, formData);
         }
 
         apiPromise.then((response) => {
@@ -51,11 +52,11 @@ const checkout = {
           let newOrder = getState().order;
           dispatch (push(checkout._fetchNextRoute(newOrder, currentStep)));
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(`Successfully saved ${currentStep} form.`));
+          dispatch (Actions.showFlash(`Successfully saved ${currentStep} form.`));
         },
         (error) => {
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(error.response.body.error, 'danger'));
+          dispatch (Actions.showFlash(error.response.body.error, 'danger'));
         });
 
         return apiPromise;

@@ -1,5 +1,5 @@
 import APP_ACTIONS from '../constants/app-actions';
-import ProductFinder from '../services/product-finder';
+import ProductModel from '../services/product-model';
 
 const initialState = {
   products: []
@@ -27,7 +27,7 @@ const productList = function(state = initialState, action) {
       ));
 
     case APP_ACTIONS.ADD_PRODUCT:
-      productInList = ProductFinder.find(action.payload.id, state.products);
+      productInList = ProductModel.find(action.payload.id, state.products);
 
       if (productInList) {
         return state;

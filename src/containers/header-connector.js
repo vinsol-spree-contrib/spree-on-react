@@ -1,12 +1,15 @@
 import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
 import Header from '../components/header';
 import Actions from '../actions';
 import TaxonAPI from '../apis/taxons';
+import APP_ROUTES from '../constants/app-routes';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    taxons: state.taxons
+    taxons: state.taxons,
+    user: state.user
   };
 };
 
@@ -17,11 +20,15 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (Actions.displayLoader());
 
         TaxonAPI.getList().then((response) => {
-          let fetchedTaxons = JSON.parse(response.text).taxons;
-          dispatch (Actions.addTaxons(fetchedTaxons));
+          dispatch (Actions.addTaxons(response.body.taxons));
           dispatch (Actions.hideLoader());
         });
       }
+    },
+
+    logout: () => {
+      dispatch(Actions.logout());
+      dispatch(push(APP_ROUTES.homePageRoute));
     }
   };
 };

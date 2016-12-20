@@ -1,4 +1,4 @@
-.search-modal {
+.global-modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -32,9 +32,49 @@
   }
 
   .btn-close {
-    font-size: 20px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0;
+    right: 3px;
+    padding: 20px;
+    cursor: pointer;
+    width: 60px;
+    z-index: 2;
+    cursor: pointer;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      width: 22px;
+      height: 2px;
+      background: #fff;
+      @include rotate(45deg);
+    }
+    &:after {
+      @include rotate(-45deg);
+    }
+  }
+}
+
+.user-form-process {
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  @include translatePos(-50%, -50%);
+  color: #fff;
+  .control-label {
+    font-weight: 400;
+  }
+
+  .btn-common {
+    padding: 10px 30px;
+    width: calc(50% - 10px);
+
+    + .btn-common {
+      margin-left: 20px;
+    }
+  }
+  .cmn-user-form {
+    width: 400px;
   }
 }

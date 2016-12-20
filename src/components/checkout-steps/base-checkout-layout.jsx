@@ -4,6 +4,8 @@ import { Link } from 'react-router';
 import Loader from "../shared/loader"
 import APP_ROUTES from '../../constants/app-routes';
 
+import OrderSummaryConnector from '../../containers/order/summary-connector';
+
 class BaseCheckoutLayout extends Component {
 
   render() {
@@ -11,12 +13,15 @@ class BaseCheckoutLayout extends Component {
     this.__generateCheckoutStepsMarkup(this.props.currentStep);
 
     return (
-      <div className="row checkout-flow dark-color">
+      <div className="row checkout-flow dark-color container-fluid">
         <Loader displayLoader={ this.props.displayLoader } />
-        <div className="container">
+        <div className="col-md-9">
           <div className="panel-group form-horizontal">
             { this.checkoutStepsMarkup }
           </div>
+        </div>
+        <div className="col-md-3">
+          <OrderSummaryConnector/>
         </div>
       </div>
     );
