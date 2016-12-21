@@ -33,7 +33,7 @@ class Shipment extends Component {
 
         <div className="col-md-12 text-right order-total-row">
           <div className="heading">
-            <small>Order Total:</small> { this.props.order.display_total }
+            <small>Order Total:</small> ${ this.props.order.total }
           </div>
         </div>
       </div>

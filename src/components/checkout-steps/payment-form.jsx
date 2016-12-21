@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 
 import Layout from "../layout";
@@ -51,7 +51,7 @@ class PaymentForm extends Component {
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             { paymentMethodMarkup }
-            { this.props.useCard==="1" &&
+            { this.props.useCard==="2" &&
               <CardFields />
             }
             <button type="submit"

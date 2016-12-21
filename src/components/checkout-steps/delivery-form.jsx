@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { reduxForm, formValueSelector } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -66,7 +66,6 @@ DeliveryForm = reduxForm({
   form: 'deliveryForm'
 })(DeliveryForm);
 
-const selector = formValueSelector('deliveryForm');
 DeliveryForm = connect(
   state => {
     const shipments = state.order.shipments || [];

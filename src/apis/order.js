@@ -1,40 +1,64 @@
 var request = require('superagent');
-import CommonAPIMethods from './common-api-methods';
+import SpreeAPIOrderAdapter from './ams-adapters/spree-api-order-adapter';
 
 const OrdersAPI = {
   getItem: (params) => {
     // let tokenParam = CommonAPIMethods.getTokenParams(params);
 
     return request
-      .get(`${process.env.REACT_APP_API_BASE}/orders/${ params.orderNumber }`)
+      .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/${ params.orderNumber }`)
       .query({ token: params.apiToken })
       .set('Accept', 'application/json')
-      .send();
+      .send()
+      .then((response) => {
+        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+          let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+          response.body = processedResponse;
+        }
+
+        return response;
+      });
   },
 
   mine: (apiToken) => {
     // let tokenParam = CommonAPIMethods.getTokenParams( { api_token: apiToken } );
 
     return request
-      .get(`${process.env.REACT_APP_API_BASE}/orders/mine`)
+      .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/mine`)
       .query({ token: apiToken, 'q[state_cont]': 'complete' })
       .set('Accept', 'application/json')
-      .send();
+      .send()
+      .then((response) => {
+        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+          let processedResponse = SpreeAPIOrderAdapter.processList(response.body);
+          response.body = processedResponse;
+        }
+
+        return response;
+      });
   },
 
   create: (apiToken) => {
     return request
-      .post(`${process.env.REACT_APP_API_BASE}/orders`)
+      .post(`${process.env.REACT_APP_AMS_API_BASE}/orders`)
       .query({ token: apiToken })
       .set('Accept', 'application/json')
-      .send();
+      .send()
+      .then((response) => {
+        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+          let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+          response.body = processedResponse;
+        }
+
+        return response;
+      });
   },
 
   destroy: (params) => {
     // let tokenParam = CommonAPIMethods.getTokenParams(params);
 
     return request
-      .put(`${process.env.REACT_APP_API_BASE}/orders/${params.orderNumber}/empty`)
+      .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${params.orderNumber}/empty`)
       .query({ token: params.apiToken })
       .set('Accept', 'application/json');
   },
@@ -43,10 +67,18 @@ const OrdersAPI = {
     // let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
 
     return request
-      .put(`${process.env.REACT_APP_API_BASE}/orders/${orderNumber}`)
+      .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${orderNumber}`)
       .query({ token: apiToken })
       .set('Accept', 'application/json')
-      .send(params);
+      .send(params)
+      .then((response) => {
+        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+          let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+          response.body = processedResponse;
+        }
+
+        return response;
+      });
   }
 }
 

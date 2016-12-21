@@ -3,7 +3,7 @@ import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 import Layout from '../layout';
-
+import URLSanitizer from '../../services/url-sanitizer';
 import APP_ROUTES from '../../constants/app-routes';
 
 class CartShow extends Component {
@@ -51,6 +51,7 @@ class CartShow extends Component {
     if (lineItems.length > 0) {
       let lineItemList = lineItems.map((lineItem, idx) => {
         let variantImage = lineItem.variant.images[0].small_url;
+        let imageUrl = URLSanitizer.makeAbsolute(variantImage);
         let productId = lineItem.variant.product_id;
 
         return (
@@ -60,7 +61,7 @@ class CartShow extends Component {
                 <Link to={`/products/${ productId }`}>
                   <img  className="product-image img-responsive"
                         alt={'productName'}
-                        src={ process.env.REACT_APP_API_HOST + variantImage }>
+                        src={ imageUrl }>
                   </img>
                 </Link>
               </div>
