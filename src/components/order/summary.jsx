@@ -29,17 +29,17 @@ class OrderSummary extends Component {
     let orderPropertiesMapper = [];
     if(CHECKOUTSTEPS.indexOf(this.props.currentCheckoutStep) >= 0 ) {
       orderPropertiesMapper.push(
-        ['Item Total:', thisOrder.display_item_total],
-        ['Adjustment Total:', thisOrder.display_tax_total]
+        ['Item Total:', `$${thisOrder.item_total}`],
+        ['Adjustment Total:', `$${thisOrder.adjustment_total}`]
       );
     };
     if(CHECKOUTSTEPS.indexOf(this.props.currentCheckoutStep) >= 2 ) {
       orderPropertiesMapper.push(
-        ['Shipping Total:', thisOrder.display_ship_total]
+        ['Shipping Total:', `$${thisOrder.shipment_total}`]
       );
     };
     orderPropertiesMapper.push(
-      ['Order Total: $', thisOrder.total]
+      ['Order Total:', `$${thisOrder.total}`]
     );
     return orderPropertiesMapper;
   }

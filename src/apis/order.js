@@ -3,8 +3,6 @@ import SpreeAPIOrderAdapter from './ams-adapters/spree-api-order-adapter';
 
 const OrdersAPI = {
   getItem: (params) => {
-    // let tokenParam = CommonAPIMethods.getTokenParams(params);
-
     return request
       .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/${ params.orderNumber }`)
       .query({ token: params.apiToken })
@@ -21,8 +19,6 @@ const OrdersAPI = {
   },
 
   mine: (apiToken) => {
-    // let tokenParam = CommonAPIMethods.getTokenParams( { api_token: apiToken } );
-
     return request
       .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/mine`)
       .query({ token: apiToken, 'q[state_cont]': 'complete' })
@@ -55,8 +51,6 @@ const OrdersAPI = {
   },
 
   destroy: (params) => {
-    // let tokenParam = CommonAPIMethods.getTokenParams(params);
-
     return request
       .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${params.orderNumber}/empty`)
       .query({ token: params.apiToken })
@@ -64,8 +58,6 @@ const OrdersAPI = {
   },
 
   update: (orderNumber, apiToken, params = {}) => {
-    // let tokenParam = CommonAPIMethods.getTokenParams({ order_token: orderToken });
-
     return request
       .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${orderNumber}`)
       .query({ token: apiToken })

@@ -4,7 +4,7 @@ import OrderSummary from '../../components/order/summary';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    order: state.order,
+    order: ownProps.order || state.order,
     currentCheckoutStep: state.currentCheckoutStep
   };
 };

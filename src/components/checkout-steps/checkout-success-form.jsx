@@ -28,7 +28,8 @@ class CheckoutSuccessForm extends Component {
       <Layout>
         <BaseCheckoutLayout currentStep="complete"
                             displayLoader={ this.props.displayLoader }
-                            checkoutSteps={ this.props.placedOrder.checkout_steps || [] } >
+                            checkoutSteps={ this.props.placedOrder.checkout_steps || [] }
+                            placedOrder={ this.props.placedOrder } >
           <div className="row">
             <div className="col-md-12">
               <strong className="text text-success">

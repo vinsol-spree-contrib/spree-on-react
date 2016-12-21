@@ -21,7 +21,7 @@ class BaseCheckoutLayout extends Component {
           </div>
         </div>
         <div className="col-md-3">
-          <OrderSummaryConnector/>
+          <OrderSummaryConnector order={ this.props.placedOrder } />
         </div>
       </div>
     );

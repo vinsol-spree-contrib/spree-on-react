@@ -59,15 +59,19 @@ class ConfirmationForm extends Component {
             </div>
             <hr/>
             <div className="row">
-              <h4> Order Items </h4>
-              { this._shipmentLineItemsMarkup() }
+              <div className="col-md-12">
+                <h4> Order Items </h4>
+                { this._shipmentLineItemsMarkup() }
+              </div>
             </div>
             <div className="row">
-              <button type="submit"
-                    disabled={ !valid || submitting }
-                    className="btn btn-success btn-lg">
-                      Confirm your order
-              </button>
+              <div className="col-md-12">
+                <button type="submit"
+                      disabled={ !valid || submitting }
+                      className="btn btn-success btn-lg">
+                        Confirm your order
+                </button>
+              </div>
             </div>
           </form>
         </BaseCheckoutLayout>
