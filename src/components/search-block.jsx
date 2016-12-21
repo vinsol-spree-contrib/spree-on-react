@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import SearchModal  from './search-modal';
+import SearchModalConnector  from './../containers/search-modal-connector';
 
 class searchBlock extends Component {
 
@@ -22,13 +22,7 @@ class searchBlock extends Component {
 
   render() {
     return (
-      <span>
-        <dd className="icon-block withbg">
-          <a className="link-icon-elem" onClick={this.open}></a>
-          <span className="glyphicon glyphicon-search" aria-hidden="true"></span>
-        </dd>
-        <SearchModal showModal={this.state.showModal} close={this.close}/>
-      </span>
+      <SearchModalConnector showModal={this.state.showModal} close={this.close}/>
     );
   }
 }

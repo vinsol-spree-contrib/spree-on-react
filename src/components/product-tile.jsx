@@ -9,7 +9,6 @@ class ProductTile extends Component {
     let productName = this.props.product.name;
     let productShowURL = '/products/' + this.props.product.id;
     let imageUrl = URLSanitizer.makeAbsolute(image.product_url);
-
     return (
       <div className="col-md-4 col-sm-6 col-xs-12 product-tile">
         <div className="thumbnail text-center row no-margin">
@@ -19,7 +18,7 @@ class ProductTile extends Component {
                  alt={productName}
                  src={ imageUrl }>
             </img>
-            
+
             <aside className="hover-info">
               <div className="product-btns">
                 <a><span className="glyphicon glyphicon-shopping-cart info-elem"></span></a>

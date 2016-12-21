@@ -18,8 +18,8 @@ class Header extends Component {
 
     this.state = { showModal: false };
 
-    this.openModal = this.openModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
+    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this);
   };
 
   openModal() {
@@ -75,11 +75,11 @@ class Header extends Component {
         <div className="container-fluid">
           <BrandHeader />
           { this.navIcons() }
-          <div className="navbar-collapse collapse">
+          <div className="navbar-collapse collapse row">
             <FilterBarConnector />
           </div>
         </div>
-      </nav>        
+      </nav>
     );
   };
 };

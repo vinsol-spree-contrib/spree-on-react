@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setCurrentCheckoutStep: () => {
-      dispatch({
+      dispatch ({
         type: APP_ACTIONS.SET_CURRENT_CHECKOUT_STEP,
         payload: 'payment'
       });

@@ -19,12 +19,12 @@ const mapDispatchToProps = (dispatch) => {
       ProductsAPI.getCategorizedList(taxon_id).then((response) => {
         if(response.statusCode === 200) {
           let fetchedProducts = JSON.parse(response.text);
-          dispatch(Actions.addProducts(fetchedProducts));
-          dispatch(push('/t/' + taxon_permalink))
+          dispatch (Actions.addProducts(fetchedProducts));
+          dispatch (push('/t/' + taxon_permalink))
           dispatch (Actions.hideLoader())
         }
         else {
-          dispatch(Actions.showFlash('Sorry, unable to fetch products at this time. Please try again later.'));
+          dispatch (Actions.showFlash('Sorry, unable to fetch products at this time. Please try again later.'));
         }
       });
     }

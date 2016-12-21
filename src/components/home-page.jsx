@@ -10,6 +10,12 @@ class HomePage extends Component {
   componentDidMount() {
     this.props.triggerInitialSetup(this.props.router.location.pathname);
   }
+  /*
+  *********************** #FIXME This is triggered several times. Find out why.
+  componentWillUpdate() {
+     debugger
+  }
+  */
 
   render() {
     return (
