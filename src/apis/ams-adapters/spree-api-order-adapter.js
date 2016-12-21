@@ -21,6 +21,8 @@ const SpreeAPIOrderAdapter = {
     order.ship_address = SpreeAPIOrderAdapter._buildAddress(order.ship_address_id, orderListAMS);
     order.line_items = SpreeAPIOrderAdapter._buildLineItems(order.line_item_ids, orderListAMS);
     order.shipments = SpreeAPIOrderAdapter._buildShipments(order.shipment_ids, orderListAMS);
+    order.countries = orderListAMS.countries;
+    order.states = orderListAMS.states;
     order.payment_methods = orderListAMS.payment_methods;
   },
 

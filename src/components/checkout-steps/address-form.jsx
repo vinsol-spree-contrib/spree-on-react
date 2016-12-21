@@ -57,6 +57,7 @@ class AddressForm extends Component {
             <div className="form-heading-title">Billing Info</div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries }
+                                    statesFromOrder={ this.props.order.states }
                                     selectedCountryId={ this.props.billCountryId } />
 
             <Field className="form-control"
@@ -71,6 +72,7 @@ class AddressForm extends Component {
 
               <AddressFieldsConnector fieldNamePrefix="order[ship_address_attributes]"
                                       countries={ this.props.countries }
+                                      statesFromOrder={ this.props.order.states }
                                       selectedCountryId={ this.props.shipCountryId } >
                 <div className="form-heading-title">Shipping Info</div>
               </AddressFieldsConnector>

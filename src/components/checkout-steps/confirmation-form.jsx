@@ -6,7 +6,6 @@ import BaseCheckoutLayout from "./base-checkout-layout";
 import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
 import Address from '../order/address';
-import Shipment from '../order/shipment';
 import LineItem from '../order/line-item';
 
 class ConfirmationForm extends Component {

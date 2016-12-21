@@ -16,6 +16,15 @@ class AddressFields extends Component {
     };
   };
 
+  componentDidMount () {
+    this.setState({
+      stateList: {
+        states: this.props.statesFromOrder,
+        states_required: this.props.statesFromOrder.length > 0
+      }
+    })
+  };
+
   handleCountryChange (countryId) {
     this.props.fetchStatesForCountry(countryId).then((response) => {
       this.setState({
