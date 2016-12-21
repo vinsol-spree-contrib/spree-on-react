@@ -52,11 +52,11 @@ const checkout = {
           let newOrder = getState().order;
           dispatch (push(checkout._fetchNextRoute(newOrder, currentStep)));
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(`Successfully saved ${currentStep} form.`));
+          dispatch (Actions.showFlash(`Successfully saved ${currentStep} form.`));
         },
         (error) => {
           dispatch (Actions.hideLoader());
-          dispatch(Actions.showFlash(error.response.body.error, 'danger'));
+          dispatch (Actions.showFlash(error.response.body.error, 'danger'));
         });
 
         return apiPromise;
