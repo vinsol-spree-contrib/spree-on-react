@@ -15,7 +15,7 @@ class VariantsList extends Component {
                   onChange={()=>this.props.onChangeVariant(variant)}
                   checked={this.props.currentVariant===variant}/>
               { variant.options_text }
-              <b>{ variant.in_stock ? '' : 'Out of Stock' }</b>
+              <b>{ variant.in_stock ? '' : ' (Out of Stock)' }</b>
           </label>
         </div>
       )

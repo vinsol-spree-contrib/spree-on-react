@@ -6,6 +6,7 @@ import CheckoutStepCalculator from '../services/checkout-step-calculator';
 import InvalidCheckoutStepException from '../errors/invalid-checkout-step';
 import InvalidOrderTransitionException from '../errors/invalid-order-transition';
 import Actions from './';
+import { tokenForAPI } from './utils';
 
 import APP_ROUTES from '../constants/app-routes';
 
@@ -37,14 +38,14 @@ const checkout = {
       else {
         dispatch (Actions.displayLoader());
         let currentStep = getState().currentCheckoutStep;
-        let apiToken = getState().user.token || order.guest_token;
+        let tokenParam = tokenForAPI(getState().user.token, order.guest_token);
         let apiPromise;
 
         if (CheckoutStepCalculator.isPristineStep(checkoutSteps, currentStep, orderState)) {
-          apiPromise = CheckoutAPI.update(order.number, apiToken, formData);
+          apiPromise = CheckoutAPI.update(order.number, tokenParam, formData);
         }
         else {
-          apiPromise = OrdersAPI.update(order.number, apiToken, formData);
+          apiPromise = OrdersAPI.update(order.number, tokenParam, formData);
         }
 
         apiPromise.then((response) => {

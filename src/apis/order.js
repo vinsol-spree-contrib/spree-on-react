@@ -5,7 +5,7 @@ const OrdersAPI = {
   getItem: (params) => {
     return request
       .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/${ params.orderNumber }`)
-      .query({ token: params.apiToken })
+      .query(params.tokenParam)
       .set('Accept', 'application/json')
       .send()
       .then((response) => {
@@ -34,10 +34,10 @@ const OrdersAPI = {
       });
   },
 
-  create: (apiToken) => {
+  create: (params) => {
     return request
       .post(`${process.env.REACT_APP_AMS_API_BASE}/orders`)
-      .query({ token: apiToken })
+      .query(params)
       .set('Accept', 'application/json')
       .send()
       .then((response) => {
@@ -53,14 +53,14 @@ const OrdersAPI = {
   destroy: (params) => {
     return request
       .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${params.orderNumber}/empty`)
-      .query({ token: params.apiToken })
+      .query(params.tokenParam)
       .set('Accept', 'application/json');
   },
 
-  update: (orderNumber, apiToken, params = {}) => {
+  update: (orderNumber, tokenParam, params = {}) => {
     return request
       .put(`${process.env.REACT_APP_AMS_API_BASE}/orders/${orderNumber}`)
-      .query({ token: apiToken })
+      .query(tokenParam)
       .set('Accept', 'application/json')
       .send(params)
       .then((response) => {
