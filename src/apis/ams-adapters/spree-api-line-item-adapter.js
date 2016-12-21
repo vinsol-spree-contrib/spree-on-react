@@ -10,7 +10,9 @@ const SpreeAPILineItemAdapter = {
   */
   _process: (lineItemAMS) => {
     lineItemAMS.line_item.variant = lineItemAMS.variants[0];
-    lineItemAMS.line_item.variant.images = lineItemAMS.images;
+    if (lineItemAMS.line_item.variant) {
+      lineItemAMS.line_item.variant.images = lineItemAMS.images;
+    }
   }
 
 };

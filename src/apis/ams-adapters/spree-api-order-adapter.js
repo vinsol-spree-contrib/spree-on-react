@@ -32,8 +32,10 @@ const SpreeAPIOrderAdapter = {
 
   _buildAddress: (addressId, orderListAMS) => {
     let address = SpreeAPIOrderAdapter._getItem(addressId, orderListAMS.addresses);
-    address.country = SpreeAPIOrderAdapter._getItem(address.country_id, orderListAMS.countries);
-    address.state = SpreeAPIOrderAdapter._getItem(address.state_id, orderListAMS.states);
+    if (address) {
+      address.country = SpreeAPIOrderAdapter._getItem(address.country_id, orderListAMS.countries);
+      address.state = SpreeAPIOrderAdapter._getItem(address.state_id, orderListAMS.states);
+    }
     return address;
   },
 
@@ -41,9 +43,15 @@ const SpreeAPIOrderAdapter = {
     let lineItems = [];
     lineItemIds.forEach((lineItemId) => {
       let thisLineItem = SpreeAPIOrderAdapter._getItem(lineItemId, orderListAMS.line_items);
-      thisLineItem.variant = SpreeAPIOrderAdapter._getItem(thisLineItem.variant_id, orderListAMS.variants);
-      thisLineItem.variant.images = SpreeAPIOrderAdapter._buildVariantImages(thisLineItem.variant.image_ids, orderListAMS);
-      lineItems.push(thisLineItem);
+
+      if (thisLineItem) {
+        thisLineItem.variant = SpreeAPIOrderAdapter._getItem(thisLineItem.variant_id, orderListAMS.variants);
+        if (thisLineItem.variant) {
+          thisLineItem.variant.images = SpreeAPIOrderAdapter._buildVariantImages(thisLineItem.variant.image_ids, orderListAMS);
+        }
+
+        lineItems.push(thisLineItem);
+      }
     });
 
     return lineItems;
