@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 
     handlePaymentFormSubmit: (formData, order) => {
       formData.order.payments_attributes['0']['amount'] = order.total;
-      dispatch (Actions.goToNextStep(order, formData));
+      return dispatch (Actions.goToNextStep(order, formData));
     },
 
     handleCheckoutStepNotEditable: (order) => {

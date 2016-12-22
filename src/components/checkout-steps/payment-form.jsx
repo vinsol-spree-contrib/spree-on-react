@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Field, reduxForm, formValueSelector } from 'redux-form';
+import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
 
 import Layout from "../layout";
@@ -23,7 +23,12 @@ class PaymentForm extends Component {
   };
 
   handlePaymentFormSubmit (formData) {
-    this.props.handlePaymentFormSubmit(formData, this.props.order);
+    return this.props.handlePaymentFormSubmit(formData, this.props.order).then((response) => {
+    },
+    (error) => {
+      let sanitizedErrors = this._sanitizedErrorMessages(error.response.body.errors);
+      throw new SubmissionError({ order: sanitizedErrors });
+    });
   };
 
   render() {
