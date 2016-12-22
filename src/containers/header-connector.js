@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-import Header from '../components/header';
+import Header from '../components/shared/header';
 import Actions from '../actions';
 import TaxonAPI from '../apis/taxons';
 import APP_ROUTES from '../constants/app-routes';

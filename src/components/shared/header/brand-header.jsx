@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import siteLogo from '../images/logo.png';
-import APP_ROUTES from '../constants/app-routes';
+import siteLogo from '../../../images/logo.png';
+import APP_ROUTES from '../../../constants/app-routes';
 
 class BrandHeader extends Component {
   render() {

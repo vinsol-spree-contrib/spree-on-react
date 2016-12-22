@@ -2,11 +2,8 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import Actions from '../actions';
-
 import ProductsAPI from '../apis/products';
-
-import SearchModal from '../components/search-modal';
-
+import SearchForm from '../components/shared/header/search-form';
 import UrlParser from '../services/url-parser';
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,18 +14,27 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    submitForm: (searchTerm) => {
+    submitSearchForm: (searchTerm) => {
       dispatch (Actions.displayLoader());
+
       ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
         let fetchedProducts = response.body;
-        dispatch (Actions.addProducts(fetchedProducts));
+
+        if (fetchedProducts.products.length === 0) {
+          dispatch (Actions.showFlash(`No products found matching ${ searchTerm } `, 'danger'));
+        }
+        else {
+          dispatch (Actions.addProducts(fetchedProducts));
+          dispatch (push({pathname: '/', query: { searchTerm: searchTerm }}));
+        }
+
         dispatch (Actions.hideLoader());
       });
-      dispatch (push({pathname: '/', query: { searchTerm: searchTerm }}));
+
     }
   };
 };
 
-const SearchModalConnector = connect(mapStateToProps, mapDispatchToProps)(SearchModal);
+const SearchFormConnector = connect(mapStateToProps, mapDispatchToProps)(SearchForm);
 
-export default SearchModalConnector;
+export default SearchFormConnector;

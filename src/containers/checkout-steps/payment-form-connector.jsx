@@ -31,6 +31,10 @@ const mapDispatchToProps = (dispatch) => {
       const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'payment');
 
       dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
+    },
+
+    showFormErrors: (errorNode) => {
+      dispatch (Actions.showFlash(errorNode, 'danger'));
     }
   };
 };

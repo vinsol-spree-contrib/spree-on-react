@@ -4,8 +4,9 @@ import { connect } from 'react-redux';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
-import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 import CardFields from './payment/card-fields';
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
+import ErrorMessageFormatter from '../../services/error-message-formatter';
 
 class PaymentForm extends Component {
 
@@ -26,7 +27,9 @@ class PaymentForm extends Component {
     return this.props.handlePaymentFormSubmit(formData, this.props.order).then((response) => {
     },
     (error) => {
-      let sanitizedErrors = this._sanitizedErrorMessages(error.response.body.errors);
+      let sanitizedErrors = this.formattedErrorMessages(error.response.body.errors);
+      this.props.showFormErrors(sanitizedErrors);
+
       throw new SubmissionError({ order: sanitizedErrors });
     });
   };
@@ -68,6 +71,11 @@ class PaymentForm extends Component {
         </BaseCheckoutLayout>
       </Layout>
     );
+  };
+
+  formattedErrorMessages (errors) {
+    let formErrors = errors['payments.Credit Card'];
+    return ErrorMessageFormatter.formatFormSubmissionErrors(formErrors);
   };
 };
 

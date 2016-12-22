@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
 
-import BrandHeader from './brand-header';
-import FilterBarConnector from '../containers/taxon-filters/filter-bar-connector';
-import CartNotificationInfoConnector from '../containers/cart/notification-info-connector';
-import SearchBlock from './search-block';
-import UserLoginConnector  from '../containers/user-login-connector';
+import BrandHeader from './header/brand-header';
+import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connector';
+import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
+import SearchFormConnector from '../../containers/search-form-connector';
+import UserLoginConnector  from '../../containers/user-login-connector';
 
 class Header extends Component {
 
@@ -65,7 +65,7 @@ class Header extends Component {
 
               <CartNotificationInfoConnector />
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
-              <SearchBlock />
+              <SearchFormConnector />
            </dl>;
   };
 
