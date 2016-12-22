@@ -15,9 +15,14 @@ const user = {
 
   logout: () => {
     return (dispatch, getState) => {
-      dispatch( {
+      dispatch ({
         type: APP_ACTIONS.LOGOUT
       });
+
+      dispatch ({
+        type: 'RESET'
+      });
+
       localStorageAPI.clear();
     }
   }
