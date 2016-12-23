@@ -9,20 +9,14 @@ class HomePage extends Component {
 
   componentDidMount() {
     this.props.triggerInitialSetup(this.props.router.location.pathname);
-  }
-  /*
-  *********************** #FIXME This is triggered several times. Find out why.
-  componentWillUpdate() {
-     debugger
-  }
-  */
+  };
 
   render() {
     return (
       <Layout>
         <div className="home-page row">
           <HomeSlider />
-          <Loader displayLoader={this.props.displayLoader} />
+          <Loader displayLoader={ this.props.displayLoader } />
 
           <div className="big-box-heading">
             Style Collection
@@ -31,14 +25,13 @@ class HomePage extends Component {
               <div className="icon-arrow-hint animated-arrow-2 glyphicon glyphicon-chevron-down"></div>
             </div>
           </div>
-          <ProductList productList={ this.props.products }
-                       loadMore={this.props.loadMore}
-                       pageCount={this.props.pageCount}
-                       currentPage={this.props.currentPage} />
+          <ProductList products={ this.props.products }
+                       loadMoreProducts={ this.props.loadMoreProducts }
+                       pageCount={ this.props.pageCount } />
         </div>
       </Layout>
     );
-  }
+  };
 };
 
 export default HomePage;

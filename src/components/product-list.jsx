@@ -1,41 +1,35 @@
 import React, { Component } from 'react';
 import ProductTile from './product-tile';
-import InfiniteScroll from 'redux-infinite-scroll';
+import InfiniteScroller from './shared/infinite-scroller';
 
 class ProductList extends Component {
   constructor(props){
     super(props);
-    this.state = {
-      loadingMore: false
-    }
-  }
-  _loadMore(){
-    this.setState({
-      loadingMore: true
-    })
+    this.currentPage = 1;
+  };
 
-    setTimeout(function () {
-      this.props.loadMore(this.props.currentPage + 1);
-      this.setState({
-        loadingMore: false
-      });
-    }.bind(this), 1000);
-  }
+  loadMoreProducts(){
+    return this.props.loadMoreProducts(this.currentPage + 1);
+  };
+
+  componentWillReceiveProps(nextProps) {
+    this.currentPage = Math.ceil(nextProps.products.length / 2);
+  };
+
   render() {
-    let productList = this.props.productList.map((product, idx) => {
-      return (
-        <ProductTile key={product.id} product={product} />
-      )
-    });
     let infiniteScroller = null;
-    if(this.props.productList.length > 0){
-        infiniteScroller = <InfiniteScroll loadingMore={this.state.loadingMore}
-                        loadMore={this._loadMore.bind(this)}
-                        elementIsScrollable={ false }
-                        hasMore={this.props.pageCount > this.props.currentPage}>
-          {productList}
-        </InfiniteScroll>;
+    let productList = this.props.products.map((product, idx) => {
+      return ( <ProductTile key={ product.id } product={ product } /> );
+    });
+
+    if (this.props.products.length > 0) {
+      infiniteScroller = <InfiniteScroller loadMore={ this.loadMoreProducts.bind(this) }
+                                            pageCount={ this.props.pageCount }
+                                            currentPage={ this.currentPage }>
+                                          { productList }
+                          </InfiniteScroller>;
     }
+
     return (
       <article className="product-list-container row no-margin">
         <div className="product-list container">

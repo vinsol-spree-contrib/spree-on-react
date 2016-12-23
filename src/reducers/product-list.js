@@ -2,7 +2,8 @@ import APP_ACTIONS from '../constants/app-actions';
 import ProductModel from '../services/product-model';
 
 const initialState = {
-  products: []
+  products: [],
+  meta: {}
 };
 
 const productList = function(state = initialState, action) {

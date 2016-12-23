@@ -11,8 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     products: state.productList.products,
     displayLoader: state.displayLoader,
-    pageCount: state.productList.pages,
-    currentPage: state.productList.current_page
+    pageCount: state.productList.meta.total_pages
   };
 };
 
@@ -51,9 +50,9 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
 
-    loadMore: (page_no) => {
+    loadMoreProducts: (page_no) => {
       let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
-      ProductsAPI.getList({page_no: page_no, searchTerm: searchTerm}).then((response) => {
+      return ProductsAPI.getList({page_no: page_no, searchTerm: searchTerm}).then((response) => {
         dispatch (Actions.appendProducts(response.body));
       });
     }
