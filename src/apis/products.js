@@ -1,4 +1,4 @@
-import PRODUCT from '../constants/product';
+import APP_DEFAULTS from '../constants/app-defaults';
 import SpreeAPIProductAdapter from './ams-adapters/spree-api-product-adapter';
 
 var request = require('superagent');
@@ -7,10 +7,11 @@ const ProductsAPI = {
 
   getList: (params = {}) => {
     let apiBase = process.env.REACT_APP_AMS_API_BASE;
-    let page_no = params.page_no || 1,
+    let pageNo = params.page_no || 1,
         searchTerm = params.searchTerm || '';
     return request
-      .get(`${apiBase}/products?page=${page_no}&per_page=${PRODUCT.PER_PAGE}&q[name_cont]=${searchTerm}`)
+      .get(`${ apiBase }/products`)
+      .query({ page: pageNo, per_page: APP_DEFAULTS.perPage, 'q[name_cont]': searchTerm })
       .set('Accept', 'application/json')
       .then(
         (response) => {
