@@ -29,6 +29,7 @@ class OrderPanelView extends Component {
 
   _panelHeaderMarkup() {
     let thisOrder = this.props.order;
+    let paymentStatus = thisOrder.payment_state === 'paid' ? 'success' : 'danger';
 
     return (
       <div className="order-panel-header row no-margin">
@@ -36,8 +37,8 @@ class OrderPanelView extends Component {
           <label className="label label-default">Ref: { thisOrder.number }</label>
           <label className="label label-normal">{ thisOrder.shipments.length } Package(s)</label>
           <label className="label label-normal">Order Total: ${ thisOrder.total }</label>
-          <span className="pull-right">
-            <label className={ 'label alert-' + thisOrder.state }>Status: { thisOrder.state }</label>
+          <span className={ `pull-right label label-${ paymentStatus }` }>
+            Payment Status: { thisOrder.payment_state }
           </span>
         </div>
       </div>
