@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import {Button} from 'react-bootstrap';
-// import {Tabs, Tab} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
 import VariantsList from './variants-list';
 import Layout from '../layout';
-
+import APP_ROUTES from '../../constants/app-routes';
 import ProductModel from '../../services/product-model';
 import Loader from '../shared/loader';
 
@@ -65,17 +65,30 @@ class ProductShow extends Component {
 
   render() {
     let renderString = null
-    if(this.state.currentVariant)
+    let { currentVariant } = this.state
+    if(currentVariant) {
+      let isLineItemInCart = this.props.lineItems.find((lineItem) => { return (lineItem.variant_id === currentVariant.id) })
+      let addToCartButtonNode = <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
+        <span className="cart-text">Add to cart</span>
+        <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
+      </Button>;
+
+      if (isLineItemInCart) {
+        addToCartButtonNode = <Link to={ APP_ROUTES.cartPageRoute }>
+          <Button className="cart-big-btn sm-full-btn" bsSize="large" active>
+            <span className="cart-text">Go to cart</span>
+            <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
+          </Button>
+        </Link>
+      }
+
       renderString =  <div className="">
                         <article className="row product-row">
                           <div className="col-sm-6 col-xs-12 product-top-col">
-                            <ImageViewer productVariant={ this.state.currentVariant }/>
+                            <ImageViewer productVariant={ currentVariant }/>
                             <div className="row">
                               <div className="col-md-8 col-md-offset-4">
-                                <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
-                                  <span className="cart-text">Add to cart</span>
-                                  <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
-                                </Button>
+                                {addToCartButtonNode}
                               </div>
                             </div>
                           </div>
@@ -84,26 +97,26 @@ class ProductShow extends Component {
                             <div className="row">
                               <div className="col-md-12">
                                 <h1 className="font-dark">
-                                  { this.state.currentVariant.name }
+                                  { currentVariant.name }
                                 </h1>
                               </div>
                             </div>
 
                             <div className="row">
                               <div className="col-md-12">
-                                <p className="h3 font-dark">${ this.state.currentVariant.price }</p>
+                                <p className="h3 font-dark">${ currentVariant.price }</p>
                               </div>
                             </div>
 
                             <div className="row">
                               <div className="col-md-12">
                                 <p className="h3 font-dark">Description</p>
-                                <p className="pull-left">{ this.state.currentVariant.description }</p>
+                                <p className="pull-left">{ currentVariant.description }</p>
                               </div>
                             </div>
                             
                             <div className="row">
-                              <VariantsList currentVariant={this.state.currentVariant}
+                              <VariantsList currentVariant={currentVariant}
                                             variantsList={this.state.currentProduct.variants}
                                             onChangeVariant={this.onChangeVariant}/>
                             </div>
@@ -114,7 +127,7 @@ class ProductShow extends Component {
                           <div className="col-sm-6 col-xs-12 achievement-col">
                             <div>
                               <h3 className="font-dark">Product Details</h3>
-                              { this.state.currentVariant.description }
+                              { currentVariant.description }
                             </div>
                           </div>
                           <div className="col-sm-6 col-xs-12 achievement-col">
@@ -130,6 +143,7 @@ class ProductShow extends Component {
 
                       </div>;
 
+    }
     return (
       <Layout>
         <div className="product-show">

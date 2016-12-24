@@ -7,7 +7,8 @@ import ProductsAPI from '../../apis/products';
 const mapStateToProps = (state, ownProps) => {
   return {
     products: state.productList.products,
-    displayLoader: state.displayLoader
+    displayLoader: state.displayLoader,
+    lineItems: state.order.line_items
   };
 };
 
