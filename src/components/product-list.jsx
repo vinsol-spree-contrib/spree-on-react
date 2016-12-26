@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ProductTile from './product-tile';
 import InfiniteScroller from './shared/infinite-scroller';
+import APP_DEFAULTS from '../constants/app-defaults';
 
 class ProductList extends Component {
   constructor(props){
@@ -13,7 +14,7 @@ class ProductList extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    this.currentPage = Math.ceil(nextProps.products.length / 2);
+    this.currentPage = Math.ceil(nextProps.products.length / APP_DEFAULTS.perPage);
   };
 
   render() {

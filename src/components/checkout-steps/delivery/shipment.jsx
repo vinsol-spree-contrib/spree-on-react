@@ -26,7 +26,7 @@ class Shipment extends Component {
     let thisShipment = this.props.shipment;
 
     let shipmentLineItems = this.props.orderLineItems.filter((lineItem) => {
-      return (lineItem.variant_id !== thisShipment.manifest.variant_id);
+      return thisShipment.line_item_ids.indexOf(lineItem.id) !== -1;
     });
 
     return shipmentLineItems.map((lineItem, idx) => {
