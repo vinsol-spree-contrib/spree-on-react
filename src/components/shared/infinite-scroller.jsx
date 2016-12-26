@@ -23,6 +23,7 @@ class InfiniteScroller extends Component {
     return (  <InfiniteScroll loadingMore={ this.state.loadingMore }
                               loadMore={ this.loadMore.bind(this) }
                               elementIsScrollable={ false }
+                              loader={<div className="loader">Loading *********************************...</div>}
                               hasMore={ this.props.pageCount > this.props.currentPage }>
 
                 { this.props.children }
