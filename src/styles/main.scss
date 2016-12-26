@@ -314,6 +314,107 @@ a {
   }
 }
 
+.group-elem {
+  .inline {
+    display: inline-block;
+  }
+
+  &.small {
+    font-size: 12px;
+
+    input[type="radio"], 
+    input[type="checkbox"] {
+      margin-top: 1px;
+    }
+  }
+}
+
+.btn-action-block {
+  margin-top: 15px;
+  padding-top: 20px;
+  border-top: solid 1px rgba(0,0,0,0.2);
+}
+
+.form-group-inline-control {
+  display: inline-block;
+  margin-left: 17%;
+  .form-group {
+    position: relative;
+    margin: 0;
+    padding-left: 20px; 
+  }
+  *[class*='col-'] {
+    float: none;
+    padding: 0;
+    width: auto;
+    display: inline-block;
+    position: static;
+  }
+  [type='radio'],
+  [type='checkbox'] {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  + .form-group-inline-control {
+    margin-left: 20px;
+  }
+}
+.pay-method {
+  display: inline-block;
+  position: relative;
+  margin: 0 5px 0 0;
+  vertical-align: top;
+  &:before,
+  &:after {
+    content: ' ';
+    font-size: 25px;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  &.creditcard {
+    &:before {
+      content: '\e177';
+    }
+  }
+  &.check {
+    background: $baseFontColorDark;
+    padding: 3px;
+    width: 30px;
+    height: 20px;
+    @include border-radius(3px);
+    &:after {
+      content: '';
+      display: block;
+      height: 100%;
+      background: #fafafa;
+      @include border-radius(inherit);
+    }
+
+    &:before {
+      content: '\270f';
+      font-size: 16px;
+      position: absolute;
+      top: -3px;
+      right: -3px;
+    }
+  }
+
+  [type='radio'],
+  [type='checkbox'] {
+    margin-left: 0;
+    left: 20px;
+  }
+}
+
 @media (max-width: 767px) {
   .sm-full-btn {
     width: 100%;

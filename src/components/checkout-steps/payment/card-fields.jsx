@@ -7,7 +7,7 @@ class CardFields extends Component{
 
   render() {
     return (
-      <div className="well">
+      <div className="">
         <Field className="form-control"
                 name="order[payments_attributes][0][source_attributes][name]"
                 component={FormField.inputFieldMarkup}

@@ -10,8 +10,9 @@
     color: #9d9d9d;
     cursor: pointer;
 
-    a {
+    .elem {
       color: inherit;
+      margin-bottom: 0;
       .glyphicon {
         margin-right: 5px;
       }
@@ -70,4 +71,24 @@
       }
     }
   } 
+}
+
+.search-inline-form {
+  
+  .form-control {
+    @include border-radius(50px);
+    width: 0;
+    position: absolute;
+    right: 0px;
+    top: -3px;
+    opacity: 0;
+    @include transition(all, 0.5s);
+    z-index: -1;
+
+    &:focus {
+      width: 300px;
+      opacity: 1;
+      z-index: 1;
+    }
+  }
 }

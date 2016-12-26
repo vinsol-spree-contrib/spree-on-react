@@ -20,7 +20,7 @@
 
 
   &.show-modal {
-    visibility: visible;
+    visibility: visible !important;
     -webkit-transform: translateY(0) scale(1);
     -moz-transform: translateY(0) scale(1);
     -ms-transform: translateY(0) scale(1);

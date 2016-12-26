@@ -60,11 +60,13 @@ class AddressForm extends Component {
                                     statesFromOrder={ this.props.order.states || [] }
                                     selectedCountryId={ this.props.billCountryId } />
 
-            <Field className="form-control"
-                name="order[use_billing]"
-                component={FormField.inputFieldMarkup}
-                label="Ship to billing address"
-                type="checkbox" />
+            <div className="form-group-inline-control">
+              <Field className="form-control"
+                  name="order[use_billing]"
+                  component={FormField.inputFieldMarkup}
+                  label="Ship to billing address"
+                  type="checkbox" />
+            </div>
 
 
             {
@@ -78,19 +80,23 @@ class AddressForm extends Component {
               </AddressFieldsConnector>
             }
 
-            <Field className="form-control"
-                name="order[save_user_address]"
-                component={FormField.inputFieldMarkup}
-                label="Remember this Address"
-                type="checkbox" />
+            <div className="form-group-inline-control">
+              <Field className="form-control"
+                  name="order[save_user_address]"
+                  component={FormField.inputFieldMarkup}
+                  label="Remember this Address"
+                  type="checkbox" />
+            </div>
 
             <div className="form-group">
               <div className="col-sm-10 col-sm-offset-2">
-                <button type="submit"
+                <div className="btn-action-block clearfix">
+                  <button type="submit"
                         disabled={ !valid || submitting }
                         className="btn btn-success btn-lg">
                           Save Address
-                </button>
+                  </button>
+                </div>
               </div>
             </div>
           </form>

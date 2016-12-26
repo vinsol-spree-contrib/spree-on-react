@@ -9,7 +9,7 @@ class CartNotificationInfo extends Component {
 
     return (
       <dd className="icon-block cart-icon-block withbg">
-        <Link to={ APP_ROUTES.cartPageRoute } className="link-icon-elem"></Link>
+        <Link to={ APP_ROUTES.cartPageRoute } className="link-icon-elem elem"></Link>
         <span className="badge">{ cartLabel }</span>
         <span className="glyphicon glyphicon-shopping-cart"></span>
       </dd>

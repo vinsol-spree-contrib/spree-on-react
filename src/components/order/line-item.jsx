@@ -9,7 +9,7 @@ class LineItem extends Component {
     let imageUrl = URLSanitizer.makeAbsolute(image.mini_url);
 
     return (
-      <div className="shipment-line-item row">
+      <div className="shipment-line-item clearfix">
         <div className="col-md-2 col-sm-2 col-xs-4 thumsbnail">
           <img className="shipment-line-item-image img-responsive img-center"
                 alt={ lineItem.variant.name }

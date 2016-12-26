@@ -1,4 +1,4 @@
 .redux-infinite-scroll {
-  overflow: scroll;
-  width: 100% !important;
+  overflow: auto;
+  min-width: 100%;
 }

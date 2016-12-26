@@ -40,17 +40,15 @@ class Shipment extends Component {
     let shipmentMarkup = shipment.shipping_rates.map((shippingRate, idx) => {
       let label = `${ shippingRate.name }( ${ shippingRate.display_cost } )`;
       return (
-        <div key={ idx } className="form-group">
-          <div className="radio inline">
-            <label>
-              <Field name={ `${ this.props.fieldNamePrefix }[selected_shipping_rate_id]` }
-                    component="input"
-                    type="radio"
-                    value={ `${shippingRate.id}` } />
-              { shippingRate.name }
-              ( { shippingRate.display_cost } )
-            </label>
-          </div>
+        <div key={ idx } className="radio inline">
+          <label>
+            <Field name={ `${ this.props.fieldNamePrefix }[selected_shipping_rate_id]` }
+                  component="input"
+                  type="radio"
+                  value={ `${shippingRate.id}` } />
+            { shippingRate.name }
+            ( { shippingRate.display_cost } )
+          </label>
         </div>
       );
     });
@@ -63,7 +61,9 @@ class Shipment extends Component {
           </div>
           <p>Please select a shipping method for these Items.</p>
           { this._shipmentLineItemsMarkup() }
-          { shipmentMarkup }
+          <div className="form-group group-elem">
+            { shipmentMarkup }
+          </div>
 
           <Field name={ `${ this.props.fieldNamePrefix }[id]` } component={this.renderHiddenFieldForShipmentId.bind(this)} />
         </div>

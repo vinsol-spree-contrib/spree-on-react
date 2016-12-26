@@ -50,11 +50,13 @@ class DeliveryForm extends Component {
               { shipmentsMarkup }
             </div>
 
-            <button type="submit"
-                    className="btn btn-success btn-lg"
-                    disabled={ !valid || submitting }>
-                      Save Delivery Details
-            </button>
+            <div className="btn-action-block clearfix">
+              <button type="submit"
+                      className="btn btn-success btn-lg"
+                      disabled={ !valid || submitting }>
+                        Save Delivery Details
+              </button>
+            </div>
           </form>
         </BaseCheckoutLayout>
       </Layout>

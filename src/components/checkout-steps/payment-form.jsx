@@ -39,16 +39,15 @@ class PaymentForm extends Component {
     let paymentMethods = order.payment_methods || [];
     let paymentMethodMarkup = paymentMethods.map((paymentMethod, idx) => {
       return (
-        <div key={ idx } className="form-group">
-          <div className="radio inline">
-            <label>
-              <Field name={ `order[payments_attributes][0][payment_method_id]` }
-                    component="input"
-                    type="radio"
-                    value={ `${paymentMethod.id}` } />
-              { paymentMethod.name }
-            </label>
-          </div>
+        <div key={ idx } className={"radio inline "} >
+          <label>
+            <Field name={ `order[payments_attributes][0][payment_method_id]` }
+                  component="input"
+                  type="radio"
+                  value={ `${paymentMethod.id}` } />
+            <span className = { "pay-method " + paymentMethod.name.replace(' ', '' ).toLocaleLowerCase() }></span>
+            { paymentMethod.name }
+          </label>
         </div>
       )
     });
@@ -58,15 +57,20 @@ class PaymentForm extends Component {
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
-            { paymentMethodMarkup }
+            
+            <div className="form-group group-elem">
+              { paymentMethodMarkup }
+            </div>
             { this.props.useCard==="2" &&
               <CardFields />
             }
-            <button type="submit"
-                    className="btn btn-success"
-                    disabled={ !valid || submitting } >
-                      Save Payment Details
-            </button>
+            <div className="btn-action-block">
+              <button type="submit"
+                      className="btn btn-success btn-lg"
+                      disabled={ !valid || submitting } >
+                        Save Payment Details
+              </button>
+            </div>
           </form>
         </BaseCheckoutLayout>
       </Layout>
