@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ProductTile from './product-tile';
+import ProductTileConnector from '../containers/product-tile-connector';
 import InfiniteScroller from './shared/infinite-scroller';
 import APP_DEFAULTS from '../constants/app-defaults';
 
@@ -20,7 +20,7 @@ class ProductList extends Component {
   render() {
     let infiniteScroller = null;
     let productList = this.props.products.map((product, idx) => {
-      return ( <ProductTile key={ product.id } product={ product } /> );
+      return ( <ProductTileConnector key={ product.id } product={ product } /> );
     });
 
     if (this.props.products.length > 0) {

@@ -4,6 +4,27 @@ import { Link } from 'react-router';
 import URLSanitizer from '../services/url-sanitizer';
 
 class ProductTile extends Component {
+  addProductToCart () {
+    this.props.addProductToCart(this.props.product.master.id, 1);
+  };
+
+  _addToCartMarkup () {
+    let addToCartMarkup;
+
+    if (this.props.productInCart) {
+      addToCartMarkup = <a>
+          <span className="glyphicon glyphicon-ok info-elem"></span>
+        </a>;
+    }
+    else {
+      addToCartMarkup = <a onClick={ this.addProductToCart.bind(this) }>
+          <span className="glyphicon glyphicon-shopping-cart info-elem"></span>
+        </a>;
+    }
+
+    return addToCartMarkup;
+  };
+
   render() {
     let image = this.props.product.master.images[0] || {};
     let productName = this.props.product.name;
@@ -21,7 +42,7 @@ class ProductTile extends Component {
 
             <aside className="hover-info">
               <div className="product-btns">
-                <a><span className="glyphicon glyphicon-shopping-cart info-elem"></span></a>
+                { this._addToCartMarkup() }
                 <a><span className="glyphicon glyphicon-heart info-elem"></span></a>
               </div>
             </aside>
@@ -39,7 +60,7 @@ class ProductTile extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default ProductTile;

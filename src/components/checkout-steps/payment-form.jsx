@@ -45,7 +45,7 @@ class PaymentForm extends Component {
                   component="input"
                   type="radio"
                   value={ `${paymentMethod.id}` } />
-            <span className = { "pay-method " + paymentMethod.name.replace(' ', '' ).toLocaleLowerCase() }></span>
+            <span className={ "pay-method " + paymentMethod.name.replace(' ', '' ).toLocaleLowerCase() }></span>
             { paymentMethod.name }
           </label>
         </div>
