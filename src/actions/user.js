@@ -19,11 +19,11 @@ const user = {
         type: APP_ACTIONS.LOGOUT
       });
 
+      localStorageAPI.clear();
+
       dispatch ({
         type: 'RESET'
       });
-
-      localStorageAPI.clear();
     }
   }
 };
