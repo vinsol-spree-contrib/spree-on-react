@@ -44,10 +44,15 @@ const ProductsAPI = {
   getCategorizedList: (taxonId) => {
     let apiBase = process.env.REACT_APP_AMS_API_BASE;
     return request
-      .get(`${apiBase}/taxons/products?id=` + taxonId)
+      .get(`${ apiBase }/products?taxon_id=` + taxonId)
       .set('Accept', 'application/json')
       .then(
         (response) => {
+          if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
+            let processedResponse = SpreeAPIProductAdapter.processList(response.body);
+            response.body = processedResponse;
+          }
+
           return response;
         },
         (error) => {
