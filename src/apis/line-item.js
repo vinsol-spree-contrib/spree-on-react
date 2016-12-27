@@ -15,10 +15,8 @@ const LineItemAPI = {
         order_number: params.orderNumber
       })
       .then((response) => {
-        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
-          let processedResponse = SpreeAPILineItemAdapter.processItem(response.body);
-          response.body = processedResponse;
-        }
+        let processedResponse = SpreeAPILineItemAdapter.processItem(response.body);
+        response.body = processedResponse;
 
         return response;
       });
@@ -45,10 +43,8 @@ const LineItemAPI = {
         order_number: params.orderNumber
       })
       .then((response) => {
-        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
-          let processedResponse = SpreeAPILineItemAdapter.processItem(response.body);
-          response.body = processedResponse;
-        }
+        let processedResponse = SpreeAPILineItemAdapter.processItem(response.body);
+        response.body = processedResponse;
 
         return response;
       });

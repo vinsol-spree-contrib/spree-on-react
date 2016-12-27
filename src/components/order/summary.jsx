@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Panel, Table } from 'react-bootstrap';
 
-// TODO: Should use CheckoutStepCalculator instead of this.
-import CHECKOUTSTEPS from '../../constants/checkout-steps';
+import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
 class OrderSummary extends Component {
 
@@ -27,13 +26,15 @@ class OrderSummary extends Component {
   getOrderPropertiesMapper () {
     let thisOrder = this.props.order;
     let orderPropertiesMapper = [];
-    if(CHECKOUTSTEPS.indexOf(this.props.currentCheckoutStep) >= 0 ) {
+    let isValidStep = CheckoutStepCalculator.isValidStep(thisOrder.checkout_steps, this.props.currentCheckoutStep);
+    if (isValidStep) {
       orderPropertiesMapper.push(
         ['Item Total:', `$${thisOrder.item_total}`],
         ['Adjustment Total:', `$${thisOrder.adjustment_total}`]
       );
     };
-    if(CHECKOUTSTEPS.indexOf(this.props.currentCheckoutStep) >= 2 ) {
+
+    if (thisOrder.checkout_steps.indexOf(this.props.currentCheckoutStep) >= 2 ) {
       orderPropertiesMapper.push(
         ['Shipping Total:', `$${thisOrder.shipment_total}`]
       );

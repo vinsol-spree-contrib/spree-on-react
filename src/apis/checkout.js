@@ -10,10 +10,8 @@ const CheckoutAPI = {
       .set('Accept', 'application/json')
       .send(formData)
       .then((response) => {
-        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
-          let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
-          response.body = processedResponse;
-        }
+        let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+        response.body = processedResponse;
 
         return response;
       });
@@ -26,10 +24,8 @@ const CheckoutAPI = {
       .set('Accept', 'application/json')
       .send(formData)
       .then((response) => {
-        if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
-          let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
-          response.body = processedResponse;
-        }
+        let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+        response.body = processedResponse;
 
         return response;
       });

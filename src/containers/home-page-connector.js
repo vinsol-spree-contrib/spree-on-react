@@ -32,7 +32,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch (Actions.addProducts(fetchedProducts));
             dispatch (Actions.hideLoader());
           });
-            // let fetchedProducts = JSON.parse(response.text);
         } else {
           dispatch(Actions.fetchProductsByTaxon()).then((response) => {
             let fetchedProducts = response.body;

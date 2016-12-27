@@ -18,8 +18,7 @@ const mapDispatchToProps = (dispatch) => {
 
       ProductsAPI.getCategorizedList(taxon_id).then((response) => {
         if(response.statusCode === 200) {
-          let fetchedProducts = JSON.parse(response.text);
-          dispatch (Actions.addProducts(fetchedProducts));
+          dispatch (Actions.addProducts(response.body));
           dispatch (push('/t/' + taxon_permalink))
           dispatch (Actions.hideLoader())
         }
