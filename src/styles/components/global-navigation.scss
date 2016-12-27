@@ -1,3 +1,8 @@
+.user-logged-in {
+  .nav-icons {
+    margin: 0;
+  }  
+}
 .nav-icons {
   margin: 8px 0 0;
   .icon-block {
@@ -51,7 +56,17 @@
     &.user-link-block {
       .primary-link {
         margin: 0 10px;
+        .glyphicon {
+          margin-right: 5px;
+        }
       }
+      .dropdown-toggle {
+        line-height: 36px;
+      }
+      .dropdown-menu {
+        display: block;
+      }
+
     }
 
     &.cart-icon-block {

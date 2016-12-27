@@ -16,7 +16,6 @@ const ProductsAPI = {
       .then(
         (response) => {
           if (JSON.parse(process.env.REACT_APP_PARSE_AMS_RESPONSE)) {
-            debugger
             let processedResponse = SpreeAPIProductAdapter.processList(response.body);
             response.body = processedResponse;
           }
