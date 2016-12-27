@@ -59,6 +59,7 @@
     "react": "^15.3.2",
     "react-boostrap-carousel": "^2.0.4",
     "react-bootstrap": "^0.30.6",
+    "react-bootstrap-dropdown": "^0.3.0",
     "react-dom": "^15.3.2",
     "react-redux": "^4.4.6",
     "react-router": "^3.0.0",
