@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
 
 import BrandHeader from './header/brand-header';
 import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connector';
@@ -38,7 +37,7 @@ class Header extends Component {
     if (this.props.user.id) {
       userSessionActionMarkup = <dd className='icon-block user-link-block'>
         <DropdownButton title={ `Hello, ${ user.email.split('@')[0] } ` } className='btn-link' bsStyle='link' id='user-account-dropdown'>
-          <MenuItem href='/orders'>your orders</MenuItem>
+          <MenuItem onClick={ this.props.goToUserOrders }>Your Orders</MenuItem>
           <MenuItem eventKey="2" onClick={ this.props.logout }>SignOut</MenuItem>
         </DropdownButton>
       </dd>;

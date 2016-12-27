@@ -2,7 +2,6 @@ import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
 import Actions from '../../actions';
-import ProductsAPI from '../../apis/products';
 import FilterBar from '../../components/taxon-filters/filter-bar';
 import APP_ROUTES from '../../constants/app-routes';
 

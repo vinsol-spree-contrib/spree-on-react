@@ -26,6 +26,10 @@ const mapDispatchToProps = (dispatch) => {
       }
     },
 
+    goToUserOrders: () => {
+      dispatch (push(APP_ROUTES.ordersPageRoute));
+    },
+
     logout: () => {
       dispatch(Actions.logout());
       dispatch(push(APP_ROUTES.homePageRoute));

@@ -1,7 +1,6 @@
 import { connect } from 'react-redux';
 
 import Actions from '../actions';
-import ProductsAPI from '../apis/products';
 import TaxonAPI from '../apis/taxons';
 import HomePage from '../components/home-page';
 
