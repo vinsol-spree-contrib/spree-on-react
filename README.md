@@ -157,7 +157,10 @@ vi .env
 ```
 List of Configuration variables:
 - REACT_APP_API_BASE="http://localhost:3001/api/v1"
+- REACT_APP_AMS_API_BASE='http://localhost:3001/api/ams'
 - REACT_APP_API_HOST="http://localhost:3001"
+
+Note: We are using spree's core API for fetching countries and states as AMS is not really efficient for these end points. So, we need API base for both core and ams.
 
 #### Run the FE server
 > This runs a local server on http://localhost:3000.
