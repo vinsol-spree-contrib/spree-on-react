@@ -7,11 +7,19 @@ const ProductsAPI = {
 
   getList: (params = {}) => {
     let apiBase = process.env.REACT_APP_AMS_API_BASE;
-    let pageNo = params.page_no || 1,
-        searchTerm = params.searchTerm || '';
+    let sanitizedQueryParams = {};
+
+    sanitizedQueryParams.page = params.page_no || 1;
+    sanitizedQueryParams.per_page = APP_DEFAULTS.perPage;
+    sanitizedQueryParams['q[name_cont]'] = params.searchTerm || '';
+
+    if (params['taxonId']){
+      sanitizedQueryParams.taxon_id = params.taxonId;
+    }
+
     return request
       .get(`${ apiBase }/products`)
-      .query({ page: pageNo, per_page: APP_DEFAULTS.perPage, 'q[name_cont]': searchTerm })
+      .query(sanitizedQueryParams)
       .set('Accept', 'application/json')
       .then(
         (response) => {
@@ -35,25 +43,7 @@ const ProductsAPI = {
           return response;
         }
       );
-  },
-
-  getCategorizedList: (taxonId) => {
-    let apiBase = process.env.REACT_APP_AMS_API_BASE;
-    return request
-      .get(`${ apiBase }/products?taxon_id=` + taxonId)
-      .set('Accept', 'application/json')
-      .then(
-        (response) => {
-          let processedResponse = SpreeAPIProductAdapter.processList(response.body);
-          response.body = processedResponse;
-
-          return response;
-        },
-        (error) => {
-          return { product: {} };
-        }
-      );
   }
-}
+};
 
 export default ProductsAPI;

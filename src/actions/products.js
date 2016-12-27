@@ -25,12 +25,17 @@ const products = {
     }
   },
 
-  fetchProductsByTaxon: () => {
+  fetchProducts: (paramsToMerge = {}) => {
     return (dispatch, getState) => {
       let currentPathName = getState().routing.locationBeforeTransitions.pathname;
       let taxon = TaxonFinder.findByPermalink(currentPathName, getState().taxons);
 
-      return ProductsAPI.getCategorizedList(taxon.id);
+      if (taxon) {
+        paramsToMerge.taxonId = taxon.id;
+        paramsToMerge.searchTerm = '';
+      }
+
+      return ProductsAPI.getList(paramsToMerge);
     }
   }
 };

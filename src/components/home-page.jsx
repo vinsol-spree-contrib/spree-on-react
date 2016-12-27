@@ -11,6 +11,13 @@ class HomePage extends Component {
     this.props.triggerInitialSetup(this.props.router.location.pathname);
   };
 
+  /* If home page icon is clicked. */
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.routeParams.splat !== this.props.routeParams.splat) {
+      this.props.triggerInitialSetup(this.props.router.location.pathname);
+    }
+  }
+
   render() {
     return (
       <Layout>

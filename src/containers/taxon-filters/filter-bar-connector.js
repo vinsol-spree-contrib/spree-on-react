@@ -4,6 +4,7 @@ import { push } from 'react-router-redux';
 import Actions from '../../actions';
 import ProductsAPI from '../../apis/products';
 import FilterBar from '../../components/taxon-filters/filter-bar';
+import APP_ROUTES from '../constants/app-routes';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -13,17 +14,19 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleTaxonClick: (taxon_id, taxon_permalink) => {
+    handleTaxonClick: (taxon_permalink) => {
       dispatch (Actions.displayLoader());
+      dispatch (push('/t/' + taxon_permalink));
 
-      ProductsAPI.getCategorizedList(taxon_id).then((response) => {
+      dispatch (Actions.fetchProducts()).then((response) => {
+
         if(response.statusCode === 200) {
           dispatch (Actions.addProducts(response.body));
-          dispatch (push('/t/' + taxon_permalink))
-          dispatch (Actions.hideLoader())
+          dispatch (Actions.hideLoader());
         }
         else {
-          dispatch (Actions.showFlash('Sorry, unable to fetch products at this time. Please try again later.'));
+          dispatch (Actions.showFlash('Sorry, unable to fetch products at this time. Please try again later.', 'danger'));
+          dispatch (push(APP_ROUTES.homePageRoute));
         }
       });
     }

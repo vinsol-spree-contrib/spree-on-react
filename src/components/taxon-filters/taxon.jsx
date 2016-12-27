@@ -4,7 +4,7 @@ import { MenuItem } from 'react-bootstrap';
 class Taxon extends Component {
 
   handleTaxonClick (taxon) {
-    this.props.handleTaxonClick(this.props.taxon.id, this.props.taxon.permalink);
+    this.props.handleTaxonClick(this.props.taxon.permalink);
   };
 
   render() {

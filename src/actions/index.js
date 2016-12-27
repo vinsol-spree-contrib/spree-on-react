@@ -15,7 +15,7 @@ export default {
   addProduct: products.addProduct,
   addOrders: orderList.addOrders,
   addOrder: orderList.addOrder,
-  fetchProductsByTaxon: products.fetchProductsByTaxon,
+  fetchProducts: products.fetchProducts,
   addTaxons: taxons.addTaxons,
   displayLoader: loader.displayLoader,
   hideLoader: loader.hideLoader,

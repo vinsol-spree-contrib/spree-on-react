@@ -24,22 +24,14 @@ const mapDispatchToProps = (dispatch) => {
         let fetchedTaxons = response.body.taxons;
         dispatch (Actions.addTaxons(fetchedTaxons));
 
-        if (pathname === '/') {
-          let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
-          ProductsAPI.getList({searchTerm: searchTerm}).then((response) => {
-            let fetchedProducts = response.body;
+        let searchTerm = UrlParser.getQueryVariable('searchTerm') || '';
 
-            dispatch (Actions.addProducts(fetchedProducts));
-            dispatch (Actions.hideLoader());
-          });
-        } else {
-          dispatch(Actions.fetchProductsByTaxon()).then((response) => {
-            let fetchedProducts = response.body;
+        dispatch (Actions.fetchProducts({ searchTerm: searchTerm })).then((response) => {
+          let fetchedProducts = response.body;
 
-            dispatch (Actions.addProducts(fetchedProducts));
-            dispatch (Actions.hideLoader());
-          });
-        }
+          dispatch (Actions.addProducts(fetchedProducts));
+          dispatch (Actions.hideLoader());
+        });
 
       },
 
@@ -49,9 +41,10 @@ const mapDispatchToProps = (dispatch) => {
       });
     },
 
-    loadMoreProducts: (page_no) => {
-      let searchTerm = UrlParser.getQueryVariable('searchTerm') || ''
-      return ProductsAPI.getList({page_no: page_no, searchTerm: searchTerm}).then((response) => {
+    loadMoreProducts: (pageNo) => {
+      let searchTerm = UrlParser.getQueryVariable('searchTerm') || '';
+
+      return dispatch (Actions.fetchProducts({ page_no: pageNo, searchTerm: searchTerm })).then((response) => {
         dispatch (Actions.appendProducts(response.body));
       });
     }
