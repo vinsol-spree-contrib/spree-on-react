@@ -4,7 +4,7 @@ import { push } from 'react-router-redux';
 import Actions from '../../actions';
 import ProductsAPI from '../../apis/products';
 import FilterBar from '../../components/taxon-filters/filter-bar';
-import APP_ROUTES from '../constants/app-routes';
+import APP_ROUTES from '../../constants/app-routes';
 
 const mapStateToProps = (state, ownProps) => {
   return {

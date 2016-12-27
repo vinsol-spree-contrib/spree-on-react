@@ -6,6 +6,7 @@ import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connec
 import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
 import SearchFormConnector from '../../containers/search-form-connector';
 import UserLoginConnector  from '../../containers/user-login-connector';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 class Header extends Component {
 
@@ -36,10 +37,10 @@ class Header extends Component {
 
     if (this.props.user.id) {
       userSessionActionMarkup = <dd className='icon-block user-link-block'>
-        <a className="primary-link" onClick={ this.props.logout }>
-          <span className="glyphicon glyphicon-user"></span>
-          SignOut
-        </a>
+        <DropdownButton title={ `Hello, ${ user.email.split('@')[0] } ` } className='btn-link' bsStyle='link' id='user-account-dropdown'>
+          <MenuItem href='/orders'>your orders</MenuItem>
+          <MenuItem eventKey="2" onClick={ this.props.logout }>SignOut</MenuItem>
+        </DropdownButton>
       </dd>;
     }
     else {
@@ -52,15 +53,7 @@ class Header extends Component {
     }
 
     return <dl className="nav-icons pull-right">
-              { this.props.user.id &&
-                <dd className='icon-block'>
-                  { `Hello, ${ user.email }, ` }
-                  <Link to="/orders">
-                    <span className="glyphicon glyphicon-user"></span>
-                    Your Orders
-                  </Link>
-                </dd>
-              }
+
               { userSessionActionMarkup }
 
               <CartNotificationInfoConnector />
@@ -70,8 +63,9 @@ class Header extends Component {
   };
 
   render() {
+    let userLoggedInClass = this.props.user.id ? 'user-logged-in ' : 'guest-user ';
     return (
-      <nav className="navbar navbar-inverse navbar-fixed-top">
+      <nav className={"navbar navbar-inverse navbar-fixed-top " +  userLoggedInClass}>
         <div className="container-fluid">
           <BrandHeader />
           { this.navIcons() }

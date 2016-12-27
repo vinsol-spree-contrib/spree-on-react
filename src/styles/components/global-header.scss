@@ -14,6 +14,26 @@
       top: 14px;
     }
   }
+  .dropdown {
+    .dropdown-toggle {
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
+    &.open  {
+        > a,
+        .btn {
+            background: $navIconBg;
+            color: #fff;
+          &:focus,
+          &:hover {
+            background: $navIconBg;
+            color: #fff;
+          }
+        }
+    }    
+  }
   .navbar-nav {
     > .dropdown {
 
