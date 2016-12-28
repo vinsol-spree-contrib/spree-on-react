@@ -25,6 +25,10 @@ class OrderSummary extends Component {
 
   getOrderPropertiesMapper () {
     let thisOrder = this.props.order;
+    if (this.props.placedOrder && this.props.placedOrder.id) {
+      thisOrder = this.props.placedOrder;
+    }
+
     let orderPropertiesMapper = [];
     let isValidStep = CheckoutStepCalculator.isValidStep(thisOrder.checkout_steps, this.props.currentCheckoutStep);
     if (isValidStep) {
