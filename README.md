@@ -1,14 +1,16 @@
 # Spree On React
 
+[![Code Climate](https://codeclimate.com/github/ShubhamGupta/spree-on-react/badges/gpa.svg)](https://codeclimate.com/github/ShubhamGupta/spree-on-react)
+
+> Rails is slow. Spree is slower. The main purpose of this repository is to give a Spree front-end that is _snappier_ and provides a more modern approach to solve the common problems found in e-commerce space. We are enthusiastic about this project and will continue supporting this project. :)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can tweak any build related configuration by following this package.
 
 ## Introduction
 
-Spree-on-react provides a complete front end for [Spree](https://github.com/spree/spree) built entirely on [ReactJS](https://facebook.github.io/react). It works on the core `spree_api`. We also aim to make it work with [spree_ams](https://github.com/hhff/spree_ams) gem which is written using `ActiveModelSerializers` and is a faster and a better alternative to the core spree api.
+Spree-on-react provides a complete front end for [Spree](https://github.com/spree/spree) built entirely on [ReactJS](https://facebook.github.io/react). It works with [spree_ams](https://github.com/vinsol/spree_ams) gem which is written using `ActiveModelSerializers` and is a faster and a better alternative to the core spree api.
 
-The main purpose of this repository is to continue to evolve spree, making it faster and easier to use.
-
-> Rails is slow. Spree is slower. The main purpose of this repository is to give a Spree front-end that is snappier and provides a more modern approach to solve the common problems found in e-commerce space. We are enthusiastic about this project and will continue supporting this project. :)
+The purpose of this repository is to continue to evolve spree, making it faster and easier to use.
 
 ### Stack
 
@@ -171,8 +173,16 @@ Note: We are using spree's core API for fetching countries and states as AMS is 
 #### Start your spree project server
 Finally, run your Spree project on port 3001 (or whatever port you specified in `.env` file). This will serve as the api to run the frontend.
 
-```sh
+**Add `spree_ams` to your `Gemfile`.**
+``` sh
 cd <path-to-your-rails-spree-project>
+```
+``` ruby
+gem 'spree_ams', :github => 'shubhamgupta/spree_ams', :branch => 'feature/common-fe-routes'
+```
+
+**Run your rails server.**
+```sh
 bundle exec rails server -p 3001
 open http://localhost:3000
 ```
