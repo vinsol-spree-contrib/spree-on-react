@@ -1,16 +1,19 @@
 import APP_ACTIONS from '../constants/app-actions';
 import localStorageAPI from '../services/local-storage-api';
-import orders from './order';
+import OrdersAPI from '../apis/order';
+import orderActions from './order';
 
 const user = {
   login: (userResponse) => {
     return (dispatch, getState) => {
-      /* Wipe out the order after logging in. */
-      dispatch (orders.clearOrder());
 
       dispatch( {
         type: APP_ACTIONS.LOGIN,
         payload: userResponse
+      });
+
+      OrdersAPI.getCurrent(userResponse.token).then((response) => {
+        dispatch (orderActions.updateOrderInState(response.body));
       });
 
       localStorageAPI.save(getState());
@@ -24,10 +27,7 @@ const user = {
       });
 
       localStorageAPI.clear();
-
-      dispatch ({
-        type: 'RESET'
-      });
+      dispatch (orderActions.clearOrder());
     }
   }
 };

@@ -63,6 +63,20 @@ const OrdersAPI = {
 
         return response;
       });
+  },
+
+  getCurrent: (userAPIToken) => {
+    return request
+      .get(`${process.env.REACT_APP_AMS_API_BASE}/orders/current`)
+      .query({ token: userAPIToken })
+      .set('Accept', 'application/json')
+      .send()
+      .then((response) => {
+        let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
+        response.body = processedResponse;
+
+        return response;
+      });
   }
 }
 
