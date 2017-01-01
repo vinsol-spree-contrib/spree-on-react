@@ -4,13 +4,18 @@ import { Field } from 'redux-form';
 import LineItem from '../../order/line-item';
 
 class Shipment extends Component {
+  constructor(props) {
+    super(props);
+    this.renderHiddenFieldForShipmentId = this.renderHiddenFieldForShipmentId.bind(this);
+  };
+
   componentDidMount () {
     this.setShipmentIdInHiddenField(this.props.shipment.id);
   };
 
   renderHiddenFieldForShipmentId (field) {
     this.onChangeCallbackForShipmentId = field.input.onChange;
-    return <input {...field.input} value={this.props.shipment.id} type="hidden"/>
+    return <input { ...field.input } value={ this.props.shipment.id } type="hidden"/>
   };
 
   /*
@@ -65,7 +70,7 @@ class Shipment extends Component {
             { shipmentMarkup }
           </div>
 
-          <Field name={ `${ this.props.fieldNamePrefix }[id]` } component={this.renderHiddenFieldForShipmentId.bind(this)} />
+          <Field name={ `${ this.props.fieldNamePrefix }[id]` } component={ this.renderHiddenFieldForShipmentId } />
         </div>
       </div>
     );

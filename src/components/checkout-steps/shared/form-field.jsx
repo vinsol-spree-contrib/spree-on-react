@@ -10,8 +10,8 @@ const FormField = {
     }
 
     return(
-      <div className={`form-group ${ errorClassName }`}>
-        <label htmlFor={input.name} className="col-sm-2 control-label">{ label }</label>
+      <div className={ `form-group ${ errorClassName }` }>
+        <label htmlFor={ input.name } className="col-sm-2 control-label">{ label }</label>
         <div className="col-sm-10">
           <input { ...input }
                   className={ inputClassName }

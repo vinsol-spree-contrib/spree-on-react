@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class CountryField extends Component{
 
+  constructor(props) {
+    super(props);
+    this.handleCountryChange = this.handleCountryChange.bind(this);
+  };
+
   handleCountryChange(event) {
     this.props.handleCountryChange(event.currentTarget.value);
     // Trigger the redux-form onChange callback.
@@ -19,7 +24,7 @@ class CountryField extends Component{
 
     return (
       <select name={ this.props.fieldNamePrefix + "[country_id]" }
-              onChange={ this.handleCountryChange.bind(this) }
+              onChange={ this.handleCountryChange }
               className="form-control"
               value={ this.props.selectedCountryId } >
         { countryOptionsMarkup }

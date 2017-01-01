@@ -34,7 +34,7 @@ class ProductShow extends Component {
       productId: productId
     });
 
-    if ( product ) {
+    if (product) {
       this.setState({
         currentProduct: product,
         currentVariant: (product.variants[0] || product.master)
@@ -88,7 +88,7 @@ class ProductShow extends Component {
                             <ImageViewer productVariant={ currentVariant }/>
                             <div className="row">
                               <div className="col-md-8 col-md-offset-4">
-                                {addToCartButtonNode}
+                                { addToCartButtonNode }
                               </div>
                             </div>
                           </div>
@@ -114,11 +114,11 @@ class ProductShow extends Component {
                                 <p className="pull-left">{ currentVariant.description }</p>
                               </div>
                             </div>
-                            
+
                             <div className="row">
-                              <VariantsList currentVariant={currentVariant}
-                                            variantsList={this.state.currentProduct.variants}
-                                            onChangeVariant={this.onChangeVariant}/>
+                              <VariantsList currentVariant={ currentVariant }
+                                            variantsList={ this.state.currentProduct.variants }
+                                            onChangeVariant={ this.onChangeVariant }/>
                             </div>
                           </div>
                         </article>
@@ -147,8 +147,8 @@ class ProductShow extends Component {
     return (
       <Layout>
         <div className="product-show">
-          <Loader displayLoader={this.props.displayLoader} />
-          {renderString}
+          <Loader displayLoader={ this.props.displayLoader } />
+          { renderString }
         </div>
       </Layout>
     );

@@ -12,7 +12,7 @@ class Flash extends Component {
     }
 
     return (
-      <div className='flash'>{flashDiv}</div>
+      <div className='flash'>{ flashDiv }</div>
     );
   };
 

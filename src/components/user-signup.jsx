@@ -34,7 +34,7 @@ class userSignup extends Component {
 
         <div className="form-group clearfix">
           <div className="col-sm-12 text-center">
-            <a className="btn btn-default btn-lg btn-common" onClick={this.props.toggle}>Login</a>
+            <a className="btn btn-default btn-lg btn-common" onClick={ this.props.toggle }>Login</a>
             <a className="btn btn-success btn-lg btn-common">Signup</a>
           </div>
         </div>

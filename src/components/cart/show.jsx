@@ -8,6 +8,14 @@ import APP_ROUTES from '../../constants/app-routes';
 
 class CartShow extends Component {
 
+  constructor(props) {
+    super(props);
+    this.destroyLineItem = this.destroyLineItem.bind(this);
+    this.emptyCart = this.emptyCart.bind(this);
+    this.changeQuantity = this.changeQuantity.bind(this);
+    this.doCheckout = this.doCheckout.bind(this);
+  };
+
   componentDidMount() {
     this.props.setCurrentCheckoutStep();
   };
@@ -60,7 +68,7 @@ class CartShow extends Component {
               <div className="cart-img-block">
                 <Link to={`/products/${ productId }`}>
                   <img  className="product-image img-responsive"
-                        alt={'productName'}
+                        alt='productName'
                         src={ imageUrl }>
                   </img>
                 </Link>
@@ -77,7 +85,7 @@ class CartShow extends Component {
             </td>
 
             <td className="qty-update-block">
-              <form onSubmit={this.changeQuantity.bind(this)}>
+              <form onSubmit={this.changeQuantity}>
                 <input type='hidden' value={lineItem.id} name='line_item_id' />
                 <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
                 <input type='number' defaultValue={ lineItem.quantity } name='quantity' className="qty-number"/>
@@ -117,12 +125,12 @@ class CartShow extends Component {
             </Table>
 
             <div className="text-right cart-empty-update-row">
-              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart.bind(this)}>Empty Cart</a>
+              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart}>Empty Cart</a>
               <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
                 <span className="glyphicon glyphicon-chevron-left" />
                 &nbsp;Continue Shopping
               </Link>
-              <a className='btn btn-success btn-lg' onClick={this.doCheckout.bind(this)}>Place Order</a>
+              <a className='btn btn-success btn-lg' onClick={this.doCheckout}>Place Order</a>
             </div>
           </div>
         </div>;
@@ -131,7 +139,7 @@ class CartShow extends Component {
     return (
       <Layout>
         <div className="big-box-heading secondary spacing">
-          Shopping Cart 
+          Shopping Cart
           <small className="show">NEED HELP? Call xxxx-xxxx-xxxx <strong></strong></small>
         </div>
         {renderString}

@@ -50,7 +50,7 @@ class AddressForm extends Component {
 
             <Field className="form-control"
                 name="order[email]"
-                component={FormField.inputFieldMarkup}
+                component={ FormField.inputFieldMarkup }
                 label="Email"
                 type="text" />
 
@@ -63,7 +63,7 @@ class AddressForm extends Component {
             <div className="form-group-inline-control">
               <Field className="form-control"
                   name="order[use_billing]"
-                  component={FormField.inputFieldMarkup}
+                  component={ FormField.inputFieldMarkup }
                   label="Ship to billing address"
                   type="checkbox" />
             </div>
@@ -83,7 +83,7 @@ class AddressForm extends Component {
             <div className="form-group-inline-control">
               <Field className="form-control"
                   name="order[save_user_address]"
-                  component={FormField.inputFieldMarkup}
+                  component={ FormField.inputFieldMarkup }
                   label="Remember this Address"
                   type="checkbox" />
             </div>

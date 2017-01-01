@@ -12,7 +12,7 @@ class Layout extends Component {
           <div className="flash-message-container">
             <FlashConnector />
           </div>
-          {this.props.children}
+          { this.props.children }
         </div>
       </div>
     );

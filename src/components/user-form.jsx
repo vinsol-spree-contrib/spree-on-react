@@ -5,7 +5,7 @@ class userFormBlock extends Component {
   render() {
     return (
       <article className={ "global-modal user-form-modal " + (this.props.showModal ? 'show-modal' : '') }>
-        <span className="btn-close btn-left" onClick={this.props.close}></span>
+        <span className="btn-close btn-left" onClick={ this.props.close }></span>
 
         <div className="center-block user-form-process">
           <div className="cmn-user-form">

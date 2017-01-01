@@ -9,7 +9,7 @@ class BrandHeader extends Component {
     return (
       <div className="navbar-header">
         <Link to={ APP_ROUTES.homePageRoute } className="navbar-brand">
-          <img className='img-responsive' src={siteLogo} alt='SpreeCommerce'/>
+          <img className='img-responsive' src={ siteLogo } alt='SpreeCommerce'/>
         </Link>
       </div>
     );

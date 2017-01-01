@@ -64,7 +64,7 @@ class Header extends Component {
   render() {
     let userLoggedInClass = this.props.user.id ? 'user-logged-in ' : 'guest-user ';
     return (
-      <nav className={"navbar navbar-inverse navbar-fixed-top " +  userLoggedInClass}>
+      <nav className={ "navbar navbar-inverse navbar-fixed-top " +  userLoggedInClass }>
         <div className="container-fluid">
           <BrandHeader />
           { this.navIcons() }

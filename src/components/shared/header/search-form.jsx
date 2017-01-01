@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class SearchForm extends Component {
   constructor (props) {
     super(props);
-
+    this.submitSearchForm = this.submitSearchForm.bind(this);
+    this.onSearchInputChange = this.onSearchInputChange.bind(this)
     this.state = { searchTerm: '' };
   };
 
@@ -21,10 +22,10 @@ class SearchForm extends Component {
       <dd className='icon-block withbg'>
         <label className="elem link-icon-elem pointer" htmlFor="search-input-box"></label>
         <span className='glyphicon glyphicon-search'></span>
-        <form onSubmit={ this.submitSearchForm.bind(this) } className="search-inline-form">
+        <form onSubmit={ this.submitSearchForm } className="search-inline-form">
           <input type="text"
                   className="form-control"
-                  onChange={ this.onSearchInputChange.bind(this) }
+                  onChange={ this.onSearchInputChange }
                   placeholder="Search"
                   defaultValue={ this.props.searchTerm } id="search-input-box"/>
         </form>
