@@ -192,6 +192,7 @@ open http://localhost:3000
 
 1. Support for user sign up.
 2. Implement webpack's code splitting for smaller bundle sizes.
+3. I18n.
 
 ### Where are the test cases?
 
