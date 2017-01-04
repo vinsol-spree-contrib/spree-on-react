@@ -10,6 +10,16 @@ const ProductModel = {
     return product;
   },
 
+  findBySlug: (productSlug, products = []) => {
+    let product;
+
+    product = products.find((product) => {
+      return product.slug === productSlug;
+    });
+
+    return product;
+  },
+
   variants: (variantIds, productsList = {}) => {
     return productsList.variants.filter((variant) => {
       return variantIds.indexOf(variant.id) !== -1;

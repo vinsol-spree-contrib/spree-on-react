@@ -34,7 +34,7 @@ class ProductTile extends Component {
   render() {
     let image = this.props.product.master.images[0] || {};
     let productName = this.props.product.name;
-    let productShowURL = '/products/' + this.props.product.id;
+    let productShowURL = '/products/' + this.props.product.slug;
     let imageUrl = URLSanitizer.makeAbsolute(image.product_url);
     return (
       <div className="col-md-4 col-sm-6 col-xs-12 product-tile">

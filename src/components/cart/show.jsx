@@ -60,13 +60,13 @@ class CartShow extends Component {
       let lineItemList = lineItems.map((lineItem, idx) => {
         let variantImage = lineItem.variant.images[0].small_url;
         let imageUrl = URLSanitizer.makeAbsolute(variantImage);
-        let productId = lineItem.variant.product_id;
+        let productSlug = lineItem.variant.slug;
 
         return (
           <tr className="line-item" key={`line-item-${idx}`}>
             <td>
               <div className="cart-img-block">
-                <Link to={`/products/${ productId }`}>
+                <Link to={`/products/${ productSlug }`}>
                   <img  className="product-image img-responsive"
                         alt='productName'
                         src={ imageUrl }>
@@ -75,7 +75,7 @@ class CartShow extends Component {
               </div>
 
               <div className="cart-img-des hidden-xs">
-                <p><Link to={`/products/${ productId }`}>{ lineItem.variant.name }</Link></p>
+                <p><Link to={`/products/${ productSlug }`}>{ lineItem.variant.name }</Link></p>
                 <p className="">{ lineItem.variant.description }</p>
               </div>
             </td>
