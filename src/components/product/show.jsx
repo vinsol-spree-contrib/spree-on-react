@@ -86,11 +86,6 @@ class ProductShow extends Component {
                         <article className="row product-row">
                           <div className="col-sm-6 col-xs-12 product-top-col">
                             <ImageViewer productVariant={ currentVariant }/>
-                            <div className="row">
-                              <div className="col-md-8 col-md-offset-4">
-                                { addToCartButtonNode }
-                              </div>
-                            </div>
                           </div>
 
                           <div className="col-sm-6 col-xs-12 product-top-col text-left">
@@ -119,6 +114,12 @@ class ProductShow extends Component {
                               <VariantsList currentVariant={ currentVariant }
                                             variantsList={ this.state.currentProduct.variants }
                                             onChangeVariant={ this.onChangeVariant }/>
+                            </div>
+
+                            <div className="row">
+                              <div className="col-md-12">
+                                { addToCartButtonNode }
+                              </div>
                             </div>
                           </div>
                         </article>

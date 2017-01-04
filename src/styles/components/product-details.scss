@@ -60,11 +60,11 @@
 
 @media(min-width: 768px) {
   .product-row {
-    height: calc(100vh - 50px);
+    min-height: calc(100vh - 50px);
     @include flex();
 
     .product-top-col {
-      @include align-self(center);
+      @include align-self(top);
       .cart-big-btn {
         margin-top: 30px;
         padding: 20px 30px;
