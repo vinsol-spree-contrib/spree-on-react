@@ -28,9 +28,14 @@ const mapDispatchToProps = (dispatch) => {
     },
 
     handleCheckoutStepNotEditable: (order) => {
-      const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'complete');
+      if (order.id) {
+        const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'complete');
 
-      dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
+        dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
+      }
+      else {
+        dispatch ( push(APP_ROUTES.cartPageRoute));
+      }
     },
 
     clearOrder: () => {

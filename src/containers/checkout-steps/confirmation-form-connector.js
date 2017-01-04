@@ -22,9 +22,14 @@ const mapDispatchToProps = (dispatch) => {
         dispatch (push(APP_ROUTES.checkout[`${ placedOrder.checkout_steps.slice(-1) }PageRoute`]));
       }
       else {
-        const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'confirm');
+        if (order.id) {
+          const previousStep = CheckoutStepCalculator.previous(order.checkout_steps, 'confirm');
 
-        dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
+          dispatch ( push(APP_ROUTES.checkout[`${ previousStep }PageRoute`]));
+        }
+        else {
+          dispatch ( push(APP_ROUTES.cartPageRoute));
+        }
       }
     },
 
