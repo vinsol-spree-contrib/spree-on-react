@@ -29,6 +29,7 @@ export default function configRoutes() {
       <Route path={ APP_ROUTES.ordersPageRoute } component={OrderListConnector} />
       <Route path='/orders/:orderId' component={OrderShowConnector} />
       <Route path='/t/*' component={HomePageConnector} />
+      <Route path='*' component={HomePageConnector} />
     </Route>
 
   );
