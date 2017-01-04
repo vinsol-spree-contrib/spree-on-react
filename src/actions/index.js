@@ -33,6 +33,7 @@ export default {
   addCountries: countries.addCountries,
   goToNextStep: checkout.goToNextStep,
   addPlacedOrder: placedOrder.addPlacedOrder,
+  clearPlacedOrder: placedOrder.clearPlacedOrder,
   login: user.login,
   logout: user.logout
 };

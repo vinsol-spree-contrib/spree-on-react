@@ -1,7 +1,7 @@
 import APP_ACTIONS from '../constants/app-actions';
 import localStorageAPI from '../services/local-storage-api';
 import OrdersAPI from '../apis/order';
-import orderActions from './order';
+import Actions from './';
 
 const user = {
   login: (userResponse) => {
@@ -12,8 +12,10 @@ const user = {
         payload: userResponse
       });
 
+      dispatch (Actions.clearPlacedOrder());
+
       OrdersAPI.getCurrent(userResponse.token).then((response) => {
-        dispatch (orderActions.updateOrderInState(response.body));
+        dispatch (Actions.updateOrderInState(response.body));
       });
 
       localStorageAPI.save(getState());
@@ -25,9 +27,10 @@ const user = {
       dispatch ({
         type: APP_ACTIONS.LOGOUT
       });
-
       localStorageAPI.clear();
-      dispatch (orderActions.clearOrder());
+
+      dispatch (Actions.clearPlacedOrder());
+      dispatch (Actions.clearOrder());
     }
   }
 };

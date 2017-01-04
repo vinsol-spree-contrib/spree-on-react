@@ -50,6 +50,7 @@ const order = {
     return (dispatch, getState) => {
       let order = getState().order;
       let tokenParam = tokenForAPI(getState().user.token, order.guest_token);
+      dispatch(Actions.clearPlacedOrder());
 
       if (order.id === undefined) {
         return OrdersAPI.create(tokenParam).then((response) => {
