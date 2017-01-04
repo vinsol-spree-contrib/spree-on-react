@@ -36,6 +36,7 @@ const CheckoutStepCalculator = {
     let indexOfOrderState = checkoutSteps.indexOf(orderState);
 
     return !CheckoutStepCalculator.isLastStep(checkoutSteps, orderState) &&
+            CheckoutStepCalculator.isValidStep(checkoutSteps, currentStep) &&
             ( currentStep === orderState ||
             indexOfOrderState >= indexOfCurrentStep );
   },
@@ -43,7 +44,8 @@ const CheckoutStepCalculator = {
   isLastStep: (checkoutSteps, currentStep) => {
     let indexOfCurrentStep = checkoutSteps.indexOf(currentStep);
 
-    return (indexOfCurrentStep === (checkoutSteps.length - 1));
+    return (CheckoutStepCalculator.isValidStep(checkoutSteps, currentStep) &&
+            indexOfCurrentStep === (checkoutSteps.length - 1));
   },
 
   isFirstStep: (checkoutSteps, currentStep) => {

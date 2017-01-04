@@ -2,6 +2,7 @@ import APP_ACTIONS from '../constants/app-actions';
 
 const initialState = {
   shipments: [],
+  checkout_steps: [],
   state: 'complete'
 };
 

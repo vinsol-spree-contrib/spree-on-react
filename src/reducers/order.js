@@ -1,7 +1,9 @@
 import APP_ACTIONS from '../constants/app-actions';
 
 const initialState = {
-  line_items: []
+  shipments: [],
+  line_items: [],
+  checkout_steps: []
 };
 
 const order = function(state = initialState, action) {

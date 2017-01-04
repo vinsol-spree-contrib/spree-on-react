@@ -13,7 +13,9 @@ class CheckoutSuccessForm extends Component {
       this.props.saveOrderAsPlaced(dupeOrder);
     }
     else {
-      this.props.handleCheckoutStepNotEditable(this.props.order);
+      if (!this.props.placedOrder.id) {
+        this.props.handleCheckoutStepNotEditable(this.props.order);
+      }
     }
   };
 

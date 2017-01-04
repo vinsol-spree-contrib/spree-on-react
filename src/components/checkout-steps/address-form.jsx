@@ -15,7 +15,7 @@ class AddressForm extends Component {
     let order = this.props.order;
 
     if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'address', order.state)){
-      this.props.handleOrderNotPresent();
+      this.props.handleCheckoutStepNotEditable(this.props.order, this.props.placedOrder);
     }
   };
 

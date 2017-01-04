@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     order: state.order,
     displayLoader: state.displayLoader,
-    countries: state.countryList.countries
+    countries: state.countryList.countries,
+    placedOrder: state.placedOrder
   };
 };
 
@@ -39,6 +40,17 @@ const mapDispatchToProps = (dispatch) => {
       (error) => {
         dispatch (Actions.showFlash('Unable to connect to server... Please try again later.'));
       })
+    },
+
+    handleCheckoutStepNotEditable: (order, placedOrder) => {
+      /* Redirect to last step if order is already placed */
+      if (placedOrder.id) {
+        dispatch (push(APP_ROUTES.checkout[`${ placedOrder.checkout_steps.slice(-1) }PageRoute`]));
+      }
+      else {
+        dispatch(Actions.showFlash("Your cart is empty!", 'danger'));
+        dispatch (push(APP_ROUTES.cartPageRoute));
+      }
     },
 
     handleOrderNotPresent: () => {

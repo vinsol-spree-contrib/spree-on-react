@@ -15,7 +15,7 @@ class ConfirmationForm extends Component {
     let order = this.props.order;
 
     if (!CheckoutStepCalculator.isStepEditable(order.checkout_steps, 'confirm', order.state)){
-      this.props.handleCheckoutStepNotEditable(order);
+      this.props.handleCheckoutStepNotEditable(order, this.props.placedOrder);
     }
   };
 
