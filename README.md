@@ -202,6 +202,10 @@ This repository is still very young and adding new features is our top priority.
 
 https://spree-on-react.herokuapp.com/
 
+**Example Credentials:**
+- Email: spree-on-react@example.com
+- Password: spree-vinsol
+
 ### Contributing
 We encourage you to contribute to this project. Please use GitHub issue tracker to raise pull requests, feature requests and report issues. For any security related issues, please email us directly.
 
