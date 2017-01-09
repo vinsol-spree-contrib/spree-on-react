@@ -200,7 +200,7 @@ This repository is still very young and adding new features is our top priority.
 
 ### Demo
 
-Coming Soon.
+https://spree-on-react.herokuapp.com/
 
 ### Contributing
 We encourage you to contribute to this project. Please use GitHub issue tracker to raise pull requests, feature requests and report issues. For any security related issues, please email us directly.
