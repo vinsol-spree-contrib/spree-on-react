@@ -178,7 +178,7 @@ Finally, run your Spree project on port 3001 (or whatever port you specified in 
 cd <path-to-your-rails-spree-project>
 ```
 ``` ruby
-gem 'spree_ams', :github => 'shubhamgupta/spree_ams', :branch => 'feature/common-fe-routes'
+gem 'spree_ams', github: 'vinsol-spree-contrib/spree_ams', branch: '3-1-stable'
 ```
 
 **Run your rails server.**
