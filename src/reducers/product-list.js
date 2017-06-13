@@ -13,7 +13,7 @@ const productList = function(state = initialState, action) {
 
   switch (action.type) {
     case APP_ACTIONS.ADD_PRODUCTS:
-      return Object.assign({}, state, action.payload);
+      return Object.assign({}, state, {});
 
     case APP_ACTIONS.APPEND_PRODUCTS:
       newProductList = action.payload.products.map((product) => { return product.id });

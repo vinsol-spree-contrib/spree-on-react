@@ -3,14 +3,16 @@ import { connect } from 'react-redux';
 import Actions from '../actions';
 import TaxonAPI from '../apis/taxons';
 import HomePage from '../components/home-page';
+import Session from '../models';
 
 import UrlParser from '../services/url-parser';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    products: state.productList.products,
+    products: Session.Product.all().toModelArray(),
     displayLoader: state.displayLoader,
-    pageCount: state.productList.meta.total_pages
+    // pageCount: state.productList.meta.total_pages
+    pageCount: 10
   };
 };
 

@@ -23,8 +23,8 @@ const ProductsAPI = {
       .set('Accept', 'application/json')
       .then(
         (response) => {
-          let processedResponse = SpreeAPIProductAdapter.processList(response.body);
-          response.body = processedResponse;
+          // let processedResponse = SpreeAPIProductAdapter.processList(response.body);
+          // response.body = processedResponse;
 
           return response;
         }

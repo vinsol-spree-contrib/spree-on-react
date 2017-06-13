@@ -4,6 +4,7 @@ import { reducer as formReducer } from 'redux-form';
 
 import displayLoader from './display-loader';
 import productList from './product-list';
+import ormReducer from './orm-reducer';
 import taxons from './taxons';
 import order from './order';
 import orderList from './order-list';
@@ -24,6 +25,7 @@ const AppReducer = combineReducers({
   currentCheckoutStep,
   placedOrder,
   user,
+  orm: ormReducer,
   routing: routerReducer,
   form: formReducer
 });

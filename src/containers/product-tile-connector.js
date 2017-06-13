@@ -4,12 +4,13 @@ import Actions from '../actions';
 import ProductTile from '../components/product-tile';
 
 const mapStateToProps = (state, ownProps) => {
-  let lineItem = state.order.line_items.find((lineItem) => {
-    return (ownProps.product.variants_including_master_ids.indexOf(lineItem.variant_id) !== -1);
-  });
+  // let lineItem = state.order.line_items.find((lineItem) => {
+  //   return (ownProps.product.variants_including_master_ids.indexOf(lineItem.variant_id) !== -1);
+  // });
 
   return {
-    productInCart: !!lineItem
+    productInCart: false
+    // productInCart: !!lineItem
   };
 };
 

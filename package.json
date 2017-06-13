@@ -67,6 +67,7 @@
     "redux": "^3.6.0",
     "redux-form": "^6.2.1",
     "redux-infinite-scroll": "^1.0.9",
+    "redux-orm": "^0.9.0",
     "redux-reset": "^0.2.0",
     "redux-thunk": "^2.1.0",
     "superagent": "^2.3.0"

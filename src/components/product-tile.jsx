@@ -31,7 +31,12 @@ class ProductTile extends Component {
     return addToCartMarkup;
   };
 
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   !!(nextProps.product && nextProps.product.master && nextProps.product.master.images)
+  // };
+
   render() {
+    debugger
     let image = this.props.product.master.images[0] || {};
     let productName = this.props.product.name;
     let productShowURL = '/products/' + this.props.product.slug;
