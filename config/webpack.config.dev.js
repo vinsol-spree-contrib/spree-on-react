@@ -99,6 +99,16 @@ module.exports = {
         include: paths.appSrc,
         loader: 'babel',
         query: {
+          plugins: [
+            "transform-object-rest-spread",
+            "transform-runtime",
+            [
+              "react-intl", {
+                "messagesDir": "./../locales",
+                "enforceDescriptions": false
+              }
+            ]
+          ],
           
           // This is a feature of `babel-loader` for webpack (not Babel itself).
           // It enables caching results in ./node_modules/.cache/react-scripts/
