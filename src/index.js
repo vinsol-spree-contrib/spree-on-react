@@ -27,7 +27,7 @@ const language = (navigator.languages && navigator.languages[0]) ||
 const languageWithoutRegionCode = language.toLowerCase().split(/[_-]+/)[0];
 
 // Try full locale, try locale without region code, fallback to 'en'
-const messages = localeData[languageWithoutRegionCode] || localeData[language] || localeData.en;
+const messages = localeData[language] || localeData[languageWithoutRegionCode] || localeData.en;
 
 ReactDOM.render(
   <IntlProvider locale={language} messages={messages}>

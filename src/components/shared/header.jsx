@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import BrandHeader from './header/brand-header';
+import LocaleSelector from './header/locale-selector';
 import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connector';
 import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
 import SearchFormConnector from '../../containers/search-form-connector';
@@ -53,6 +54,7 @@ class Header extends Component {
 
     return <dl className="nav-icons pull-right">
 
+              <LocaleSelector />
               { userSessionActionMarkup }
 
               <CartNotificationInfoConnector />
