@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Panel, Table } from 'react-bootstrap';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 
@@ -69,14 +69,10 @@ class OrderSummary extends Component {
   }
 
   render() {
-    // Some error
-    const orderSummaryHeader = <FormattedMessage
-                                id="com.order.summaryHeader"
-                                defaultMessage="Order Summary"
-                              />;
     return (
       <div className="row">
-        <Panel collapsible defaultExpanded header={ orderSummaryHeader }>
+        <Panel collapsible defaultExpanded
+                header={ this.props.intl.formatMessage({ id: 'com.order.summaryHeader', defaultMessage: "Order Summary" }) }>
           <Table fill>
             <tbody>
               {this.mapPropertiesToTable()}
@@ -89,4 +85,4 @@ class OrderSummary extends Component {
 
 };
 
-export default OrderSummary;
+export default injectIntl(OrderSummary);
