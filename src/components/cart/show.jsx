@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from '../layout';
 import URLSanitizer from '../../services/url-sanitizer';
@@ -48,11 +49,20 @@ class CartShow extends Component {
     }
 
     let renderString = <div className="well">
-                          <p className="h4">Your cart is empty. Add some items to proceed.</p>
+                          <p className="h4">
+                            <FormattedMessage
+                              id="com.cart--show.cartEmptyHeading"
+                              defaultMessage="Your cart is empty. Add some items to proceed."
+                            />
+                          </p>
                           <br/>
                           <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
                             <span className="glyphicon glyphicon-chevron-left" />
-                            &nbsp;Continue Shopping
+                            &nbsp;
+                            <FormattedMessage
+                              id="com.cart--show.continueShopping"
+                              defaultMessage="Continue Shopping"
+                            />
                           </Link>
                         </div>;
 
@@ -76,7 +86,7 @@ class CartShow extends Component {
 
               <div className="cart-img-des hidden-xs">
                 <p><Link to={`/products/${ productSlug }`}>{ lineItem.variant.name }</Link></p>
-                <p className="">{ lineItem.variant.description }</p>
+                <p>{ lineItem.variant.description }</p>
               </div>
             </td>
 
@@ -90,7 +100,12 @@ class CartShow extends Component {
                 <input type='hidden' value={lineItem.variant_id} name='line_item_variant_id' />
                 <input type='number' defaultValue={ lineItem.quantity } name='quantity' className="qty-number"/>
                 <span className="visible-xxs"></span>
-                <button type='submit' className="btn btn-success">Save</button>
+                <button type='submit' className="btn btn-success">
+                  <FormattedMessage
+                    id="label.buttons.save"
+                    defaultMessage="Save"
+                  />
+                </button>
               </form>
             </td>
 
@@ -111,11 +126,36 @@ class CartShow extends Component {
             <Table striped hover className="cart-table">
               <thead>
                 <tr>
-                  <th> Product </th>
-                  <th> Price </th>
-                  <th> Qty </th>
-                  <th className="text-right"> Total </th>
-                  <th className="text-right"> Actions </th>
+                  <th>
+                    <FormattedMessage
+                      id="com.cart--show.tableHeading.product"
+                      defaultMessage="Product"
+                    />
+                  </th>
+                  <th>
+                    <FormattedMessage
+                      id="com.cart--show.tableHeading.price"
+                      defaultMessage="Price"
+                    />
+                  </th>
+                  <th>
+                    <FormattedMessage
+                      id="com.cart--show.tableHeading.qty"
+                      defaultMessage="Qty"
+                    />
+                  </th>
+                  <th className="text-right">
+                    <FormattedMessage
+                      id="com.cart--show.tableHeading.total"
+                      defaultMessage="Total"
+                    />
+                  </th>
+                  <th className="text-right">
+                    <FormattedMessage
+                      id="com.cart--show.tableHeading.actions"
+                      defaultMessage="Actions"
+                    />
+                  </th>
                 </tr>
               </thead>
 
@@ -125,12 +165,26 @@ class CartShow extends Component {
             </Table>
 
             <div className="text-right cart-empty-update-row">
-              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart}>Empty Cart</a>
+              <a className='link btn btn-empty btn-default pull-left' onClick={this.emptyCart}>
+                <FormattedMessage
+                  id="label.buttons.emptyCart"
+                  defaultMessage="Empty Cart"
+                />
+              </a>
               <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
                 <span className="glyphicon glyphicon-chevron-left" />
-                &nbsp;Continue Shopping
+                &nbsp;
+                <FormattedMessage
+                  id="com.cart--show.continueShopping"
+                  defaultMessage="Continue Shopping"
+                />
               </Link>
-              <a className='btn btn-success btn-lg' onClick={this.doCheckout}>Place Order</a>
+              <a className='btn btn-success btn-lg' onClick={this.doCheckout}>
+                <FormattedMessage
+                  id="label.buttons.placeOrder"
+                  defaultMessage="Place Order"
+                />
+              </a>
             </div>
           </div>
         </div>;
@@ -139,8 +193,16 @@ class CartShow extends Component {
     return (
       <Layout>
         <div className="big-box-heading secondary spacing">
-          Shopping Cart
-          <small className="show">NEED HELP? Call xxxx-xxxx-xxxx <strong></strong></small>
+          <FormattedMessage
+            id="com.cart--show.header"
+            defaultMessage="Shopping Cart"
+          />
+          <small className="show">
+            <FormattedMessage
+              id="com.cart--show.helpMessage"
+              defaultMessage="NEED HELP? Call xxxx-xxxx-xxxx"
+            />
+          </small>
         </div>
         {renderString}
       </Layout>

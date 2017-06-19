@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import CountryField from './country-field';
 import FormField from '../shared/form-field';
@@ -55,35 +56,40 @@ class AddressFields extends Component {
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[firstname]" }
                 component={ FormField.inputFieldMarkup }
-                label="First Name"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.firstName', defaultMessage: "First Name" }) }
                 type="text" />
 
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[lastname]" }
                 component={ FormField.inputFieldMarkup }
-                label="Last Name"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.lastName', defaultMessage: "Last Name" }) }
                 type="text" />
 
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[address1]" }
                 component={ FormField.inputFieldMarkup }
-                label="Address Line 1"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.address1', defaultMessage: "Address Line 1" }) }
                 type="text" />
 
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[address2]" }
                 component={ FormField.inputFieldMarkup }
-                label="Address Line 2"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.address2', defaultMessage: "Address Line 2" }) }
                 type="text" />
 
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[city]" }
                 component={ FormField.inputFieldMarkup }
-                label="City"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.city', defaultMessage: "City" }) }
                 type="text" />
 
         <div className="form-group">
-          <label htmlFor="country" className="col-sm-2 control-label">Country</label>
+          <label htmlFor="country" className="col-sm-2 control-label">
+            <FormattedMessage
+              id="shared.models.country"
+              defaultMessage="Country"
+            />
+          </label>
           <div className="col-sm-10">
             <Field name={ this.props.fieldNamePrefix + "[country_id]" }
                     fieldNamePrefix={ this.props.fieldNamePrefix }
@@ -97,7 +103,12 @@ class AddressFields extends Component {
         {
           statesRequired &&
           <div className="form-group">
-            <label htmlFor="state" className="col-sm-2 control-label">State</label>
+            <label htmlFor="state" className="col-sm-2 control-label">
+              <FormattedMessage
+                id="shared.models.state"
+                defaultMessage="State"
+              />
+            </label>
             <div className="col-sm-10">
               <Field className="form-control"
                       name={ this.props.fieldNamePrefix + "[state_id]" }
@@ -111,13 +122,13 @@ class AddressFields extends Component {
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[zipcode]" }
                 component={ FormField.inputFieldMarkup }
-                label="Zipcode"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.zipCode', defaultMessage: "Zipcode" }) }
                 type="text" />
 
         <Field className="form-control"
                 name={ this.props.fieldNamePrefix + "[phone]" }
                 component={ FormField.inputFieldMarkup }
-                label="Phone"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.phone', defaultMessage: "Phone" }) }
                 type="text" />
 
       </div>
@@ -125,4 +136,4 @@ class AddressFields extends Component {
   };
 };
 
-export default AddressFields;
+export default injectIntl(AddressFields);

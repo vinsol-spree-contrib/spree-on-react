@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 class Address extends Component {
   render() {
@@ -26,7 +27,12 @@ class Address extends Component {
         </p>
 
         <p>
-          <label>Phone: &nbsp;</label>
+          <label>
+            <FormattedMessage
+              id="label.phone"
+              defaultMessage="Phone"
+            />
+            : &nbsp;</label>
           { address.phone }
         </p>
       </div>

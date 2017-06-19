@@ -26,7 +26,7 @@ class ProductProperties extends Component {
 
     return (
       <div className="product-properties row">
-        {renderString}
+        { renderString }
       </div>
     );
   };

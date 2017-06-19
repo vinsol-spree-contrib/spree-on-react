@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 
 import LineItem from '../../order/line-item';
 
@@ -64,7 +65,12 @@ class Shipment extends Component {
           <div className="form-heading-title">
             { `Shipment - ${ this.props.shipmentIndex }` }
           </div>
-          <p>Please select a shipping method for these Items.</p>
+          <p>
+            <FormattedMessage
+              id="com.shipmentForm.subheading"
+              defaultMessage="Please select a shipping method for these Items."
+            />
+          </p>
           { this._shipmentLineItemsMarkup() }
           <div className="form-group group-elem">
             { shipmentMarkup }

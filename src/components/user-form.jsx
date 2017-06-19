@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 class userFormBlock extends Component {
 
@@ -9,7 +10,12 @@ class userFormBlock extends Component {
 
         <div className="center-block user-form-process">
           <div className="cmn-user-form">
-            <div className="form-heading-title center-heading no-border big">Login</div>
+            <div className="form-heading-title center-heading no-border big">
+              <FormattedMessage
+                id="shared.login"
+                defaultMessage="Login"
+              />
+            </div>
             { this.props.children }
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import ProductList from './product-list';
 import HomeSlider from './home-slider';
@@ -26,7 +27,10 @@ class HomePage extends Component {
           <Loader displayLoader={ this.props.displayLoader } />
 
           <div className="big-box-heading">
-            Style Collection
+            <FormattedMessage
+              id="com.home-page.heading"
+              defaultMessage="Style Collection"
+            />
             <div className="icon-start">
               <div className="icon-arrow-hint animated-arrow-1 glyphicon glyphicon-chevron-down"></div>
               <div className="icon-arrow-hint animated-arrow-2 glyphicon glyphicon-chevron-down"></div>

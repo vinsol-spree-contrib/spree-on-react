@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
 import { connect } from 'react-redux';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -68,7 +69,10 @@ class PaymentForm extends Component {
               <button type="submit"
                       className="btn btn-success btn-lg"
                       disabled={ !valid || submitting } >
-                        Save Payment Details
+                <FormattedMessage
+                  id="label.buttons.savePayment"
+                  defaultMessage="Save Payment Details"
+                />
               </button>
             </div>
           </form>

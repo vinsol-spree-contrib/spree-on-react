@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router';
+import { FormattedMessage } from 'react-intl';
 
 import ProductProperties from './properties';
 import ImageViewer from './image-viewer';
@@ -69,14 +70,24 @@ class ProductShow extends Component {
     if(currentVariant) {
       let isLineItemInCart = this.props.lineItems.find((lineItem) => { return (lineItem.variant_id === currentVariant.id) })
       let addToCartButtonNode = <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
-        <span className="cart-text">Add to cart</span>
+        <span className="cart-text">
+          <FormattedMessage
+            id="label.addToCart"
+            defaultMessage="Add to Cart"
+          />
+        </span>
         <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
       </Button>;
 
       if (isLineItemInCart) {
         addToCartButtonNode = <Link to={ APP_ROUTES.cartPageRoute }>
           <Button className="cart-big-btn sm-full-btn" bsSize="large" active>
-            <span className="cart-text">Go to cart</span>
+            <span className="cart-text">
+              <FormattedMessage
+                id="label.goToCart"
+                defaultMessage="Go to Cart"
+              />
+            </span>
             <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
           </Button>
         </Link>
@@ -105,7 +116,12 @@ class ProductShow extends Component {
 
                             <div className="row">
                               <div className="col-md-12">
-                                <p className="h3 font-dark">Description</p>
+                                <p className="h3 font-dark">
+                                  <FormattedMessage
+                                    id="shared.attributes.description"
+                                    defaultMessage="Description"
+                                  />
+                                </p>
                                 <p className="pull-left">{ currentVariant.description }</p>
                               </div>
                             </div>
@@ -127,17 +143,27 @@ class ProductShow extends Component {
                         <article className="row product-achievement-row">
                           <div className="col-sm-6 col-xs-12 achievement-col">
                             <div>
-                              <h3 className="font-dark">Product Details</h3>
+                              <h3 className="font-dark">
+                                <FormattedMessage
+                                  id="shared.attributes.description"
+                                  defaultMessage="Description"
+                                />
+                              </h3>
                               { currentVariant.description }
                             </div>
                           </div>
                           <div className="col-sm-6 col-xs-12 achievement-col">
                             <div className="col-md-12">
-                              <h3 className="font-dark">Properties</h3>
+                              <h3 className="font-dark">
+                                <FormattedMessage
+                                  id="shared.models.productProperties"
+                                  defaultMessage="Product Properties"
+                                />
+                              </h3>
                               <div className="product-desc">
                                 <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
                               </div>
-                              </div>
+                            </div>
                           </div>
 
                         </article>

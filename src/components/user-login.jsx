@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 
 import Modal from './shared/modal';
 import FlashConnector from '../containers/flash-connector';
@@ -37,7 +38,10 @@ class userLogin extends Component {
             <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
               <div className="form-group row no-margin">
                 <label className="col-sm-12 control-label">
-                  Email
+                  <FormattedMessage
+                    id="shared.email"
+                    defaultMessage="Email"
+                  />
                 </label>
                 <div className="col-sm-12">
                   <Field className="form-control"
@@ -49,7 +53,10 @@ class userLogin extends Component {
 
               <div className="form-group clearfix">
                 <label className="col-sm-12 control-label">
-                  Password
+                  <FormattedMessage
+                    id="shared.password"
+                    defaultMessage="Password"
+                  />
                 </label>
                 <div className="col-sm-12">
                   <Field className="form-control"
@@ -64,7 +71,10 @@ class userLogin extends Component {
                   <button type="submit"
                           disabled={ !valid || submitting }
                           className="btn btn-success btn-lg btn-common">
-                          Login
+                          <FormattedMessage
+                            id="shared.login"
+                            defaultMessage="Login"
+                          />
                   </button>
                 </div>
               </div>

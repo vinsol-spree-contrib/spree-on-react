@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+// import { Link } from 'react-router';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import SUPPORTED_LOCALES from '../../../constants/supported-locales';
-import APP_ROUTES from '../../../constants/app-routes';
+// import APP_ROUTES from '../../../constants/app-routes';
 
 class LocaleSelector extends Component {
   render() {
@@ -13,6 +13,7 @@ class LocaleSelector extends Component {
             </MenuItem>);
     });
 
+    // TODO: Title
     return (
       <dd className='icon-block user-link-block'>
         <DropdownButton title="English" className='btn-link' bsStyle='link' id='user-account-dropdown'>

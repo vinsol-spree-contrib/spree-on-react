@@ -18,6 +18,7 @@ class SearchForm extends Component {
   };
 
   render () {
+    // TODO
     return (
       <dd className='icon-block withbg'>
         <label className="elem link-icon-elem pointer" htmlFor="search-input-box"></label>

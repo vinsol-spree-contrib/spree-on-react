@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Field, reduxForm, formValueSelector, SubmissionError } from 'redux-form';
+import { FormattedMessage, injectIntl } from 'react-intl';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -46,15 +47,25 @@ class AddressForm extends Component {
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handleAddressFormSubmit.bind(this)) }>
 
-            <div className="form-heading-title">General Info</div>
+            <div className="form-heading-title">
+              <FormattedMessage
+                id="com.addressForm.genaralInfo"
+                defaultMessage="General Info"
+              />
+            </div>
 
             <Field className="form-control"
                 name="order[email]"
                 component={ FormField.inputFieldMarkup }
-                label="Email"
+                label={ this.props.intl.formatMessage({ id: 'field.addressForm.email', defaultMessage: "Email" }) }
                 type="text" />
 
-            <div className="form-heading-title">Billing Info</div>
+            <div className="form-heading-title">
+              <FormattedMessage
+                id="com.addressForm.billingInfo"
+                defaultMessage="Billing Info"
+              />
+            </div>
             <AddressFieldsConnector fieldNamePrefix="order[bill_address_attributes]"
                                     countries={ this.props.countries }
                                     statesFromOrder={ this.props.order.states || [] }
@@ -64,7 +75,7 @@ class AddressForm extends Component {
               <Field className="form-control"
                   name="order[use_billing]"
                   component={ FormField.inputFieldMarkup }
-                  label="Ship to billing address"
+                  label={ this.props.intl.formatMessage({ id: 'field.addressForm.useBilling', defaultMessage: "Ship to Billing Address" }) }
                   type="checkbox" />
             </div>
 
@@ -76,7 +87,12 @@ class AddressForm extends Component {
                                       countries={ this.props.countries }
                                       statesFromOrder={ this.props.order.states || [] }
                                       selectedCountryId={ this.props.shipCountryId } >
-                <div className="form-heading-title">Shipping Info</div>
+                <div className="form-heading-title">
+                  <FormattedMessage
+                    id="com.addressForm.shippingInfo"
+                    defaultMessage="Shipping Info"
+                  />
+                </div>
               </AddressFieldsConnector>
             }
 
@@ -84,7 +100,7 @@ class AddressForm extends Component {
               <Field className="form-control"
                   name="order[save_user_address]"
                   component={ FormField.inputFieldMarkup }
-                  label="Remember this Address"
+                  label={ this.props.intl.formatMessage({ id: 'field.addressForm.rememberAddress', defaultMessage: "Remember this Address" }) }
                   type="checkbox" />
             </div>
 
@@ -94,7 +110,10 @@ class AddressForm extends Component {
                   <button type="submit"
                         disabled={ !valid || submitting }
                         className="btn btn-success btn-lg">
-                          Save Address
+                    <FormattedMessage
+                      id="label.buttons.saveAddress"
+                      defaultMessage="Save Address"
+                    />
                   </button>
                 </div>
               </div>
@@ -169,4 +188,4 @@ AddressForm = connect(
   }
 )(AddressForm)
 
-export default AddressForm;
+export default injectIntl(AddressForm);

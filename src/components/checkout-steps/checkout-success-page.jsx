@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
 import OrderPanelView from '../order/panel-view';
 
-class CheckoutSuccessForm extends Component {
+class CheckoutSuccessPage extends Component {
 
   /* Render this step only if order is present and in a valid checkout state. */
   componentWillMount() {
@@ -35,7 +36,10 @@ class CheckoutSuccessForm extends Component {
           <div className="row">
             <div className="col-md-12">
               <strong className="text text-success">
-                Your Order has been placed successfully!
+                <FormattedMessage
+                  id="com.checkoutSuccessPage.successMessage"
+                  defaultMessage="Your Order has been placed successfully!"
+                />
                 <br/><br/>
               </strong>
               <OrderPanelView order={ this.props.placedOrder } />
@@ -47,4 +51,4 @@ class CheckoutSuccessForm extends Component {
   };
 };
 
-export default CheckoutSuccessForm;
+export default CheckoutSuccessPage;

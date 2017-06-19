@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 class VariantsList extends Component {
 
   render() {
     let variantsList;
+    const outOfStockRep = <FormattedMessage
+                            id="label.outOfStock"
+                            defaultMessage="Out of Stock"
+                          />
     variantsList = this.props.variantsList.map((variant, idx) => {
       return (
         <div className="variant col-md-6" key={variant.id}>
@@ -15,7 +20,7 @@ class VariantsList extends Component {
                   onChange={()=>this.props.onChangeVariant(variant)}
                   checked={this.props.currentVariant===variant}/>
               { variant.options_text }
-              <b>{ variant.in_stock ? '' : ' (Out of Stock)' }</b>
+              <b>{ variant.in_stock ? '' : `(${ outOfStockRep })` }</b>
           </label>
         </div>
       )
@@ -24,7 +29,12 @@ class VariantsList extends Component {
     let renderString = null;
     if(this.props.variantsList.length > 0){
       renderString = <div id="product-variants" className="col-md-12 text-left">
-        <h3 className="product-section-title">Variants</h3>
+        <h3 className="product-section-title">
+          <FormattedMessage
+            id="shared.models.variant"
+            defaultMessage="Variant"
+          />
+        </h3>
         { variantsList }
       </div>
     }

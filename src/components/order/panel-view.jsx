@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Panel } from 'react-bootstrap';
+import { FormattedMessage } from 'react-intl';
 
 import Shipment from './shipment';
 
@@ -34,11 +35,31 @@ class OrderPanelView extends Component {
     return (
       <div className="order-panel-header row no-margin">
         <div className="label-block-row">
-          <label className="label label-default">Ref: { thisOrder.number }</label>
-          <label className="label label-normal">{ thisOrder.shipments.length } Package(s)</label>
-          <label className="label label-normal">Order Total: ${ thisOrder.total }</label>
+          <label className="label label-default">
+          <FormattedMessage
+            id="shared.attributes.orderNumber"
+            defaultMessage="Ref"
+          />
+          : { thisOrder.number }</label>
+          <label className="label label-normal">{ thisOrder.shipments.length }
+            &nbsp;
+            <FormattedMessage
+              id="label.packages"
+              defaultMessage="Package(s)"
+            />
+          </label>
+          <label className="label label-normal">
+            <FormattedMessage
+              id="label.orderTotal"
+              defaultMessage="Order Total"
+            />
+            : ${ thisOrder.total }</label>
           <span className={ `pull-right label label-${ paymentStatus }` }>
-            Payment Status: { thisOrder.payment_state }
+            <FormattedMessage
+              id="label.paymentStatus"
+              defaultMessage="Payment Status"
+            />
+            : { thisOrder.payment_state }
           </span>
         </div>
       </div>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
+
 import InfiniteScroll from 'redux-infinite-scroll';
 
 class InfiniteScroller extends Component {
@@ -25,7 +27,10 @@ class InfiniteScroller extends Component {
                               elementIsScrollable={ false }
                               loader={ <div className="infinite-loader">
                                         <span className="glyphicon glyphicon-refresh rotate-animation"></span>
-                                        Loading
+                                        <FormattedMessage
+                                          id="shared.loading"
+                                          defaultMessage="Loading"
+                                        />
                                         <span className="glyphicon glyphicon-refresh rotate-animation"></span>
                                       </div> }
                               hasMore={ this.props.pageCount > this.props.currentPage }>

@@ -30,7 +30,7 @@ class BaseCheckoutLayout extends Component {
   __generateCheckoutStepsMarkup (currentStep) {
     this.props.checkoutSteps.forEach((checkoutStep) => {
       let titleizedStepName = checkoutStep[0].toUpperCase() + checkoutStep.substr(1).toLowerCase();
-      this.__generateMarkupForStep(currentStep, checkoutStep.trim(), `${ titleizedStepName } Details`);
+      this.__generateMarkupForStep(currentStep, checkoutStep.trim(), `${ titleizedStepName }`);
     });
   };
 

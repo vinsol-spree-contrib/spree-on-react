@@ -9,7 +9,9 @@ class ProductImageThumb extends Component {
 
     return (
       <div className="col-sm-4 col-xs-4 thumbnail">
-        <img className="product-preview-image img-responsive img-center" alt={'productName'} src={ imageUrl }
+        <img className="product-preview-image img-responsive img-center"
+             alt={'productName'}
+             src={ imageUrl }
              onMouseOver={()=> this.props.onMouseOverThumbnail(this.props.imageNo)}
              onMouseOut={this.props.onMouseOutThumbnail}
              onClick={()=> this.props.onClickThumbnail(this.props.imageNo)}>

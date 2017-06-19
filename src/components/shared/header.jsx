@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import BrandHeader from './header/brand-header';
 import LocaleSelector from './header/locale-selector';
@@ -38,8 +39,18 @@ class Header extends Component {
     if (this.props.user.id) {
       userSessionActionMarkup = <dd className='icon-block user-link-block'>
         <DropdownButton title={ `Hello, ${ user.email.split('@')[0] } ` } className='btn-link' bsStyle='link' id='user-account-dropdown'>
-          <MenuItem onClick={ this.props.goToUserOrders }>Your Orders</MenuItem>
-          <MenuItem eventKey="2" onClick={ this.props.logout }>SignOut</MenuItem>
+          <MenuItem onClick={ this.props.goToUserOrders }>
+            <FormattedMessage
+              id="com.header.menu.myOrders"
+              defaultMessage="My Orders"
+            />
+          </MenuItem>
+          <MenuItem eventKey="2" onClick={ this.props.logout }>
+            <FormattedMessage
+              id="shared.signOut"
+              defaultMessage="Sign Out"
+            />
+          </MenuItem>
         </DropdownButton>
       </dd>;
     }
@@ -47,7 +58,10 @@ class Header extends Component {
       userSessionActionMarkup = <dd className='icon-block user-link-block'>
         <a className="primary-link" onClick={ this.openModal }>
           <span className="glyphicon glyphicon-user"></span>
-          Login
+          <FormattedMessage
+            id="shared.login"
+            defaultMessage="Login"
+          />
         </a>
       </dd>;
     }

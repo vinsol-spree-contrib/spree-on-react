@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -54,7 +55,10 @@ class DeliveryForm extends Component {
               <button type="submit"
                       className="btn btn-success btn-lg"
                       disabled={ !valid || submitting }>
-                        Save Delivery Details
+                <FormattedMessage
+                  id="label.buttons.saveDelivery"
+                  defaultMessage="Save Delivery Details"
+                />
               </button>
             </div>
           </form>

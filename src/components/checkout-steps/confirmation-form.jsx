@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from "../layout";
 import BaseCheckoutLayout from "./base-checkout-layout";
@@ -48,18 +49,35 @@ class ConfirmationForm extends Component {
           <form onSubmit={ handleSubmit(this.handleFormSubmit.bind(this)) }>
             <div className="row">
               <div className="col-md-3">
-                <h4> Billing Address : </h4>
+                <h4>
+                  <FormattedMessage
+                    id="label.billingAddress"
+                    defaultMessage="Billing Address"
+                  />
+                  :
+                </h4>
                 <Address address={ this.props.order.bill_address } />
               </div>
               <div className="col-md-3">
-                <h4> Shipping Address : </h4>
+                <h4>
+                  <FormattedMessage
+                    id="label.shippingAddress"
+                    defaultMessage="Shipping Address"
+                  />
+                  :
+                </h4>
                 <Address address={ this.props.order.ship_address } />
               </div>
             </div>
             <hr/>
             <div className="form-group">
               <div className="col-md-12">
-                <h4> Order Items </h4>
+                <h4>
+                  <FormattedMessage
+                    id="com.confirmationForm.orderItems"
+                    defaultMessage="Order Items"
+                  />
+                </h4>
                 { this._shipmentLineItemsMarkup() }
               </div>
             </div>
@@ -67,7 +85,10 @@ class ConfirmationForm extends Component {
               <button type="submit"
                     disabled={ !valid || submitting }
                     className="btn btn-success btn-lg">
-                      Confirm your order
+                <FormattedMessage
+                  id="label.buttons.confirmOrder"
+                  defaultMessage="Confirm your Order"
+                />
               </button>
             </div>
           </form>

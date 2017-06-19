@@ -3,7 +3,7 @@ import { push } from 'react-router-redux';
 
 import Actions from '../../actions';
 import APP_ACTIONS from '../../constants/app-actions';
-import CheckoutSuccessForm from '../../components/checkout-steps/checkout-success-form';
+import CheckoutSuccessPage from '../../components/checkout-steps/checkout-success-page';
 import CheckoutStepCalculator from '../../services/checkout-step-calculator';
 import APP_ROUTES from '../../constants/app-routes';
 
@@ -44,6 +44,6 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const CheckoutSuccessConnector = connect(mapStateToProps, mapDispatchToProps)(CheckoutSuccessForm);
+const CheckoutSuccessConnector = connect(mapStateToProps, mapDispatchToProps)(CheckoutSuccessPage);
 
 export default CheckoutSuccessConnector;

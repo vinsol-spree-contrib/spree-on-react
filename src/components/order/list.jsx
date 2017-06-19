@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { FormattedMessage } from 'react-intl';
 
 import Layout from '../layout';
 import OrderPanelView from './panel-view';
@@ -34,7 +35,10 @@ class OrderList extends Component {
         <Loader displayLoader={ this.state.displayLoader } />
         <div className="order-list-page">
           <div className="big-box-heading secondary spacing">
-            Your Orders
+            <FormattedMessage
+              id="com.order--list.yourOrders"
+              defaultMessage="Your Orders"
+            />
           </div>
           <div className="row">
             <div className="order-list container dark-color">

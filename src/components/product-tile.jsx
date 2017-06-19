@@ -19,13 +19,13 @@ class ProductTile extends Component {
 
     if (this.props.productInCart) {
       addToCartMarkup = <a>
-          <span className="glyphicon glyphicon-ok info-elem"></span>
-        </a>;
+                          <span className="glyphicon glyphicon-ok info-elem"></span>
+                        </a>;
     }
     else {
       addToCartMarkup = <a onClick={ this.addProductToCart }>
-          <span className="glyphicon glyphicon-shopping-cart info-elem"></span>
-        </a>;
+                          <span className="glyphicon glyphicon-shopping-cart info-elem"></span>
+                        </a>;
     }
 
     return addToCartMarkup;
