@@ -12,7 +12,7 @@ import Main from './components/main';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import './styles/main.scss';
+// import './styles/main.scss';
 
 addLocaleData([...en, ...es]);
 
