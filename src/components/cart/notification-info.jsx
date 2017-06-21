@@ -8,10 +8,12 @@ class CartNotificationInfo extends Component {
   render() {
     // <dd className="icon-block cart-icon-block withbg">
     return (
-      <dd className={ styles.root }>
-        <Link to={ APP_ROUTES.cartPageRoute } className="link-icon-elem elem"></Link>
-        <span className="badge">{ this.props.lineItems.length }</span>
-        <span className="glyphicon glyphicon-shopping-cart"></span>
+      <dd className={ styles.headerCartBlock }>
+        <Link to={ APP_ROUTES.cartPageRoute } className={ "link-icon-elem elem " + styles.headerCartLink }>
+          <span className={ "glyphicon glyphicon-shopping-cart " + styles.headerCartIcon }></span>
+          Cart
+          <span className={ "badge " + styles.headerCartCount }>{ this.props.lineItems.length }</span>
+        </Link>
       </dd>
 
     );

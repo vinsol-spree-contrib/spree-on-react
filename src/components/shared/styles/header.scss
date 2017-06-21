@@ -1,0 +1,26 @@
+.header {
+  height: 120px;
+  border-bottom: solid 1px #cacaca;
+
+  .headerTop {
+    width: 100%;
+    display: table;
+  }
+
+  .headerLanguageBlock {
+    padding-top: 15px;
+  }
+
+  .headerTopNav {
+    padding-top: 15px;
+  }
+
+  .headerUserBlock {
+    margin-left: 20px;
+    display: inline-block;
+  }
+}
+
+.headerLoginModal {
+  display: none;
+}

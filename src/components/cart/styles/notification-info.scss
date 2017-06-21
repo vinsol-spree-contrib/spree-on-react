@@ -1,3 +1,24 @@
-.root {
-  background-color: red;
+.headerCartBlock {
+  margin-left: 20px;
+  display: inline-block;
+
+  .headerCartLink {
+    padding-left: 10px;
+    position: relative;
+  }
+
+  .headerCartIcon {
+    margin-right: 2px;
+  }
+
+  .headerCartCount {
+    min-width: 1;
+    margin-left: 5px;
+    padding: 0;
+    display: inline-block;
+    color: #cacaca;
+    font-size: 10px;
+    font-weight: 300;
+    background: none;
+  }
 }

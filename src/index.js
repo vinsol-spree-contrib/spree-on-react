@@ -10,9 +10,9 @@ import localeData from './../build/app-translations.json';
 
 import Main from './components/main';
 
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
-// import './styles/main.scss';
+import styles from 'bootstrap/dist/css/bootstrap.css';
+import bootstrapTheme from 'bootstrap/dist/css/bootstrap-theme.css';
+import './styles/main.scss';
 
 addLocaleData([...en, ...es]);
 
@@ -31,7 +31,7 @@ const messages = localeData[language] || localeData[languageWithoutRegionCode] |
 
 ReactDOM.render(
   <IntlProvider locale={language} messages={messages}>
-    <Main />
+    <Main style={ bootstrapTheme + ' ' + styles} />
   </IntlProvider>
   ,
   document.getElementById('root')

@@ -8,6 +8,7 @@ import CartNotificationInfoConnector from '../../containers/cart/notification-in
 import SearchFormConnector from '../../containers/search-form-connector';
 import UserLoginConnector  from '../../containers/user-login-connector';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
+import styles from './styles/header.scss';
 
 class Header extends Component {
 
@@ -55,9 +56,8 @@ class Header extends Component {
       </dd>;
     }
     else {
-      userSessionActionMarkup = <dd className='icon-block user-link-block'>
-        <a className="primary-link" onClick={ this.openModal }>
-          <span className="glyphicon glyphicon-user"></span>
+      userSessionActionMarkup = <dd className={ 'icon-block user-link-block ' + styles.headerUserBlock }>
+        <a href="javascript:" className="primary-link" onClick={ this.openModal }>
           <FormattedMessage
             id="shared.login"
             defaultMessage="Login"
@@ -66,26 +66,42 @@ class Header extends Component {
       </dd>;
     }
 
-    return <dl className="nav-icons pull-right">
-
-              <LocaleSelector />
+    return <dl className="nav-icons">
               { userSessionActionMarkup }
 
               <CartNotificationInfoConnector />
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
-              <SearchFormConnector />
            </dl>;
   };
 
   render() {
     let userLoggedInClass = this.props.user.id ? 'user-logged-in ' : 'guest-user ';
     return (
-      <nav className={ "navbar navbar-inverse navbar-fixed-top " +  userLoggedInClass }>
-        <div className="container-fluid">
-          <BrandHeader />
-          { this.navIcons() }
-          <div className="navbar-collapse collapse row">
-            <FilterBarConnector />
+      <nav className={ "global-header " +  userLoggedInClass + styles.header}>
+        <div className="container">
+          <div className={ "row " + styles.headerTop }>
+            <div className={ "col-xs-4 " + styles.headerLanguageBlock }>
+              <LocaleSelector />
+            </div>
+
+            <div className="col-xs-4 text-center">
+              <BrandHeader />
+            </div>
+
+            <div className={ "col-xs-4 text-right " + styles.headerTopNav }>
+              { this.navIcons() }
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="col-sm-6">
+              <div className="navbar-collapse collapse row">
+                <FilterBarConnector />
+              </div>
+            </div>
+            <div className="col-sm-6">
+              <SearchFormConnector />
+            </div>
           </div>
         </div>
       </nav>

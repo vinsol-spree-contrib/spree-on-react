@@ -1,0 +1,27 @@
+.navBarHeader {
+  width: 100%;
+  height: 50px;
+  padding: 15px 0 0;
+  float: left;
+
+  .headerLogo {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+
+.headerLanguageButton {
+  border: none !important;
+  padding: 0 !important;
+  color: #000 !important;
+
+  &:hover,
+  &:focus {
+    color: #00888a !important;
+    text-decoration: none !important;
+  }
+}
+
+.headerLanguage {
+  display: inline-block;
+}
