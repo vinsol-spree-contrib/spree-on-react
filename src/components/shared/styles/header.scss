@@ -2,25 +2,30 @@
   height: 120px;
   border-bottom: solid 1px #cacaca;
 
-  .headerTop {
-    width: 100%;
-    display: table;
-  }
-
-  .headerLanguageBlock {
-    padding-top: 15px;
-  }
-
+  .headerLanguageBlock,
   .headerTopNav {
-    padding-top: 15px;
+    padding-top: 20px;
+  }
+
+  .headerNavHolder {
+    margin-bottom: 0;
+  }
+
+  .headerUserLink {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
   }
 
   .headerUserBlock {
     margin-left: 20px;
     display: inline-block;
   }
-}
 
-.headerLoginModal {
-  display: none;
+  .headerBottomNavRow {
+    margin-top: 20px;
+  }
+
+  .headerMainNavHolder {
+    padding-top: 10px;
+  }
 }

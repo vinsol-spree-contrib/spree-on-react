@@ -6,9 +6,9 @@ class Modal extends Component {
     let showModalClass = this.props.showModal ? 'show-modal' : ' ';
 
     return (
-      <div className={ `global-modal ${ this.props.modalClasses } ${ showModalClass } ` + styles.headerLoginModal } style={{ visibility:'hidden'}}>
+      <div className={ `global-modal ${ this.props.modalClasses } ${ showModalClass } `}>
         <span className="btn-close" onClick={ this.props.closeModal }></span>
-        <div className="container-fluid">
+        <div className="container">
           { this.props.children }
         </div>
       </div>

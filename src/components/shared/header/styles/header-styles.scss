@@ -1,8 +1,7 @@
 .navBarHeader {
-  width: 100%;
-  height: 50px;
+  height: 45px;
   padding: 15px 0 0;
-  float: left;
+  display: inline-block;
 
   .headerLogo {
     max-width: 100%;
@@ -14,6 +13,8 @@
   border: none !important;
   padding: 0 !important;
   color: #000 !important;
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 13px !important;
 
   &:hover,
   &:focus {

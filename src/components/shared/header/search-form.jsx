@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import styles from './styles/search-form.scss';
 
 class SearchForm extends Component {
   constructor (props) {
@@ -20,12 +21,12 @@ class SearchForm extends Component {
   render () {
     // TODO
     return (
-      <dd className='icon-block withbg'>
-        <label className="elem link-icon-elem pointer" htmlFor="search-input-box"></label>
-        <span className='glyphicon glyphicon-search'></span>
+      <dd className={ 'icon-block withbg ' + styles.searchHolder }>
+        <label className={ "elem link-icon-elem pointer " + styles.headerSearchLabel } htmlFor="search-input-box"></label>
+        <span className={ 'glyphicon glyphicon-search ' + styles.headerSearchIcon }></span>
         <form onSubmit={ this.submitSearchForm } className="search-inline-form">
           <input type="text"
-                  className="form-control"
+                  className={ styles.headerSearchInput }
                   onChange={ this.onSearchInputChange }
                   placeholder="Search"
                   defaultValue={ this.props.searchTerm } id="search-input-box"/>

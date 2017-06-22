@@ -57,7 +57,7 @@ class Header extends Component {
     }
     else {
       userSessionActionMarkup = <dd className={ 'icon-block user-link-block ' + styles.headerUserBlock }>
-        <a href="javascript:" className="primary-link" onClick={ this.openModal }>
+        <a href="javascript:" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
           <FormattedMessage
             id="shared.login"
             defaultMessage="Login"
@@ -66,7 +66,7 @@ class Header extends Component {
       </dd>;
     }
 
-    return <dl className="nav-icons">
+    return <dl className={ "nav-icons " + styles.headerNavHolder }>
               { userSessionActionMarkup }
 
               <CartNotificationInfoConnector />
@@ -93,13 +93,13 @@ class Header extends Component {
             </div>
           </div>
 
-          <div className="row">
-            <div className="col-sm-6">
+          <div className={ "row " + styles.headerBottomNavRow }>
+            <div className={ "col-sm-8 " + styles.headerMainNavHolder }>
               <div className="navbar-collapse collapse row">
                 <FilterBarConnector />
               </div>
             </div>
-            <div className="col-sm-6">
+            <div className="col-sm-4">
               <SearchFormConnector />
             </div>
           </div>

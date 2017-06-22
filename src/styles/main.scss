@@ -24,6 +24,7 @@
 
 
 body {
+  font-family: 'Roboto', sans-serif;
   background: $bodyBg;
 }
 
@@ -38,6 +39,11 @@ body {
 a {
   color: $color-black;
   @include transition(all,0.5s);
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
 
   &:hover {
     color: $link-color;

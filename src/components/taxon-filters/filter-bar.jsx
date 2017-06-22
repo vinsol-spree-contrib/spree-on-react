@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NavDropdown } from 'react-bootstrap';
 import Taxon from './taxon';
+import styles from './styles/filter-bar.scss';
 
 class FilterBar extends Component {
   taxonMarkup (taxon) {
@@ -10,7 +11,7 @@ class FilterBar extends Component {
       });
 
       return (
-        <NavDropdown id={ `dropdown-${ taxon.name }-${ taxon.id }` } title={ taxon.name } key={ `nav-dropdown-${ taxon.id }` }>
+        <NavDropdown className={ styles.mainNavHolder } id={ `dropdown-${ taxon.name }-${ taxon.id }` } title={ taxon.name } key={ `nav-dropdown-${ taxon.id }` }>
           { thisTaxonInnerMarkup }
         </NavDropdown>
       );
@@ -32,7 +33,7 @@ class FilterBar extends Component {
     });
 
     return (
-      <ul className="nav navbar-nav">
+      <ul className={ styles.headerNavContainer }>
         { taxonFilterMarkup }
       </ul>
     );

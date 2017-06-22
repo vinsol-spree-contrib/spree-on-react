@@ -1,0 +1,127 @@
+.width300 {
+  width: 300px;
+}
+
+.headerNavContainer {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: table;
+}
+
+.mainNavHolder {
+  height: 25px;
+  margin-left: 20px;
+  display: inline-block;
+
+  &:hover {
+    > a {
+      color: #4eaf79;
+    }
+
+    > ul {
+      display: block;
+    }
+  }
+
+  a {
+    font-family: 'Roboto', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .mainNavHolder {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  > ul {
+    border: solid 1px #c7c7c7;
+    border-radius: 0;
+    top: 23px;
+
+    &:before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border: none;
+      border-top: solid 1px #c7c7c7;
+      border-left: solid 1px #c7c7c7;
+      position: absolute;
+      top: -6px;
+      left: 10px;
+      background: #fff;
+      -webkit-transform: rotate(45deg);
+      -moz-transform: rotate(45deg);
+      transform: rotate(45deg);
+    }
+
+    > li {
+      padding: 0 10px;
+
+      > a {
+        border-top: solid 1px #E1E1E1;
+        padding: 8px 0;
+        font-size: 12px;
+
+        &:hover {
+          color: #4eaf79;
+          background: none;
+        }
+
+        > span {
+          border-top: solid 4px transparent;
+          border-bottom: solid 4px transparent;
+          border-left: solid 4px #000;
+          border-right: none;
+        }
+      }
+
+      > ul {
+        border: solid 1px #c7c7c7;
+        top: 0;
+        left: 100%;
+        border-radius: 0;
+
+        &:before {
+          top: 10px;
+          left: -6px;
+          -webkit-transform: rotate(-45deg);
+          -moz-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+        }
+
+        > li {
+          padding: 0 10px;
+
+          > a {
+            border-top: solid 1px #E1E1E1;
+            padding: 8px 0;
+            font-size: 12px;
+
+            &:hover {
+              color: #4eaf79;
+              background: none;
+            }
+          }
+
+          &:first-child {
+            > a {
+              border-top: none;
+            }
+          }
+        }
+      }
+
+      &:first-child {
+        > a {
+          border-top: none;
+        }
+      }
+    }
+  }
+}
