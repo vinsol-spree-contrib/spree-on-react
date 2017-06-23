@@ -1,0 +1,32 @@
+.homeSlider {
+  height: 500px;
+
+  .homeSliderRow {
+    height: 500px;
+  }
+
+  .sliderContainer {
+    height: 500px;
+  }
+
+  .bannerTextContent {
+    width: 60%;
+    padding: 0 50px;
+    position: relative;
+    top: 50%;
+    color: #fff;
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    h3 {
+      font-size: 24px;
+    }
+
+    p {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+  }
+}
