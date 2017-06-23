@@ -7,7 +7,7 @@ class Modal extends Component {
 
     return (
       <div className={ `global-modal ${ this.props.modalClasses } ${ showModalClass } `}>
-        <span className="btn-close" onClick={ this.props.closeModal }></span>
+        <span className="glyphicon glyphicon-remove-circle btn-close modal-close-button" onClick={ this.props.closeModal }></span>
         <div className="container">
           { this.props.children }
         </div>

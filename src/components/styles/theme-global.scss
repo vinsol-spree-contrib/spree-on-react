@@ -1,7 +1,65 @@
+@import 'core/fonts.scss';
+@import 'core/variables.scss';
+@import 'core/mixins.scss';
+
+body {
+  font-family: $roboto;
+  background: $color-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li,
+dl,
+dt,
+dd,
+p {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: $oswald;
+}
+
+a,
+button,
+input {
+  outline: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+a {
+  color: $color-black;
+  @include transition(all, 0.5s, ease-in-out);
+
+  &:focus {
+    outline: none;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $link-color;
+    text-decoration: none;
+  }
+}
+
 //modal
 .global-modal {
-  width: 100%;
-  height: 100%;
+  width: $full;
+  height: $full;
   display: none;
   position: fixed;
   top: 0;
@@ -12,5 +70,90 @@
 
   &.show-modal {
     display: block;
+  }
+
+  .modal-close-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    color: $color-white;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  .global-modal-title {
+    border-bottom: solid 1px $border-grey;
+    padding-bottom: 10px;
+    color: $color-black;
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  .global-modal-content {
+    width: $full;
+    padding-top: 20px;
+    display: table;
+  }
+
+  .user-login-modal {
+    width: 600px;
+    margin-left: -300px;
+    padding: 20px 30px;
+    position: absolute;
+    top: 150px;
+    left: 50%;
+    background: $color-white;
+  }
+
+  .modal-form-row {
+    width: $full;
+    margin-top: 20px;
+    display: table;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .modal-form-label {
+    margin-bottom: 5px;
+    display: block;
+    color: $color-black;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  .form-input {
+    width: $full;
+    height: 40px;
+    border: solid 1px $border-grey;
+    padding: 0 10px;
+    color: $color-black;
+    font-size: 13px;
+    background-color: $color-white;
+    @include transition(all, 0.3s, ease-in-out);
+
+    &:focus {
+      border-color: $color-black;
+    }
+  }
+}
+
+.button-primary {
+  border: solid 1px $color-black;
+  padding: 12px 40px;
+  display: inline-block;
+  color: $color-white;
+  background: $color-black;
+  font-family: $oswald;
+  font-size: 14px;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  @include transition(all, 0.3s, ease-in-out);
+
+  &:hover {
+    color: $color-black;
+    background: $color-white;
   }
 }

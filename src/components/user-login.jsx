@@ -31,54 +31,59 @@ class userLogin extends Component {
 
     return (
       <Modal modalClasses="user-form-modal" showModal={ this.props.showModal } closeModal={ this.closeModal } >
-        <div className="center-block user-form-process">
-          <div className="cmn-user-form">
-            <div className="form-heading-title center-heading no-border big">Login</div>
-            <FlashConnector />
-            <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
-              <div className="form-group row no-margin">
-                <label className="col-sm-12 control-label">
-                  <FormattedMessage
-                    id="shared.email"
-                    defaultMessage="Email"
-                  />
-                </label>
-                <div className="col-sm-12">
-                  <Field className="form-control"
-                      name="user[email]"
-                      component="input"
-                      type="text" />
-                </div>
-              </div>
+        <div className="user-login-modal">
+          <div className="center-block user-form-process">
+            <div className="cmn-user-form">
+              <h2 className="global-modal-title">Login</h2>
 
-              <div className="form-group clearfix">
-                <label className="col-sm-12 control-label">
-                  <FormattedMessage
-                    id="shared.password"
-                    defaultMessage="Password"
-                  />
-                </label>
-                <div className="col-sm-12">
-                  <Field className="form-control"
-                      name="user[password]"
-                      component="input"
-                      type="password" />
-                </div>
-              </div>
+              <div className="global-modal-content">
+                <FlashConnector />
+                <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
+                  <div className="modal-form-row">
+                    <label className="modal-form-label">
+                      <FormattedMessage
+                        id="shared.email"
+                        defaultMessage="Email"
+                      />
+                    </label>
+                    <div className="modal-form-input">
+                      <Field className="form-input"
+                          name="user[email]"
+                          component="input"
+                          type="text" />
+                    </div>
+                  </div>
 
-              <div className="form-group clearfix">
-                <div className="col-sm-12 text-center">
-                  <button type="submit"
-                          disabled={ !valid || submitting }
-                          className="btn btn-success btn-lg btn-common">
-                          <FormattedMessage
-                            id="shared.login"
-                            defaultMessage="Login"
-                          />
-                  </button>
-                </div>
+                  <div className="modal-form-row">
+                    <label className="modal-form-label">
+                      <FormattedMessage
+                        id="shared.password"
+                        defaultMessage="Password"
+                      />
+                    </label>
+                    <div className="modal-form-input">
+                      <Field className="form-input"
+                          name="user[password]"
+                          component="input"
+                          type="password" />
+                    </div>
+                  </div>
+
+                  <div className="modal-form-row">
+                    <div className="modal-form-input">
+                      <button type="submit"
+                              disabled={ !valid || submitting }
+                              className="button-primary">
+                              <FormattedMessage
+                                id="shared.login"
+                                defaultMessage="Login"
+                              />
+                      </button>
+                    </div>
+                  </div>
+                </form>
               </div>
-            </form>
+            </div>
           </div>
         </div>
       </Modal>
