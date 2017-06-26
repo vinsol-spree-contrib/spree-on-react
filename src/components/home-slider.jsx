@@ -10,10 +10,10 @@ class HomeSlider extends Component {
 
   render () {
     return (
-      <Carousel className={ " " + styles.homeSlider }>
+      <Carousel className={ "homepage-slider " + styles.homeSlider }>
         <Carousel.Item className={ " " + styles.homeSliderRow } style={{ backgroundImage: `url(${Banner1})` }}>
           <div className={ "container " + styles.sliderContainer }>
-            <div className={ "banner-block " + styles.bannerTextContent }>
+            <div className={ "banner-block " + styles.homeSliderTextContent }>
               <div className="banner-title">
                 <h3>Banner 1</h3>
                 <p>Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet.</p>
@@ -23,7 +23,7 @@ class HomeSlider extends Component {
         </Carousel.Item>
         <Carousel.Item className={ " " + styles.homeSliderRow } style={{ backgroundImage: `url(${Banner2})` }}>
           <div className={ "container " + styles.sliderContainer }>
-            <div className={ "banner-block " + styles.bannerTextContent }>
+            <div className={ "banner-block " + styles.homeSliderTextContent }>
               <div className="banner-title">
                 <h3>Banner 2</h3>
                 <p>Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet.</p>

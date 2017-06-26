@@ -7,6 +7,10 @@
     padding-top: 20px;
   }
 
+  .globalHeaderLogo {
+    text-align: center;
+  }
+
   .headerNavHolder {
     margin-bottom: 0;
   }
@@ -27,5 +31,18 @@
 
   .headerMainNavHolder {
     padding-top: 10px;
+  }
+
+  @media (max-width: 767px) {
+    height: auto;
+
+    .globalHeaderLogo {
+      text-align: left;
+    }
+
+    .headerMobileMenu {
+      margin: 15px 0 0;
+      font-size: 18px;
+    }
   }
 }

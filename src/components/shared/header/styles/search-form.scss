@@ -29,4 +29,18 @@
     font-size: 12px;
     font-weight: 500;
   }
+
+  @media (max-width: 767px) {
+    .headerSearchIcon {
+      top: 9px;
+      right: 5px;
+    }
+
+    .headerSearchInput {
+      height: 30px;
+      padding: 0 15px 0 5px;
+      font-size: 11px;
+      line-height: 30px;
+    }
+  }
 }

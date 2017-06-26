@@ -11,7 +11,7 @@ class CartNotificationInfo extends Component {
       <dd className={ styles.headerCartBlock }>
         <Link to={ APP_ROUTES.cartPageRoute } className={ "link-icon-elem elem " + styles.headerCartLink }>
           <span className={ "glyphicon glyphicon-shopping-cart " + styles.headerCartIcon }></span>
-          Cart
+          <span className="hidden-xs">Cart</span>
           <span className={ "badge " + styles.headerCartCount }>{ this.props.lineItems.length }</span>
         </Link>
       </dd>

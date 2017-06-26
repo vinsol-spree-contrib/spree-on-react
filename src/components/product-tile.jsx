@@ -3,6 +3,8 @@ import { Link } from 'react-router';
 
 import URLSanitizer from '../services/url-sanitizer';
 
+import styles from './styles/components/product-tile.scss';
+
 class ProductTile extends Component {
   constructor(props){
     super(props);
@@ -23,7 +25,7 @@ class ProductTile extends Component {
                         </a>;
     }
     else {
-      addToCartMarkup = <a onClick={ this.addProductToCart }>
+      addToCartMarkup = <a href="javascript:" className={ " " + styles.productHoverButton } onClick={ this.addProductToCart }>
                           <span className="glyphicon glyphicon-shopping-cart info-elem"></span>
                         </a>;
     }
@@ -37,31 +39,31 @@ class ProductTile extends Component {
     let productShowURL = '/products/' + this.props.product.slug;
     let imageUrl = URLSanitizer.makeAbsolute(image.product_url);
     return (
-      <div className="col-md-4 col-sm-6 col-xs-12 product-tile">
-        <div className="thumbnail text-center row no-margin">
-          <div className="col-sm-12 col-xs-12 thumb-img-block">
-            <Link to={ productShowURL } className="product-link"></Link>
-            <img className="product-tile-image img-responsive"
-                 alt={ productName }
-                 src={ imageUrl }>
-            </img>
+      <div className="col-md-3 col-sm-4 col-xs-6 product-tile">
+        <div className={ " " + styles.productBlock }>
+          <div className={ "thumb-img-block " + styles.productImageBlock }>
+            <Link to={ productShowURL } className={ "product-link " + styles.productImageHolder }>
+              <img className={ "product-tile-image " + styles.productMainImage }
+                   alt={ productName }
+                   src={ imageUrl }>
+              </img>
+            </Link>
 
-            <aside className="hover-info">
-              <div className="product-btns">
-                { this._addToCartMarkup() }
-                <a><span className="glyphicon glyphicon-heart info-elem"></span></a>
-              </div>
+            <aside className={ " " + styles.productHoverInfo }>
+              { this._addToCartMarkup() }
+              <a href="javascript:" className={ " " + styles.productHoverButton }><span className="glyphicon glyphicon-heart info-elem"></span></a>
             </aside>
           </div>
 
-          <Link to={ productShowURL }>
-            <div className="text-center col-sm-12 col-xs-12 product-text-info oswald">
-              <div className="caption-info text-truncate" title={ productName} >
+          
+          <div className={ " " + styles.productInfoBlock }>
+            <div className="caption-info text-truncate" title={ productName} >
+              <Link to={ productShowURL } className={ " " + styles.productTitle }>
                 { productName }
-              </div>
-              ${ this.props.product.master.price }
+              </Link>
             </div>
-          </Link>
+            ${ this.props.product.master.price }
+          </div>
 
         </div>
       </div>

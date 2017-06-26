@@ -26,3 +26,9 @@
 .headerLanguage {
   display: inline-block;
 }
+
+@media (max-width: 767px) {
+  .navBarHeader {
+    height: 40px;
+  }
+}

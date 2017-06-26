@@ -32,9 +32,11 @@ class ProductList extends Component {
     }
 
     return (
-      <article className="product-list-container row no-margin">
-        <div className="product-list container">
-          { infiniteScroller }
+      <article className="product-list-container product-section">
+        <div className="product-list">
+          <div className="row">
+            { infiniteScroller }
+          </div>
         </div>
       </article>
     );

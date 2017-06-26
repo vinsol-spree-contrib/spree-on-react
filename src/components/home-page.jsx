@@ -22,23 +22,22 @@ class HomePage extends Component {
   render() {
     return (
       <Layout>
-        <div className="home-page row">
+        <div className="home-page">
           <HomeSlider />
           <Loader displayLoader={ this.props.displayLoader } />
 
-          <div className="big-box-heading">
-            <FormattedMessage
-              id="com.home-page.heading"
-              defaultMessage="Style Collection"
-            />
-            <div className="icon-start">
-              <div className="icon-arrow-hint animated-arrow-1 glyphicon glyphicon-chevron-down"></div>
-              <div className="icon-arrow-hint animated-arrow-2 glyphicon glyphicon-chevron-down"></div>
-            </div>
+          <div className="container body-container">
+            <h2 className="section-heading">
+              <FormattedMessage
+                id="com.home-page.heading"
+                defaultMessage="Style Collection"
+              />
+            </h2>
+
+            <ProductList products={ this.props.products }
+                         loadMoreProducts={ this.props.loadMoreProducts }
+                         pageCount={ this.props.pageCount } />
           </div>
-          <ProductList products={ this.props.products }
-                       loadMoreProducts={ this.props.loadMoreProducts }
-                       pageCount={ this.props.pageCount } />
         </div>
       </Layout>
     );

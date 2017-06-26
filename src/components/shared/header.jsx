@@ -56,7 +56,7 @@ class Header extends Component {
       </dd>;
     }
     else {
-      userSessionActionMarkup = <dd className={ 'icon-block user-link-block ' + styles.headerUserBlock }>
+      userSessionActionMarkup = <dd className={ 'hidden-xs icon-block user-link-block ' + styles.headerUserBlock }>
         <a href="javascript:" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
           <FormattedMessage
             id="shared.login"
@@ -80,26 +80,44 @@ class Header extends Component {
       <nav className={ "global-header " +  userLoggedInClass + styles.header}>
         <div className="container">
           <div className={ "row " + styles.headerTop }>
-            <div className={ "col-xs-4 " + styles.headerLanguageBlock }>
-              <LocaleSelector />
+            <div className="col-sm-8">
+              <div className="row">
+                <div className={ "col-sm-6 hidden-xs " + styles.headerLanguageBlock }>
+                  <LocaleSelector />
+                </div>
+
+                <div className="col-sm-6">
+                  <div className="row">
+                    <div className={ "col-sm-12 col-xs-8 " + styles.globalHeaderLogo }>
+                      <BrandHeader />
+                    </div>
+                    <div className="col-xs-4 visible-xs text-right">
+                      <a href="javascript:" className={ "glyphicon glyphicon-menu-hamburger " + styles.headerMobileMenu }></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            <div className="col-xs-4 text-center">
-              <BrandHeader />
-            </div>
-
-            <div className={ "col-xs-4 text-right " + styles.headerTopNav }>
-              { this.navIcons() }
+            <div className={ "col-sm-4 text-right " + styles.headerTopNav }>
+              <div className="row">
+                <div className="col-xs-9 visible-xs">
+                  <SearchFormConnector />
+                </div>
+                <div className="col-sm-12 col-xs-3">
+                  { this.navIcons() }
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className={ "row " + styles.headerBottomNavRow }>
-            <div className={ "col-sm-8 " + styles.headerMainNavHolder }>
+          <div className={ "row hidden-xs " + styles.headerBottomNavRow }>
+            <div className={ "col-md-8 col-sm-7 " + styles.headerMainNavHolder }>
               <div className="navbar-collapse collapse row">
                 <FilterBarConnector />
               </div>
             </div>
-            <div className="col-sm-4">
+            <div className="col-md-4 col-sm-5">
               <SearchFormConnector />
             </div>
           </div>
