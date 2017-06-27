@@ -69,7 +69,7 @@ class ProductShow extends Component {
     let { currentVariant } = this.state
     if(currentVariant) {
       let isLineItemInCart = this.props.lineItems.find((lineItem) => { return (lineItem.variant_id === currentVariant.id) })
-      let addToCartButtonNode = <Button className="cart-big-btn sm-full-btn" bsSize="large" active onClick={this.addProductToCart.bind(this)}>
+      let addToCartButtonNode = <Button className="button-primary button-full" onClick={this.addProductToCart.bind(this)}>
         <span className="cart-text">
           <FormattedMessage
             id="label.addToCart"
@@ -81,7 +81,7 @@ class ProductShow extends Component {
 
       if (isLineItemInCart) {
         addToCartButtonNode = <Link to={ APP_ROUTES.cartPageRoute }>
-          <Button className="cart-big-btn sm-full-btn" bsSize="large" active>
+          <Button className="button-primary button-full">
             <span className="cart-text">
               <FormattedMessage
                 id="label.goToCart"
@@ -93,76 +93,57 @@ class ProductShow extends Component {
         </Link>
       }
 
-      renderString =  <div className="">
+      renderString =  <div className="container">
                         <article className="row product-row">
-                          <div className="col-sm-6 col-xs-12 product-top-col">
+                          <div className="col-sm-6 product-top-col product-image-block">
                             <ImageViewer productVariant={ currentVariant }/>
                           </div>
 
-                          <div className="col-sm-6 col-xs-12 product-top-col text-left">
-                            <div className="row">
-                              <div className="col-md-12">
-                                <h1 className="font-dark">
-                                  { currentVariant.name }
-                                </h1>
-                              </div>
+                          <div className="col-sm-6 product-top-col product-options-block">
+                            <div className="product-option-row">
+                              <h1 className="product-name">
+                                { currentVariant.name }
+                              </h1>
                             </div>
 
-                            <div className="row">
-                              <div className="col-md-12">
-                                <p className="h3 font-dark">${ currentVariant.price }</p>
-                              </div>
+                            <div className="product-option-row product-price">
+                              ${ currentVariant.price }
                             </div>
 
-                            <div className="row">
-                              <div className="col-md-12">
-                                <p className="h3 font-dark">
-                                  <FormattedMessage
-                                    id="shared.attributes.description"
-                                    defaultMessage="Description"
-                                  />
-                                </p>
-                                <p className="pull-left">{ currentVariant.description }</p>
-                              </div>
-                            </div>
-
-                            <div className="row">
+                            <div className="product-option-row variant-block">
                               <VariantsList currentVariant={ currentVariant }
                                             variantsList={ this.state.currentProduct.variants }
                                             onChangeVariant={ this.onChangeVariant }/>
                             </div>
 
-                            <div className="row">
-                              <div className="col-md-12">
-                                { addToCartButtonNode }
-                              </div>
+                            <div className="product-option-row button-row">
+                              { addToCartButtonNode }
                             </div>
                           </div>
                         </article>
 
-                        <article className="row product-achievement-row">
-                          <div className="col-sm-6 col-xs-12 achievement-col">
-                            <div>
-                              <h3 className="font-dark">
-                                <FormattedMessage
-                                  id="shared.attributes.description"
-                                  defaultMessage="Description"
-                                />
-                              </h3>
+                        <article className="product-achievement-row product-desription-section">
+                          <div className="achievement-col product-description-block">
+                            <h3 className="section-heading">
+                              <FormattedMessage
+                                id="shared.attributes.description"
+                                defaultMessage="Description"
+                              />
+                            </h3>
+                            <div className="product-description-content">
                               { currentVariant.description }
                             </div>
                           </div>
-                          <div className="col-sm-6 col-xs-12 achievement-col">
-                            <div className="col-md-12">
-                              <h3 className="font-dark">
-                                <FormattedMessage
-                                  id="shared.models.productProperties"
-                                  defaultMessage="Product Properties"
-                                />
-                              </h3>
-                              <div className="product-desc">
-                                <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
-                              </div>
+
+                          <div className="achievement-col product-properties-block">
+                            <h3 className="section-heading">
+                              <FormattedMessage
+                                id="shared.models.productProperties"
+                                defaultMessage="Product Properties"
+                              />
+                            </h3>
+                            <div className="product-description-content">
+                              <ProductProperties properties={ this.state.currentProduct.product_properties || [] } />
                             </div>
                           </div>
 
@@ -173,7 +154,7 @@ class ProductShow extends Component {
     }
     return (
       <Layout>
-        <div className="product-show">
+        <div className="product-show product-details-section">
           <Loader displayLoader={ this.props.displayLoader } />
           { renderString }
         </div>

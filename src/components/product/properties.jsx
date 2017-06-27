@@ -6,12 +6,12 @@ class ProductProperties extends Component {
 
     let productProperties = this.props.properties.map((property, idx) => {
       return (
-        <div className="row" key={ "product-property-" + idx }>
-          <div className="col-md-3">
+        <div className="row product-properties-row" key={ "product-property-" + idx }>
+          <div className="col-md-3 product-properties-label">
             <strong>{property.property_name}</strong>
           </div>
 
-          <div className="col-md-9">
+          <div className="col-md-9 product-properties-content">
             { property.value }
           </div>
         </div>

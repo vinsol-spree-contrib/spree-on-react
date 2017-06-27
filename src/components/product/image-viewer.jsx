@@ -52,12 +52,12 @@ class ImageViewer extends Component {
       productImages = this.props.productVariant.images;
       previewImage = this.props.productVariant.images[this.state.previewImageNo];
       returnString =  <div>
-                        <div className="row text-center">
+                        <div className="product-main-image-block">
                           <Loader displayLoader={this.state.displayImageLoader} />
                           <ProductImagePreview productImage={ previewImage } handleImageLoad={this.handleImageLoad} />
                         </div>
 
-                        <div className="row text-center">
+                        <div className="product-thumbnails-row">
                           <ThumbnailList images={ productImages }
                                            onClickThumbnail={ this.onClickThumbnail }
                                            onMouseOverThumbnail={ this.onMouseOverThumbnail }

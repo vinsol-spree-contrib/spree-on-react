@@ -29,7 +29,7 @@ class VariantsList extends Component {
     let renderString = null;
     if(this.props.variantsList.length > 0){
       renderString = <div id="product-variants" className="col-md-12 text-left">
-        <h3 className="product-section-title">
+        <h3 className="product-variant-title">
           <FormattedMessage
             id="shared.models.variant"
             defaultMessage="Variant"

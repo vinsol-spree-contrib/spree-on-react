@@ -8,13 +8,15 @@ class ProductImagePreview extends Component {
     let imageUrl = URLSanitizer.makeAbsolute(this.props.productImage.large_url);
 
     return (
-      <div className="product-img col-md-12">
+      <div className="product-img">
           <div className="product-img-block">
-            <img className="product-preview-image img-responsive img-center"
-                  alt={'productName'}
-                  src={ imageUrl }
-                  onLoad={this.props.handleImageLoad}>
-            </img>
+            <span className="product-image-holder">
+              <img className="product-preview-image product-image"
+                    alt={'productName'}
+                    src={ imageUrl }
+                    onLoad={this.props.handleImageLoad}>
+              </img>
+            </span>
           </div>
       </div>
     );
