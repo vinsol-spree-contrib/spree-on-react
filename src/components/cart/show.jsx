@@ -48,7 +48,7 @@ class CartShow extends Component {
       lineItems = this.props.order.line_items;
     }
 
-    let renderString = <div className="well">
+    let renderString = <div className="cart-empty-block">
                           <p className="h4">
                             <FormattedMessage
                               id="com.cart--show.cartEmptyHeading"
@@ -56,7 +56,7 @@ class CartShow extends Component {
                             />
                           </p>
                           <br/>
-                          <Link className='link btn btn-primary btn-lg' to={ APP_ROUTES.homePageRoute }>
+                          <Link className='button-primary button-white' to={ APP_ROUTES.homePageRoute }>
                             <span className="glyphicon glyphicon-chevron-left" />
                             &nbsp;
                             <FormattedMessage
