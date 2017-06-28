@@ -80,6 +80,7 @@ $imageBlockHeight: 500px;
 
   .variant-block {
     width: $full;
+    border: solid 1px $border-grey;
     padding: 20px;
     display: table;
     background: $light-grey-bg;
@@ -119,6 +120,7 @@ $imageBlockHeight: 500px;
   .product-properties-block,
   .product-description-block {
     margin-top: 40px;
+    border: solid 1px $border-grey;
     padding: 30px;
     background: $light-grey-bg;
   }
