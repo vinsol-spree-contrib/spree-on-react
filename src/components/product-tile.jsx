@@ -20,7 +20,7 @@ class ProductTile extends Component {
     let addToCartMarkup;
 
     if (this.props.productInCart) {
-      addToCartMarkup = <a>
+      addToCartMarkup = <a className={ " " + styles.productHoverButton }>
                           <span className="glyphicon glyphicon-ok info-elem"></span>
                         </a>;
     }

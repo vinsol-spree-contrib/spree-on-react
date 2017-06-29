@@ -47,20 +47,20 @@ class AddressForm extends Component {
                             checkoutSteps={ this.props.order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handleAddressFormSubmit.bind(this)) }>
 
-            <div className="form-heading-title">
+            <div className="checkout-section-title">
               <FormattedMessage
                 id="com.addressForm.genaralInfo"
                 defaultMessage="General Info"
               />
             </div>
 
-            <Field className="form-control"
+            <Field className="form-control checkout-form-row"
                 name="order[email]"
                 component={ FormField.inputFieldMarkup }
                 label={ this.props.intl.formatMessage({ id: 'field.addressForm.email', defaultMessage: "Email" }) }
                 type="text" />
 
-            <div className="form-heading-title">
+            <div className="checkout-section-title">
               <FormattedMessage
                 id="com.addressForm.billingInfo"
                 defaultMessage="Billing Info"
@@ -71,7 +71,7 @@ class AddressForm extends Component {
                                     statesFromOrder={ this.props.order.states || [] }
                                     selectedCountryId={ this.props.billCountryId } />
 
-            <div className="form-group-inline-control">
+            <div className="checkout-form-row checkbox-row">
               <Field className="form-control"
                   name="order[use_billing]"
                   component={ FormField.inputFieldMarkup }
@@ -96,7 +96,7 @@ class AddressForm extends Component {
               </AddressFieldsConnector>
             }
 
-            <div className="form-group-inline-control">
+            <div className="checkout-form-row checkbox-row">
               <Field className="form-control"
                   name="order[save_user_address]"
                   component={ FormField.inputFieldMarkup }
@@ -104,19 +104,15 @@ class AddressForm extends Component {
                   type="checkbox" />
             </div>
 
-            <div className="form-group">
-              <div className="col-sm-10 col-sm-offset-2">
-                <div className="btn-action-block clearfix">
-                  <button type="submit"
-                        disabled={ !valid || submitting }
-                        className="btn btn-success btn-lg">
-                    <FormattedMessage
-                      id="label.buttons.saveAddress"
-                      defaultMessage="Save Address"
-                    />
-                  </button>
-                </div>
-              </div>
+            <div className="checkout-form-row">
+              <button type="submit"
+                    disabled={ !valid || submitting }
+                    className="button-primary">
+                <FormattedMessage
+                  id="label.buttons.saveAddress"
+                  defaultMessage="Save Address"
+                />
+              </button>
             </div>
           </form>
         </BaseCheckoutLayout>

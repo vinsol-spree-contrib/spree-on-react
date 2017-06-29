@@ -3,16 +3,16 @@ import React from 'react';
 const FormField = {
   inputFieldMarkup: ({ input, label, type, meta: { touched, error } }) => {
     let inputClassName, errorClassName;
-    inputClassName = type === 'text' ? 'form-control ' : ' ';
+    inputClassName = type === 'text' ? 'primary-input-field ' : ' ';
 
     if (touched && error) {
       errorClassName = "has-error ";
     }
 
     return(
-      <div className={ `form-group ${ errorClassName }` }>
-        <label htmlFor={ input.name } className="col-sm-2 control-label">{ label }</label>
-        <div className="col-sm-10">
+      <div className={ "checkout-form-row " + `${ errorClassName }` }>
+        <label htmlFor={ input.name } className="checkout-form-label">{ label }</label>
+        <div className="checkout-form-fields">
           <input { ...input }
                   className={ inputClassName }
                   placeholder={ label }

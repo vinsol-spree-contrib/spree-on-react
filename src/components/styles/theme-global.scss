@@ -7,6 +7,7 @@
 
 @import 'pages/product-show.scss';
 @import 'pages/cart.scss';
+@import 'pages/checkout.scss';
 
 body {
   font-family: $roboto;
@@ -147,6 +148,14 @@ a {
     color: $color-black;
     background: $color-white;
   }
+}
+
+.primary-input-field {
+  width: $full;
+  height: 40px;
+  border: solid 1px $border-grey;
+  padding: 0 10px;
+  background: $color-white;
 }
 
 @media (max-width: 767px) {

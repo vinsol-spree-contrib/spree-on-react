@@ -70,7 +70,7 @@ class OrderSummary extends Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="checkout-order-details">
         <Panel collapsible defaultExpanded
                 header={ this.props.intl.formatMessage({ id: 'com.order.summaryHeader', defaultMessage: "Order Summary" }) }>
           <Table fill>

@@ -83,14 +83,14 @@ class AddressFields extends Component {
                 label={ this.props.intl.formatMessage({ id: 'field.addressForm.city', defaultMessage: "City" }) }
                 type="text" />
 
-        <div className="form-group">
-          <label htmlFor="country" className="col-sm-2 control-label">
+        <div className="checkout-form-row">
+          <label htmlFor="country" className="checkout-form-label">
             <FormattedMessage
               id="shared.models.country"
               defaultMessage="Country"
             />
           </label>
-          <div className="col-sm-10">
+          <div className="checkout-form-fields">
             <Field name={ this.props.fieldNamePrefix + "[country_id]" }
                     fieldNamePrefix={ this.props.fieldNamePrefix }
                     countries={ this.props.countries }
@@ -102,14 +102,14 @@ class AddressFields extends Component {
 
         {
           statesRequired &&
-          <div className="form-group">
-            <label htmlFor="state" className="col-sm-2 control-label">
+          <div className="checkout-form-row">
+            <label htmlFor="state" className="checkout-form-label">
               <FormattedMessage
                 id="shared.models.state"
                 defaultMessage="State"
               />
             </label>
-            <div className="col-sm-10">
+            <div className="checkout-form-fields">
               <Field className="form-control"
                       name={ this.props.fieldNamePrefix + "[state_id]" }
                       component="select">

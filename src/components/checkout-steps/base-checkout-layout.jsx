@@ -13,15 +13,17 @@ class BaseCheckoutLayout extends Component {
     this.__generateCheckoutStepsMarkup(this.props.currentStep);
 
     return (
-      <div className="row checkout-flow dark-color container-fluid">
+      <div className="checkout-flow checkout-section">
         <Loader displayLoader={ this.props.displayLoader } />
-        <div className="col-md-9">
-          <div className="panel-group form-horizontal">
-            { this.checkoutStepsMarkup }
+        <div className="container">
+          <div className="row">
+            <div className="col-sm-8">
+              { this.checkoutStepsMarkup }
+            </div>
+            <div className="col-sm-3 col-sm-offset-1">
+              <OrderSummaryConnector placedOrder={ this.props.placedOrder } />
+            </div>
           </div>
-        </div>
-        <div className="col-md-3">
-          <OrderSummaryConnector placedOrder={ this.props.placedOrder } />
         </div>
       </div>
     );
@@ -44,12 +46,10 @@ class BaseCheckoutLayout extends Component {
                            </Link>;
 
     this.checkoutStepsMarkup.push (
-        <div className="panel panel-default" key={`${ thisStep }-step`}>
-          <div className="panel-heading">
-            <h4 className="panel-title">
-              { formattedTitle }
-            </h4>
-          </div>
+        <div className="checkout-block-container" key={`${ thisStep }-step`}>
+          <h4 className="section-heading">
+            { formattedTitle }
+          </h4>
           { innerHtml }
         </div>
     );
@@ -58,7 +58,7 @@ class BaseCheckoutLayout extends Component {
   __generateMarkupForStepBody (currentStep, thisStep, title) {
     if ( currentStep === thisStep ) {
       return (
-        <div className="panel-body">
+        <div className="checkout-block-content">
           { this.props.children }
         </div>
       );
