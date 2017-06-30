@@ -7,6 +7,10 @@
     background: $light-grey-bg;
   }
 
+  .checkout-title-block {
+    margin: 0 0 30px;
+  }
+
   .checkout-section-title {
     margin-top: 40px;
     border-bottom: solid 1px $border-grey;
@@ -17,6 +21,10 @@
     &:first-child {
       margin-top: 0;
     }
+  }
+
+  .checkout-section-message {
+    margin: 10px 0;
   }
 
   .checkout-form-row {
@@ -40,6 +48,87 @@
     color: $dark-grey-text;
     font-size: 13px;
     font-weight: 400;
+  }
+
+  .checkout-line-item-row {
+    margin: 0;
+    border-bottom: solid 1px $border-grey;
+    padding: 15px 0;
+  }
+
+  .checkout-line-item-image-block {
+    text-align: center;
+  }
+
+  .checkout-line-item-options-block {
+    margin-top: 15px;
+  }
+
+  .checkout-line-item-options {
+    padding: 10px 0;
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+  }
+
+  .checkout-payment-options {
+    margin-right: 25px;
+    display: inline-block;
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+  }
+
+  .checkout-payment-button-block {
+    margin-top: 20px;
+  }
+}
+
+.checkout-confirmation-block {
+  .confirmation-success-message {
+    display: block;
+    font-size: 16px;
+  }
+
+  .confirmation-details-block {
+    margin-top: 20px;
+  }
+
+  .shipment-heading {
+    strong {
+      display: block;
+    }
+  }
+
+  .label-block-row {
+    margin-top: 5px;
+
+    label {
+      margin-right: 12px;
+      padding: 0;
+      display: inline-block;
+      color: $color-black;
+
+      &.label-default {
+        padding: 5px;
+        position: relative;
+        color: $color-white;
+      }
+    }
+  }
+
+  .checkout-shipment-order-total {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 600;
+
+    small {
+      margin-right: 10px;
+      font-size: 14px;
+      font-weight: 400;
+    }
   }
 }
 

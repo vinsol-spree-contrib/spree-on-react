@@ -46,7 +46,7 @@ class Shipment extends Component {
     let shipmentMarkup = shipment.shipping_rates.map((shippingRate, idx) => {
       let label = `${ shippingRate.name }( ${ shippingRate.display_cost } )`;
       return (
-        <div key={ idx } className="radio inline">
+        <div key={ idx } className="checkout-line-item-options">
           <label>
             <Field name={ `${ this.props.fieldNamePrefix }[selected_shipping_rate_id]` }
                   component="input"
@@ -60,24 +60,22 @@ class Shipment extends Component {
     });
 
     return (
-      <div className="row">
-        <div className="col-md-12">
-          <div className="form-heading-title">
-            { `Shipment - ${ this.props.shipmentIndex }` }
-          </div>
-          <p>
-            <FormattedMessage
-              id="com.shipmentForm.subheading"
-              defaultMessage="Please select a shipping method for these Items."
-            />
-          </p>
-          { this._shipmentLineItemsMarkup() }
-          <div className="form-group group-elem">
-            { shipmentMarkup }
-          </div>
-
-          <Field name={ `${ this.props.fieldNamePrefix }[id]` } component={ this.renderHiddenFieldForShipmentId } />
+      <div className="checkout-delivery-block">
+        <div className="checkout-section-title">
+          { `Shipment - ${ this.props.shipmentIndex }` }
         </div>
+        <p className="checkout-section-message">
+          <FormattedMessage
+            id="com.shipmentForm.subheading"
+            defaultMessage="Please select a shipping method for these Items."
+          />
+        </p>
+        { this._shipmentLineItemsMarkup() }
+        <div className="checkout-line-item-options-block">
+          { shipmentMarkup }
+        </div>
+
+        <Field name={ `${ this.props.fieldNamePrefix }[id]` } component={ this.renderHiddenFieldForShipmentId } />
       </div>
     );
   };

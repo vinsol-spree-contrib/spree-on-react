@@ -33,17 +33,14 @@ class CheckoutSuccessPage extends Component {
                             displayLoader={ this.props.displayLoader }
                             checkoutSteps={ this.props.placedOrder.checkout_steps || [] }
                             placedOrder={ this.props.placedOrder } >
-          <div className="row">
-            <div className="col-md-12">
-              <strong className="text text-success">
-                <FormattedMessage
-                  id="com.checkoutSuccessPage.successMessage"
-                  defaultMessage="Your Order has been placed successfully!"
-                />
-                <br/><br/>
-              </strong>
-              <OrderPanelView order={ this.props.placedOrder } />
-            </div>
+          <div className="checkout-confirmation-block">
+            <strong className="text text-success confirmation-success-message">
+              <FormattedMessage
+                id="com.checkoutSuccessPage.successMessage"
+                defaultMessage="Your Order has been placed successfully!"
+              />
+            </strong>
+            <OrderPanelView order={ this.props.placedOrder } />
           </div>
         </BaseCheckoutLayout>
       </Layout>

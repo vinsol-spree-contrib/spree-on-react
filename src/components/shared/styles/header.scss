@@ -25,6 +25,40 @@
     display: inline-block;
   }
 
+  .headerUserButton {
+    border: none;
+    padding: 0;
+    color: #000;
+
+    &:hover,
+    &:focus {
+      color: #4eaf79;
+      text-decoration: none;
+    }
+
+    &+ ul {
+      border: solid 1px #c7c7c7;
+      border-radius: 0;
+      top: 23px;
+
+      &:before {
+        content: '';
+        width: 10px;
+        height: 10px;
+        border: none;
+        border-top: solid 1px #c7c7c7;
+        border-left: solid 1px #c7c7c7;
+        position: absolute;
+        top: -6px;
+        left: 10px;
+        background: #fff;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
   .headerBottomNavRow {
     margin-top: 20px;
   }

@@ -9,54 +9,56 @@ class Shipment extends Component {
     let thisShipment = this.props.shipment;
 
     return (
-      <div className="shipment-view row">
-        <div className="col-md-8">
-          <div className="shipment-header">
-            <div className="shipment-heading">
-              <strong>{ this._shipmentStateMarkup() }</strong>
-              <p className="label-block-row">
-                <label className="label label-normal">
-                  <FormattedMessage
-                    id="shared.models.shippingMethod"
-                    defaultMessage="Shipping Method"
-                  />
-                  : { thisShipment.selected_shipping_rate.name }
-                </label>
-                <label className="label label-normal">
-                  <FormattedMessage
-                    id="shared.attributes.shippingCharges"
-                    defaultMessage="Shipping Charges"
-                  />
-                  : { thisShipment.selected_shipping_rate.display_cost }
-                </label>
-                <label className="label label-default">
-                  <FormattedMessage
-                    id="shared.attributes.shipmentNumber"
-                    defaultMessage="Ref"
-                  />
-                  : { thisShipment.number }
-                </label>
-              </p>
+      <div className="shipment-view">
+        <div className="row">
+          <div className="col-md-8">
+            <div className="shipment-header">
+              <div className="shipment-heading">
+                <strong>{ this._shipmentStateMarkup() }</strong>
+                <p className="label-block-row">
+                  <label className="label label-normal">
+                    <FormattedMessage
+                      id="shared.models.shippingMethod"
+                      defaultMessage="Shipping Method"
+                    />
+                    : { thisShipment.selected_shipping_rate.name }
+                  </label>
+                  <label className="label label-normal">
+                    <FormattedMessage
+                      id="shared.attributes.shippingCharges"
+                      defaultMessage="Shipping Charges"
+                    />
+                    : { thisShipment.selected_shipping_rate.display_cost }
+                  </label>
+                  <label className="label label-default">
+                    <FormattedMessage
+                      id="shared.attributes.shipmentNumber"
+                      defaultMessage="Ref"
+                    />
+                    : { thisShipment.number }
+                  </label>
+                </p>
+              </div>
+            </div>
+
+            <div className="shipment-line-items">
+              { this._shipmentLineItemsMarkup() }
             </div>
           </div>
 
-          <div className="shipment-line-items">
-            { this._shipmentLineItemsMarkup() }
+          <div className="col-md-4">
+            <label>
+              <FormattedMessage
+                id="label.shippingAddress"
+                defaultMessage="Shipping Address"
+              />
+              : &nbsp;
+            </label>
+            <Address address={ this.props.address } />
           </div>
         </div>
 
-        <div className="col-md-4">
-          <label>
-            <FormattedMessage
-              id="label.shippingAddress"
-              defaultMessage="Shipping Address"
-            />
-            : &nbsp;
-          </label>
-          <Address address={ this.props.address } />
-        </div>
-
-        <div className="col-md-12 text-right order-total-row">
+        <div className="checkout-shipment-order-total">
           <div className="heading">
             <small>
               <FormattedMessage

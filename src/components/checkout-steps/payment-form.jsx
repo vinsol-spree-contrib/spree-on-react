@@ -40,7 +40,7 @@ class PaymentForm extends Component {
     let paymentMethods = order.payment_methods || [];
     let paymentMethodMarkup = paymentMethods.map((paymentMethod, idx) => {
       return (
-        <div key={ idx } className={"radio inline "} >
+        <div key={ idx } className={"checkout-payment-options "} >
           <label>
             <Field name={ `order[payments_attributes][0][payment_method_id]` }
                   component="input"
@@ -59,15 +59,15 @@ class PaymentForm extends Component {
                             checkoutSteps={ order.checkout_steps || [] } >
           <form onSubmit={ handleSubmit(this.handlePaymentFormSubmit.bind(this)) }>
             
-            <div className="form-group group-elem">
+            <div className="checkout-payment-options-block">
               { paymentMethodMarkup }
             </div>
             { this.props.useCard==="2" &&
               <CardFields />
             }
-            <div className="btn-action-block">
+            <div className="checkout-payment-button-block">
               <button type="submit"
-                      className="btn btn-success btn-lg"
+                      className="button-primary"
                       disabled={ !valid || submitting } >
                 <FormattedMessage
                   id="label.buttons.savePayment"

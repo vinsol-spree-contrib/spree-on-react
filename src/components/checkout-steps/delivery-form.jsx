@@ -53,7 +53,7 @@ class DeliveryForm extends Component {
 
             <div className="btn-action-block clearfix">
               <button type="submit"
-                      className="btn btn-success btn-lg"
+                      className="button-primary"
                       disabled={ !valid || submitting }>
                 <FormattedMessage
                   id="label.buttons.saveDelivery"

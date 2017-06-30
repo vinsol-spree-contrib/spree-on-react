@@ -46,7 +46,7 @@ class BaseCheckoutLayout extends Component {
                            </Link>;
 
     this.checkoutStepsMarkup.push (
-        <div className="checkout-block-container" key={`${ thisStep }-step`}>
+        <div className="checkout-block-container checkout-title-block" key={`${ thisStep }-step`}>
           <h4 className="section-heading">
             { formattedTitle }
           </h4>

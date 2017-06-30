@@ -9,14 +9,14 @@ class LineItem extends Component {
     let imageUrl = URLSanitizer.makeAbsolute(image.mini_url);
 
     return (
-      <div className="shipment-line-item clearfix">
-        <div className="col-md-2 col-sm-2 col-xs-4 thumsbnail">
-          <img className="shipment-line-item-image img-responsive img-center"
+      <div className="row shipment-line-item checkout-line-item-row">
+        <div className="col-sm-2 col-xs-4 checkout-line-item-image-block">
+          <img className="shipment-line-item-image"
                 alt={ lineItem.variant.name }
                 src={ imageUrl } />
         </div>
 
-        <div className="col-md-10 col-sm-10 col-xs-8">
+        <div className="col-sm-10 col-xs-8">
           <strong>{ lineItem.variant.name }</strong>
           <p>
             { `${ lineItem.variant.display_price } x ${ lineItem.quantity }` }

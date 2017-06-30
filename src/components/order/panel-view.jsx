@@ -18,11 +18,9 @@ class OrderPanelView extends Component {
     });
 
     return (
-      <div className="order-panel-view row">
-        <div className="col-md-12">
-          <Panel header={ this._panelHeaderMarkup() }>
-            { shipmentsMarkup }
-          </Panel>
+      <div className="confirmation-details-block">
+        <div header={ this._panelHeaderMarkup() }>
+          { shipmentsMarkup }
         </div>
       </div>
     );

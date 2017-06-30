@@ -38,8 +38,8 @@ class Header extends Component {
     let { user } = this.props;
 
     if (this.props.user.id) {
-      userSessionActionMarkup = <dd className='icon-block user-link-block'>
-        <DropdownButton title={ `Hello, ${ user.email.split('@')[0] } ` } className='btn-link' bsStyle='link' id='user-account-dropdown'>
+      userSessionActionMarkup = <dd className={ "icon-block user-link-block " + styles.headerUserBlock }>
+        <DropdownButton title={ `Hello, ${ user.email.split('@')[0] } ` } className={ "btn-link " + styles.headerUserButton } bsStyle='link' id='user-account-dropdown'>
           <MenuItem onClick={ this.props.goToUserOrders }>
             <FormattedMessage
               id="com.header.menu.myOrders"
