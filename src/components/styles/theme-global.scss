@@ -11,7 +11,14 @@
 @import 'pages/checkout.scss';
 @import 'pages/orders.scss';
 
+html {
+  height: $full;
+}
+
 body {
+  min-height: $full;
+  padding-bottom: 80px;
+  position: relative;
   font-family: $roboto;
   background: $color-white;
 }
