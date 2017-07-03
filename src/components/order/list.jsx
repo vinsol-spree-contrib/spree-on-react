@@ -33,15 +33,15 @@ class OrderList extends Component {
     return (
       <Layout>
         <Loader displayLoader={ this.state.displayLoader } />
-        <div className="order-list-page">
-          <div className="big-box-heading secondary spacing">
-            <FormattedMessage
-              id="com.order--list.yourOrders"
-              defaultMessage="Your Orders"
-            />
-          </div>
-          <div className="row">
-            <div className="order-list container dark-color">
+        <div className="order-list-page order-section">
+          <div className="container">
+            <div className="section-heading">
+              <FormattedMessage
+                id="com.order--list.yourOrders"
+                defaultMessage="Your Orders"
+              />
+            </div>
+            <div className="order-list dark-color">
               { orderListMarkup }
             </div>
           </div>

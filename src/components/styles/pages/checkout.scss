@@ -130,6 +130,22 @@
       font-weight: 400;
     }
   }
+
+  .order-header-labels {
+    margin-top: 5px;
+    color: $color-black;
+
+    .label {
+      margin-right: 10px;
+      padding: 0;
+      color: $color-black;
+
+      &.label-default {
+        padding: 5px 10px;
+        color: $color-white;
+      }
+    }
+  }
 }
 
 .checkout-order-details {
