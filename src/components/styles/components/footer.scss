@@ -1,0 +1,17 @@
+.footer-section {
+  width: $full;
+  height: 60px;
+  padding-top: 20px;
+  display: table;
+  color: $color-white;
+  font-weight: 300;
+  background: $color-black;
+
+  .footer-right-content {
+    text-align: right;
+
+    a {
+      color: $link-color;
+    }
+  }
+}

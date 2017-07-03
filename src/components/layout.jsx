@@ -18,6 +18,15 @@ class Layout extends Component {
           </div>
           { this.props.children }
         </div>
+
+        <footer className="footer-section">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-6 footer-left-content">Copyright &copy; 2017 FashionHub.com</div>
+              <div className="col-sm-6 footer-right-content">A product from <a href="http://vinsol.com" target="_blank">VinSol.com</a></div>
+            </div>
+          </div>
+        </footer>
       </div>
     );
   }
