@@ -29,6 +29,10 @@ class BaseCheckoutLayout extends Component {
     );
   };
 
+  /*
+    This function iterates over all the steps and calls another function for
+    generating markup for each step.
+  */
   __generateCheckoutStepsMarkup (currentStep) {
     this.props.checkoutSteps.forEach((checkoutStep) => {
       let titleizedStepName = checkoutStep[0].toUpperCase() + checkoutStep.substr(1).toLowerCase();
@@ -36,6 +40,11 @@ class BaseCheckoutLayout extends Component {
     });
   };
 
+  /*
+    This function generates two things, namely, the title section for each
+    checkout step and the content for the checkout step body (actual form).
+    It then pushes the result into +checkoutStepsMarkup+.
+  */
   __generateMarkupForStep (currentStep, thisStep, title) {
     thisStep = thisStep.trim();
 
@@ -55,6 +64,11 @@ class BaseCheckoutLayout extends Component {
     );
   };
 
+  /*
+    This generates mark up for step body(form fields for the step etc) if the
+    +thisStep+ is same as the +currentStep+. It doesn't generate markup for the
+    step title.
+  */
   __generateMarkupForStepBody (currentStep, thisStep, title) {
     if ( currentStep === thisStep ) {
       return (
