@@ -10,7 +10,7 @@ const FormField = {
     }
 
     return(
-      <div className={ "checkout-form-row " + `${ errorClassName }` }>
+      <div className={ "checkout-form-row " + errorClassName }>
         <label htmlFor={ input.name } className="checkout-form-label">{ label }</label>
         <div className="checkout-form-fields">
           <input { ...input }

@@ -65,10 +65,12 @@ class ProductShow extends Component {
   };
 
   render() {
-    let renderString = null
-    let { currentVariant } = this.state
+    let renderString = null;
+    let variantListNode = null;
+    let { currentVariant } = this.state;
+
     if(currentVariant) {
-      let isLineItemInCart = this.props.lineItems.find((lineItem) => { return (lineItem.variant_id === currentVariant.id) })
+      let isVariantInCart = this.props.lineItems.find((lineItem) => { return (lineItem.variant_id === currentVariant.id) })
       let addToCartButtonNode = <Button className="button-primary button-full" onClick={this.addProductToCart.bind(this)}>
         <span className="cart-text">
           <FormattedMessage
@@ -79,7 +81,15 @@ class ProductShow extends Component {
         <span className="cart-icon glyphicon glyphicon-shopping-cart"></span>
       </Button>;
 
-      if (isLineItemInCart) {
+      if (this.state.currentProduct.variants.length > 1) {
+        variantListNode = <div className="product-option-row variant-block">
+                            <VariantsList currentVariant={ currentVariant }
+                                          variantsList={ this.state.currentProduct.variants }
+                                          onChangeVariant={ this.onChangeVariant }/>
+                          </div>;
+      }
+
+      if (isVariantInCart) {
         addToCartButtonNode = <Link to={ APP_ROUTES.cartPageRoute }>
           <Button className="button-primary button-full">
             <span className="cart-text">
@@ -110,30 +120,27 @@ class ProductShow extends Component {
                               ${ currentVariant.price }
                             </div>
 
-                            <div className="product-option-row variant-block">
-                              <VariantsList currentVariant={ currentVariant }
-                                            variantsList={ this.state.currentProduct.variants }
-                                            onChangeVariant={ this.onChangeVariant }/>
-                            </div>
+                            { variantListNode }
 
                             <div className="product-option-row button-row">
                               { addToCartButtonNode }
+                            </div>
+
+                            <div className="achievement-col product-description-block">
+                              <h3 className="section-heading">
+                                <FormattedMessage
+                                  id="shared.attributes.description"
+                                  defaultMessage="Description"
+                                />
+                              </h3>
+                              <div className="product-description-content">
+                                { currentVariant.description }
+                              </div>
                             </div>
                           </div>
                         </article>
 
                         <article className="product-achievement-row product-desription-section">
-                          <div className="achievement-col product-description-block">
-                            <h3 className="section-heading">
-                              <FormattedMessage
-                                id="shared.attributes.description"
-                                defaultMessage="Description"
-                              />
-                            </h3>
-                            <div className="product-description-content">
-                              { currentVariant.description }
-                            </div>
-                          </div>
 
                           <div className="achievement-col product-properties-block">
                             <h3 className="section-heading">

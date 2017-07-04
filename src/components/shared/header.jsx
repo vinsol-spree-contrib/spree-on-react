@@ -57,7 +57,7 @@ class Header extends Component {
     }
     else {
       userSessionActionMarkup = <dd className={ 'hidden-xs icon-block user-link-block ' + styles.headerUserBlock }>
-        <a href="javascript:" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
+        <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
           <FormattedMessage
             id="shared.login"
             defaultMessage="Login"
@@ -92,7 +92,7 @@ class Header extends Component {
                       <BrandHeader />
                     </div>
                     <div className="col-xs-4 visible-xs text-right">
-                      <a href="javascript:" className={ "glyphicon glyphicon-menu-hamburger " + styles.headerMobileMenu }></a>
+                      <a href="#" className={ "glyphicon glyphicon-menu-hamburger " + styles.headerMobileMenu }></a>
                     </div>
                   </div>
                 </div>

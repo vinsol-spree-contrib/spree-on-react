@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Panel } from 'react-bootstrap';
+// import { Panel } from 'react-bootstrap';
 import { FormattedMessage } from 'react-intl';
 
 import Shipment from './shipment';

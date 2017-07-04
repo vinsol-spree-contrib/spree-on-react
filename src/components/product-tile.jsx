@@ -25,7 +25,7 @@ class ProductTile extends Component {
                         </a>;
     }
     else {
-      addToCartMarkup = <a href="javascript:" className={ " " + styles.productHoverButton } onClick={ this.addProductToCart }>
+      addToCartMarkup = <a href="#" className={ " " + styles.productHoverButton } onClick={ this.addProductToCart }>
                           <span className="glyphicon glyphicon-shopping-cart info-elem"></span>
                         </a>;
     }
@@ -51,7 +51,7 @@ class ProductTile extends Component {
 
             <aside className={ " " + styles.productHoverInfo }>
               { this._addToCartMarkup() }
-              <a href="javascript:" className={ " " + styles.productHoverButton }><span className="glyphicon glyphicon-heart info-elem"></span></a>
+              <a href="#" className={ " " + styles.productHoverButton }><span className="glyphicon glyphicon-heart info-elem"></span></a>
             </aside>
           </div>
 
