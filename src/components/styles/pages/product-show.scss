@@ -80,17 +80,58 @@ $imageBlockHeight: 500px;
 
   .variant-block {
     width: $full;
-    padding: 20px;
+    padding: 20px 0;
     display: table;
 
     label {
       font-size: 11px;
+    }
+
+    .varient-title {
+      margin-bottom: 5px;
+      font-weight: 500;
     }
   }
 
   .product-variant-title {
     margin-bottom: 20px;
     font-size: 18px;
+  }
+
+  .variant-button {
+    &.btn-primary {
+      min-width: 300px;
+      border-color: $color-black;
+      color: $color-black;
+      background: $color-white;
+      @include border-radius(0);
+      @include text-shadow(0, 0, 0, transparent);
+    }
+  }
+
+  .variant-dropdown-button {
+    &.btn-primary {
+      border-color: $color-black;
+      color: $color-black;
+      background: $color-white;
+      @include border-radius(0);
+      @include text-shadow(0, 0, 0, transparent);
+    }
+  }
+
+  .variant-options-dropdown {
+    &.dropdown-menu {
+      min-width: $full;
+      max-height: 200px;
+      border-color: $color-black;
+      overflow-x: hidden;
+      overflow-y: auto;
+      @include border-radius(0);
+
+      li {
+        padding: 5px 0;
+      }
+    }
   }
 
   .button-primary {
@@ -104,11 +145,20 @@ $imageBlockHeight: 500px;
       margin-left: 10px;
     }
   }
+
+  .product-description-block {
+    margin-top: 40px;
+    border: solid 1px $border-grey;
+    padding: 30px;
+    background: $light-grey-bg;
+
+    .product-description-content {
+      margin-top: 10px;
+    }
+  }
 }
 
 .product-desription-section {
-  margin-top: 50px;
-  border-top: solid 1px $border-grey;
   padding-top: 20px;
 
   .product-description-content {

@@ -83,6 +83,7 @@ class ProductShow extends Component {
 
       if (this.state.currentProduct.variants.length > 1) {
         variantListNode = <div className="product-option-row variant-block">
+                            <div className="varient-title">Select Variant</div>
                             <VariantsList currentVariant={ currentVariant }
                                           variantsList={ this.state.currentProduct.variants }
                                           onChangeVariant={ this.onChangeVariant }/>

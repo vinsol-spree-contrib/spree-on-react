@@ -20,23 +20,21 @@ class VariantsList extends Component {
                           );
                         });
     variantsList = (
-      <div className="variant col-md-12">
-        <Dropdown id="variantDropdown">
-          <Button bsStyle="primary">
-            { this.props.currentVariant.options_text }
-          </Button>
-          <Dropdown.Toggle bsStyle="primary"/>
+      <Dropdown id="variantDropdown">
+        <Button bsStyle="primary variant-button">
+          { this.props.currentVariant.options_text }
+        </Button>
+        <Dropdown.Toggle bsStyle="primary variant-dropdown-button"/>
 
-          <Dropdown.Menu>
-            { variantMenuItems }
-          </Dropdown.Menu>
-        </Dropdown>
-      </div>
+        <Dropdown.Menu bsStyle=" variant-options-dropdown">
+          { variantMenuItems }
+        </Dropdown.Menu>
+      </Dropdown>
     );
 
     let renderString = null;
     if(this.props.variantsList.length > 0){
-      renderString = <div id="product-variants" className="col-md-12 text-left">
+      renderString = <div id="product-variants">
         { variantsList }
       </div>
     }
