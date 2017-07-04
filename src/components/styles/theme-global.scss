@@ -9,8 +9,16 @@
 @import 'pages/product-show.scss';
 @import 'pages/cart.scss';
 @import 'pages/checkout.scss';
+@import 'pages/orders.scss';
+
+html {
+  height: $full;
+}
 
 body {
+  min-height: $full;
+  padding-bottom: 80px;
+  position: relative;
   font-family: $roboto;
   background: $color-white;
 }
@@ -157,6 +165,48 @@ a {
   border: solid 1px $border-grey;
   padding: 0 10px;
   background: $color-white;
+}
+
+.infinite-loader {
+  width: $full;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99;
+  color: $color-white;
+  text-align: center;
+  line-height: 40px;
+  background: $link-color;
+
+  .glyphicon {
+    padding: 0 10px;
+  }
+}
+
+.rotate-animation{
+  @include animation(spin, 2000ms, infinite, linear);
+}
+
+@-ms-keyframes spin {
+  from { -ms-transform: rotate(0deg); }
+  to { -ms-transform: rotate(360deg); }
+}
+@-moz-keyframes spin {
+  from { -moz-transform: rotate(0deg); }
+  to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+  from { -webkit-transform: rotate(0deg); }
+  to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+  from {
+      transform:rotate(0deg);
+  }
+  to {
+      transform:rotate(360deg);
+  }
 }
 
 @media (max-width: 767px) {

@@ -124,3 +124,25 @@
   -webkit-transform: translate3d($val, $val2, $val3);
   transform: translate3d($val, $val2, $val3);
 }
+
+@mixin animation($name, $time, $loop, $time2) {
+  -webkit-animation-name: $name;
+  -webkit-animation-duration: $time;
+  -webkit-animation-iteration-count: $loop;
+  -webkit-animation-timing-function: $time2;
+  
+  -moz-animation-name: $name;
+  -moz-animation-duration: $time;
+  -moz-animation-iteration-count: $loop;
+  -moz-animation-timing-function: $time2;
+
+  -ms-animation-name: $name;
+  -ms-animation-duration: $time;
+  -ms-animation-iteration-count: $loop;
+  -ms-animation-timing-function: $time2;
+  
+  animation-name: $name;
+  animation-duration: $time;
+  animation-iteration-count: $loop;
+  animation-timing-function: $time2;
+}
