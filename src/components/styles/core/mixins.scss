@@ -68,12 +68,12 @@
   }
 }
 
-@mixin shadow($first, $second, $third, $fourth, $color) {
-  box-shadow: $first $second $third $fourth $color;
-  -moz-box-shadow: $first $second $third $fourth $color;
-  -webkit-box-shadow: $first $second $third $fourth $color;
-  -ms-box-shadow: $first $second $third $fourth $color;
-  -o-box-shadow: $first $second $third $fourth $color;
+@mixin text-shadow($first, $second, $third, $color) {
+  text-shadow: $first $second $third $color;
+  -moz-text-shadow: $first $second $third $color;
+  -webkit-text-shadow: $first $second $third $color;
+  -ms-text-shadow: $first $second $third $color;
+  -o-text-shadow: $first $second $third $color;
 }
 
 @mixin box-shadow($first, $second, $third, $color) {
