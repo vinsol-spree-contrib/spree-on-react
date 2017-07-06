@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import SUPPORTED_LOCALES from '../../../constants/supported-locales';
-// import APP_ROUTES from '../../../constants/app-routes';
 import styles from './styles/header-styles.scss';
 
 class LocaleSelector extends Component {
