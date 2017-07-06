@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import siteLogo from '../../../images/logo2.png';
 import APP_ROUTES from '../../../constants/app-routes';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Route } from 'react-router-dom';
 
 import HomePageConnector from './containers/home-page-connector';
 import ProductShowConnector from './containers/product/product-show-connector';
@@ -18,18 +18,20 @@ import APP_ROUTES from './constants/app-routes';
 export default function configRoutes() {
   return (
     <Route>
-      <Route path={ APP_ROUTES.homePageRoute } component={HomePageConnector} />
-      <Route path='/products/:productId' component={ProductShowConnector} />
-      <Route path={ APP_ROUTES.cartPageRoute } component={CartShowConnector} />
-      <Route path={ APP_ROUTES.checkout.addressPageRoute } component={AddressFormConnector} />
-      <Route path={ APP_ROUTES.checkout.deliveryPageRoute } component={DeliveryFormConnector} />
-      <Route path={ APP_ROUTES.checkout.paymentPageRoute } component={PaymentFormConnector} />
-      <Route path={ APP_ROUTES.checkout.confirmPageRoute } component={CheckoutConfirmationConnector} />
-      <Route path={ APP_ROUTES.checkout.completePageRoute } component={CheckoutSuccessConnector} />
-      <Route path={ APP_ROUTES.ordersPageRoute } component={OrderListConnector} />
-      <Route path='/orders/:orderId' component={OrderShowConnector} />
-      <Route path='/t/*' component={HomePageConnector} />
-      <Route path='*' component={HomePageConnector} />
+      <div>
+        <Route exact path={ APP_ROUTES.homePageRoute } component={HomePageConnector} />
+        <Route exact path={ APP_ROUTES.searchPageRoute } component={HomePageConnector} />
+        <Route exact path='/products/:productId' component={ProductShowConnector} />
+        <Route exact path={ APP_ROUTES.cartPageRoute } component={CartShowConnector} />
+        <Route exact path={ APP_ROUTES.checkout.addressPageRoute } component={AddressFormConnector} />
+        <Route exact path={ APP_ROUTES.checkout.deliveryPageRoute } component={DeliveryFormConnector} />
+        <Route exact path={ APP_ROUTES.checkout.paymentPageRoute } component={PaymentFormConnector} />
+        <Route exact path={ APP_ROUTES.checkout.confirmPageRoute } component={CheckoutConfirmationConnector} />
+        <Route exact path={ APP_ROUTES.checkout.completePageRoute } component={CheckoutSuccessConnector} />
+        <Route exact path={ APP_ROUTES.ordersPageRoute } component={OrderListConnector} />
+        <Route exact path='/orders/:orderId' component={OrderShowConnector} />
+        <Route exact path='/t/*' component={HomePageConnector} />
+      </div>
     </Route>
 
   );

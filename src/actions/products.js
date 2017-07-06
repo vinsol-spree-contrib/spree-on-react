@@ -27,7 +27,7 @@ const products = {
 
   fetchProducts: (paramsToMerge = {}) => {
     return (dispatch, getState) => {
-      let currentPathName = getState().routing.locationBeforeTransitions.pathname;
+      let currentPathName = getState().routing.location.pathname;
       let taxon = TaxonFinder.findByPermalink(currentPathName, getState().taxons);
 
       if (taxon) {

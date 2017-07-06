@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
 import { IntlProvider, addLocaleData } from 'react-intl';
 // Load locales that need to be supported
 import en from 'react-intl/locale-data/en';
@@ -10,16 +9,24 @@ import localeData from './../build/app-translations.json';
 
 import Main from './components/main';
 
+/*
+  We are still loading bootstrap via CSS directly. Not using css-modules here.
+*/
 import styles from 'bootstrap/dist/css/bootstrap.css';
 import bootstrapTheme from 'bootstrap/dist/css/bootstrap-theme.css';
-// import './styles/main.scss';
+
+/*
+  These are non css-modules styles.
+*/
 import './components/styles/theme-global.scss';
 
 addLocaleData([...en, ...es]);
 
-// Define user's language. Different browsers have the user locale defined
-// on different fields on the `navigator` object, so we make sure to account
-// for these different by checking all of them
+/*
+  Define user's language. Different browsers have the user locale defined
+  on different fields on the `navigator` object, so we make sure to account
+  for these different by checking all of them.
+*/
 const language = (navigator.languages && navigator.languages[0]) ||
                      navigator.language ||
                      navigator.userLanguage;

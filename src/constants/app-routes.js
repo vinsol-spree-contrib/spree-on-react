@@ -1,5 +1,6 @@
 const APP_ROUTES = {
   homePageRoute: '/',
+  searchPageRoute: '/search/:searchTerm',
   cartPageRoute: '/cart',
   ordersPageRoute: '/orders',
   checkout: {

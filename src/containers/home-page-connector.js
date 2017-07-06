@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    triggerInitialSetup: (pathname) => {
+    triggerInitialSetup: (searchTerm = '') => {
       dispatch (Actions.displayLoader());
 
       TaxonAPI.getList().then((response) => {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 
 import ProductProperties from './properties';
@@ -27,7 +27,7 @@ class ProductShow extends Component {
   }
 
   componentDidMount() {
-    let productId = this.props.routeParams.productId;
+    let productId = this.props.match.params.productId;
     let product = ProductModel.findBySlug(productId, this.props.products);
 
     /* Set productId in internal state */

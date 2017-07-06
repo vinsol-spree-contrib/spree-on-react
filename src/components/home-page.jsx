@@ -9,13 +9,13 @@ import Layout from './layout';
 class HomePage extends Component {
 
   componentDidMount() {
-    this.props.triggerInitialSetup(this.props.router.location.pathname);
+    this.props.triggerInitialSetup(this.props.match.params['searchTerm']);
   };
 
   /* If home page icon is clicked. */
   componentDidUpdate(prevProps, prevState) {
-    if (prevProps.routeParams.splat !== this.props.routeParams.splat) {
-      this.props.triggerInitialSetup(this.props.router.location.pathname);
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.props.triggerInitialSetup(this.props.location.pathname);
     }
   }
 

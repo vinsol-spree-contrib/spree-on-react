@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router';
 import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import SUPPORTED_LOCALES from '../../../constants/supported-locales';

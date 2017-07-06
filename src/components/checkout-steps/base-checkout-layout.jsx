@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Loader from "../shared/loader"
 import APP_ROUTES from '../../constants/app-routes';

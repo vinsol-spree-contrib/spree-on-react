@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './styles/notification-info.scss';
 
 import APP_ROUTES from '../../constants/app-routes';
