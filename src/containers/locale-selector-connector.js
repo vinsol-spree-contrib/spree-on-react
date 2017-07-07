@@ -5,7 +5,7 @@ import LocaleSelector from '../components/shared/header/locale-selector';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentLocale: state.currentLocale
+    currentLocale: state.locale.currentLocale
   };
 };
 

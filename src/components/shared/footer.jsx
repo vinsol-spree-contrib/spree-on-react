@@ -8,19 +8,13 @@ class Footer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-6 footer-left-content">
-              Copyright &copy; 2017 FashionHub.com
+              &copy; 2017 &nbsp;
+              <a href="http://vinsol.com" target="_blank">
+                VinSol
+              </a>
             </div>
             <div className="col-sm-6 footer-right-content">
-              <div className="col-sm-8">
-                A product from 
-                <a href="http://vinsol.com" target="_blank">
-                  VinSol.com
-                </a>
-              </div>
-
-              <div className={ "col-sm-4 " }>
-                <LocaleSelectorConnector />
-              </div>
+              <LocaleSelectorConnector />
             </div>
           </div>
         </div>
