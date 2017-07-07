@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import siteLogo from '../../../images/logo2.png';
 import APP_ROUTES from '../../../constants/app-routes';
 import styles from './styles/header-styles.scss';
 

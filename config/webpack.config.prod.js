@@ -127,14 +127,29 @@ module.exports = {
         // Webpack 1.x uses Uglify plugin as a signal to minify *all* the assets
         // including CSS. This is confusing and will be removed in Webpack 2:
         // https://github.com/webpack/webpack/issues/283
-        loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1&-autoprefixer!postcss')
+        // loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
+        exclude: /^.*(bootstrap).*\.css$/,
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&-autoprefixer&localIdentName=[name]__[local]___[hash:base64:5]!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
-
+      {
+        test: /^.*(bootstrap).*\.css$/,
+        loader: 'style!css?importLoaders=1!postcss'
+      },
       // scss is not enabled by default in Webpack but we are using it to write
       // styles in our codebase.
       {
         test: /\.scss$/,
+        exclude: /^.*(theme-global).*\.scss$/,
+        loaders: [
+          'style',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+          'sass'
+        ]
+      },
+
+      {
+        test: /^.*(theme-global).*\.scss$/,
         loaders: ['style', 'css', 'sass']
       },
 
