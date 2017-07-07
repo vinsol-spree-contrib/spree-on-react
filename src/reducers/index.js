@@ -12,6 +12,7 @@ import countryList from './country-list';
 import currentCheckoutStep from './current-checkout-step';
 import placedOrder from './placed-order';
 import user from './user';
+import locale from './locale';
 
 const AppReducer = combineReducers({
   displayLoader,
@@ -24,6 +25,7 @@ const AppReducer = combineReducers({
   currentCheckoutStep,
   placedOrder,
   user,
+  locale,
   routing: routerReducer,
   form: formReducer
 });

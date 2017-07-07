@@ -7,7 +7,7 @@ import styles from './styles/header-styles.scss';
 class LocaleSelector extends Component {
   render() {
     const localeSelectorMarkup = Object.keys(SUPPORTED_LOCALES).map((localeKey, idx) => {
-      return(<MenuItem key={`locale-menu-item-${ localeKey }`}>
+      return(<MenuItem eventKey={localeKey} key={`locale-menu-item-${ localeKey }`} onSelect={ this.props.setLocale }>
               { SUPPORTED_LOCALES[localeKey] }
             </MenuItem>);
     });

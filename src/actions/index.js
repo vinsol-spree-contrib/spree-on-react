@@ -8,6 +8,7 @@ import countries from './countries';
 import checkout from './checkout';
 import placedOrder from './placed-order';
 import user from './user';
+import locale from './locale';
 
 export default {
   addProducts: products.addProducts,
@@ -35,5 +36,6 @@ export default {
   addPlacedOrder: placedOrder.addPlacedOrder,
   clearPlacedOrder: placedOrder.clearPlacedOrder,
   login: user.login,
-  logout: user.logout
+  logout: user.logout,
+  setLocale: locale.setLocale
 };

@@ -5,14 +5,17 @@ import { ConnectedRouter as Router } from 'react-router-redux';
 import spreeStore from '../store';
 import history from '../browser-history';
 import configRoutes from '../routes';
+import ConnectedIntlProvider from '../connected-intl-provider';
 
 class Main extends Component {
   render() {
     return (
       <Provider store={ spreeStore }>
-        <Router history={ history }>
-          { configRoutes() }
-        </Router>
+        <ConnectedIntlProvider>
+          <Router history={ history }>
+            { configRoutes() }
+          </Router>
+        </ConnectedIntlProvider>
       </Provider>
     );
   }

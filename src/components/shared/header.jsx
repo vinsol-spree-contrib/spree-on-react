@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { DropdownButton, MenuItem } from 'react-bootstrap';
 
 import BrandHeader from './header/brand-header';
-import LocaleSelector from './header/locale-selector';
+import LocaleSelectorConnector from '../../containers/locale-selector-connector';
 import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connector';
 import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
 import SearchFormConnector from '../../containers/search-form-connector';
 import UserLoginConnector  from '../../containers/user-login-connector';
-import { DropdownButton, MenuItem } from 'react-bootstrap';
 import styles from './styles/header.scss';
 
 class Header extends Component {
@@ -83,7 +83,7 @@ class Header extends Component {
             <div className="col-sm-8">
               <div className="row">
                 <div className={ "col-sm-6 hidden-xs " + styles.headerLanguageBlock }>
-                  <LocaleSelector />
+                  <LocaleSelectorConnector />
                 </div>
 
                 <div className="col-sm-6">
