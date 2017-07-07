@@ -6,7 +6,7 @@ import deepMerge from 'deepmerge';
 // This is where we keep the locale files.
 const LOCALE_FILES_PATTERN  = './locales/**/*.json';
 // This is the directory where consolidated JSON is stored.
-const TRANSLATION_FILE_DIR  = './build/';
+const TRANSLATION_FILE_DIR  = './translations/';
 const TRANSLATION_FILE_NAME = 'app-translations.json';
 var   appTranslations       = {};
 

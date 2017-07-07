@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { IntlProvider } from 'react-intl';
 
-import localeData from './../build/app-translations.json';
+import localeData from './../translations/app-translations.json';
 import SUPPORTED_LOCALES from './constants/supported-locales';
 
 function mapStateToProps(state) {

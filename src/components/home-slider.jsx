@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import {Carousel} from 'react-bootstrap'
-import Banner1 from '../images/coffee-images/Banner-1.jpg';
-import Banner2 from '../images/coffee-images/Banner-2.jpeg';
+
+import Banner1 from '../images/b1.jpg';
+import Banner2 from '../images/b2.jpg';
 
 import styles from './styles/components/home-slider.scss';
 
@@ -15,8 +16,10 @@ class HomeSlider extends Component {
           <div className={ "container " + styles.sliderContainer }>
             <div className={ "banner-block " + styles.homeSliderTextContent }>
               <div className="banner-title">
-                <h3>Banner 1</h3>
-                <p>Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet.</p>
+                <h3>Handpicked</h3>
+                <p>
+                  The best of global brands, at your doorstep!
+                </p>
               </div>
             </div>
           </div>
@@ -25,8 +28,10 @@ class HomeSlider extends Component {
           <div className={ "container " + styles.sliderContainer }>
             <div className={ "banner-block " + styles.homeSliderTextContent }>
               <div className="banner-title">
-                <h3>Banner 2</h3>
-                <p>Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet. Lorem ipsum doler set amet.</p>
+                <h3>Shopaholic</h3>
+                <p>
+                  The end of reason sale!
+                </p>
               </div>
             </div>
           </div>

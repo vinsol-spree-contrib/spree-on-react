@@ -14,8 +14,8 @@ class LocaleSelector extends Component {
 
     // TODO: Title
     return (
-      <dd className={ "icon-block user-link-block " + styles.headerLanguage }>
-        <DropdownButton dropup = {true} title={ SUPPORTED_LOCALES[this.props.currentLocale] } className={ ' ' + styles.headerLanguageButton } bsStyle='link' id='user-account-dropdown'>
+      <dd className="icon-block user-link-block">
+        <DropdownButton dropup = {true} title={ SUPPORTED_LOCALES[this.props.currentLocale] } id='user-account-dropdown'>
           { localeSelectorMarkup }
         </DropdownButton>
       </dd>

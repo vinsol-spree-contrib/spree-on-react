@@ -9,7 +9,7 @@ class BrandHeader extends Component {
   render() {
     return (
       <Link to={ APP_ROUTES.homePageRoute } className={ styles.navBarHeader }>
-        <img className={ styles.headerLogo } src={ siteLogo } alt='SpreeCommerce'/>
+        Spree On React
       </Link>
     );
   }

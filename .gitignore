@@ -8,7 +8,7 @@ coverage
 
 # production
 build
-
+translations
 # misc
 .DS_Store
 .env

@@ -1,7 +1,7 @@
 .footer-section {
   width: $full;
   height: 60px;
-  padding-top: 20px;
+  padding-top: 15px;
   display: table;
   position: absolute;
   left: 0;
@@ -10,11 +10,24 @@
   font-weight: 300;
   background: $color-black;
 
+  .footer-left-content {
+    padding-top: 5px;
+    color: $color-white;
+
+    a {
+      color: $link-color;
+    }
+  }
+
   .footer-right-content {
     text-align: right;
 
     a {
       color: $link-color;
+    }
+
+    .user-link-block {
+      color: $color-white;
     }
   }
 }
