@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HeaderConnector from '../containers/header-connector';
 import FlashConnector from '../containers/flash-connector';
+import Footer from './shared/footer';
 
 class Layout extends Component {
   render() {
@@ -19,14 +20,7 @@ class Layout extends Component {
           { this.props.children }
         </div>
 
-        <footer className="footer-section">
-          <div className="container">
-            <div className="row">
-              <div className="col-sm-6 footer-left-content">Copyright &copy; 2017 FashionHub.com</div>
-              <div className="col-sm-6 footer-right-content">A product from <a href="http://vinsol.com" target="_blank">VinSol.com</a></div>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }

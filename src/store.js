@@ -15,7 +15,7 @@ let spreeStoreVariable;
 const dataFromLocalStorage = localStorageAPI.load();
 
 if (dataFromLocalStorage) {
-  spreeStoreVariable = createStore(AppReducer, {order: dataFromLocalStorage.order, user: dataFromLocalStorage.user, placedOrder: dataFromLocalStorage.placedOrder}, applyMiddleware(thunk, routerMiddleware(history), logger), reduxReset());
+  spreeStoreVariable = createStore(AppReducer, {order: dataFromLocalStorage.order, user: dataFromLocalStorage.user, placedOrder: dataFromLocalStorage.placedOrder, locale: dataFromLocalStorage.locale}, applyMiddleware(thunk, routerMiddleware(history), logger), reduxReset());
 }
 else {
   spreeStoreVariable = createStore(AppReducer, applyMiddleware(thunk, routerMiddleware(history), logger), reduxReset());
