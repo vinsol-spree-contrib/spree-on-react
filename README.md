@@ -206,6 +206,12 @@ https://spree-on-react.herokuapp.com/
 - Email: spree-on-react@example.com
 - Password: spree-vinsol
 
+### Upcoming Features
+We are heavily working on the below features. You can expect both of these features to be out by 30th June, 2017. Our constant focus is on to improve the code quality, making the separation of concerns between components and container more pronounced.
+
+1. Complete out of the box support for [React-intl](https://github.com/yahoo/react-intl/).
+2. Better structure for CSS using [css-modules](https://github.com/css-modules/css-modules) library (Using Webpack).
+
 ### Contributing
 We encourage you to contribute to this project. Please use GitHub issue tracker to raise pull requests, feature requests and report issues. For any security related issues, please email us directly.
 
