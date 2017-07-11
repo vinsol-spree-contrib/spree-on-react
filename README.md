@@ -33,49 +33,7 @@ For a comprehensive list, see `package.json`.
 8. Order listing for logged in users.
 9. Route handling.
 10. Using local storage to maintain orders and session information in browser.
-
-### Directory Structure
-Application source code is present inside ./src directory. Here we only show a few relevant files.
-
-```
-./src/
-├── actions (All redux action creators)
-│   ├── flash.js
-│   ├── index.js
-├── apis (All API end points. Use superagent package to send XMLHttp requests).
-│   ├── ams-adapters (These are specialised classes that parse the  API response. See Adapters.)
-│   │   ├── spree-api-product-adapter.js
-│   ├── products.js
-├── components (Hold all react components seggregated in a sane directory structure.)
-│   ├── flash.jsx
-│   ├── home-page.jsx
-│   ├── layout.jsx
-│   ├── main.jsx
-│   ├── shared (Shared components)
-│   │   ├── header.jsx
-│   │   ├── infinite-scroller.jsx
-│   │   ├── loader.jsx
-│   │   └── modal.jsx
-├── constants(All constants to run the application. Like Routes, etc)
-│   ├── app-routes.js
-├── containers ( react-redux connectors)
-│   ├── home-page-connector.js
-├── errors (Custom errors)
-│   └── invalid-order-transition.js
-├── images
-│   └── logo.png
-├── index.js (Entry / Mount point)
-├── reducers (Redux reducers)
-│   ├── index.js
-│   ├── order-list.js
-├── routes.jsx (Front end routes)
-├── services
-│   ├── url-parser.js
-├── store.js (Exports redux store.)
-└── styles
-    ├── main.scss
-
-```
+11. I18n
 
 ### Adapters
 
@@ -138,7 +96,7 @@ This application is under initial development currently. It uses a spree API ser
 
 #### Clone this repository
 ```sh
-git clone https://github.com/ShubhamGupta/spree-on-react.git
+git clone https://github.com/vinsol-spree-contrib/spree-on-react
 cd spree-on-react
 ```
 #### Install Node and npm
@@ -187,16 +145,18 @@ bundle exec rails server -p 3001
 open http://localhost:3000
 ```
 
+### Adding new languages
 
-### Whats Remaining?
+The project uses [react-intl](https://github.com/yahoo/react-intl/) for localization. The locale files are written in `json` format. The keys are flat in heirarchy (no nested keys). Lets consider that we are adding locales for French. 
+1. Create a directory inside the locales directory with name 'fr'.
+2. Copy the keys from an existing locale file from `locales` directory in to the 'fr' directory created above.
+3. Add actual language translations as values to the keys.
+4. Translate the locales: Below is the task defined in `package.json` to build the locales. The same has also been coupled with `npm run build` to assist in production deployment.
 
-1. Support for user sign up.
-2. Implement webpack's code splitting for smaller bundle sizes.
-3. I18n.
-
-### Where are the test cases?
-
-This repository is still very young and adding new features is our top priority. We'll begin writing test cases once we have build most of the spree core functionality.
+```sh
+npm run build:langs
+```
+This task should serve most common needs. For more complex requirements, you can easily tweak this task according to your needs. See: `scripts/translate.js`
 
 ### Demo
 
@@ -206,11 +166,19 @@ https://spree-on-react.herokuapp.com/
 - Email: spree-on-react@example.com
 - Password: spree-vinsol
 
-### Upcoming Features
-We are heavily working on the below features. You can expect both of these features to be out by 30th June, 2017. Our constant focus is on to improve the code quality, making the separation of concerns between components and container more pronounced.
+### Whats Remaining?
 
-1. Complete out of the box support for [React-intl](https://github.com/yahoo/react-intl/).
-2. Better structure for CSS using [css-modules](https://github.com/css-modules/css-modules) library (Using Webpack).
+1. Implement webpack's code splitting for smaller bundle sizes.
+2. Deployment on AWS using Nginx.
+
+### Upcoming Features
+We are heavily working on the below features. Our constant focus is on to improve the code quality, making the separation of concerns between components and container more pronounced.
+
+1. Adding type checking with Flow
+
+### Where are the test cases?
+
+This repository is still very young and adding new features is our top priority. We'll begin writing test cases once we have build most of the spree core functionality.
 
 ### Contributing
 We encourage you to contribute to this project. Please use GitHub issue tracker to raise pull requests, feature requests and report issues. For any security related issues, please email us directly.
