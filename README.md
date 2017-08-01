@@ -105,7 +105,7 @@ There are already a lot of resources on how to install node and npm for your ope
 #### Install project dependencies
 > This will install everything you'll need to run this application.
 ``` sh
-1. npm install
+npm install
 ```
 
 #### Setup the environment file.
@@ -122,10 +122,28 @@ List of Configuration variables:
 
 Note: We are using spree's core API for fetching countries and states as AMS is not really efficient for these end points. So, we need API base for both core and ams.
 
+#### Build the languages
+1. Export the NODE_ENV.
+```sh
+echo 'export NODE_ENV="development"' >> ~/.bash_profile
+```
+
+**Ubuntu Desktop note:** Modify your ~/.bashrc instead of ~/.bash_profile.
+
+**Zsh Note:** Modify your ~/.zshrc file instead of ~/.bash_profile.
+
+2. Generate the locale files.
+
+```sh
+npm run build:langs
+```
+
+**Note:** `npm run build` generates the locale files as well as the final build. This should be used for generating the production build.
+
 #### Run the FE server
 > This runs a local server on http://localhost:3000.
 ```sh
-1. npm start
+npm start
 ```
 
 #### Start your spree project server
