@@ -18,7 +18,9 @@ class userSignup extends Component {
   }
 
   handleFormSubmit(formData) {
-
+    this.props.submitSignupForm(formData).then((response) => {
+      this.closeModal();
+    });
   }
 
   render() {
@@ -33,56 +35,7 @@ class userSignup extends Component {
               <div className="global-modal-content">
                 <FlashConnector />
                   <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
-                    <div className="form-group row">
-                      <div className="col-sm-6">
-                        <label className="col-sm-12 control-label">
-                          <FormattedMessage
-                            id="shared.firstname"
-                            defaultMessage="First Name"
-                          />
-                        </label>
-                        <div className="col-sm-12">
-                          <Field 
-                            className="form-control" 
-                            name="firstname" 
-                            type="text" 
-                            component="input" />
-                        </div>
-                      </div>
-                      <div className="col-sm-6">
-                        <label className="col-sm-12 control-label">
-                          <FormattedMessage
-                            id="shared.lastname"
-                            defaultMessage="Last Name"
-                          />
-                        </label>
-                        <div className="col-sm-12">
-                          <Field 
-                            className="form-control" 
-                            name="lastname" 
-                            type="text" 
-                            component="input" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="form-group row">
-                      <div className="col-sm-6">
-                          <label className="col-sm-12 control-label">
-                            <FormattedMessage
-                              id="shared.mobile"
-                              defaultMessage="Mobile"
-                            />
-                          </label>
-                          <div className="col-sm-12">
-                            <Field 
-                            className="form-control" 
-                            name="mobile" 
-                            type="number" 
-                            component="input" />
-                          </div>
-                      </div>
-                    </div>
+                    
                     <div className="form-group row ">
                       <div className="col-sm-12">
                         <label className="col-sm-12 control-label">
@@ -94,7 +47,7 @@ class userSignup extends Component {
                         <div className="col-sm-12">
                           <Field 
                             className="form-control" 
-                            name="email" 
+                            name="user[email]" 
                             type="email" 
                             component="input" />
                         </div>
@@ -114,7 +67,7 @@ class userSignup extends Component {
                           <div className="col-sm-12">
                             <Field 
                             className="form-control" 
-                            name="password" 
+                            name="user[password]" 
                             type="password" 
                             component="input" />
                           </div>
@@ -129,7 +82,7 @@ class userSignup extends Component {
                           <div className="col-sm-12">
                             <Field 
                             className="form-control" 
-                            name="confirmPassword" 
+                            name="user[password_confirmation]" 
                             type="password" 
                             component="input" />
                           </div>
@@ -165,25 +118,25 @@ class userSignup extends Component {
   }
 }
 
-function validate(values) {
-  const error = [];
+// function validate(values) {
+//   const error = [];
 
-  if(!values.firstname) {
-    error.firstname = "First Name is Requried";
-  }
+//   if(!values.firstname) {
+//     error.firstname = "First Name is Requried";
+//   }
 
-  if(!values.lastname) {
-    error.lastname = "Last Name is Requried";
-  }
+//   if(!values.lastname) {
+//     error.lastname = "Last Name is Requried";
+//   }
 
-  if(!values.email) {
-    error.email = "Email is Required";
-  }
+//   if(!values.email) {
+//     error.email = "Email is Required";
+//   }
 
-  if(!values.password) {
-    error.password = "Password is Requried";
-  }
-}
+//   if(!values.password) {
+//     error.password = "Password is Requried";
+//   }
+// }
 
 userSignup = reduxForm({
   form: 'userSignup'

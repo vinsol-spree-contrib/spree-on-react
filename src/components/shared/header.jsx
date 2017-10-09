@@ -7,7 +7,7 @@ import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connec
 import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
 import SearchFormConnector from '../../containers/search-form-connector';
 import UserLoginConnector  from '../../containers/user-login-connector';
-import UserSignUp from '../user-signup';
+import UserSignupConnector from '../../containers/user-signup-connector';
 import styles from './styles/header.scss';
 
 class Header extends Component {
@@ -93,7 +93,7 @@ class Header extends Component {
               { userSessionActionMarkup }
               <CartNotificationInfoConnector />
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
-              <UserSignUp showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal} />
+              <UserSignupConnector showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal} />
            </dl>;
   };
 
