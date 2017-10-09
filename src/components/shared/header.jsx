@@ -7,6 +7,7 @@ import FilterBarConnector from '../../containers/taxon-filters/filter-bar-connec
 import CartNotificationInfoConnector from '../../containers/cart/notification-info-connector';
 import SearchFormConnector from '../../containers/search-form-connector';
 import UserLoginConnector  from '../../containers/user-login-connector';
+import UserSignUp from '../user-signup';
 import styles from './styles/header.scss';
 
 class Header extends Component {
@@ -18,10 +19,13 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showModal: false };
+    this.state = { showModal: false, showSignUpModal: false };
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
+    this.closeSignUpModal = this.closeSignUpModal.bind(this);
+    this.openSignUpModal = this.openSignUpModal.bind(this);
   };
 
   openModal() {
@@ -30,6 +34,14 @@ class Header extends Component {
 
   closeModal() {
     this.setState({ showModal: false });
+  };
+
+  openSignUpModal() {
+    this.setState({ showSignUpModal: true });
+  };
+
+  closeSignUpModal() {
+    this.setState({ showSignUpModal: false });
   };
 
   navIcons () {
@@ -56,20 +68,32 @@ class Header extends Component {
     }
     else {
       userSessionActionMarkup = <dd className={ 'hidden-xs icon-block user-link-block ' + styles.headerUserBlock }>
-        <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
-          <FormattedMessage
-            id="shared.login"
-            defaultMessage="Login"
-          />
-        </a>
+        <div className="row">
+        <div className="col-sm-6">
+          <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
+            <FormattedMessage
+              id="shared.login"
+              defaultMessage="Login"
+            />
+          </a>
+        </div>
+        <div className="col-sm-6">
+          <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openSignUpModal }>
+            <FormattedMessage
+              id="shared.signup"
+              defaultMessage="SignUp"
+            />
+          </a>
+        </div>
+        </div>
       </dd>;
     }
 
     return <dl className={ "nav-icons " + styles.headerNavHolder }>
               { userSessionActionMarkup }
-
               <CartNotificationInfoConnector />
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
+              <UserSignUp showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal}/>
            </dl>;
   };
 
