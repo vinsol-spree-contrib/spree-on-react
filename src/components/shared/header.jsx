@@ -93,7 +93,7 @@ class Header extends Component {
               { userSessionActionMarkup }
               <CartNotificationInfoConnector />
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
-              <UserSignUp showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal}/>
+              <UserSignUp showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal} />
            </dl>;
   };
 
