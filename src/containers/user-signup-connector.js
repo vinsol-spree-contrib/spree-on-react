@@ -13,7 +13,8 @@ function mapDispatchToProps(dispatch) {
 
       loginPromise.then((response) => {
         dispatch(Actions.hideLoader());
-        dispatch(Actions.showFlash('Successfully registered in'));
+        dispatch(Actions.login(response.body));
+        dispatch(Actions.showFlash('Successfully registered'));
       },
       (error) => {
         dispatch(Actions.showFlash('Invalid email or password.', 'danger'));
