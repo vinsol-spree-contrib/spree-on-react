@@ -27,7 +27,7 @@ class userSignup extends Component {
     const { handleSubmit } = this.props;
     return (
       <Modal modalClasses="user-form-modal" showModal={ this.props.showModal } closeModal={ this.closeModal } >
-        <div className="user-login-modal">
+        <div className="user-signup-modal">
           <div className="center-block user-form-process">
             <div className="cmn-user-form">
               <h2 className="global-modal-title">SignUp</h2>
@@ -38,15 +38,15 @@ class userSignup extends Component {
                     
                     <div className="form-group row ">
                       <div className="col-sm-12">
-                        <label className="col-sm-12 control-label">
+                        <label className="modal-form-label">
                           <FormattedMessage
                             id="shared.email"
                             defaultMessage="Email"
                           />
                         </label>
-                        <div className="col-sm-12">
+                        <div className="modal-form-input">
                           <Field 
-                            className="form-control" 
+                            className="form-input" 
                             name="user[email]" 
                             type="email" 
                             component="input" />
@@ -58,30 +58,30 @@ class userSignup extends Component {
                       <div className="row">
                         <div className="col-sm-6">
 
-                          <label className="col-sm-12 control-label">
+                          <label className="modal-form-label">
                             <FormattedMessage
                               id="shared.password"
                               defaultMessage="Password"
                             />
                           </label>
-                          <div className="col-sm-12">
+                          <div className="modal-form-input">
                             <Field 
-                            className="form-control" 
+                            className="form-input" 
                             name="user[password]" 
                             type="password" 
                             component="input" />
                           </div>
                         </div>
                         <div className="col-sm-6">
-                          <label className="col-sm-12 control-label">
+                          <label className="modal-form-label">
                             <FormattedMessage
                               id="shared.confirmPassword"
                               defaultMessage="Confirm Password"
                             />
                           </label>
-                          <div className="col-sm-12">
+                          <div className="modal-form-input">
                             <Field 
-                            className="form-control" 
+                            className="form-input" 
                             name="user[password_confirmation]" 
                             type="password" 
                             component="input" />
@@ -92,14 +92,7 @@ class userSignup extends Component {
                     <br />
                     <div className="form-group clearfix">
                       <div className="col-sm-12 text-center">
-                        <div className="btn-group">
-                          <button className="btn btn-default btn-common" onClick={ this.props.toggle }>
-                            <FormattedMessage
-                              id="shared.login"
-                              defaultMessage="Login"
-                            />
-                          </button>
-                          <button className="btn btn-success btn-common">
+                          <button className="button-primary">
                             <FormattedMessage
                               id="shared.signUp"
                               defaultMessage="Sign Up"
@@ -107,7 +100,6 @@ class userSignup extends Component {
                           </button>
                         </div>
                       </div>
-                    </div>
                   </form>
                   </div>
                 </div>

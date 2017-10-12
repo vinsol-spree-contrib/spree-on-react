@@ -9,20 +9,20 @@ function mapDispatchToProps(dispatch) {
     submitSignupForm: (formData) => {
       dispatch(Actions.displayLoader());
 
-      let loginPromise =  UserAPI.signup(formData)
+      let signupPromise =  UserAPI.signup(formData);
 
-      loginPromise.then((response) => {
+      signupPromise.then((response) => {
         dispatch(Actions.hideLoader());
         dispatch(Actions.login(response.body));
         dispatch(Actions.showFlash('Successfully registered'));
       },
       (error) => {
-        dispatch(Actions.showFlash('Invalid email or password.', 'danger'));
+        dispatch(Actions.showFlash('There was a problem in registration', 'danger'));
         dispatch(Actions.logout());
         dispatch(Actions.hideLoader());
-      })
+      });
 
-      return loginPromise;
+      return signupPromise;
     }
   };
 }

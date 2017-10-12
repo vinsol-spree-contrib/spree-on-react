@@ -69,29 +69,36 @@ class Header extends Component {
     else {
       userSessionActionMarkup = <dd className={ 'hidden-xs icon-block user-link-block ' + styles.headerUserBlock }>
         <div className="row">
-        <div className="col-sm-6">
-          <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
-            <FormattedMessage
-              id="shared.login"
-              defaultMessage="Login"
-            />
-          </a>
-        </div>
-        <div className="col-sm-6">
-          <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openSignUpModal }>
-            <FormattedMessage
-              id="shared.signup"
-              defaultMessage="SignUp"
-            />
-          </a>
-        </div>
+          <div className="col-sm-4">
+            <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
+              <FormattedMessage
+                id="shared.login"
+                defaultMessage="Login"
+              />
+            </a>
+          </div>
+          <div className="col-sm-8">
+            <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openSignUpModal }>
+              <FormattedMessage
+                id="shared.signUp"
+                defaultMessage="SignUp"
+              />
+            </a>
+          </div>
         </div>
       </dd>;
     }
 
     return <dl className={ "nav-icons " + styles.headerNavHolder }>
-              { userSessionActionMarkup }
-              <CartNotificationInfoConnector />
+              <div className="row">
+                <div className="col-sm-6">
+                  <CartNotificationInfoConnector />
+                </div>
+                <div className="col-sm-6">
+                  { userSessionActionMarkup }
+                </div>
+                
+              </div>
               <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
               <UserSignupConnector showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal} />
            </dl>;
