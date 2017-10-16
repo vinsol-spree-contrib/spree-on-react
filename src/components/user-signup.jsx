@@ -23,6 +23,26 @@ class userSignup extends Component {
     });
   }
 
+  renderFormElement(field) {
+    return (
+        <div>
+          <label className="modal-form-label">
+            <FormattedMessage
+              id={`shared.${field.localeId}`}
+              defaultMessage={field.defaultMessage}
+            />
+          </label>
+          <div className="modal-form-input">
+            <input 
+              type={field.type}
+              className="form-input"
+              name={field.input.name}
+            />
+          </div>
+        </div>
+      );
+  }
+
   render() {
     const { handleSubmit } = this.props;
     return (
@@ -35,70 +55,45 @@ class userSignup extends Component {
               <div className="global-modal-content">
                 <FlashConnector />
                   <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
-                    
-                    <div className="form-group row ">
-                      <div className="col-sm-12">
-                        <label className="modal-form-label">
-                          <FormattedMessage
-                            id="shared.email"
-                            defaultMessage="Email"
-                          />
-                        </label>
-                        <div className="modal-form-input">
-                          <Field 
-                            className="form-input" 
-                            name="user[email]" 
-                            type="email" 
-                            component="input" />
-                        </div>
-                      </div>
+                    <div className="modal-form-row">
+                        <Field 
+                          name="user[email]" 
+                          type="email"
+                          localeId="email"
+                          defaultMessage="Email"
+                          component={this.renderFormElement}
+                        />
                     </div>
-
-                    <div className="form-group clearfix">
+                    <div className="modal-form-row">
                       <div className="row">
                         <div className="col-sm-6">
-
-                          <label className="modal-form-label">
-                            <FormattedMessage
-                              id="shared.password"
-                              defaultMessage="Password"
-                            />
-                          </label>
-                          <div className="modal-form-input">
-                            <Field 
-                            className="form-input" 
+                          <Field
                             name="user[password]" 
-                            type="password" 
-                            component="input" />
-                          </div>
+                            type="password"
+                            localeId="password"
+                            defaultMessage="Password"
+                            component={this.renderFormElement}
+                          />
                         </div>
                         <div className="col-sm-6">
-                          <label className="modal-form-label">
-                            <FormattedMessage
-                              id="shared.confirmPassword"
-                              defaultMessage="Confirm Password"
-                            />
-                          </label>
-                          <div className="modal-form-input">
-                            <Field 
-                            className="form-input" 
+                          <Field
                             name="user[password_confirmation]" 
-                            type="password" 
-                            component="input" />
-                          </div>
+                            type="password"
+                            localeId="confirmPassword"
+                            defaultMessage="Confirm Password"
+                            component={this.renderFormElement}
+                          />
                         </div>
                       </div>
                     </div>
                     <br />
                     <div className="form-group clearfix">
-                      <div className="col-sm-12 text-center">
-                          <button className="button-primary">
-                            <FormattedMessage
-                              id="shared.signUp"
-                              defaultMessage="Sign Up"
-                            />
-                          </button>
-                        </div>
+                        <button className="button-primary">
+                          <FormattedMessage
+                            id="shared.signUp"
+                            defaultMessage="Sign Up"
+                          />
+                        </button>
                       </div>
                   </form>
                   </div>

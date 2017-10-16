@@ -19,21 +19,21 @@ class Header extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { showModal: false, showSignUpModal: false };
+    this.state = { showLoginModal: false, showSignUpModal: false };
 
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openLoginModal = this.openLoginModal.bind(this);
+    this.closeLoginModal = this.closeLoginModal.bind(this);
 
     this.closeSignUpModal = this.closeSignUpModal.bind(this);
     this.openSignUpModal = this.openSignUpModal.bind(this);
   };
 
-  openModal() {
-    this.setState({ showModal: true });
+  openLoginModal() {
+    this.setState({ showLoginModal: true });
   };
 
-  closeModal() {
-    this.setState({ showModal: false });
+  closeLoginModal() {
+    this.setState({ showLoginModal: false });
   };
 
   openSignUpModal() {
@@ -70,7 +70,7 @@ class Header extends Component {
       userSessionActionMarkup = <dd className={ 'hidden-xs icon-block user-link-block ' + styles.headerUserBlock }>
         <div className="row">
           <div className="col-sm-4">
-            <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openModal }>
+            <a href="#" className={ "primary-link " + styles.headerUserLink } onClick={ this.openLoginModal }>
               <FormattedMessage
                 id="shared.login"
                 defaultMessage="Login"
@@ -99,7 +99,7 @@ class Header extends Component {
                 </div>
                 
               </div>
-              <UserLoginConnector showModal={ this.state.showModal } closeModal={ this.closeModal } />
+              <UserLoginConnector showModal={ this.state.showLoginModal } closeModal={ this.closeLoginModal } />
               <UserSignupConnector showModal={this.state.showSignUpModal} closeModal={this.closeSignUpModal} />
            </dl>;
   };
