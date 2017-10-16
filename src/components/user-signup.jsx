@@ -18,9 +18,28 @@ class userSignup extends Component {
   }
 
   handleFormSubmit(formData) {
+    console.log("submitting");
     this.props.submitSignupForm(formData).then((response) => {
       this.closeModal();
     });
+  }
+
+  renderField(field) {
+    console.log(field);
+    return (
+        <div>
+        <input 
+          {...field.input}
+          className={`form-input ${ field.meta.touched && field.meta.error ? 'error' : ''}`}
+          type={field.type}
+          name={field.input.name}
+        />
+        <span className="text-danger">
+          <small>{field.meta.touched && field.meta.error}</small>
+        </span>
+        <br />
+        </div>
+      );
   }
 
   render() {
@@ -51,10 +70,9 @@ class userSignup extends Component {
                         </label>
                         <div className="modal-form-input">
                           <Field 
-                            className="form-input" 
-                            name="user[email]" 
+                            name="user_email" 
                             type="email" 
-                            component="input" />
+                            component={this.renderField} />
                         </div>
                       </div>
                     </div>
@@ -71,10 +89,9 @@ class userSignup extends Component {
                           </label>
                           <div className="modal-form-input">
                             <Field 
-                            className="form-input" 
-                            name="user[password]" 
+                            name="user_password" 
                             type="password" 
-                            component="input" />
+                            component={this.renderField} />
                           </div>
                         </div>
                         <div className="col-sm-6">
@@ -86,10 +103,9 @@ class userSignup extends Component {
                           </label>
                           <div className="modal-form-input">
                             <Field 
-                            className="form-input" 
-                            name="user[password_confirmation]" 
+                            name="user_confirm_password" 
                             type="password" 
-                            component="input" />
+                            component={this.renderField} />
                           </div>
                         </div>
                       </div>
@@ -115,7 +131,23 @@ class userSignup extends Component {
   }
 }
 
+function validate(values) {
+  const errors = [];
+
+  if(!values.user_email)
+    errors.user_email = 'Email is Required';
+
+  if(!values.user_password)
+    errors.user_password = 'Password is Required';
+
+  if(!values.user_confirm_password)
+    errors.user_confirm_password = 'Password is Required';
+
+  return errors;
+}
+
 userSignup = reduxForm({
-  form: 'userSignup'
+  form: 'userSignup',
+  validate: validate
 })(userSignup);
 export default userSignup;
