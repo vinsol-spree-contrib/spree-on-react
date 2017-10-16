@@ -34,8 +34,12 @@ class userLogin extends Component {
         <div className="user-login-modal">
           <div className="center-block user-form-process">
             <div className="cmn-user-form">
-              <h2 className="global-modal-title">Login</h2>
-
+              <h2 className="global-modal-title">
+                <FormattedMessage
+                  id="shared.login"
+                  defaultMessage="Login"
+                />
+              </h2>
               <div className="global-modal-content">
                 <FlashConnector />
                 <form onSubmit={ handleSubmit(this.handleFormSubmit) }>
@@ -72,12 +76,12 @@ class userLogin extends Component {
                   <div className="modal-form-row">
                     <div className="modal-form-input">
                       <button type="submit"
-                              disabled={ !valid || submitting }
-                              className="button-primary">
-                              <FormattedMessage
-                                id="shared.login"
-                                defaultMessage="Login"
-                              />
+                        disabled={ !valid || submitting }
+                        className="button-primary">
+                        <FormattedMessage
+                          id="shared.login"
+                          defaultMessage="Login"
+                        />
                       </button>
                     </div>
                   </div>
