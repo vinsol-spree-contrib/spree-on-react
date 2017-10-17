@@ -18,43 +18,19 @@ class userSignup extends Component {
   }
 
   handleFormSubmit(formData) {
-    console.log("submitting");
     this.props.submitSignupForm(formData).then((response) => {
       this.closeModal();
     });
   }
 
-  renderField(field) {
-    console.log(field);
-    return (
-        <div>
-        <input 
-          {...field.input}
-          className={`form-input ${ field.meta.touched && field.meta.error ? 'error' : ''}`}
-          type={field.type}
-          name={field.input.name}
-        />
-        <span className="text-danger">
-          <small>{field.meta.touched && field.meta.error}</small>
-        </span>
-        <br />
-        </div>
-      );
-  }
-
   render() {
-    const { handleSubmit, valid, submitting } = this.props;
+    const { handleSubmit } = this.props;
     return (
       <Modal modalClasses="user-form-modal" showModal={ this.props.showModal } closeModal={ this.closeModal } >
         <div className="user-signup-modal">
           <div className="center-block user-form-process">
             <div className="cmn-user-form">
-              <h2 className="global-modal-title">
-                <FormattedMessage 
-                  id="shared.signUp"
-                  defaultMessage="SignUp"
-                />
-              </h2>
+              <h2 className="global-modal-title">SignUp</h2>
 
               <div className="global-modal-content">
                 <FlashConnector />
@@ -70,9 +46,10 @@ class userSignup extends Component {
                         </label>
                         <div className="modal-form-input">
                           <Field 
-                            name="user_email" 
+                            className="form-input" 
+                            name="user[email]" 
                             type="email" 
-                            component={this.renderField} />
+                            component="input" />
                         </div>
                       </div>
                     </div>
@@ -89,9 +66,10 @@ class userSignup extends Component {
                           </label>
                           <div className="modal-form-input">
                             <Field 
-                            name="user_password" 
+                            className="form-input" 
+                            name="user[password]" 
                             type="password" 
-                            component={this.renderField} />
+                            component="input" />
                           </div>
                         </div>
                         <div className="col-sm-6">
@@ -103,23 +81,24 @@ class userSignup extends Component {
                           </label>
                           <div className="modal-form-input">
                             <Field 
-                            name="user_confirm_password" 
+                            className="form-input" 
+                            name="user[password_confirmation]" 
                             type="password" 
-                            component={this.renderField} />
+                            component="input" />
                           </div>
                         </div>
                       </div>
                     </div>
                     <br />
                     <div className="form-group clearfix">
-                        <button 
-                          className="button-primary"
-                          disabled={ !valid || submitting }>
-                          <FormattedMessage
-                            id="shared.signUp"
-                            defaultMessage="Sign Up"
-                          />
-                        </button>
+                      <div className="col-sm-12 text-center">
+                          <button className="button-primary">
+                            <FormattedMessage
+                              id="shared.signUp"
+                              defaultMessage="Sign Up"
+                            />
+                          </button>
+                        </div>
                       </div>
                   </form>
                   </div>
@@ -131,23 +110,7 @@ class userSignup extends Component {
   }
 }
 
-function validate(values) {
-  const errors = [];
-
-  if(!values.user_email)
-    errors.user_email = 'Email is Required';
-
-  if(!values.user_password)
-    errors.user_password = 'Password is Required';
-
-  if(!values.user_confirm_password)
-    errors.user_confirm_password = 'Password is Required';
-
-  return errors;
-}
-
 userSignup = reduxForm({
-  form: 'userSignup',
-  validate: validate
+  form: 'userSignup'
 })(userSignup);
 export default userSignup;
