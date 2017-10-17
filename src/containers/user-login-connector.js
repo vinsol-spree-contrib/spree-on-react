@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => {
       let loginPromise =  UserAPI.login(formData)
 
       loginPromise.then((response) => {
-        console.log('userlogin', response);
         dispatch(Actions.hideLoader());
         dispatch(Actions.login(response.body));
         dispatch(Actions.showFlash('Successfully logged in'));
