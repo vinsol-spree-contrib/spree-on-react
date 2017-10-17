@@ -37,6 +37,5 @@ export default {
   clearPlacedOrder: placedOrder.clearPlacedOrder,
   login: user.login,
   logout: user.logout,
-  setLocale: locale.setLocale,
-  signup: user.signup
+  setLocale: locale.setLocale
 };
