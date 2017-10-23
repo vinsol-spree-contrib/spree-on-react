@@ -11,11 +11,19 @@ const UserAPI = {
     // If GUEST user signup is enabled in spree without API Key, 
     // then no need to send the x-spree-token for this action,
     // By Default REACT_APP_ALLOW_GUEST_SIGNUP is false
+    let allowGuestSignup;
 
-    const key = process.env.REACT_APP_ALLOW_GUEST_SIGNUP ? '' : process.env.REACT_APP_SPREE_API;
+    try {
+      allowGuestSignup = JSON.parse(process.env.REACT_APP_ALLOW_GUEST_SIGNUP);
+    }
+    catch (e) {
+      allowGuestSignup = true
+    }
+
+    const spreeAPIToken = allowGuestSignup ? '' : process.env.REACT_APP_SPREE_API_TOKEN;
   	return request
   		.post(`${ process.env.REACT_APP_API_BASE }/users`)
-  		.set('X-Spree-Token', key )
+      .set('X-Spree-Token', spreeAPIToken )
   		.set('Content-Type', 'application/json')
       .send(params);
   }

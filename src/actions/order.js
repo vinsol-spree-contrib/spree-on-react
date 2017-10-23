@@ -17,8 +17,14 @@ const order = {
     2. Moved to a different state in checkout flow. */
   updateOrderInState: (recievedOrder) => {
     return (dispatch, getState) => {
-      dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
-      localStorageAPI.save(getState());
+      /*
+        receivedOrder can be empty when, for example, a new user is registered
+        or when a user with no current order logs in.
+      */
+      if (!!recievedOrder.id) {
+        dispatch ({ type: APP_ACTIONS.CREATE_ORDER, payload: recievedOrder });
+        localStorageAPI.save(getState());
+      }
     };
   },
 

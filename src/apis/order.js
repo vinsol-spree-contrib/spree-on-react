@@ -72,6 +72,13 @@ const OrdersAPI = {
       .set('Accept', 'application/json')
       .send()
       .then((response) => {
+        /*
+          Return response with empty body if no current order was found.
+        */
+        if (response.body === null) {
+          return { body: {} };
+        }
+
         let processedResponse = SpreeAPIOrderAdapter.processItem(response.body);
         response.body = processedResponse;
 
