@@ -119,8 +119,12 @@ List of Configuration variables:
 - REACT_APP_API_BASE="http://localhost:3001/api/v1"
 - REACT_APP_AMS_API_BASE='http://localhost:3001/api/ams'
 - REACT_APP_API_HOST="http://localhost:3001"
+- REACT_APP_ALLOW_GUEST_SIGNUP = false
+- REACT_APP_SPREE_API_TOKEN='2342862741qweqw7te27632'
 
 Note: We are using spree's core API for fetching countries and states as AMS is not really efficient for these end points. So, we need API base for both core and ams.
+
+**Imp Note:** By Default Spree requires an API token for user signup. **REACT_APP_ALLOW_GUEST_SIGNUP** is therefore set to false by default. If this API token is disabled under Spree, make sure to set this env variable to **true** to ignore this token on signup actions. If **REACT_APP_ALLOW_GUEST_SIGNUP** is `false`, then **REACT_APP_SPREE_API_TOKEN** is required.
 
 #### Build the languages
 1. Export the NODE_ENV.

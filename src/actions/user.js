@@ -13,7 +13,6 @@ const user = {
       });
 
       dispatch (Actions.clearPlacedOrder());
-
       OrdersAPI.getCurrent(userResponse.token).then((response) => {
         dispatch (Actions.updateOrderInState(response.body));
       });
