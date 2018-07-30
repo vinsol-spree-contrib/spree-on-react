@@ -188,6 +188,9 @@ https://spree-on-react.herokuapp.com/
 - Email: spree-on-react@example.com
 - Password: spree-vinsol
 
+## Read More.
+See this [blog post](http://vinsol.com/blog/2017/07/11/spreeonreact-a-spreecommerce-storefront-built-on-reactjs/).
+
 ### Whats Remaining?
 
 1. Implement webpack's code splitting for smaller bundle sizes.
@@ -207,5 +210,8 @@ We encourage you to contribute to this project. Please use GitHub issue tracker 
 
 
 ### License
-
 Spree on React is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
+
+### Author
+Shubham Gupta, [@_guptashubham](https://twitter.com/_guptashubham)
